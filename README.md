@@ -15,6 +15,7 @@ eu-ai-act-ontology/
 ├── memory/                  # Bundled declarative and procedural memory assets
 ├── ontology/                # The generated ontology
 ├── prompts/                 # Prompt files used by the workflow
+├── test/                    # Unit and integration tests
 ├── src/
 │   ├── client/              # User-facing pipeline entry points
 │   ├── host/                # Planning, validation, and agent orchestration
