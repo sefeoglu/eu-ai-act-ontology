@@ -13,9 +13,8 @@ eu-ai-act-ontology/
 ├── config/                  # Configuration files
 ├── doc/                     # Project documentation
 ├── memory/                  # Bundled memory assets
-│   ├── declarative/         # Modelling rules, prompts, and reusable ontology patterns
-│   │   ├── modelling_rules.md
-│   │   ├── ontology_patterns/
+│   ├── declarative/         # Modelling rules in prompts and reusable ontologies
+│   │   ├── existing_ontologies/
 │   │   └── prompts/
 │   └── procedural/          # Domain-specific regulatory memory
 │       └── eu_ai_act_2024/
