@@ -1,14 +1,22 @@
+<<<<<<< HEAD
 """Tests for the prototype pipeline and ontology memory flow."""
 
 import unittest
 from pathlib import Path
 
 from src.client.ui import PrototypeUI
+=======
+"""Tests for the prototype ontology memory flow."""
+
+import unittest
+
+>>>>>>> c919a5e89154ffc1874e609501d11bf3d767f3c7
 from src.memory.declarative_memory import DeclarativeMemory
 from src.memory.memory_generator import MemoryGenerator
 from src.server.onto_generator_server import OntologyGenerator
 
 
+<<<<<<< HEAD
 class TestDeclarativeMemory(unittest.TestCase):
     def test_default_ontology_loads(self) -> None:
         mem = DeclarativeMemory().load_default()
@@ -106,6 +114,33 @@ class TestPrototypePipeline(unittest.TestCase):
     def test_pipeline_unknown_goal_defaults_to_extract(self) -> None:
         report = self.ui.run_pipeline("something completely unknown")
         self.assertEqual(report["plan"]["action"], "extract_concepts")
+=======
+class TestSparqlQueries(unittest.TestCase):
+    def test_default_ontology_loads(self):
+        memory = DeclarativeMemory()
+        memory.load_default()
+        self.assertGreater(memory.triple_count(), 0)
+
+    def test_concept_query_returns_rows(self):
+        generator = OntologyGenerator()
+        rows = generator.extract_concepts(limit=5)
+        self.assertGreater(len(rows), 0)
+        self.assertIn("label", rows[0])
+
+    def test_text_chunking(self):
+        chunks = MemoryGenerator().split_text_into_chunks("abcdefghij", chunk_size=4)
+        self.assertEqual(chunks, ["abcd", "efgh", "ij"])
+
+    def test_invalid_chunk_size_raises(self):
+        with self.assertRaises(ValueError):
+            MemoryGenerator().split_text_into_chunks("abc", chunk_size=0)
+
+    def test_text_chunking_edge_cases(self):
+        generator = MemoryGenerator()
+        self.assertEqual(generator.split_text_into_chunks("", chunk_size=4), [])
+        self.assertEqual(generator.split_text_into_chunks("ab", chunk_size=10), ["ab"])
+        self.assertEqual(generator.split_text_into_chunks("öğrenci", chunk_size=3), ["öğr", "enc", "i"])
+>>>>>>> c919a5e89154ffc1874e609501d11bf3d767f3c7
 
 
 if __name__ == "__main__":
