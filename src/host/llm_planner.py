@@ -7,6 +7,7 @@ class LLMPlanner:
     """Deterministic planner for the prototype (LLM integration placeholder)."""
 
     ACTIONS = {
+        "generate competency questions": "generate_competency_questions",
         "list concepts": "extract_concepts",
         "validate ontology": "validate_ontology",
         "show mappings": "map_to_existing_ontologies",

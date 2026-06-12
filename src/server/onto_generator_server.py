@@ -1,5 +1,6 @@
 """Prototype ontology generator backed by a loaded DeclarativeMemory."""
 
+import re
 from typing import Dict, List
 
 from src.memory.declarative_memory import DeclarativeMemory
@@ -57,6 +58,12 @@ class OntologyGenerator:
                 "}"
             ),
         }
+    def generate_competency_questions(self, doc_chunk) -> List[str]:
+        """Return a list of example competency questions for the loaded ontology."""
+        # create competency question based on the content of the procedural memory chunk
+        # this is a placeholder implementation; in a real system, this would involve NLP techniques
+        text = doc_chunk.get("text", "")    
+        
 
     def generate_owl_ttl(self) -> str:
         """Serialize the loaded graph as Turtle."""
@@ -79,3 +86,4 @@ class OntologyGenerator:
             "triples": validation["triple_count"],
             "source": validation["source"],
         }
+    

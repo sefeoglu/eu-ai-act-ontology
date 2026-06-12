@@ -1,0 +1,1 @@
+"""Gemini  for pdf to text generation"""

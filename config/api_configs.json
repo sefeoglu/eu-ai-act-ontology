@@ -1,12 +1,26 @@
 {
     "gpt-3.5-turbo": {
         "model": "gpt-3.5-turbo",
-        "temperature": 0.7,
-        "max_tokens": 2048
+        "openai_api_key":"your_openai_api_key_here",
+        "API_URL": "https://api.openai.com/v1/chat/completions",
+        "temperature": 0,
+        "max_tokens": 2048,
+        "competency_question_prompt":"modified_neogpt_prompts/prompt_1.txt",
+        "concept_extraction_prompt":"modified_neogpt_prompts/prompt_3.txt",
+        "triple_generation_prompt":"modified_neogpt_prompts/prompt_4.txt",
+        "ontology_generation_prompt":"modified_neogpt_prompts/prompt_5.txt",
+        "domain_range_prompt":"modified_neogpt_prompts/prompt_6.txt",
+        "data_type_prompt":"modified_neogpt_prompts/prompt_7.txt",
+        "axioms_prompt":"modified_neogpt_prompts/prompt_8.txt",
+        "rdf_comments":"modified_neogpt_prompts/prompt_9.txt",
+        "individuals_prompt":"modified_neogpt_prompts/prompt_10.txt",
+        "seed": 42
     },
-    "gemini-1.5-pro": {
+    "gemini": {
         "model": "gemini-1.5-pro",
-        "temperature": 0.7,
-        "max_tokens": 2048
+        "openai_api_key":"",
+        "temperature": 0,
+        "max_tokens": 2048,
+        "ocr_prompt":"modified_neogpt_prompts/prompt_2.txt"
     }
 }
