@@ -6,6 +6,26 @@ This project presents a Memory-Based Model Context Protocol (MCP) approach for a
 
 The approach is demonstrated using the EU AI Act as the primary regulatory source.
 
+## Repository Structure
+
+```text
+eu-ai-act-ontology/
+├── config/                  # Configuration files
+├── doc/                     # Project documentation
+├── memory/                  # Bundled declarative and procedural memory assets
+├── prompts/                 # Prompt files used by the workflow
+├── src/
+│   ├── client/              # User-facing pipeline entry points
+│   ├── host/                # Planning, validation, and agent orchestration
+│   ├── memory/              # Memory loading and generation logic
+│   ├── server/              # Ontology generation services
+│   ├── test/                # Unit and integration tests
+│   ├── main.py              # Main application entry point
+│   └── utils.py             # Shared utilities
+├── requirements.txt         # Python dependencies
+└── README.md                # Project overview
+```
+
 ## Architecture
 
 The system utilizes two complementary memory types:
