@@ -6,8 +6,9 @@ Usage
 
 GOAL is one of:
     "list concepts"      – extract labeled ontology concepts (default)
-    "validate ontology"  – structural health check
     "show mappings"      – top namespace occurrence counts
+    "generate ontology"  – create a new OWL/RDF ontology from the procedural memory
+    "validate ontology"  – structural health check
     "show queries"       – SPARQL query catalog
     "export package"     – packaging metadata
 
@@ -33,8 +34,8 @@ def build_parser() -> argparse.ArgumentParser:
         nargs="?",
         default="list concepts",
         help=(
-            "Pipeline goal: 'list concepts' | 'validate ontology' | "
-            "'show mappings' | 'show queries' | 'export package'"
+            "Pipeline goal: 'list concepts' | 'show mappings' | 'generate ontology' | 'validate ontology' | "
+            "'show queries' | 'export package'"
         ),
     )
     parser.add_argument(
