@@ -1,8 +1,8 @@
 """CLI-facing UI helpers."""
 
-from host.llm_planner import LLMPlanner
-from host.mcp_client import MCPClient
-from host.validation_controller import ValidationController
+from src.host.llm_planner import LLMPlanner
+from src.host.mcp_client import MCPClient
+from src.host.validation_controller import ValidationController
 
 
 class PrototypeUI:

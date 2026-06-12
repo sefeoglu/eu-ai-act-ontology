@@ -2,8 +2,8 @@
 
 from pathlib import Path
 
-from memory.memory import OntologyMemory
-from utils import data_path, ensure_file_exists
+from src.memory.memory import OntologyMemory
+from src.utils import data_path, ensure_file_exists
 
 
 class DeclarativeMemory(OntologyMemory):

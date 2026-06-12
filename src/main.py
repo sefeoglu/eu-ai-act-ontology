@@ -3,7 +3,7 @@
 import argparse
 import json
 
-from client.ui import PrototypeUI
+from src.client.ui import PrototypeUI
 
 
 def build_parser() -> argparse.ArgumentParser:

@@ -2,7 +2,7 @@
 
 from typing import Dict, List
 
-from memory.declarative_memory import DeclarativeMemory
+from src.memory.declarative_memory import DeclarativeMemory
 
 
 class OntologyGenerator:
@@ -13,13 +13,17 @@ class OntologyGenerator:
 
     def extract_concepts(self, limit: int = 10) -> List[Dict[str, str]]:
         """Extract labeled ontology concepts for quick inspection."""
-        query = f"""
+        if not isinstance(limit, int):
+            raise TypeError("limit must be an integer")
+        if limit <= 0 or limit > 1_000:
+            raise ValueError("limit must be between 1 and 1000 (inclusive)")
+        query = """
         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-        SELECT ?concept ?label WHERE {{
+        SELECT ?concept ?label WHERE {
           ?concept rdfs:label ?label .
-        }} LIMIT {int(limit)}
+        }
         """
-        return self.memory.run_query(query)
+        return self.memory.run_query(query)[:limit]
 
     def map_to_existing_ontologies(self) -> Dict[str, int]:
         """Return top namespace counts as a lightweight mapping summary."""

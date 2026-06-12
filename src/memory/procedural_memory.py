@@ -2,7 +2,7 @@
 
 from pathlib import Path
 
-from utils import data_path, ensure_file_exists
+from src.utils import data_path, ensure_file_exists
 
 
 class ProceduralMemory:
