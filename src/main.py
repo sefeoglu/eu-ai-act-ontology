@@ -5,12 +5,14 @@ Usage
     python -m src.main [GOAL] [--declarative PATH] [--procedural PATH]
 
 GOAL is one of:
-    "list concepts"      – extract labeled ontology concepts (default)
-    "show mappings"      – top namespace occurrence counts
-    "generate ontology"  – create a new OWL/RDF ontology from the procedural memory
-    "validate ontology"  – structural health check
-    "show queries"       – SPARQL query catalog
-    "export package"     – packaging metadata
+    "memory_generation"  : generate declarative and procedural memory from the PDF (default)
+    "generate competency questions" : create competency questions from the procedural text
+    "list concepts"      : extract labeled ontology concepts (default)
+    "show mappings"      : top namespace occurrence counts
+    "generate ontology"  : create a new OWL/RDF ontology from the procedural memory
+    "validate ontology"  : structural health check
+    "show queries"       : SPARQL query catalog
+    "export package"     : packaging metadata
 
 Memory files can be overridden via --declarative / --procedural; the
 bundled repository assets are used when not specified.
@@ -30,12 +32,12 @@ def build_parser() -> argparse.ArgumentParser:
         description="EU AI Act ontology prototype pipeline"
     )
     parser.add_argument(
-        "goal",
-        nargs="?",
-        default="list concepts",
+        "goals",
+        nargs="*",
+        default=['memory_generation', 'generate_competency_questions', 'list_concepts', 'show_mappings', 'validate_ontology', 'show_queries', 'export_package' ],
         help=(
-            "Pipeline goal: 'list concepts' | 'show mappings' | 'generate ontology' | 'validate ontology' | "
-            "'show queries' | 'export package'"
+             "Pipeline goal: 'memory_generation' | 'generate_competency_questions' | 'list_concepts' | 'show_mappings' | 'generate_ontology' | 'validate_ontology' | "
+            "'show_queries' | 'export_package'"
         ),
     )
     parser.add_argument(
@@ -56,7 +58,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def run_pipeline(
-    goal: str,
+    goals: str,
     declarative_path: Optional[Path] = None,
     procedural_path: Optional[Path] = None,
 ) -> Dict[str, Any]:
@@ -65,13 +67,13 @@ def run_pipeline(
         declarative_ontology_path=declarative_path,
         procedural_pdf_path=procedural_path,
     )
-    return ui.run_pipeline(goal)
+    return ui.run_pipeline(goals)
 
 
 def main(argv: Optional[List[str]] = None) -> None:
     args = build_parser().parse_args(argv)
     report = run_pipeline(
-        goal=args.goal,
+        goals=args.goals,
         declarative_path=args.declarative,
         procedural_path=args.procedural,
     )

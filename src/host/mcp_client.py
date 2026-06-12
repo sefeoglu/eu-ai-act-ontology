@@ -5,6 +5,8 @@ from typing import Any
 from src.server.onto_generator_server import OntologyGenerator
 
 ALLOWED_ACTIONS = frozenset({
+    "memory_generation",
+    "competency_questions",
     "extract_concepts",
     "validate_ontology",
     "map_to_existing_ontologies",

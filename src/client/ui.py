@@ -56,28 +56,34 @@ class PrototypeUI:
     # Pipeline entry point
     # ------------------------------------------------------------------
 
-    def run_pipeline(self, goal: str) -> Dict[str, Any]:
-        """Run the full pipeline for *goal* and return a structured report.
+    def run_pipeline(self, goals: str) -> Dict[str, Any]:
+        """Run the full pipeline for *goals* and return a structured report.
 
         Steps
         -----
-        1. Plan  – map the goal to a concrete action.
-        2. Execute – dispatch the action via the MCP client.
-        3. Validate – verify the result is non-empty.
-        4. Return  – assemble the full pipeline report.
+        1. Plan: map the goals to a concrete action.
+        2. Execute: dispatch the action via the MCP client.
+        3. Validate: verify the result is non-empty.
+        4. Return: assemble the full pipeline report.
         """
         # Step 1 – plan
-        plan = self.planner.create_plan(goal)
+
+
+        
+        plan = self.planner.create_plan(goals)
 
         # Step 2 – execute
         result = self.client.execute(plan["action"])
 
         # Step 3 – validate
-        validation = self.validator.validate_result(result)
+        if goals == "":
+            validation = self.validator.validate_result(result)
 
         # Step 4 – report
+
+        
         return {
-            "goal": goal,
+            "goals": goals,
             "plan": plan,
             "memory": {
                 "declarative_source": str(self.declarative_memory.source_path),

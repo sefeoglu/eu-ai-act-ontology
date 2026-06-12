@@ -4,6 +4,7 @@ import re
 from typing import Dict, List
 
 from src.memory.declarative_memory import DeclarativeMemory
+from src.memory.procedural_memory import ProceduralMemory
 
 
 class OntologyGenerator:
@@ -63,7 +64,19 @@ class OntologyGenerator:
         # create competency question based on the content of the procedural memory chunk
         # this is a placeholder implementation; in a real system, this would involve NLP techniques
         text = doc_chunk.get("text", "")    
-        
+        return [
+            f"What is the definition of {concept['label']}?" for concept in self.extract_concepts(limit=5)
+        ] + [
+            f"How does {concept['label']} relate to other concepts?" for concept in self.extract_concepts(limit=5)
+        ]
+    def generate_domain_memory(self) -> Dict[str, List[str]]:
+        """Return a structured representation of the procedural memory content."""
+        # this is a placeholder implementation; in a real system, this would involve more complex processing
+        return {
+            "procedural_chunks": [
+                chunk.get("text", "") for chunk in self.memory.procedural_chunks[:5]
+            ]
+        }
 
     def generate_owl_ttl(self) -> str:
         """Serialize the loaded graph as Turtle."""
@@ -77,6 +90,7 @@ class OntologyGenerator:
             "triple_count": triple_count,
             "source": str(self.memory.source_path),
         }
+
 
     def export_github_package(self) -> Dict[str, object]:
         """Return export metadata for future packaging integration."""

@@ -1,11 +1,15 @@
 """Build declarative and procedural memory objects from configuration."""
 
+import code
+from email.mime import text
 from pathlib import Path
 from typing import Dict, List, Optional
 
 from src.memory.declarative_memory import DeclarativeMemory
 from src.memory.procedural_memory import ProceduralMemory
-
+from host.agents.ocr_agent import ocr_pdf
+from logging import getLogger
+logger = getLogger(__name__)
 
 class MemoryGenerator:
     """Assembles the full memory context required by the prototype pipeline."""
@@ -57,4 +61,19 @@ class MemoryGenerator:
         self, text: str, chunk_size: int = 1_000
     ) -> List[str]:
         """Backward-compatible alias that expects already-extracted PDF text."""
+        text = self.pdf_to_text(text) if text.endswith(".pdf") else text
         return self.split_text_into_chunks(text=text, chunk_size=chunk_size)
+    
+
+
+    def split_pdf_into_pages(self, pdf_path: str, output_folder_path:str) -> List[str]:
+        """Split a PDF into individual pages."""
+        """include code"""
+        return text
+
+    def pdf_to_text(self, pdf_path: str) -> str:
+        """Extract text from a PDF file (placeholder implementation)."""
+        logger.info(f"Extracting text from PDF: {pdf_path}")
+        text = ocr_pdf(pdf_path, self.config.get("ocr_model_config", {}))
+        logger.info(f"Extracted text from PDF: {pdf_path}")
+        return text
