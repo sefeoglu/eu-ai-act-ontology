@@ -12,15 +12,15 @@ The approach is demonstrated using the EU AI Act as the primary regulatory sourc
 eu-ai-act-ontology/
 ├── config/                  # Configuration files
 ├── doc/                     # Project documentation
-├── memory/                  # Bundled declarative (rules in prompts and existing ontologies) and procedural memory assets (EU AI Act 2024)
-├── declarative/
-│   ├── modelling_rules.md
-│   ├── ontology_patterns/
-│   └── prompts/
-├── procedural/
-│   └── eu_ai_act_2024/
-├── ontology/                # The generated ontology
-├── test/                    # Unit and integration tests
+├── memory/                  # Bundled memory assets
+│   ├── declarative/         # Modelling rules, prompts, and reusable ontology patterns
+│   │   ├── modelling_rules.md
+│   │   ├── ontology_patterns/
+│   │   └── prompts/
+│   └── procedural/          # Domain-specific regulatory memory
+│       └── eu_ai_act_2024/
+├── ontology/                # Generated ontology files
+├── tests/                   # Unit and integration tests
 ├── src/
 │   ├── client/              # User-facing pipeline entry points
 │   ├── host/                # Planning, validation, and agent orchestration
