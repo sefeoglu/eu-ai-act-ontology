@@ -1,0 +1,12 @@
+{
+    "gpt-3.5-turbo": {
+        "model": "gpt-3.5-turbo",
+        "temperature": 0.7,
+        "max_tokens": 2048
+    },
+    "gemini-1.5-pro": {
+        "model": "gemini-1.5-pro",
+        "temperature": 0.7,
+        "max_tokens": 2048
+    }
+}
