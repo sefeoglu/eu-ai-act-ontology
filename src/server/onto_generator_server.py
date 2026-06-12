@@ -20,7 +20,9 @@ class OntologyGenerator:
         if not isinstance(limit, int):
             raise TypeError("limit must be an integer")
         if limit <= 0 or limit > 1_000:
-            raise ValueError("limit must be between 1 and 1 000 (inclusive)")
+            raise ValueError(
+                f"limit must be between 1 and 1,000 (inclusive), got {limit}"
+            )
         query = """
         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
         SELECT ?concept ?label WHERE {

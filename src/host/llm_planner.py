@@ -1,5 +1,7 @@
 """Maps user goals to prototype pipeline actions."""
 
+from typing import Dict
+
 
 class LLMPlanner:
     """Deterministic planner for the prototype (LLM integration placeholder)."""
@@ -12,7 +14,7 @@ class LLMPlanner:
         "export package": "export_github_package",
     }
 
-    def create_plan(self, user_goal: str) -> dict:
+    def create_plan(self, user_goal: str) -> Dict[str, str]:
         """Map a user goal to a named pipeline action."""
         action = self.ACTIONS.get(user_goal.strip().lower(), "extract_concepts")
         return {"goal": user_goal, "action": action, "status": "planned"}

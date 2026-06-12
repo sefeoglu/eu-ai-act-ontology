@@ -1,7 +1,7 @@
 """Procedural memory: regulatory source-document metadata."""
 
 from pathlib import Path
-from typing import Optional
+from typing import Any, Dict, Optional
 
 from src.utils import data_path, ensure_file_exists
 
@@ -17,7 +17,7 @@ class ProceduralMemory:
         resolved = Path(document_path) if document_path else self.DEFAULT_PATH
         self.document_path: Path = ensure_file_exists(resolved)
 
-    def get_metadata(self) -> dict:
+    def get_metadata(self) -> Dict[str, Any]:
         """Return minimal document metadata without heavy PDF dependencies."""
         return {
             "document_path": str(self.document_path),

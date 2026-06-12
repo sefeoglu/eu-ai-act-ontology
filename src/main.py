@@ -19,6 +19,7 @@ import argparse
 import json
 import sys
 from pathlib import Path
+from typing import Any, Dict, List, Optional
 
 from src.client.ui import PrototypeUI
 
@@ -55,9 +56,9 @@ def build_parser() -> argparse.ArgumentParser:
 
 def run_pipeline(
     goal: str,
-    declarative_path: Path | None = None,
-    procedural_path: Path | None = None,
-) -> dict:
+    declarative_path: Optional[Path] = None,
+    procedural_path: Optional[Path] = None,
+) -> Dict[str, Any]:
     """Instantiate the UI with the given memory files and run the pipeline."""
     ui = PrototypeUI(
         declarative_ontology_path=declarative_path,
@@ -66,7 +67,7 @@ def run_pipeline(
     return ui.run_pipeline(goal)
 
 
-def main(argv: list[str] | None = None) -> None:
+def main(argv: Optional[List[str]] = None) -> None:
     args = build_parser().parse_args(argv)
     report = run_pipeline(
         goal=args.goal,
