@@ -8,11 +8,12 @@ The approach is demonstrated using the EU AI Act as the primary regulatory sourc
 
 ## Repository Structure
 
-```text
+```xml
 eu-ai-act-ontology/
 ├── config/                  # Configuration files
 ├── doc/                     # Project documentation
 ├── memory/                  # Bundled declarative and procedural memory assets
+├── ontology/                # The generated ontology
 ├── prompts/                 # Prompt files used by the workflow
 ├── src/
 │   ├── client/              # User-facing pipeline entry points
@@ -34,11 +35,9 @@ The system utilizes two complementary memory types:
 
 Declarative memory stores ontology engineering knowledge derived from previously developed ontologies, including:
 
-* Ontology design patterns
 * Class and property modeling rules
 * Domain and range constraints
 * Reusable ontology structures
-* Semantic consistency rules
 
 This memory enables the system to reuse established ontology modeling practices and maintain consistency across generated ontologies.
 
@@ -48,9 +47,6 @@ Procedural memory captures domain-specific knowledge and regulatory procedures e
 
 * Regulatory concepts and definitions
 * Compliance requirements
-* Risk classifications
-* Relationships between legal entities and obligations
-* Domain-specific ontology construction procedures
 
 This memory guides the ontology generation process using regulatory knowledge embedded in the source documents.
 
