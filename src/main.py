@@ -1,0 +1,80 @@
+"""Entry point for the EU AI Act ontology prototype pipeline.
+
+Usage
+-----
+    python -m src.main [GOAL] [--declarative PATH] [--procedural PATH]
+
+GOAL is one of:
+    "list concepts"      – extract labeled ontology concepts (default)
+    "validate ontology"  – structural health check
+    "show mappings"      – top namespace occurrence counts
+    "show queries"       – SPARQL query catalog
+    "export package"     – packaging metadata
+
+Memory files can be overridden via --declarative / --procedural; the
+bundled repository assets are used when not specified.
+"""
+
+import argparse
+import json
+import sys
+from pathlib import Path
+
+from src.client.ui import PrototypeUI
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        description="EU AI Act ontology prototype pipeline"
+    )
+    parser.add_argument(
+        "goal",
+        nargs="?",
+        default="list concepts",
+        help=(
+            "Pipeline goal: 'list concepts' | 'validate ontology' | "
+            "'show mappings' | 'show queries' | 'export package'"
+        ),
+    )
+    parser.add_argument(
+        "--declarative",
+        metavar="PATH",
+        type=Path,
+        default=None,
+        help="Path to a declarative-memory OWL/RDF ontology file (optional).",
+    )
+    parser.add_argument(
+        "--procedural",
+        metavar="PATH",
+        type=Path,
+        default=None,
+        help="Path to the procedural-memory regulatory PDF (optional).",
+    )
+    return parser
+
+
+def run_pipeline(
+    goal: str,
+    declarative_path: Path | None = None,
+    procedural_path: Path | None = None,
+) -> dict:
+    """Instantiate the UI with the given memory files and run the pipeline."""
+    ui = PrototypeUI(
+        declarative_ontology_path=declarative_path,
+        procedural_pdf_path=procedural_path,
+    )
+    return ui.run_pipeline(goal)
+
+
+def main(argv: list[str] | None = None) -> None:
+    args = build_parser().parse_args(argv)
+    report = run_pipeline(
+        goal=args.goal,
+        declarative_path=args.declarative,
+        procedural_path=args.procedural,
+    )
+    print(json.dumps(report, indent=2, ensure_ascii=False))
+
+
+if __name__ == "__main__":
+    main()
