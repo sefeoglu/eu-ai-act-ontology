@@ -1,16 +1,11 @@
-<<<<<<< HEAD
 """Prototype UI: loads memory files and drives the full pipeline."""
 
 from pathlib import Path
 from typing import Any, Dict, Optional
-=======
-"""CLI-facing UI helpers."""
->>>>>>> c919a5e89154ffc1874e609501d11bf3d767f3c7
 
 from src.host.llm_planner import LLMPlanner
 from src.host.mcp_client import MCPClient
 from src.host.validation_controller import ValidationController
-<<<<<<< HEAD
 from src.memory.memory_generator import MemoryGenerator
 from src.server.onto_generator_server import OntologyGenerator
 
@@ -89,24 +84,6 @@ class PrototypeUI:
                 "declarative_triples": self.declarative_memory.triple_count(),
                 "procedural_source": self.procedural_memory.get_metadata(),
             },
-=======
-
-
-class PrototypeUI:
-    """Orchestrates planner, execution, and validation."""
-
-    def __init__(self) -> None:
-        self.planner = LLMPlanner()
-        self.client = MCPClient()
-        self.validator = ValidationController()
-
-    def run_goal(self, goal: str) -> dict:
-        plan = self.planner.create_plan(goal)
-        result = self.client.execute(plan["action"])
-        validation = self.validator.validate_result(result)
-        return {
-            "plan": plan,
->>>>>>> c919a5e89154ffc1874e609501d11bf3d767f3c7
             "validation": validation,
             "result": result,
         }
