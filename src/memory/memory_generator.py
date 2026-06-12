@@ -1,27 +1,32 @@
-"""Generate procedural and declarative memory for the agent."""
+"""Generate procedural and declarative memory for the prototype agent."""
+
+from memory.declarative_memory import DeclarativeMemory
+from memory.procedural_memory import ProceduralMemory
 
 
-from os import read
+class MemoryGenerator:
+    """Build declarative/procedural memory objects from repository assets."""
 
-from memory import memory
+    def __init__(self, config: dict | None = None):
+        self.config = config or {}
 
+    def generate_procedural_memory(self) -> dict:
+        """Generate procedural memory metadata for the prototype."""
+        procedural_memory = ProceduralMemory(self.config.get("procedural_pdf"))
+        return procedural_memory.get_metadata()
 
-class MemoryGenerator(object):
-    """Generate procedural and declarative memory for the agent."""
+    def split_pdf_into_chunks(self, text: str, chunk_size: int = 1_000) -> list[str]:
+        """Split text into fixed-size chunks for downstream processing."""
+        if chunk_size <= 0:
+            raise ValueError("chunk_size must be a positive integer")
+        return [text[index:index + chunk_size] for index in range(0, len(text), chunk_size)]
 
-    def __init__(self, config):
-        self.config = config
-
-    def generate_procedural_memory(self):
-        """Generate procedural memory for the agent."""
-        """Apply Gemini to read text in pdf and generate procedural memory for the agent."""
-        pass    
-    def split_pdf_into_chunks(self, pdf_path):
-        """Split a PDF file into chunks for processing."""
-        # Code to split the PDF into manageable chunks
-        pass
-
-    def generate_declarative_memory(self):
-        """Generate declarative memory for the agent."""
-        # Code to generate declarative memory based on the configuration
-        pass
+    def generate_declarative_memory(self) -> DeclarativeMemory:
+        """Load declarative memory based on configuration or defaults."""
+        memory = DeclarativeMemory()
+        ontology_path = self.config.get("declarative_ontology")
+        if ontology_path:
+            memory.load(ontology_path)
+        else:
+            memory.load_default()
+        return memory
