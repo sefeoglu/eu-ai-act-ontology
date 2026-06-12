@@ -20,7 +20,6 @@ eu-ai-act-ontology/
 │   ├── host/                # Planning, validation, and agent orchestration
 │   ├── memory/              # Memory loading and generation logic
 │   ├── server/              # Ontology generation services
-│   ├── test/                # Unit and integration tests
 │   ├── main.py              # Main application entry point
 │   └── utils.py             # Shared utilities
 ├── requirements.txt         # Python dependencies
