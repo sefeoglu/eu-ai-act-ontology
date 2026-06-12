@@ -13,6 +13,12 @@ eu-ai-act-ontology/
 ├── config/                  # Configuration files
 ├── doc/                     # Project documentation
 ├── memory/                  # Bundled declarative (rules in prompts and existing ontologies) and procedural memory assets (EU AI Act 2024)
+├── declarative/
+│   ├── modelling_rules.md
+│   ├── ontology_patterns/
+│   └── prompts/
+├── procedural/
+│   └── eu_ai_act_2024/
 ├── ontology/                # The generated ontology
 ├── test/                    # Unit and integration tests
 ├── src/
