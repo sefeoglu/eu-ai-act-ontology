@@ -3,8 +3,8 @@
 from pathlib import Path
 from typing import Optional
 
-from .onto_memory import OntologyMemory
-from ..utils import data_path, ensure_file_exists
+from memory.onto_memory import OntologyMemory
+from utils import data_path, ensure_file_exists
 
 
 class DeclarativeMemory(OntologyMemory):

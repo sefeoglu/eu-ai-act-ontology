@@ -1,386 +1,153 @@
-@prefix aia: <https://w3id.org/eu-ai-act-poc#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <http://example.org/ontology#> .
 
-aia: a owl:Ontology ;
-    dcterms:title "EU AI Act proof-of-concept ontology"@en ;
-    dcterms:source <https://artificialintelligenceact.eu/ai-act-explorer/> ;
-    dcterms:bibliographicCitation "Regulation (EU) 2024/1689"@en ;
-    dcterms:description "A lightweight ontology covering key EU AI Act risk categories, prohibited practices, high-risk areas, actors, authorities, obligations, and compliance artefacts."@en ;
-    prov:wasDerivedFrom <https://artificialintelligenceact.eu/ai-act-explorer/> .
-
-aia:articleReference a owl:AnnotationProperty ;
-    rdfs:label "article reference"@en .
-
-aia:annexReference a owl:AnnotationProperty ;
-    rdfs:label "annex reference"@en .
-
-aia:shortDescription a owl:AnnotationProperty ;
-    rdfs:label "short description"@en .
-
-aia:AISystem a owl:Class ;
-    rdfs:label "AI system"@en ;
-    aia:articleReference "Article 3(1)" ;
-    aia:shortDescription "A machine-based system designed to operate with varying levels of autonomy."@en .
-
-aia:RiskCategory a owl:Class ;
-    rdfs:label "Risk category"@en ;
-    aia:articleReference "Articles 5, 6 and 50" ;
-    aia:shortDescription "A high-level compliance category used to classify AI systems under the Act."@en .
-
-aia:ProhibitedPractice a owl:Class ;
-    rdfs:label "Prohibited AI practice"@en ;
-    aia:articleReference "Article 5" ;
-    aia:shortDescription "A practice banned under the EU AI Act."@en .
-
-aia:ProhibitedAISystem a owl:Class ;
-    rdfs:subClassOf aia:ProhibitedPractice ;
-    rdfs:label "Prohibited AI system"@en ;
-    aia:articleReference "Article 5" ;
-    aia:shortDescription "A named prohibited AI practice represented as an inspectable ontology individual type."@en .
-
-aia:HighRiskArea a owl:Class ;
-    rdfs:label "High-risk AI area"@en ;
-    aia:articleReference "Article 6" ;
-    aia:annexReference "Annex III" ;
-    aia:shortDescription "An application area treated as high-risk under the EU AI Act."@en .
-
-aia:HighRiskAISystem a owl:Class ;
-    rdfs:subClassOf aia:HighRiskArea ;
-    rdfs:label "High-risk AI system"@en ;
-    aia:articleReference "Article 6" ;
-    aia:annexReference "Annex III" ;
-    aia:shortDescription "A named high-risk use case represented as an inspectable ontology individual type."@en .
-
-aia:Actor a owl:Class ;
-    rdfs:label "Actor"@en ;
-    aia:articleReference "Article 3" ;
-    aia:shortDescription "A regulated role in the AI value chain or governance structure."@en .
-
-aia:Provider a owl:Class ;
-    rdfs:subClassOf aia:Actor ;
-    rdfs:label "Provider"@en ;
-    aia:articleReference "Article 3(3)" ;
-    aia:shortDescription "An actor that develops or places an AI system or model on the market or into service."@en .
-
-aia:Deployer a owl:Class ;
-    rdfs:subClassOf aia:Actor ;
-    rdfs:label "Deployer"@en ;
-    aia:articleReference "Article 3(4)" ;
-    aia:shortDescription "An actor using an AI system under its authority except for personal non-professional activity."@en .
-
-aia:AuthorisedRepresentative a owl:Class ;
-    rdfs:subClassOf aia:Actor ;
-    rdfs:label "Authorised representative"@en ;
-    aia:articleReference "Articles 22 and 54" ;
-    aia:shortDescription "A person mandated to act on behalf of certain providers."@en .
-
-aia:Importer a owl:Class ;
-    rdfs:subClassOf aia:Actor ;
-    rdfs:label "Importer"@en ;
-    aia:articleReference "Article 23" ;
-    aia:shortDescription "An actor placing on the market an AI system bearing the name or trademark of a foreign provider."@en .
-
-aia:Distributor a owl:Class ;
-    rdfs:subClassOf aia:Actor ;
-    rdfs:label "Distributor"@en ;
-    aia:articleReference "Article 24" ;
-    aia:shortDescription "An actor in the supply chain that makes an AI system available on the market."@en .
-
-aia:Authority a owl:Class ;
-    rdfs:label "Authority"@en ;
-    aia:articleReference "Articles 28, 64, 70 and 74" ;
-    aia:shortDescription "A public authority or governance body with responsibilities under the Act."@en .
-
-aia:NotifyingAuthority a owl:Class ;
-    rdfs:subClassOf aia:Authority ;
-    rdfs:label "Notifying authority"@en ;
-    aia:articleReference "Article 28" ;
-    aia:shortDescription "An authority responsible for designating and monitoring notified bodies."@en .
-
-aia:MarketSurveillanceAuthority a owl:Class ;
-    rdfs:subClassOf aia:Authority ;
-    rdfs:label "Market surveillance authority"@en ;
-    aia:articleReference "Article 74" ;
-    aia:shortDescription "An authority responsible for monitoring and enforcing compliance on the Union market."@en .
-
-aia:AIOffice a owl:Class ;
-    rdfs:subClassOf aia:Authority ;
-    rdfs:label "AI Office"@en ;
-    aia:articleReference "Article 64" ;
-    aia:shortDescription "The Union-level office supporting implementation and oversight of the Act."@en .
-
-aia:EuropeanArtificialIntelligenceBoard a owl:Class ;
-    rdfs:subClassOf aia:Authority ;
-    rdfs:label "European Artificial Intelligence Board"@en ;
-    aia:articleReference "Articles 65 and 66" ;
-    aia:shortDescription "The Union-level board coordinating implementation of the Act."@en .
-
-aia:ComplianceArtefact a owl:Class ;
-    rdfs:label "Compliance artefact"@en ;
-    aia:articleReference "Articles 11, 12, 47 and 72" ;
-    aia:shortDescription "A document, record, declaration, or plan used to demonstrate or support compliance."@en .
-
-aia:Obligation a owl:Class ;
-    rdfs:subClassOf odrl:Duty ;
-    rdfs:label "Obligation"@en ;
-    aia:articleReference "Articles 8, 16, 26, 50, 53 and 55" ;
-    aia:shortDescription "A duty imposed by the EU AI Act on actors or categories of systems."@en .
-
-aia:ProviderObligation a owl:Class ;
-    rdfs:subClassOf aia:Obligation ;
-    rdfs:label "Provider obligation"@en ;
-    aia:articleReference "Articles 9 to 16" ;
-    aia:shortDescription "An obligation primarily imposed on providers."@en .
-
-aia:DeployerObligation a owl:Class ;
-    rdfs:subClassOf aia:Obligation ;
-    rdfs:label "Deployer obligation"@en ;
-    aia:articleReference "Articles 26 and 27" ;
-    aia:shortDescription "An obligation primarily imposed on deployers."@en .
-
-aia:TransparencyObligation a owl:Class ;
-    rdfs:subClassOf aia:Obligation ;
-    rdfs:label "Transparency obligation"@en ;
-    aia:articleReference "Article 50" ;
-    aia:shortDescription "A duty to disclose or label interactions or generated content."@en .
-
-aia:GPAIProviderObligation a owl:Class ;
-    rdfs:subClassOf aia:Obligation ;
-    rdfs:label "General-purpose AI provider obligation"@en ;
-    aia:articleReference "Articles 53 and 55" ;
-    aia:shortDescription "An obligation imposed on providers of general-purpose AI models, including those with systemic risk."@en .
-
-aia:inRiskCategory a owl:ObjectProperty ;
-    rdfs:label "in risk category"@en ;
-    rdfs:domain aia:AISystem ;
-    rdfs:range aia:RiskCategory .
-
-aia:imposedOn a owl:ObjectProperty ;
-    rdfs:label "imposed on"@en ;
-    rdfs:domain aia:Obligation ;
-    rdfs:range aia:Actor .
-
-aia:appliesTo a owl:ObjectProperty ;
-    rdfs:label "applies to"@en ;
-    rdfs:domain aia:Obligation ;
-    rdfs:range aia:AISystem .
-
-aia:subjectToObligation a owl:ObjectProperty ;
-    rdfs:label "subject to obligation"@en ;
-    rdfs:domain aia:AISystem ;
-    rdfs:range aia:Obligation .
-
-aia:requiresArtefact a owl:ObjectProperty ;
-    rdfs:label "requires artefact"@en ;
-    rdfs:domain aia:Obligation ;
-    rdfs:range aia:ComplianceArtefact .
-
-aia:overseenBy a owl:ObjectProperty ;
-    rdfs:label "overseen by"@en ;
-    rdfs:domain aia:Obligation ;
-    rdfs:range aia:Authority .
-
-aia:UnacceptableRisk a aia:RiskCategory, skos:Concept ;
-    rdfs:label "Unacceptable risk"@en ;
-    skos:prefLabel "Unacceptable risk"@en ;
-    aia:articleReference "Article 5" ;
-    aia:shortDescription "Category covering prohibited AI practices."@en .
-
-aia:HighRisk a aia:RiskCategory, skos:Concept ;
-    rdfs:label "High risk"@en ;
-    skos:prefLabel "High risk"@en ;
-    aia:articleReference "Article 6" ;
-    aia:annexReference "Annex III" ;
-    aia:shortDescription "Category covering AI systems subject to the high-risk requirements and obligations."@en .
-
-aia:LimitedRisk a aia:RiskCategory, skos:Concept ;
-    rdfs:label "Limited risk"@en ;
-    skos:prefLabel "Limited risk"@en ;
-    aia:articleReference "Article 50" ;
-    aia:shortDescription "Category used for systems mainly subject to transparency duties."@en .
-
-aia:MinimalRisk a aia:RiskCategory, skos:Concept ;
-    rdfs:label "Minimal risk"@en ;
-    skos:prefLabel "Minimal risk"@en ;
-    aia:shortDescription "Category commonly used to group systems not subject to the core obligations of the Act."@en .
-
-aia:SocialScoringPractice a aia:ProhibitedAISystem ;
-    rdfs:label "Social scoring by public authorities"@en ;
-    aia:articleReference "Article 5(1)(c)" ;
-    aia:shortDescription "Prohibits social scoring of natural persons by public authorities or on their behalf."@en .
-
-aia:SubliminalManipulationPractice a aia:ProhibitedAISystem ;
-    rdfs:label "Harmful subliminal or deceptive manipulation"@en ;
-    aia:articleReference "Article 5(1)(a)" ;
-    aia:shortDescription "Prohibits certain manipulative AI techniques that materially distort behaviour and cause significant harm."@en .
-
-aia:BiometricCategorisationUsingSensitiveDataPractice a aia:ProhibitedAISystem ;
-    rdfs:label "Biometric categorisation using sensitive data"@en ;
-    aia:articleReference "Article 5(1)(g)" ;
-    aia:shortDescription "Prohibits certain biometric categorisation based on sensitive characteristics."@en .
-
-aia:UntargetedFacialRecognitionScrapingPractice a aia:ProhibitedAISystem ;
-    rdfs:label "Untargeted scraping for facial recognition databases"@en ;
-    aia:articleReference "Article 5(1)(e)" ;
-    aia:shortDescription "Prohibits untargeted scraping of facial images from the internet or CCTV to build facial recognition databases."@en .
-
-aia:EmotionRecognitionAtWorkOrEducationPractice a aia:ProhibitedAISystem ;
-    rdfs:label "Emotion recognition in workplaces and education institutions"@en ;
-    aia:articleReference "Article 5(1)(f)" ;
-    aia:shortDescription "Prohibits certain emotion-recognition uses in workplaces and education institutions."@en .
-
-aia:BiometricIdentificationCriticalInfrastructure a aia:HighRiskAISystem ;
-    rdfs:label "Biometric identification for critical infrastructure access"@en ;
-    aia:annexReference "Annex III(1)" ;
-    aia:shortDescription "High-risk use case involving biometric identification or categorisation."@en .
-
-aia:EducationAdmissionAssessment a aia:HighRiskAISystem ;
-    rdfs:label "Education and vocational training admission or assessment"@en ;
-    aia:annexReference "Annex III(3)" ;
-    aia:shortDescription "High-risk use case affecting access to education or assessment outcomes."@en .
-
-aia:EmploymentRecruitmentSelection a aia:HighRiskAISystem ;
-    rdfs:label "Employment recruitment and worker selection"@en ;
-    aia:annexReference "Annex III(4)" ;
-    aia:shortDescription "High-risk use case affecting recruitment, selection, or work-related decisions."@en .
-
-aia:EssentialServicesCreditScoring a aia:HighRiskAISystem ;
-    rdfs:label "Access to essential private services and credit scoring"@en ;
-    aia:annexReference "Annex III(5)" ;
-    aia:shortDescription "High-risk use case affecting access to essential services or creditworthiness evaluations."@en .
-
-aia:LawEnforcementRiskAssessment a aia:HighRiskAISystem ;
-    rdfs:label "Law-enforcement risk assessment of natural persons"@en ;
-    aia:annexReference "Annex III(6)" ;
-    aia:shortDescription "High-risk use case involving law-enforcement risk assessments."@en .
-
-aia:TechnicalDocumentation a aia:ComplianceArtefact ;
-    rdfs:label "Technical documentation"@en ;
-    aia:articleReference "Article 11" ;
-    aia:shortDescription "Documentation describing the system and its compliance-relevant characteristics."@en .
-
-aia:Logs a aia:ComplianceArtefact ;
-    rdfs:label "Logs"@en ;
-    aia:articleReference "Articles 12 and 19" ;
-    aia:shortDescription "Automatically generated records supporting traceability and accountability."@en .
-
-aia:EUDeclarationOfConformity a aia:ComplianceArtefact ;
-    rdfs:label "EU declaration of conformity"@en ;
-    aia:articleReference "Article 47" ;
-    aia:shortDescription "Declaration attesting that applicable requirements have been met."@en .
-
-aia:FundamentalRightsImpactAssessment a aia:ComplianceArtefact ;
-    rdfs:label "Fundamental rights impact assessment"@en ;
-    aia:articleReference "Article 27" ;
-    aia:shortDescription "Assessment required for certain deployers of high-risk AI systems."@en .
-
-aia:PostMarketMonitoringPlan a aia:ComplianceArtefact ;
-    rdfs:label "Post-market monitoring plan"@en ;
-    aia:articleReference "Article 72" ;
-    aia:shortDescription "Plan for monitoring high-risk AI systems after placement on the market or putting into service."@en .
-
-aia:RiskManagementSystemObligation a aia:ProviderObligation ;
-    rdfs:label "Maintain a risk management system"@en ;
-    aia:articleReference "Article 9" ;
-    aia:shortDescription "Providers of high-risk AI systems must establish, implement, document, and maintain a risk management system."@en ;
-    aia:imposedOn aia:Provider ;
-    aia:appliesTo aia:HighRiskAISystem ;
-    aia:requiresArtefact aia:TechnicalDocumentation ;
-    aia:overseenBy aia:MarketSurveillanceAuthority .
-
-aia:DataGovernanceObligation a aia:ProviderObligation ;
-    rdfs:label "Ensure data and data governance"@en ;
-    aia:articleReference "Article 10" ;
-    aia:shortDescription "Providers of high-risk AI systems must use appropriate data governance and management practices."@en ;
-    aia:imposedOn aia:Provider ;
-    aia:appliesTo aia:HighRiskAISystem ;
-    aia:requiresArtefact aia:TechnicalDocumentation .
-
-aia:TechnicalDocumentationObligation a aia:ProviderObligation ;
-    rdfs:label "Draw up technical documentation"@en ;
-    aia:articleReference "Article 11" ;
-    aia:shortDescription "Providers of high-risk AI systems must prepare technical documentation before placing systems on the market or putting them into service."@en ;
-    aia:imposedOn aia:Provider ;
-    aia:appliesTo aia:HighRiskAISystem ;
-    aia:requiresArtefact aia:TechnicalDocumentation .
-
-aia:RecordKeepingObligation a aia:ProviderObligation ;
-    rdfs:label "Enable record-keeping and logs"@en ;
-    aia:articleReference "Articles 12 and 19" ;
-    aia:shortDescription "High-risk AI systems must support logging and record-keeping obligations."@en ;
-    aia:imposedOn aia:Provider ;
-    aia:appliesTo aia:HighRiskAISystem ;
-    aia:requiresArtefact aia:Logs .
-
-aia:TransparencyToDeployersObligation a aia:ProviderObligation ;
-    rdfs:label "Provide transparency and information to deployers"@en ;
-    aia:articleReference "Article 13" ;
-    aia:shortDescription "Providers of high-risk AI systems must supply instructions for use and relevant system information to deployers."@en ;
-    aia:imposedOn aia:Provider ;
-    aia:appliesTo aia:HighRiskAISystem ;
-    aia:requiresArtefact aia:TechnicalDocumentation .
-
-aia:HumanOversightObligation a aia:ProviderObligation ;
-    rdfs:label "Enable human oversight"@en ;
-    aia:articleReference "Article 14" ;
-    aia:shortDescription "High-risk AI systems must be designed to allow effective oversight by natural persons."@en ;
-    aia:imposedOn aia:Provider ;
-    aia:appliesTo aia:HighRiskAISystem .
-
-aia:AccuracyRobustnessCybersecurityObligation a aia:ProviderObligation ;
-    rdfs:label "Ensure accuracy, robustness and cybersecurity"@en ;
-    aia:articleReference "Article 15" ;
-    aia:shortDescription "Providers of high-risk AI systems must meet accuracy, robustness, and cybersecurity requirements."@en ;
-    aia:imposedOn aia:Provider ;
-    aia:appliesTo aia:HighRiskAISystem .
-
-aia:ProviderQualityManagementSystemObligation a aia:ProviderObligation ;
-    rdfs:label "Maintain a quality management system"@en ;
-    aia:articleReference "Article 17" ;
-    aia:shortDescription "Providers of high-risk AI systems must operate a documented quality management system."@en ;
-    aia:imposedOn aia:Provider ;
-    aia:appliesTo aia:HighRiskAISystem ;
-    aia:requiresArtefact aia:EUDeclarationOfConformity .
-
-aia:UseAccordingToInstructionsObligation a aia:DeployerObligation ;
-    rdfs:label "Use high-risk AI systems according to instructions"@en ;
-    aia:articleReference "Article 26" ;
-    aia:shortDescription "Deployers of high-risk AI systems must use them in accordance with the provider's instructions for use."@en ;
-    aia:imposedOn aia:Deployer ;
-    aia:appliesTo aia:HighRiskAISystem .
-
-aia:FundamentalRightsAssessmentObligation a aia:DeployerObligation ;
-    rdfs:label "Perform a fundamental rights impact assessment"@en ;
-    aia:articleReference "Article 27" ;
-    aia:shortDescription "Certain deployers must conduct a fundamental rights impact assessment before using high-risk AI systems."@en ;
-    aia:imposedOn aia:Deployer ;
-    aia:appliesTo aia:HighRiskAISystem ;
-    aia:requiresArtefact aia:FundamentalRightsImpactAssessment .
-
-aia:Article50DisclosureObligation a aia:TransparencyObligation ;
-    rdfs:label "Disclose interaction, synthetic content, or emotion recognition use"@en ;
-    aia:articleReference "Article 50" ;
-    aia:shortDescription "Providers or deployers of certain AI systems must provide transparency notices in specified circumstances."@en ;
-    aia:imposedOn aia:Provider, aia:Deployer ;
-    aia:appliesTo aia:AISystem .
-
-aia:GPAITechnicalDocumentationObligation a aia:GPAIProviderObligation ;
-    rdfs:label "Maintain technical documentation for general-purpose AI models"@en ;
-    aia:articleReference "Article 53(1)(a)" ;
-    aia:shortDescription "Providers of general-purpose AI models must prepare and keep technical documentation."@en ;
-    aia:imposedOn aia:Provider ;
-    aia:requiresArtefact aia:TechnicalDocumentation .
-
-aia:GPAISystemicRiskMitigationObligation a aia:GPAIProviderObligation ;
-    rdfs:label "Assess and mitigate systemic risks"@en ;
-    aia:articleReference "Article 55" ;
-    aia:shortDescription "Providers of general-purpose AI models with systemic risk must assess and mitigate systemic risks."@en ;
-    aia:imposedOn aia:Provider ;
-    aia:requiresArtefact aia:PostMarketMonitoringPlan .
+### Classes ###
+:AI_System a owl:Class ;
+    rdfs:label "AI System" .
+
+:Regulation a owl:Class ;
+    rdfs:label "Regulation" .
+
+:Deployer a owl:Class ;
+    rdfs:label "Deployer" .
+
+:Provider a owl:Class ;
+    rdfs:label "Provider" .
+
+:Data a owl:Class ;
+    rdfs:label "Data" .
+
+:Data_Governance a owl:Class ;
+    rdfs:label "Data Governance" .
+
+:Human_Oversight a owl:Class ;
+    rdfs:label "Human Oversight" .
+
+:Accuracy a owl:Class ;
+    rdfs:label "Accuracy" .
+
+:Robustness a owl:Class ;
+    rdfs:label "Robustness" .
+
+:Cybersecurity a owl:Class ;
+    rdfs:label "Cybersecurity" .
+
+:Authority a owl:Class ;
+    rdfs:label "Authority" .
+
+:Notified_Body a owl:Class ;
+    rdfs:label "Notified Body" .
+
+:Conformity_Assessment a owl:Class ;
+    rdfs:label "Conformity Assessment" .
+
+:Systemic_Risk a owl:Class ;
+    rdfs:label "Systemic Risk" .
+
+:Enforcement a owl:Class ;
+    rdfs:label "Enforcement" .
+
+:Code_of_Conduct a owl:Class ;
+    rdfs:label "Code of Conduct" .
+
+:Innovation a owl:Class ;
+    rdfs:label "Innovation" .
+
+:Small_Business a owl:Class ;
+    rdfs:label "Small Business" .
+
+:Start-up a owl:Class ;
+    rdfs:label "Start-up" .
+
+### Object Properties ###
+:compliesWith a owl:ObjectProperty ;
+    rdfs:label "compliesWith" ;
+    rdfs:comment "Defines compliance relationship with a regulation" .
+
+:transparency a owl:ObjectProperty ;
+    rdfs:label "transparency" ;
+    rdfs:comment "Defines transparency relationship with a regulation" .
+
+:provisionOfInformation a owl:ObjectProperty ;
+    rdfs:label "provisionOfInformation" ;
+    rdfs:comment "Defines provision of information relationship with a regulation" .
+
+:manages a owl:ObjectProperty ;
+    rdfs:label "manages" ;
+    rdfs:comment "Defines management relationship with data" .
+
+:obligations a owl:ObjectProperty ;
+    rdfs:label "obligations" ;
+    rdfs:comment "Defines obligations relationship with a deployer or provider" .
+
+:coordinatesWith a owl:ObjectProperty ;
+    rdfs:label "coordinatesWith" ;
+    rdfs:comment "Defines coordination relationship with an authority or notified body" .
+
+:enforces a owl:ObjectProperty ;
+    rdfs:label "enforces" ;
+    rdfs:comment "Defines enforcement relationship" .
+
+:developsAndImplements a owl:ObjectProperty ;
+    rdfs:label "developsAndImplements" ;
+    rdfs:comment "Defines development and implementation relationship" .
+
+:supports a owl:ObjectProperty ;
+    rdfs:label "supports" ;
+    rdfs:comment "Defines support relationship for innovation, small businesses, or start-ups" .
+
+### Data Properties ###
+:url a owl:DatatypeProperty ;
+    rdfs:label "url" ;
+    rdfs:comment "Defines the URL of a resource" .
+
+:regulation a owl:DatatypeProperty ;
+    rdfs:label "regulation" ;
+    rdfs:comment "Defines the regulation associated with an article" .
+
+:citation a owl:DatatypeProperty ;
+    rdfs:label "citation" ;
+    rdfs:comment "Defines the citation of a regulation" .
+
+:source_url a owl:DatatypeProperty ;
+    rdfs:label "source_url" ;
+    rdfs:comment "Defines the source URL of a resource" .
+
+:scraped_at a owl:DatatypeProperty ;
+    rdfs:label "scraped_at" ;
+    rdfs:comment "Defines the timestamp when the data was scraped" .
+
+### Individuals ###
+:Article1 a :Regulation ;
+    :url "https://artificialintelligenceact.eu/article/1/"^^xsd:anyURI ;
+    :citation "Regulation (EU) 2024/1689" ;
+    :source_url "https://artificialintelligenceact.eu/ai-act-explorer/" ;
+    :scraped_at "2026-06-13T09:47:09.138565+00:00"^^xsd:dateTime .
+
+:Article2 a :Regulation ;
+    :url "https://artificialintelligenceact.eu/article/2/"^^xsd:anyURI ;
+    :citation "Regulation (EU) 2024/1689" ;
+    :source_url "https://artificialintelligenceact.eu/ai-act-explorer/" ;
+    :scraped_at "2026-06-13T09:47:09.138565+00:00"^^xsd:dateTime .
+
+:Article3 a :Regulation ;
+    :url "https://artificialintelligenceact.eu/article/3/"^^xsd:anyURI ;
+    :citation "Regulation (EU) 2024/1689" ;
+    :source_url "https://artificialintelligenceact.eu/ai-act-explorer/" ;
+    :scraped_at "2026-06-13T09:47:09.138565+00:00"^^xsd:dateTime .
+
+:Article4 a :Regulation ;
+    :url "https://artificialintelligenceact.eu/article/4/"^^xsd:anyURI ;
+    :citation "Regulation (EU) 2024/1689" ;
+    :source_url "https://artificialintelligenceact.eu/ai-act-explorer/" ;
+    :scraped_at "2026-06-13T09:47:09.138565+00:00"^^xsd:dateTime .
+
+### Axioms ###
+:GrapeVariety owl:equivalentClass [ owl:intersectionOf ( :usedToProduce min 1 Wine ) ] .
+
+:Wine owl:equivalentClass [ owl:intersectionOf ( :hasVintage min 1 Vintage ) ] .
+
+:Wine rdfs:subClassOf [ owl:onProperty :hasRating owl:someValuesFrom :Rating ] .
