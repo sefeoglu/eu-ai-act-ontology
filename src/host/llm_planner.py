@@ -7,16 +7,15 @@ class LLMPlanner:
     """Deterministic planner for the prototype (LLM integration placeholder)."""
 
     ACTIONS = {
-        "pdf to text": "ocr_pdf",
-        "generate competency questions": "generate_competency_questions",
-        "list concepts": "extract_concepts",
-        "validate ontology": "validate_ontology",
-        "show mappings": "map_to_existing_ontologies",
-        "show queries": "generate_sparql_queries",
-        "export package": "export_github_package",
+        "memory_generation": "memory_generation",
+        "generate_competency_questions": "generate_competency_questions",
+        "extract_concepts": "extract_concepts",
+        "validate_ontology": "validate_ontology",
+        "map_to_existing_ontologies": "map_to_existing_ontologies",
+        "generate_ontology": "generate_ontology",
     }
 
     def create_plan(self, user_goal: str) -> Dict[str, str]:
         """Map a user goal to a named pipeline action."""
-        action = self.ACTIONS.get(user_goal.strip().lower(), "extract_concepts")
+        action = self.ACTIONS[user_goal.strip().lower()]
         return {"goal": user_goal, "action": action, "status": "planned"}

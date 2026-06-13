@@ -6,8 +6,8 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 
 def data_path(*parts: str) -> Path:
-    """Return an absolute path under the repository data directory."""
-    return PROJECT_ROOT / "data" / Path(*parts)
+    """Return an absolute path under the repository memory directory."""
+    return PROJECT_ROOT / Path(*parts)
 
 
 def ensure_file_exists(path: Path) -> Path:

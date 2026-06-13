@@ -1,0 +1,222 @@
+[
+    {
+        "corresspoding_classess": [
+            {
+                "uri": "http://www.semanticweb.org/owl/owlapi/turtle#API",
+                "label": "API"
+            },
+            {
+                "uri": "http://www.w3.org/2004/02/skos/core#Concept",
+                "label": "Concept"
+            },
+            {
+                "uri": "http://www.w3.org/ns/dcat#Resource",
+                "label": "Resource"
+            },
+            {
+                "uri": "https://w3id.org/airo#AICapability",
+                "label": "AICapability"
+            }
+        ],
+        "corresspoding_properties": [
+            {
+                "uri": "http://purl.org/dc/terms/accessRights",
+                "label": "accessRights"
+            },
+            {
+                "uri": "http://purl.org/dc/terms/bibliographicCitation",
+                "label": "bibliographicCitation"
+            },
+            {
+                "uri": "http://purl.org/dc/terms/contributor",
+                "label": "contributor"
+            },
+            {
+                "uri": "http://purl.org/dc/terms/created",
+                "label": "created"
+            }
+        ]
+    },
+    {
+        "corresspoding_classess": [
+            {
+                "uri": "http://www.semanticweb.org/owl/owlapi/turtle#API",
+                "label": "API"
+            },
+            {
+                "uri": "http://www.w3.org/2004/02/skos/core#Concept",
+                "label": "Concept"
+            },
+            {
+                "uri": "http://www.w3.org/ns/dcat#Resource",
+                "label": "Resource"
+            },
+            {
+                "uri": "https://w3id.org/airo#AICapability",
+                "label": "AICapability"
+            }
+        ],
+        "corresspoding_properties": [
+            {
+                "uri": "http://purl.org/dc/terms/accessRights",
+                "label": "accessRights"
+            },
+            {
+                "uri": "http://purl.org/dc/terms/bibliographicCitation",
+                "label": "bibliographicCitation"
+            },
+            {
+                "uri": "http://purl.org/dc/terms/contributor",
+                "label": "contributor"
+            },
+            {
+                "uri": "http://purl.org/dc/terms/created",
+                "label": "created"
+            }
+        ]
+    },
+    {
+        "corresspoding_classess": [
+            {
+                "uri": "http://www.semanticweb.org/owl/owlapi/turtle#API",
+                "label": "API"
+            },
+            {
+                "uri": "http://www.w3.org/2004/02/skos/core#Concept",
+                "label": "Concept"
+            },
+            {
+                "uri": "http://www.w3.org/ns/dcat#Resource",
+                "label": "Resource"
+            },
+            {
+                "uri": "https://w3id.org/airo#AICapability",
+                "label": "AICapability"
+            }
+        ],
+        "corresspoding_properties": [
+            {
+                "uri": "http://purl.org/dc/terms/accessRights",
+                "label": "accessRights"
+            },
+            {
+                "uri": "http://purl.org/dc/terms/bibliographicCitation",
+                "label": "bibliographicCitation"
+            },
+            {
+                "uri": "http://purl.org/dc/terms/contributor",
+                "label": "contributor"
+            },
+            {
+                "uri": "http://purl.org/dc/terms/created",
+                "label": "created"
+            }
+        ]
+    },
+    {
+        "corresspoding_classess": {
+            "map": [
+                {
+                    "entity1": {
+                        "uri": "https://w3id.org/airo#AICapability",
+                        "label": "AICapability"
+                    },
+                    "entity2": {
+                        "uri": "https://w3id.org/airo#Person",
+                        "label": "Person"
+                    },
+                    "relation": "usedBy",
+                    "measure": 1.0
+                },
+                {
+                    "entity1": {
+                        "uri": "https://w3id.org/airo#Person",
+                        "label": "Person"
+                    },
+                    "entity2": {
+                        "uri": "https://w3id.org/airo#Organization",
+                        "label": "Organization"
+                    },
+                    "relation": "hasEmployees",
+                    "measure": 1.0
+                },
+                {
+                    "entity1": {
+                        "uri": "https://w3id.org/airo#Person",
+                        "label": "Person"
+                    },
+                    "entity2": {
+                        "uri": "https://w3id.org/airo#Organization",
+                        "label": "Organization"
+                    },
+                    "relation": "hasStakeholders",
+                    "measure": 1.0
+                }
+            ]
+        },
+        "corresspoding_properties": {
+            "map": [
+                {
+                    "entity1": {
+                        "uri": "https://w3id.org/airo#Person",
+                        "label": "Person"
+                    },
+                    "entity2": {
+                        "uri": "http://purl.org/dc/terms/accessRights",
+                        "label": "accessRights"
+                    },
+                    "relation": "hasAIExperience",
+                    "measure": 1.0
+                },
+                {
+                    "entity1": {
+                        "uri": "https://w3id.org/airo#Person",
+                        "label": "Person"
+                    },
+                    "entity2": {
+                        "uri": "http://purl.org/dc/terms/bibliographicCitation",
+                        "label": "bibliographicCitation"
+                    },
+                    "relation": "hasAIEducation",
+                    "measure": 1.0
+                },
+                {
+                    "entity1": {
+                        "uri": "https://w3id.org/airo#Person",
+                        "label": "Person"
+                    },
+                    "entity2": {
+                        "uri": "http://purl.org/dc/terms/contributor",
+                        "label": "contributor"
+                    },
+                    "relation": "hasAITraining",
+                    "measure": 1.0
+                },
+                {
+                    "entity1": {
+                        "uri": "https://w3id.org/airo#Person",
+                        "label": "Person"
+                    },
+                    "entity2": {
+                        "uri": "https://w3id.org/airo#Person",
+                        "label": "Person"
+                    },
+                    "relation": "implementedBy",
+                    "measure": 1.0
+                },
+                {
+                    "entity1": {
+                        "uri": "https://w3id.org/airo#Person",
+                        "label": "Person"
+                    },
+                    "entity2": {
+                        "uri": "http://purl.obolibrary.org/obo/BFO_0000051",
+                        "label": "has part"
+                    },
+                    "relation": "focusOnAI",
+                    "measure": 1.0
+                }
+            ]
+        }
+    }
+]

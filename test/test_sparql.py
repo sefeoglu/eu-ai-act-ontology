@@ -3,7 +3,7 @@
 import unittest
 from pathlib import Path
 
-from src.client.ui import PrototypeUI
+from src.client.client_access import PrototypeUI
 from src.memory.declarative_memory import DeclarativeMemory
 from src.memory.memory_generator import MemoryGenerator
 from src.server.onto_generator_server import OntologyGenerator

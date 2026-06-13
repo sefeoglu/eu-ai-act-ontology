@@ -1,0 +1,14 @@
+Please list corresspoding:
+1. Find the corresspoding classess betweeen entities and existing properties
+2. Find the corresspoding properties betweeen properties and the existing properties
+3. Include URI, label, definition, comments. The reference about the ontology will be in comments
+4.  mappring format: <map>
+    <Cell>
+      <entity1 rdf:resource='{}'/>
+      <entity2 rdf:resource='{}'/>
+      <relation>=</relation>
+      <measure rdf:datatype="xsd:float">{}</measure>
+    </Cell>
+  </map>
+Output the following json format: {"corresspoding_classess":{corresspoding_classess}, "corresspoding_properties":{properties}}
+

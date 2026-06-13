@@ -4,27 +4,15 @@ Usage
 -----
     python -m src.main [GOAL] [--declarative PATH] [--procedural PATH]
 
-GOAL is one of:
-    "memory_generation"  : generate declarative and procedural memory from the PDF (default)
-    "generate competency questions" : create competency questions from the procedural text
-    "list concepts"      : extract labeled ontology concepts (default)
-    "show mappings"      : top namespace occurrence counts
-    "generate ontology"  : create a new OWL/RDF ontology from the procedural memory
-    "validate ontology"  : structural health check
-    "show queries"       : SPARQL query catalog
-    "export package"     : packaging metadata
-
-Memory files can be overridden via --declarative / --procedural; the
-bundled repository assets are used when not specified.
+Memory files can be overridden via --declarative / --procedural; the bundled repository assets are used when not specified.
 """
 
 import argparse
-import json
-import sys
+
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from src.client.ui import PrototypeUI
+from client.client_access import PrototypeClient
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -34,10 +22,9 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "goals",
         nargs="*",
-        default=['memory_generation', 'generate_competency_questions', 'list_concepts', 'show_mappings', 'validate_ontology', 'show_queries', 'export_package' ],
+        default=['memory_generation', 'generate_competency_questions', 'extract_concepts', 'map_to_existing_ontologies', 'generate_ontology'],
         help=(
-             "Pipeline goal: 'memory_generation' | 'generate_competency_questions' | 'list_concepts' | 'show_mappings' | 'generate_ontology' | 'validate_ontology' | "
-            "'show_queries' | 'export_package'"
+             "Pipeline goal: 'memory_generation' | 'generate_competency_questions' | 'extract_concepts' | 'map_to_existing_ontologies' | 'generate_ontology'"
         ),
     )
     parser.add_argument(
@@ -54,6 +41,36 @@ def build_parser() -> argparse.ArgumentParser:
         default=None,
         help="Path to the procedural-memory regulatory PDF (optional).",
     )
+    parser.add_argument(
+        "--comptency_questions",
+         metavar="PATH",
+         default="/Users/sefika/projects/eu-ai-act-ontology/competency_questions/competency_questions.json",
+         help="Path to save generated competency questions (default: /Users/sefika/projects/eu-ai-act-ontology/competency_questions/competency_questions.json)",
+    )
+    parser.add_argument(
+        "--concept_extraction_output",
+        metavar="PATH",
+        default="/Users/sefika/projects/eu-ai-act-ontology/concept_extraction/concepts.json",
+        help="Path to save extracted concepts (default: /Users/sefika/projects/eu-ai-act-ontology/concept_extraction/concepts.json)",
+    )
+    parser.add_argument(
+        "--existing_ontologies",
+        nargs="*",
+        default=['/Users/sefika/projects/eu-ai-act-ontology/memory/declarative/existing_ontologies/dpv-owl.rdf','/Users/sefika/projects/eu-ai-act-ontology/memory/declarative/existing_ontologies/vair.owl', '/Users/sefika/projects/eu-ai-act-ontology/memory/declarative/existing_ontologies/aio-full.owl', '/Users/sefika/projects/eu-ai-act-ontology/memory/declarative/existing_ontologies/airo.owl'],
+    )
+    parser.add_argument(
+        "--mapping_output",
+        metavar="PATH",
+        default="/Users/sefika/projects/eu-ai-act-ontology/concept_mappings/mappings.json",
+        help="Path to save mapping results (default: /Users/sefika/projects/eu-ai-act-ontology/concept_mappings/mappings.json)",
+    )
+    parser.add_argument(
+        "--ontology_output",
+        metavar="PATH",
+        default="/Users/sefika/projects/eu-ai-act-ontology/ontology/proof_of_concept_ontology.ttl",
+        help="Path to save the generated ontology"
+    )
+    
     return parser
 
 
@@ -61,11 +78,24 @@ def run_pipeline(
     goals: str,
     declarative_path: Optional[Path] = None,
     procedural_path: Optional[Path] = None,
+    competency_questions_path: Optional[Path] = None,
+    concept_extraction_output_path: Optional[Path] = None,
+    existing_ontologies: Optional[List[Path]] = None,
+    mapping_output_path: Optional[Path] = None,
+    ontology_output_path: Optional[Path] = None,
+
 ) -> Dict[str, Any]:
     """Instantiate the UI with the given memory files and run the pipeline."""
-    ui = PrototypeUI(
+    ui = PrototypeClient(
         declarative_ontology_path=declarative_path,
         procedural_pdf_path=procedural_path,
+        config={
+            "competency_questions_path": competency_questions_path,
+            "concept_extraction_output_path": concept_extraction_output_path,
+            "existing_ontologies": existing_ontologies,
+            "mapping_output_path": mapping_output_path,
+        },
+        ontology_output_path=ontology_output_path
     )
     return ui.run_pipeline(goals)
 
@@ -76,8 +106,14 @@ def main(argv: Optional[List[str]] = None) -> None:
         goals=args.goals,
         declarative_path=args.declarative,
         procedural_path=args.procedural,
+        competency_questions_path=args.comptency_questions,
+        concept_extraction_output_path=args.concept_extraction_output,
+        existing_ontologies=args.existing_ontologies,
+        mapping_output_path=args.mapping_output,
+        ontology_output_path=args.ontology_output,
+        
     )
-    print(json.dumps(report, indent=2, ensure_ascii=False))
+    # print(json.dumps(report, indent=2, ensure_ascii=False))
 
 
 if __name__ == "__main__":

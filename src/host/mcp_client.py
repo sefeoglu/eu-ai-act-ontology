@@ -2,17 +2,14 @@
 
 from typing import Any
 
-from src.server.onto_generator_server import OntologyGenerator
+from server.onto_generator_server import OntologyGenerator
 
 ALLOWED_ACTIONS = frozenset({
     "memory_generation",
-    "competency_questions",
+    "generate_competency_questions",
     "extract_concepts",
-    "validate_ontology",
     "map_to_existing_ontologies",
-    "generate_sparql_queries",
-    "generate_owl_ttl",
-    "export_github_package",
+    "generate_ontology"
 })
 
 
@@ -24,6 +21,7 @@ class MCPClient:
 
     def execute(self, action: str) -> Any:
         """Dispatch *action* to the underlying generator."""
+        print(f"Executing action: {action}")
         if action not in ALLOWED_ACTIONS:
             raise ValueError(
                 f"Unsupported action '{action}'. "

@@ -1,12 +1,39 @@
+import argparse
 import json
 import re
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urljoin, urldefrag
-import argparse
+
 import requests
 from bs4 import BeautifulSoup
 
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description="Scrape and save EU AI Act full content.")
+    parser.add_argument(
+        "--output", "-o",
+        type=Path,
+        default=Path("/Users/sefika/projects/eu-ai-act-ontology/memory/procedural/ai_act_full_content.json"),
+        help="Output JSON file path (default: /Users/sefika/projects/eu-ai-act-ontology/memory/procedural/ai_act_full_content.json)",
+    )
+    parser.add_argument(
+        "--url", "-u",
+        default="https://artificialintelligenceact.eu/ai-act-explorer/",
+        help="Base URL to scrape (default: https://artificialintelligenceact.eu/ai-act-explorer/",
+    )
+    parser.add_argument(
+        "--timeout", "-t",
+        type=int,
+        default=30,
+        help="HTTP request timeout in seconds (default: 30)",
+    )
+    parser.add_argument(
+        "--user-agent",
+        default="Mozilla/5.0 (compatible; AIActContentRetriever/1.0)",
+        help="User-Agent header string",
+    )
+    return parser
 
 
 def clean_text(text: str) -> str:
@@ -129,7 +156,7 @@ def enrich_articles(chapters: list[dict], headers: dict, timeout: int) -> list[d
     return chapters
 
 
-def enrich_annexes(annexes, headers, timeout) -> list[dict]:
+def enrich_annexes(annexes: list[dict], headers: dict, timeout: int) -> list[dict]:
     for annex in annexes:
         url = annex.get("url")
         if not url:
@@ -141,11 +168,7 @@ def enrich_annexes(annexes, headers, timeout) -> list[dict]:
     return annexes
 
 
-def scrape_all_ai_act_content(
-    base_url,
-    headers,
-    timeout,
-) -> dict:
+def scrape_all_ai_act_content(base_url: str, headers: dict, timeout: int) -> dict:
     print("Scraping index structure for chapters and annexes...")
     chapters, annexes = scrape_index_structure(base_url, headers, timeout)
     print(f"Found {len(chapters)} chapters and {len(annexes)} annexes. Enriching content...")
@@ -163,17 +186,10 @@ def scrape_all_ai_act_content(
     }
 
 
-def save_all_content(
-    output_file,
-    base_url,
-    headers,
-    timeout,
-) -> dict:
-    headers = headers or default_headers
+def save_all_content(output_file: Path, base_url: str, headers: dict, timeout: int) -> dict:
     print("Starting full content retrieval for EU AI Act...")
     data = scrape_all_ai_act_content(base_url=base_url, headers=headers, timeout=timeout)
     print("Full content retrieval completed.")
-    output_file = Path(output_file)
     output_file.parent.mkdir(parents=True, exist_ok=True)
     print(f"Saving full content to {output_file}...")
     with output_file.open("w", encoding="utf-8") as f:
@@ -193,44 +209,13 @@ def print_summary(data: dict, output_file: Path) -> None:
 
 
 if __name__ == "__main__":
-
-    config_path = open("/Users/sefika/projects/eu-ai-act-ontology/config/api_configs.json", "r").read()
-    config = json.loads(config_path)
-    parser = argparse.ArgumentParser(description="Scrape and save EU AI Act full content.")
-    default_base_url = config["crawler"]["base_url"]
-    default_output_file = config["crawler"]["output_file"]
-    default_request_timeout = config["crawler"]["request_timeout"]
-    default_headers = config["crawler"]["headers"]
-    parser.add_argument(
-        "--output", "-o",
-        type=Path,
-        default=default_output_file,
-        help=f"Output JSON file path (default: {default_output_file})",
-    )
-    parser.add_argument(
-        "--url", "-u",
-        default=default_base_url,
-        help=f"Base URL to scrape (default: {default_base_url})",
-    )
-    parser.add_argument(
-        "--timeout", "-t",
-        type=int,
-        default=default_request_timeout,
-        help=f"HTTP request timeout in seconds (default: {default_request_timeout})",
-    )
-    parser.add_argument(
-        "--user-agent",
-        default=default_headers["User-Agent"],
-        help="User-Agent header string",
-    )
-    args = parser.parse_args()
-
-    custom_headers = {**default_headers, "User-Agent": args.user_agent}
+    args = build_parser().parse_args()
+    headers = {"User-Agent": args.user_agent}
 
     full_content = save_all_content(
         output_file=args.output,
         base_url=args.url,
-        headers=custom_headers,
+        headers=headers,
         timeout=args.timeout,
     )
     print_summary(full_content, output_file=args.output)

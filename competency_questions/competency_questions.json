@@ -1,0 +1,73 @@
+{
+    "competency_questions": [
+        {
+            "chapter": "Chapter I: General Provisions",
+            "list_article_cqs": [
+                {
+                    "article": "Article 1: Subject Matter",
+                    "url": "https://artificialintelligenceact.eu/article/1/",
+                    "competency_questions": [
+                        "1. How do you ensure that AI systems classified as high-risk comply with the requirements set out in the regulation?",
+                        "2. What measures are in place to ensure transparency and provision of information to deployers of high-risk AI systems?",
+                        "3. How do providers of high-risk AI systems manage data and data governance in accordance with the regulation?",
+                        "4. What obligations do deployers of high-risk AI systems have in terms of human oversight and accuracy, robustness, and cybersecurity?",
+                        "5. How do authorities coordinate with notified bodies and ensure conformity assessment of high-risk AI systems?",
+                        "6. What are the obligations of providers of general-purpose AI models with systemic risk, and how are these obligations enforced?",
+                        "7. How are codes of conduct for voluntary application of specific requirements developed and implemented in the context of the regulation?",
+                        "8. What measures are in place to support innovation, particularly for small businesses and start-ups, in compliance with the regulation?"
+                    ]
+                },
+                {
+                    "article": "Article 2: Scope",
+                    "url": "https://artificialintelligenceact.eu/article/2/",
+                    "competency_questions": [
+                        "1. How do you classify AI systems as high-risk according to the regulations?",
+                        "2. What are the requirements for high-risk AI systems as outlined in the regulations?",
+                        "3. What obligations do providers of high-risk AI systems have under the regulations?",
+                        "4. How do you ensure compliance with the requirements for high-risk AI systems?",
+                        "5. What are the transparency obligations for providers and deployers of certain AI systems as per the regulations?",
+                        "6. How are general-purpose AI models classified and what are the obligations for providers of such models with systemic risk?",
+                        "7. What are the measures in support of innovation outlined in the regulations?",
+                        "8. How is governance structured at the Union level according to the regulations?",
+                        "9. What are the post-market monitoring, information sharing, and market surveillance requirements for AI systems as per the regulations?",
+                        "10. How are penalties enforced for non-compliance with the regulations regarding AI systems?"
+                    ]
+                },
+                {
+                    "article": "Article 3: Definitions",
+                    "url": "https://artificialintelligenceact.eu/article/3/",
+                    "competency_questions": [
+                        "1. How would you classify AI systems as high-risk according to the rules outlined in Article 6?",
+                        "2. What are the requirements for high-risk AI systems as specified in Article 8?",
+                        "3. How do providers ensure compliance with the obligations outlined in Article 16 for high-risk AI systems?",
+                        "4. What are the obligations of deployers of high-risk AI systems as detailed in Article 26?",
+                        "5. How do providers of general-purpose AI models with systemic risk fulfill their obligations according to Article 55?",
+                        "6. What are the criteria for the designation of general-purpose AI models with systemic risk as mentioned in Article 51?",
+                        "7. How do providers of general-purpose AI models ensure compliance with their obligations under Article 53?",
+                        "8. What are the measures in support of innovation outlined in Article 57 regarding AI regulatory sandboxes?",
+                        "9. How do national competent authorities fulfill their responsibilities as designated in Article 70?",
+                        "10. What are the transparency obligations for providers and deployers of certain AI systems as specified in Article 50?"
+                    ]
+                },
+                {
+                    "article": "Article 4: AI literacy",
+                    "url": "https://artificialintelligenceact.eu/article/4/",
+                    "competency_questions": [
+                        "1. How do you ensure that your staff and other individuals operating or using AI systems on your behalf have a sufficient level of AI literacy?",
+                        "2. What measures do you take to consider the technical knowledge, experience, education, and training of individuals dealing with the operation and use of AI systems?",
+                        "3. How do you assess the context in which AI systems will be used and the specific persons or groups who will be using them?",
+                        "4. Can you provide examples of training programs or initiatives you have implemented to enhance AI literacy among your employees and other relevant individuals?",
+                        "5. How do you ensure that the AI literacy of your staff and other individuals evolves with advancements in AI technology and practices?",
+                        "6. What strategies do you have in place to continuously monitor and improve the AI literacy of your workforce and other stakeholders involved in the operation and use of AI systems?",
+                        "7. How do you address any gaps or deficiencies in AI literacy among your staff and other individuals dealing with AI systems on your behalf?",
+                        "8. How do you ensure that the AI literacy requirements are met across different roles and levels within your organization?"
+                    ]
+                }
+            ]
+        }
+    ],
+    "regulation": "EU AI Act",
+    "citation": "Regulation (EU) 2024/1689",
+    "source_url": "https://artificialintelligenceact.eu/ai-act-explorer/",
+    "scraped_at": "2026-06-13T09:47:09.138565+00:00"
+}

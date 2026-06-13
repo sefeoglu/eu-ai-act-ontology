@@ -1,19 +1,21 @@
 {
-    "gpt-3.5-turbo": {
+    "gpt": {
         "model": "gpt-3.5-turbo",
-        "api_key":"your_openai_api_key_here",
+        "api_key":"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",
         "API_URL": "https://api.openai.com/v1/chat/completions",
         "temperature": 0,
         "max_tokens": 2048,
-        "competency_question_prompt":"memory/declarative_memory/prompts/prompt_1.txt",
-        "concept_extraction_prompt":"memory/declarative_memory/prompts/prompt_2.txt",
-        "triple_generation_prompt":"memory/declarative_memory/prompts/prompt_3.txt",
-        "ontology_generation_prompt":"memory/declarative_memory/prompts/prompt_4.txt",
-        "domain_range_prompt":"memory/declarative_memory/prompts/prompt_5.txt",
-        "data_type_prompt":"memory/declarative_memory/prompts/prompt_6.txt",
-        "axioms_prompt":"memory/declarative_memory/prompts/prompt_7.txt",
-        "rdf_comments":"memory/declarative_memory/prompts/prompt_8.txt",
-        "individuals_prompt":"memory/declarative_memory/prompts/prompt_9.txt",
+        "competency_question_prompt":"/Users/sefika/projects/eu-ai-act-ontology/memory/declarative/prompts/prompt_1.txt",
+        "concept_extraction_prompt":"/Users/sefika/projects/eu-ai-act-ontology/memory/declarative/prompts/prompt_2.txt",
+        "triple_generation_prompt":"/Users/sefika/projects/eu-ai-act-ontology/memory/declarative/prompts/prompt_3.txt",
+        "ontology_generation_prompt":"/Users/sefika/projects/eu-ai-act-ontology/memory/declarative/prompts/prompt_4.txt",
+        "domain_range_prompt":"/Users/sefika/projects/eu-ai-act-ontology/memory/declarative/prompts/prompt_5.txt",
+        "data_type_prompt":"/Users/sefika/projects/eu-ai-act-ontology/memory/declarative/prompts/prompt_6.txt",
+        "axioms_prompt":"/Users/sefika/projects/eu-ai-act-ontology/memory/declarative/prompts/prompt_7.txt",
+        "rdf_comments":"/Users/sefika/projects/eu-ai-act-ontology/memory/declarative/prompts/prompt_8.txt",
+        "individuals_prompt":"/Users/sefika/projects/eu-ai-act-ontology/memory/declarative/prompts/prompt_9.txt",
+        "generate_turtle_prompt":"/Users/sefika/projects/eu-ai-act-ontology/memory/declarative/prompts/prompt_11.txt",
+        "mapping_to_existing_ontologies_prompt": "/Users/sefika/projects/eu-ai-act-ontology/memory/declarative/prompts/prompt_10.txt",
         "seed": 42
     },
     "crawler": {
