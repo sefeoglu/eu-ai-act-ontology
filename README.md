@@ -1,8 +1,7 @@
 # Automated Ontology Development Using a Memory-Based MCP Approach
 
-This project presents a Memory-Based Model Context Protocol (MCP) approach for automating ontology development in regulatory domains. The framework leverages different memory components to guide ontology generation, validation, and refinement, reducing manual ontology engineering effort while improving consistency and compliance with domain regulations.
+A memory-based MCP architecture for end-to-end ontology development, where LLM agents use declarative memory, procedural memory, and task-specific intermediate artefacts to support the full ontology engineering workflow: competency question generation, concept extraction, ontology reuse/mapping, and proof-of-concept ontology construction.
 
-The approach is demonstrated using the EU AI Act as the primary regulatory source.
 
 ## Repository Structure
 
