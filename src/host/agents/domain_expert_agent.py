@@ -1,19 +1,55 @@
-
-
+from pathlib import Path
 from tqdm import tqdm
 import logging
 import json
 import openai
-import logging
+
+
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
+DEFAULT_CONFIG_PATH = PROJECT_ROOT / "config" / "api_configs.json"
+
+
+def _resolve_repo_path(path_like):
+    path = Path(path_like)
+    if path.is_absolute():
+        if path.exists():
+            return path
+        if "eu-ai-act-ontology" in path.parts:
+            anchor = path.parts.index("eu-ai-act-ontology")
+            return PROJECT_ROOT.joinpath(*path.parts[anchor + 1 :])
+        return path
+    return PROJECT_ROOT / path
+
+
+def _load_gpt_config(config_path=DEFAULT_CONFIG_PATH):
+    config = _resolve_repo_path(config_path)
+    with open(config, "r", encoding="utf-8") as handle:
+        gpt_information = json.load(handle)["gpt"]
+
+    prompt_keys = (
+        "competency_question_prompt",
+        "concept_extraction_prompt",
+        "triple_generation_prompt",
+        "ontology_generation_prompt",
+        "domain_range_prompt",
+        "data_type_prompt",
+        "axioms_prompt",
+        "rdf_comments",
+        "individuals_prompt",
+        "generate_turtle_prompt",
+        "mapping_to_existing_ontologies_prompt",
+    )
+    for key in prompt_keys:
+        if key in gpt_information:
+            gpt_information[key] = str(_resolve_repo_path(gpt_information[key]))
+    return gpt_information
 
 def run_gpt_chat(config):
   
     user_query = config['user_query']
    
     API_KEY = config['api_key']
-    print(f"Using OpenAI API key: {API_KEY}")
     model = config['model']
-    print(f"Using GPT model: {model}")
     SEED = config.get('seed', 42)  # Default seed value if not provided
 
     openai.api_key = API_KEY
@@ -48,7 +84,7 @@ def get_gpt_information(gpt_info):
 
     return openai_api_key, gpt_role, model
 
-def compentency_question_base(contextual_text, gpt_information):
+def competency_question_base(contextual_text, gpt_information):
     """
     Generates a competency question based on the provided contextual text.
     
@@ -58,11 +94,13 @@ def compentency_question_base(contextual_text, gpt_information):
     Returns:
         str: The generated competency question.
     """
-    compentency_question_text_base_path = gpt_information['competency_question_prompt']
-    compentency_question_text_base = open(compentency_question_text_base_path, 'r').read()
+    competency_question_text_base_path = gpt_information['competency_question_prompt']
+    competency_question_text_base = open(
+        competency_question_text_base_path, "r", encoding="utf-8"
+    ).read()
 
-    print(f"Generating competency question with base prompt: {compentency_question_text_base}")
-    return f"{compentency_question_text_base} Context: {contextual_text}"
+    print(f"Generating competency question with base prompt: {competency_question_text_base}")
+    return f"{competency_question_text_base} Context: {contextual_text}"
 
 
 
@@ -76,7 +114,7 @@ def run_gpt_based_cq_generation(input_context, gpt_information):
     """
 
     contextual_text = input_context
-    user_query = compentency_question_base(contextual_text, gpt_information)
+    user_query = competency_question_base(contextual_text, gpt_information)
     gpt_information['user_query'] = user_query
     print(f"User query for GPT")
     questions = run_gpt_chat(gpt_information)
@@ -87,7 +125,7 @@ def run_gpt_based_cq_generation(input_context, gpt_information):
 
 
 
-def cq_generation(input_context, config="/Users/sefika/projects/eu-ai-act-ontology/config/api_configs.json"):
+def cq_generation(input_context, config=DEFAULT_CONFIG_PATH):
     """
     Main function to run the GPT-based contextual question generation.
     
@@ -97,19 +135,19 @@ def cq_generation(input_context, config="/Users/sefika/projects/eu-ai-act-ontolo
     """
     try:
 
-        gpt_information = json.load(open(config, 'r'))['gpt']
+        gpt_information = _load_gpt_config(config)
 
         print("Loading GPT information...")
-        compentency_questions = run_gpt_based_cq_generation(input_context, gpt_information)
+        competency_questions = run_gpt_based_cq_generation(input_context, gpt_information)
         logging.info("GPT-based contextual question generation completed.")
 
-        return compentency_questions
+        return competency_questions
     
     except Exception as e:
         logging.error(f"Error occurred during GPT-based contextual question generation: {e}")
         return None
   
-def run_full_ttl_ontology(concepts, mappings, config="/Users/sefika/projects/eu-ai-act-ontology/config/api_configs.json"):
+def run_full_ttl_ontology(concepts, mappings, config=DEFAULT_CONFIG_PATH):
     """Run full pipleline from question to concept extraction."""
     """
     Args:
@@ -129,7 +167,7 @@ def run_full_ttl_ontology(concepts, mappings, config="/Users/sefika/projects/eu-
         7. prompt 9
     """
     try:
-        gpt_information = json.load(open(config, 'r'))['gpt']
+        gpt_information = _load_gpt_config(config)
         triple_generation_prompt = open(gpt_information['triple_generation_prompt'], 'r').read()
         ontology_generation_prompt = open(gpt_information['ontology_generation_prompt'], 'r').read()
         domain_range_prompt = open(gpt_information['domain_range_prompt'], 'r').read()
@@ -178,7 +216,7 @@ def run_full_ttl_ontology(concepts, mappings, config="/Users/sefika/projects/eu-
 
 
 
-def run_gpt_based_concept_extraction(questions, config="/Users/sefika/projects/eu-ai-act-ontology/config/api_configs.json"):
+def run_gpt_based_concept_extraction(questions, config=DEFAULT_CONFIG_PATH):
     """
     Runs the GPT-based concept extraction.
     
@@ -188,7 +226,7 @@ def run_gpt_based_concept_extraction(questions, config="/Users/sefika/projects/e
         gpt_information (dict): Dictionary containing GPT role and model information.
     """
     try:
-        gpt_information = json.load(open(config, 'r'))['gpt']
+        gpt_information = _load_gpt_config(config)
 
         print("Loading GPT information...")
         
@@ -221,13 +259,12 @@ def run_gpt_based_mapping_to_existing_ontologies(
     concepts,
     classes,
     properties,
-    config="/Users/sefika/projects/eu-ai-act-ontology/config/api_configs.json",
+    config=DEFAULT_CONFIG_PATH,
 ):
     try:
-        with open(config, "r") as f:
-            gpt_config = json.load(f)["gpt"]
+        gpt_config = _load_gpt_config(config)
 
-        with open(gpt_config["mapping_to_existing_ontologies_prompt"], "r") as f:
+        with open(gpt_config["mapping_to_existing_ontologies_prompt"], "r", encoding="utf-8") as f:
             base_prompt = f.read()[:3000]   # prevent huge prompt file
 
         all_mappings = []

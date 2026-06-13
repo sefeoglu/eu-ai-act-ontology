@@ -1,21 +1,29 @@
 """Prototype ontology generator backed by a loaded DeclarativeMemory."""
-import re
+from pathlib import Path
 from typing import Dict, List
 
-from memory.declarative_memory import DeclarativeMemory
-from memory.procedural_memory import ProceduralMemory
-from host.agents import domain_expert_agent
+from ..memory.declarative_memory import DeclarativeMemory
+from ..memory.onto_memory import OntologyMemory
+from ..memory.procedural_memory import ProceduralMemory
+from ..host.agents import domain_expert_agent
+from ..utils import data_path
 import json
-import ast
 
 
 class OntologyGenerator:
     """Performs ontology operations over a preloaded DeclarativeMemory graph."""
 
-    def __init__(self, declarative_memory: DeclarativeMemory, procedural_memory: ProceduralMemory, output_path = None) -> None:
+    def __init__(
+        self,
+        declarative_memory: DeclarativeMemory,
+        procedural_memory: ProceduralMemory,
+        output_path=None,
+    ) -> None:
         self.declarative_memory = declarative_memory
         self.procedural_memory = procedural_memory
-        self._ontology_output_path = output_path
+        self._ontology_output_path = Path(
+            output_path or data_path("ontology", "proof_of_concept_ontology.ttl")
+        )
 
     # ------------------------------------------------------------------
     # Query helpers
@@ -211,11 +219,17 @@ class OntologyGenerator:
 
     def validate_ontology(self) -> Dict[str, object]:
         """Run basic health checks over the loaded ontology."""
-        triple_count = self.declarative_memory.triple_count()
+        source_path = (
+            self._ontology_output_path
+            if self._ontology_output_path.exists()
+            else self.declarative_memory.source_path
+        )
+        memory = OntologyMemory().load(Path(source_path))
+        triple_count = memory.triple_count()
         return {
             "is_valid": triple_count > 0,
             "triple_count": triple_count,
-            "source": str(self.declarative_memory.source_path),
+            "source": str(source_path),
         }
 
 

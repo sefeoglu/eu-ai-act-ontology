@@ -17,5 +17,6 @@ class LLMPlanner:
 
     def create_plan(self, user_goal: str) -> Dict[str, str]:
         """Map a user goal to a named pipeline action."""
-        action = self.ACTIONS[user_goal.strip().lower()]
+        normalized_goal = user_goal.strip().lower().replace(" ", "_")
+        action = self.ACTIONS[normalized_goal]
         return {"goal": user_goal, "action": action, "status": "planned"}

@@ -2,12 +2,13 @@
 
 from typing import Any
 
-from server.onto_generator_server import OntologyGenerator
+from ..server.onto_generator_server import OntologyGenerator
 
 ALLOWED_ACTIONS = frozenset({
     "memory_generation",
     "generate_competency_questions",
     "extract_concepts",
+    "validate_ontology",
     "map_to_existing_ontologies",
     "generate_ontology"
 })
