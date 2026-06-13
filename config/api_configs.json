@@ -1,7 +1,7 @@
 {
     "gpt": {
         "model": "gpt-3.5-turbo",
-        "api_key":"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",
+        "api_key":"your_api_key_here",
         "API_URL": "https://api.openai.com/v1/chat/completions",
         "temperature": 0,
         "max_tokens": 2048,
