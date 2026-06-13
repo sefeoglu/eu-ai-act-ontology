@@ -1,1 +1,7 @@
 rdflib==7.0.0
+chromadb
+bs4
+openai
+transformers
+sentence_transformers
+anthropic

@@ -1,0 +1,73 @@
+{
+  "regulation": "EU AI Act",
+  "citation": "Regulation (EU) 2024/1689",
+  "chapters": [
+    {
+      "chapter": "I",
+      "title": "General Provisions"
+    },
+    {
+      "chapter": "II",
+      "title": "Prohibited AI Practices"
+    },
+    {
+      "chapter": "III",
+      "title": "High-Risk AI Systems"
+    },
+    {
+      "chapter": "IV",
+      "title": "Transparency Obligations for Certain AI Systems"
+    },
+    {
+      "chapter": "V",
+      "title": "General-Purpose AI Models"
+    },
+    {
+      "chapter": "VI",
+      "title": "Measures in Support of Innovation"
+    },
+    {
+      "chapter": "VII",
+      "title": "Governance"
+    },
+    {
+      "chapter": "VIII",
+      "title": "EU Database for High-Risk AI Systems"
+    },
+    {
+      "chapter": "IX",
+      "title": "Post-Market Monitoring, Information Sharing and Market Surveillance"
+    },
+    {
+      "chapter": "X",
+      "title": "Codes of Conduct and Guidelines"
+    },
+    {
+      "chapter": "XI",
+      "title": "Delegation of Power and Committee Procedure"
+    },
+    {
+      "chapter": "XII",
+      "title": "Penalties"
+    },
+    {
+      "chapter": "XIII",
+      "title": "Final Provisions"
+    }
+  ],
+  "annexes": [
+    { "annex": "I" },
+    { "annex": "II" },
+    { "annex": "III" },
+    { "annex": "IV" },
+    { "annex": "V" },
+    { "annex": "VI" },
+    { "annex": "VII" },
+    { "annex": "VIII" },
+    { "annex": "IX" },
+    { "annex": "X" },
+    { "annex": "XI" },
+    { "annex": "XII" },
+    { "annex": "XIII" }
+  ]
+}

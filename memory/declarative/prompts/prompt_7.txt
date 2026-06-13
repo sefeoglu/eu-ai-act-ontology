@@ -1,6 +1,9 @@
-Considering the classes that you have in the ontology, introduce some Data Property when meaningful, such as: 
+For all the classes introduce some axiomatisation in the ontology when meaningful and relevant, like these: 
 
-wine:hasPriceValue rdf:type owl:DatatypeProperty ; rdfs:range xsd:positiveInteger . 
+:GrapeVariety EquivalentTo usedToProduce some Wine 
+:Wine EquivalentTo hasVintage some Vintage 
+:Wine SubClassOf hasRating some Rating 
 
-Modify the domain and range according to the type of value requested by the Data Property.
+Make sure that the ontology is consistent.
+Do it for all the classes for which it makes sense having an axiomatisation.
 Print only the new triples.

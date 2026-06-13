@@ -1,1 +1,1 @@
-For each Competency Question extract entities and properties that have to be introduced in the ontology. Provide in a json format.
+Considering followings, generate a conceptual model expressing in form of triples, (subject, datatypeproperty or object type property, object), and individuals in json format.

@@ -6,21 +6,23 @@
         "temperature": 0,
         "max_tokens": 2048,
         "competency_question_prompt":"memory/declarative_memory/prompts/prompt_1.txt",
-        "concept_extraction_prompt":"memory/declarative_memory/prompts/prompt_3.txt",
-        "triple_generation_prompt":"memory/declarative_memory/prompts/prompt_4.txt",
-        "ontology_generation_prompt":"memory/declarative_memory/prompts/prompt_5.txt",
-        "domain_range_prompt":"memory/declarative_memory/prompts/prompt_6.txt",
-        "data_type_prompt":"memory/declarative_memory/prompts/prompt_7.txt",
-        "axioms_prompt":"memory/declarative_memory/prompts/prompt_8.txt",
-        "rdf_comments":"memory/declarative_memory/prompts/prompt_9.txt",
-        "individuals_prompt":"memory/declarative_memory/prompts/prompt_10.txt",
+        "concept_extraction_prompt":"memory/declarative_memory/prompts/prompt_2.txt",
+        "triple_generation_prompt":"memory/declarative_memory/prompts/prompt_3.txt",
+        "ontology_generation_prompt":"memory/declarative_memory/prompts/prompt_4.txt",
+        "domain_range_prompt":"memory/declarative_memory/prompts/prompt_5.txt",
+        "data_type_prompt":"memory/declarative_memory/prompts/prompt_6.txt",
+        "axioms_prompt":"memory/declarative_memory/prompts/prompt_7.txt",
+        "rdf_comments":"memory/declarative_memory/prompts/prompt_8.txt",
+        "individuals_prompt":"memory/declarative_memory/prompts/prompt_9.txt",
         "seed": 42
     },
-    "gemini": {
-        "model": "gemini-1.5-pro",
-        "api_key":"your_gemini_api_key_here",
-        "temperature": 0,
-        "max_tokens": 2048,
-        "ocr_prompt":"memory/declarative_memory/prompts/prompt_2.txt"
+    "crawler": {
+        "base_url": "https://artificialintelligenceact.eu/ai-act-explorer/",
+        "output_file": "/Users/sefika/projects/eu-ai-act-ontology/memory/procedural/ai_act_full_content.json",
+        "request_timeout": 30,
+        "headers": {
+            "User-Agent": "Mozilla/5.0 (compatible; AIActContentRetriever/1.0)"
+        }
+
     }
 }
