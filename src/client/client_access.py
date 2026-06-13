@@ -1,13 +1,14 @@
 """Prototype UI: loads memory files and drives the full pipeline."""
 
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Iterable, List, Optional, Union
 
-from host.llm_planner import LLMPlanner
-from host.mcp_client import MCPClient
-from host.validation_controller import ValidationController
-from memory.memory_generator import MemoryGenerator
-from server.onto_generator_server import OntologyGenerator
+from ..host.llm_planner import LLMPlanner
+from ..host.mcp_client import MCPClient
+from ..host.validation_controller import ValidationController
+from ..memory.memory_generator import MemoryGenerator
+from ..server.onto_generator_server import OntologyGenerator
+from ..utils import data_path
 
 
 class PrototypeClient:
@@ -40,7 +41,9 @@ class PrototypeClient:
         ontology_output_path: Optional[Path] = None,
     ) -> None:
         self._config = config or {}
-        self._ontology_output_path = ontology_output_path
+        self._ontology_output_path = ontology_output_path or data_path(
+            "ontology", "proof_of_concept_ontology.ttl"
+        )
         # 1. Build memory objects from the supplied (or default) file paths.
         generator = MemoryGenerator(self._config)
         self.declarative_memory = generator.generate_declarative_memory(
@@ -52,7 +55,11 @@ class PrototypeClient:
         )
 
         # 2. Construct the pipeline components using the loaded memory.
-        ontology_generator = OntologyGenerator(declarative_memory=self.declarative_memory, procedural_memory=self.procedural_memory, output_path=self._ontology_output_path)
+        ontology_generator = OntologyGenerator(
+            declarative_memory=self.declarative_memory,
+            procedural_memory=self.procedural_memory,
+            output_path=self._ontology_output_path,
+        )
         self.planner = LLMPlanner()
         self.client = MCPClient(generator=ontology_generator)
         self.validator = ValidationController()
@@ -61,7 +68,12 @@ class PrototypeClient:
     # Pipeline entry point
     # ------------------------------------------------------------------
 
-    def run_pipeline(self, goals: str) -> Dict[str, Any]:
+    def _normalize_goals(self, goals: Union[str, Iterable[str]]) -> List[str]:
+        if isinstance(goals, str):
+            return [goals]
+        return list(goals)
+
+    def run_pipeline(self, goals: Union[str, Iterable[str]]) -> Union[Dict[str, Any], List[Dict[str, Any]]]:
         """Run the full pipeline for *goals* and return a structured report.
 
         Steps
@@ -72,45 +84,30 @@ class PrototypeClient:
         4. Return: assemble the full pipeline report.
         """
         # Step 1 – plan
-        reports = []
+        normalized_goals = self._normalize_goals(goals)
+        reports: List[Dict[str, Any]] = []
 
-        for goal in goals:
-            print(f"Processing goal: {goal}")
+        for goal in normalized_goals:
             plan = self.planner.create_plan(goal)
-
-            # Step 2 – execute
             result = self.client.execute(plan["action"])
+            validation = self.validator.validate_result(result)
 
-            # # Step 3 – validate
-            # if goals == "validate_ontology":
-            #     validation = self.validator.validate_result(result)
-
-            # Step 4 – report
             goal_report = {
-            "goal": goal,
+                "goal": goal,
                 "plan": plan,
                 "memory": {
                     "declarative_source": str(self.declarative_memory.source_path),
                     "declarative_triples": self.declarative_memory.triple_count(),
                     "procedural_source": self.procedural_memory.get_metadata(),
                 },
-                # "validation": validation,
+                "validation": validation,
                 "result": result,
             }
             reports.append(goal_report)
 
+        if isinstance(goals, str):
+            return reports[0]
         return reports
-        # return {"reports": reports}
 
-        
-        # return {
-        #     "goals": goals,
-        #     "plan": plan,
-        #     "memory": {
-        #         "declarative_source": str(self.declarative_memory.source_path),
-        #         "declarative_triples": self.declarative_memory.triple_count(),
-        #         "procedural_source": self.procedural_memory.get_metadata(),
-        #     },
-        #     "validation": validation,
-        #     "result": result,
-        # }
+
+PrototypeUI = PrototypeClient

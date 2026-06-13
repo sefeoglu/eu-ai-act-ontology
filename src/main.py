@@ -12,7 +12,9 @@ import argparse
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from client.client_access import PrototypeClient
+from .client.client_access import PrototypeClient
+from .memory.procedural_memory import ProceduralMemory
+from .utils import data_path
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -43,31 +45,38 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "--comptency_questions",
+         "--competency_questions",
          metavar="PATH",
-         default="/Users/sefika/projects/eu-ai-act-ontology/competency_questions/competency_questions.json",
-         help="Path to save generated competency questions (default: /Users/sefika/projects/eu-ai-act-ontology/competency_questions/competency_questions.json)",
+         dest="competency_questions",
+         type=Path,
+         default=ProceduralMemory.DEFAULT_COMPETENCY_QUESTIONS_PATH,
+         help="Path to save generated competency questions.",
     )
     parser.add_argument(
         "--concept_extraction_output",
         metavar="PATH",
-        default="/Users/sefika/projects/eu-ai-act-ontology/concept_extraction/concepts.json",
-        help="Path to save extracted concepts (default: /Users/sefika/projects/eu-ai-act-ontology/concept_extraction/concepts.json)",
+        type=Path,
+        default=ProceduralMemory.DEFAULT_CONCEPT_EXTRACTION_OUTPUT_PATH,
+        help="Path to save extracted concepts.",
     )
     parser.add_argument(
         "--existing_ontologies",
         nargs="*",
-        default=['/Users/sefika/projects/eu-ai-act-ontology/memory/declarative/existing_ontologies/dpv-owl.rdf','/Users/sefika/projects/eu-ai-act-ontology/memory/declarative/existing_ontologies/vair.owl', '/Users/sefika/projects/eu-ai-act-ontology/memory/declarative/existing_ontologies/aio-full.owl', '/Users/sefika/projects/eu-ai-act-ontology/memory/declarative/existing_ontologies/airo.owl'],
+        type=Path,
+        default=list(ProceduralMemory.DEFAULT_EXISTING_ONTOLOGIES),
     )
     parser.add_argument(
         "--mapping_output",
         metavar="PATH",
-        default="/Users/sefika/projects/eu-ai-act-ontology/concept_mappings/mappings.json",
-        help="Path to save mapping results (default: /Users/sefika/projects/eu-ai-act-ontology/concept_mappings/mappings.json)",
+        type=Path,
+        default=ProceduralMemory.DEFAULT_MAPPING_OUTPUT_PATH,
+        help="Path to save mapping results.",
     )
     parser.add_argument(
         "--ontology_output",
         metavar="PATH",
-        default="/Users/sefika/projects/eu-ai-act-ontology/ontology/proof_of_concept_ontology.ttl",
+        type=Path,
+        default=data_path("ontology", "proof_of_concept_ontology.ttl"),
         help="Path to save the generated ontology"
     )
     
@@ -75,7 +84,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def run_pipeline(
-    goals: str,
+    goals: List[str],
     declarative_path: Optional[Path] = None,
     procedural_path: Optional[Path] = None,
     competency_questions_path: Optional[Path] = None,
@@ -106,7 +115,7 @@ def main(argv: Optional[List[str]] = None) -> None:
         goals=args.goals,
         declarative_path=args.declarative,
         procedural_path=args.procedural,
-        competency_questions_path=args.comptency_questions,
+        competency_questions_path=args.competency_questions,
         concept_extraction_output_path=args.concept_extraction_output,
         existing_ontologies=args.existing_ontologies,
         mapping_output_path=args.mapping_output,
