@@ -84,7 +84,7 @@ def get_gpt_information(gpt_info):
 
     return openai_api_key, gpt_role, model
 
-def compentency_question_base(contextual_text, gpt_information):
+def competency_question_base(contextual_text, gpt_information):
     """
     Generates a competency question based on the provided contextual text.
     
@@ -94,11 +94,13 @@ def compentency_question_base(contextual_text, gpt_information):
     Returns:
         str: The generated competency question.
     """
-    compentency_question_text_base_path = gpt_information['competency_question_prompt']
-    compentency_question_text_base = open(compentency_question_text_base_path, 'r').read()
+    competency_question_text_base_path = gpt_information['competency_question_prompt']
+    competency_question_text_base = open(
+        competency_question_text_base_path, "r", encoding="utf-8"
+    ).read()
 
-    print(f"Generating competency question with base prompt: {compentency_question_text_base}")
-    return f"{compentency_question_text_base} Context: {contextual_text}"
+    print(f"Generating competency question with base prompt: {competency_question_text_base}")
+    return f"{competency_question_text_base} Context: {contextual_text}"
 
 
 
@@ -112,7 +114,7 @@ def run_gpt_based_cq_generation(input_context, gpt_information):
     """
 
     contextual_text = input_context
-    user_query = compentency_question_base(contextual_text, gpt_information)
+    user_query = competency_question_base(contextual_text, gpt_information)
     gpt_information['user_query'] = user_query
     print(f"User query for GPT")
     questions = run_gpt_chat(gpt_information)
@@ -136,10 +138,10 @@ def cq_generation(input_context, config=DEFAULT_CONFIG_PATH):
         gpt_information = _load_gpt_config(config)
 
         print("Loading GPT information...")
-        compentency_questions = run_gpt_based_cq_generation(input_context, gpt_information)
+        competency_questions = run_gpt_based_cq_generation(input_context, gpt_information)
         logging.info("GPT-based contextual question generation completed.")
 
-        return compentency_questions
+        return competency_questions
     
     except Exception as e:
         logging.error(f"Error occurred during GPT-based contextual question generation: {e}")
