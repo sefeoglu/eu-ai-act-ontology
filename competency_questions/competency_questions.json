@@ -7,60 +7,1609 @@
                     "article": "Article 1: Subject Matter",
                     "url": "https://artificialintelligenceact.eu/article/1/",
                     "competency_questions": [
-                        "1. How do you ensure that AI systems classified as high-risk comply with the requirements set out in the regulation?",
-                        "2. What measures are in place to ensure transparency and provision of information to deployers of high-risk AI systems?",
-                        "3. How do providers of high-risk AI systems manage data and data governance in accordance with the regulation?",
-                        "4. What obligations do deployers of high-risk AI systems have in terms of human oversight and accuracy, robustness, and cybersecurity?",
-                        "5. How do authorities coordinate with notified bodies and ensure conformity assessment of high-risk AI systems?",
-                        "6. What are the obligations of providers of general-purpose AI models with systemic risk, and how are these obligations enforced?",
-                        "7. How are codes of conduct for voluntary application of specific requirements developed and implemented in the context of the regulation?",
-                        "8. What measures are in place to support innovation, particularly for small businesses and start-ups, in compliance with the regulation?"
+                        "1. Can you explain the main categories of AI systems outlined in the Regulation?",
+                        "2. What are the prohibited practices for AI systems as specified in the Regulation?",
+                        "3. What are the specific requirements for high-risk AI systems and what obligations do operators of such systems have?",
+                        "4. Can you describe the core actors involved in the implementation of the Regulation, such as providers, deployers, and authorities?",
+                        "5. What are the major obligations outlined in the Regulation for ensuring the protection of health, safety, fundamental rights, and environmental protection against the harmful effects of AI systems?"
                     ]
                 },
                 {
                     "article": "Article 2: Scope",
                     "url": "https://artificialintelligenceact.eu/article/2/",
                     "competency_questions": [
-                        "1. How do you classify AI systems as high-risk according to the regulations?",
-                        "2. What are the requirements for high-risk AI systems as outlined in the regulations?",
-                        "3. What obligations do providers of high-risk AI systems have under the regulations?",
-                        "4. How do you ensure compliance with the requirements for high-risk AI systems?",
-                        "5. What are the transparency obligations for providers and deployers of certain AI systems as per the regulations?",
-                        "6. How are general-purpose AI models classified and what are the obligations for providers of such models with systemic risk?",
-                        "7. What are the measures in support of innovation outlined in the regulations?",
-                        "8. How is governance structured at the Union level according to the regulations?",
-                        "9. What are the post-market monitoring, information sharing, and market surveillance requirements for AI systems as per the regulations?",
-                        "10. How are penalties enforced for non-compliance with the regulations regarding AI systems?"
+                        "1. Can you explain the main elements of the Act related to AI system categories as outlined in the Regulation?",
+                        "2. How would you define the prohibited practices for AI systems according to the Regulation?",
+                        "3. What are the key characteristics of high-risk systems as defined in the Regulation?",
+                        "4. Who are the core actors involved in the implementation of the Regulation, such as providers, deployers, and authorities?",
+                        "5. What are the major obligations imposed on providers and deployers of AI systems under the Regulation?",
+                        "6. How do the obligations differ for importers and distributors of AI systems compared to other actors?",
+                        "7. Can you elaborate on the obligations of product manufacturers when it comes to AI systems?",
+                        "8. How are authorised representatives of providers involved in ensuring compliance with the Regulation?",
+                        "9. What role do affected persons located in the Union play in the implementation of the Regulation?",
+                        "10. How does the Regulation address the classification of AI systems as high-risk and the corresponding obligations for such systems?",
+                        "11. How does the Regulation handle the application of its provisions in areas outside the scope of Union law?",
+                        "12. What are the specific exemptions for AI systems used exclusively for military, defence, or national security purposes under the Regulation?",
+                        "13. How does the Regulation address the use of AI systems by public authorities in third countries or international organisations in cooperation with the Union?",
+                        "14. How does the Regulation interact with existing provisions on the liability of providers of intermediary services?",
+                        "15. What are the exceptions for AI systems developed for scientific research and development under the Regulation?",
+                        "16. How does the Regulation ensure the protection of personal data and privacy in connection with AI systems?",
+                        "17. What are the requirements for research, testing, and development activities related to AI systems prior to market placement or service deployment?",
+                        "18. How does the Regulation interact with other Union legal acts related to consumer protection and product safety?",
+                        "19. What are the exemptions for natural persons using AI systems for personal non-professional activities under the Regulation?",
+                        "20. How does the Regulation accommodate laws, regulations, or provisions that may be more favorable to workers in terms of AI system use and protection of rights?"
                     ]
                 },
                 {
                     "article": "Article 3: Definitions",
                     "url": "https://artificialintelligenceact.eu/article/3/",
                     "competency_questions": [
-                        "1. How would you classify AI systems as high-risk according to the rules outlined in Article 6?",
-                        "2. What are the requirements for high-risk AI systems as specified in Article 8?",
-                        "3. How do providers ensure compliance with the obligations outlined in Article 16 for high-risk AI systems?",
-                        "4. What are the obligations of deployers of high-risk AI systems as detailed in Article 26?",
-                        "5. How do providers of general-purpose AI models with systemic risk fulfill their obligations according to Article 55?",
-                        "6. What are the criteria for the designation of general-purpose AI models with systemic risk as mentioned in Article 51?",
-                        "7. How do providers of general-purpose AI models ensure compliance with their obligations under Article 53?",
-                        "8. What are the measures in support of innovation outlined in Article 57 regarding AI regulatory sandboxes?",
-                        "9. How do national competent authorities fulfill their responsibilities as designated in Article 70?",
-                        "10. What are the transparency obligations for providers and deployers of certain AI systems as specified in Article 50?"
+                        "1. Can you explain the main elements of the Act related to AI system categories, prohibited practices, high-risk systems, core actors, and major obligations?",
+                        "2. How would you define an AI system according to the Regulation?",
+                        "3. What is the definition of 'risk' as per the Regulation?",
+                        "4. Who falls under the category of a 'provider' according to the Regulation?",
+                        "5. What is the role of a 'deployer' in the context of AI systems?",
+                        "6. Can you explain the concept of 'authorised representative' as defined in the Regulation?",
+                        "7. Who is considered an 'importer' under the Regulation?",
+                        "8. What is the definition of 'distributor' in the context of AI systems?",
+                        "9. Who is classified as an 'operator' according to the Regulation?",
+                        "10. What does 'placing on the market' mean in relation to AI systems as per the Regulation?"
                     ]
                 },
                 {
                     "article": "Article 4: AI literacy",
                     "url": "https://artificialintelligenceact.eu/article/4/",
                     "competency_questions": [
-                        "1. How do you ensure that your staff and other individuals operating or using AI systems on your behalf have a sufficient level of AI literacy?",
-                        "2. What measures do you take to consider the technical knowledge, experience, education, and training of individuals dealing with the operation and use of AI systems?",
-                        "3. How do you assess the context in which AI systems will be used and the specific persons or groups who will be using them?",
-                        "4. Can you provide examples of training programs or initiatives you have implemented to enhance AI literacy among your employees and other relevant individuals?",
-                        "5. How do you ensure that the AI literacy of your staff and other individuals evolves with advancements in AI technology and practices?",
-                        "6. What strategies do you have in place to continuously monitor and improve the AI literacy of your workforce and other stakeholders involved in the operation and use of AI systems?",
-                        "7. How do you address any gaps or deficiencies in AI literacy among your staff and other individuals dealing with AI systems on your behalf?",
-                        "8. How do you ensure that the AI literacy requirements are met across different roles and levels within your organization?"
+                        "1. Can you describe the measures you have in place to ensure a sufficient level of AI literacy among your staff and other individuals involved in the operation and use of AI systems on your behalf?",
+                        "2. How do you assess the technical knowledge, experience, education, and training of individuals dealing with AI systems within your organization?",
+                        "3. How do you consider the context in which AI systems are to be used when determining the level of AI literacy required for staff and other individuals?",
+                        "4. Can you provide examples of how you tailor AI literacy training based on the persons or groups of persons on whom the AI systems are to be used?",
+                        "5. How do you monitor and evaluate the effectiveness of the measures taken to ensure a sufficient level of AI literacy among your staff and other individuals involved in the operation and use of AI systems?"
+                    ]
+                }
+            ]
+        },
+        {
+            "chapter": "Chapter II: Prohibited AI Practices",
+            "list_article_cqs": [
+                {
+                    "article": "Article 5: Prohibited AI Practices",
+                    "url": "https://artificialintelligenceact.eu/article/5/",
+                    "competency_questions": [
+                        "1. Can you explain the prohibited AI practices outlined in the context, such as the use of AI systems that deploy subliminal techniques or exploit vulnerabilities of certain groups of people?",
+                        "2. How do the prohibited AI practices, such as the use of AI systems for evaluating or classifying individuals based on social behavior, relate to the potential harm caused to individuals or groups?",
+                        "3. What are the specific prohibitions regarding the use of AI systems for making risk assessments of individuals based on profiling or assessing personality traits?",
+                        "4. How do the prohibitions on the creation or expansion of facial recognition databases through untargeted scraping of facial images impact the use of AI systems?",
+                        "5. Can you discuss the restrictions on using AI systems to infer emotions of individuals in workplace and education settings, except for specific medical or safety reasons?",
+                        "6. How do the prohibitions on biometric categorization systems inferring sensitive personal information, such as race or political opinions, impact the deployment of AI systems?",
+                        "7. What are the limitations and conditions for using 'real-time' remote biometric identification systems in publicly accessible spaces for law enforcement purposes, as outlined in the context?",
+                        "8. How does the requirement for prior authorization from a judicial or administrative authority for the use of 'real-time' remote biometric identification systems in publicly accessible spaces ensure compliance with the regulations?",
+                        "9. Can you explain the notification requirements for the use of 'real-time' remote biometric identification systems in publicly accessible spaces for law enforcement purposes to relevant authorities?",
+                        "10. How do Member States have the flexibility to introduce more restrictive laws on the use of remote biometric identification systems for law enforcement purposes, while still complying with Union law?"
+                    ]
+                }
+            ]
+        },
+        {
+            "chapter": "Chapter III:\nHigh-Risk AI System",
+            "list_article_cqs": [
+                {
+                    "article": "Article 6: Classification Rules for High-Risk AI Systems",
+                    "url": "https://artificialintelligenceact.eu/article/6/",
+                    "competency_questions": [
+                        "1. Can you explain the main elements of the Act related to AI system categories, prohibited practices, high-risk systems, core actors, and major obligations?",
+                        "2. How do you determine if an AI system is considered high-risk according to the conditions outlined in the Act?",
+                        "3. What are the criteria for AI systems to be considered high-risk as specified in Annex III of the Act?",
+                        "4. How should a provider document their assessment of an AI system to determine if it is not high-risk as per Annex III?",
+                        "5. What role does the European Artificial Intelligence Board play in providing guidelines for the practical implementation of the Act?",
+                        "6. How can the Commission amend the conditions for AI systems in Annex III if there is concrete evidence that they do not pose a significant risk of harm?",
+                        "7. What measures are in place to ensure that any amendments to the conditions for AI systems do not decrease the overall level of protection provided by the Regulation?",
+                        "8. How do market and technological developments influence the regulations and guidelines set forth in the Act regarding AI systems?"
+                    ]
+                },
+                {
+                    "article": "Article 7: Amendments to Annex III",
+                    "url": "https://artificialintelligenceact.eu/article/7/",
+                    "competency_questions": [
+                        "1. Can you explain the criteria that the Commission must take into account when assessing whether an AI system should be added to the list of high-risk systems in Annex III?",
+                        "2. How does the Commission determine if an AI system poses a risk of harm to health and safety or an adverse impact on fundamental rights equivalent to or greater than those already listed in Annex III?",
+                        "3. What factors are considered when deciding to remove a high-risk AI system from the list in Annex III?",
+                        "4. How does the Commission ensure that the overall level of protection of health, safety, and fundamental rights under Union law is not decreased when removing a high-risk AI system from Annex III?",
+                        "5. Can you discuss the role of the Commission in amending Annex III to include or remove high-risk AI systems?",
+                        "6. How does the Commission assess the extent to which an AI system acts autonomously and the possibility for human intervention to prevent potential harm?",
+                        "7. What measures does the Commission consider to prevent or minimize risks posed by AI systems, excluding claims for damages?",
+                        "8. How does the Commission evaluate the magnitude and likelihood of benefits of deploying an AI system for individuals, groups, or society at large?",
+                        "9. Can you explain the criteria used to determine if an AI system has already caused harm to health and safety or had an adverse impact on fundamental rights?",
+                        "10. How does the Commission address concerns regarding the imbalance of power or vulnerability of individuals potentially harmed by an AI system in relation to the deployer?"
+                    ]
+                },
+                {
+                    "article": "Article 8: Compliance with the Requirements",
+                    "url": "https://artificialintelligenceact.eu/article/8/",
+                    "competency_questions": [
+                        "1. Can you explain how high-risk AI systems are defined in the context of the Act?",
+                        "2. How do the requirements for high-risk AI systems take into account their intended purpose and the state of the art in AI technologies?",
+                        "3. What role does the risk management system play in ensuring compliance with the requirements for high-risk AI systems?",
+                        "4. How are providers responsible for ensuring that products containing AI systems comply with the regulations and harmonisation legislation?",
+                        "5. How can providers integrate testing and reporting processes for high-risk AI systems with existing documentation and procedures required by Union harmonisation legislation?",
+                        "6. Can you discuss the major obligations placed on providers, deployers, and authorities in relation to high-risk AI systems under the Act?",
+                        "7. How do prohibited practices related to AI systems impact the development and deployment of high-risk systems?",
+                        "8. What are the core actors involved in the regulation of high-risk AI systems, and what are their respective roles and responsibilities?",
+                        "9. How does the Act aim to ensure consistency, avoid duplication, and minimize additional burdens for providers of high-risk AI systems?",
+                        "10. How does the Act address the need for ongoing compliance and monitoring of high-risk AI systems in light of evolving technologies and risks?"
+                    ]
+                },
+                {
+                    "article": "Article 9: Risk Management System",
+                    "url": "https://artificialintelligenceact.eu/article/9/",
+                    "competency_questions": [
+                        "1. Can you explain the steps involved in establishing, implementing, documenting, and maintaining a risk management system in relation to high-risk AI systems?",
+                        "2. How do you identify and analyze the known and reasonably foreseeable risks that a high-risk AI system can pose to health, safety, or fundamental rights when used in accordance with its intended purpose?",
+                        "3. How do you estimate and evaluate the risks that may emerge when a high-risk AI system is used in accordance with its intended purpose and under conditions of reasonably foreseeable misuse?",
+                        "4. How do you evaluate other risks possibly arising based on the analysis of data gathered from the post-market monitoring system?",
+                        "5. How do you adopt appropriate and targeted risk management measures to address the risks identified in the risk management system?",
+                        "6. How do you ensure that the risk management measures give due consideration to the effects and possible interactions resulting from the combined application of the requirements set out in the Act?",
+                        "7. How do you ensure that the relevant residual risk associated with each hazard, as well as the overall residual risk of high-risk AI systems, is judged to be acceptable?",
+                        "8. How do you identify the most appropriate risk management measures to eliminate or reduce risks related to the use of high-risk AI systems?",
+                        "9. How do you ensure that high-risk AI systems are tested for the purpose of identifying the most appropriate and targeted risk management measures?",
+                        "10. How do you ensure that testing procedures for high-risk AI systems may include testing in real-world conditions in accordance with the Act?"
+                    ]
+                },
+                {
+                    "article": "Article 10: Data and Data Governance",
+                    "url": "https://artificialintelligenceact.eu/article/10/",
+                    "competency_questions": [
+                        "1. Can you explain the quality criteria that training, validation, and testing data sets for high-risk AI systems must meet?",
+                        "2. How do data governance and management practices play a role in ensuring the appropriate development of high-risk AI systems?",
+                        "3. What are the key considerations for data collection processes and the origin of data, especially when dealing with personal data?",
+                        "4. How can biases in data that may affect health, safety, fundamental rights, or lead to discrimination be identified and addressed in high-risk AI systems?",
+                        "5. What measures can be taken to ensure that training, validation, and testing data sets are relevant, representative, error-free, and complete for the intended purpose of the high-risk AI system?",
+                        "6. How should data sets take into account specific geographical, contextual, behavioral, or functional settings when developing high-risk AI systems?",
+                        "7. Under what conditions can providers of high-risk AI systems process special categories of personal data for bias detection and correction, and what safeguards must be in place to protect fundamental rights and freedoms?",
+                        "8. How should records of processing activities be maintained to ensure compliance with regulations regarding the processing of special categories of personal data for bias detection and correction in high-risk AI systems?",
+                        "9. What are the implications of not using techniques involving the training of AI models on the testing data sets for the development of high-risk AI systems?"
+                    ]
+                },
+                {
+                    "article": "Article 11: Technical Documentation",
+                    "url": "https://artificialintelligenceact.eu/article/11/",
+                    "competency_questions": [
+                        "1. Can you provide an example of how you would ensure that the technical documentation of a high-risk AI system is kept up-to-date before it is placed on the market or put into service?",
+                        "2. How would you demonstrate that a high-risk AI system complies with the requirements set out in the Act through the technical documentation?",
+                        "3. How would you ensure that the technical documentation provides national competent authorities and notified bodies with the necessary information in a clear and comprehensive form to assess compliance with the requirements?",
+                        "4. How would you simplify the technical documentation form for SMEs, including start-ups, to meet their needs while ensuring compliance with the Act?",
+                        "5. Can you explain how you would ensure that a single set of technical documentation contains all the required information for a high-risk AI system related to a product covered by Union harmonisation legislation?",
+                        "6. How would you stay informed about any amendments to Annex IV and ensure that the technical documentation provides all necessary information to assess compliance with the Act in light of technical progress?"
+                    ]
+                },
+                {
+                    "article": "Article 12: Record-Keeping",
+                    "url": "https://artificialintelligenceact.eu/article/12/",
+                    "competency_questions": [
+                        "1. Can you describe the technical requirements for automatic event recording (logs) in high-risk AI systems as outlined in the Act?",
+                        "2. How do logging capabilities in high-risk AI systems contribute to traceability and monitoring of system functioning?",
+                        "3. What specific events should be recorded by logging capabilities in high-risk AI systems to identify potential risks and facilitate post-market monitoring?",
+                        "4. What are the minimum logging capabilities required for high-risk AI systems as specified in Annex III of the Act?",
+                        "5. How do logging capabilities in high-risk AI systems ensure transparency and accountability in the verification of results involving natural persons?"
+                    ]
+                },
+                {
+                    "article": "Article 13: Transparency and Provision of Information to Deployers",
+                    "url": "https://artificialintelligenceact.eu/article/13/",
+                    "competency_questions": [
+                        "1. Can you explain the importance of transparency in the design and development of high-risk AI systems?",
+                        "2. How would you ensure that the instructions for use of high-risk AI systems are concise, complete, correct, and clear?",
+                        "3. What information should be included in the instructions for use of high-risk AI systems according to the Act?",
+                        "4. How would you ensure that the identity and contact details of the provider and authorized representative are clearly stated in the instructions for use?",
+                        "5. Can you discuss the characteristics, capabilities, and limitations of performance that should be included in the instructions for use of high-risk AI systems?",
+                        "6. How would you address known or foreseeable circumstances that may lead to risks to health, safety, or fundamental rights in the instructions for use?",
+                        "7. What technical capabilities and characteristics of the high-risk AI system should be provided to explain its output in the instructions for use?",
+                        "8. How would you ensure that deployers are able to interpret the output of the high-risk AI system and use it appropriately based on the instructions for use?",
+                        "9. Can you explain the importance of human oversight measures and technical measures in facilitating the interpretation of outputs of high-risk AI systems by deployers?",
+                        "10. How would you address the computational and hardware resources needed, expected lifetime, maintenance, and care measures in the instructions for use of high-risk AI systems?"
+                    ]
+                },
+                {
+                    "article": "Article 14: Human Oversight",
+                    "url": "https://artificialintelligenceact.eu/article/14/",
+                    "competency_questions": [
+                        "1. Can you explain how high-risk AI systems should be designed and developed to ensure effective oversight by natural persons during their use?",
+                        "2. How can human oversight help prevent or minimize risks to health, safety, or fundamental rights when high-risk AI systems are used as intended or under foreseeable misuse conditions?",
+                        "3. What measures should be implemented by providers before placing high-risk AI systems on the market or putting them into service to ensure oversight by natural persons?",
+                        "4. How can natural persons assigned to human oversight of high-risk AI systems properly understand the system's capacities and limitations, monitor its operation, and intervene when necessary?",
+                        "5. In what situations should natural persons be able to decide not to use a high-risk AI system or override its output, and what mechanisms should be in place to facilitate this decision-making process?",
+                        "6. How should high-risk AI systems be designed to allow for intervention or interruption by natural persons through a 'stop' button or similar procedure to ensure safe operation?",
+                        "7. What additional measures should be implemented for high-risk AI systems to ensure that any identification made by the system is separately verified and confirmed by at least two competent natural persons before any action or decision is taken based on that identification?"
+                    ]
+                },
+                {
+                    "article": "Article 15: Accuracy, Robustness and Cybersecurity",
+                    "url": "https://artificialintelligenceact.eu/article/15/",
+                    "competency_questions": [
+                        "1. Can you explain how high-risk AI systems should be designed and developed to ensure an appropriate level of accuracy, robustness, and cybersecurity throughout their lifecycle?",
+                        "2. How would you address the technical aspects of measuring accuracy and robustness in high-risk AI systems, including the development of benchmarks and measurement methodologies?",
+                        "3. What steps should be taken to declare the levels of accuracy and relevant accuracy metrics of high-risk AI systems in their accompanying instructions of use?",
+                        "4. How can technical and organisational measures be implemented to ensure the resilience of high-risk AI systems against errors, faults, or inconsistencies, particularly in their interaction with natural persons or other systems?",
+                        "5. What technical solutions would you propose to ensure the cybersecurity of high-risk AI systems and protect against unauthorized attempts to alter their use, outputs, or performance by exploiting vulnerabilities?"
+                    ]
+                },
+                {
+                    "article": "Article 16: Obligations of Providers of High-Risk AI Systems",
+                    "url": "https://artificialintelligenceact.eu/article/16/",
+                    "competency_questions": [
+                        "1. Can you describe how you ensure that your high-risk AI systems comply with the requirements set out in Section 2?",
+                        "2. How do you indicate your name, registered trade name or registered trade mark, and contact address on your high-risk AI systems or packaging?",
+                        "3. Can you explain the quality management system you have in place to comply with Article 17?",
+                        "4. How do you keep the documentation required by Article 18 for your high-risk AI systems?",
+                        "5. What measures do you take to keep the logs automatically generated by your high-risk AI systems as referred to in Article 19?",
+                        "6. How do you ensure that your high-risk AI systems undergo the relevant conformity assessment procedure before being placed on the market or put into service?",
+                        "7. Can you describe the process of drawing up an EU declaration of conformity in accordance with Article 47?",
+                        "8. How do you affix the CE marking to your high-risk AI systems to indicate conformity with the Regulation, as required by Article 48?",
+                        "9. How do you comply with the registration obligations outlined in Article 49(1)?",
+                        "10. Can you provide an example of a corrective action you have taken and the information you provided as required by Article 20?"
+                    ]
+                },
+                {
+                    "article": "Article 17: Quality Management System",
+                    "url": "https://artificialintelligenceact.eu/article/17/",
+                    "competency_questions": [
+                        "1. Can you describe the strategy for regulatory compliance that your organization has in place for high-risk AI systems?",
+                        "2. How do you ensure that conformity assessment procedures are followed for high-risk AI systems within your organization?",
+                        "3. What techniques, procedures, and systematic actions does your organization use for the design, design control, and design verification of high-risk AI systems?",
+                        "4. How does your organization manage the development, quality control, and quality assurance of high-risk AI systems?",
+                        "5. Can you explain the examination, test, and validation procedures that are carried out before, during, and after the development of high-risk AI systems within your organization?",
+                        "6. How do you ensure that technical specifications and standards are applied to high-risk AI systems in compliance with regulations?",
+                        "7. What systems and procedures does your organization have in place for data management related to high-risk AI systems?",
+                        "8. How does your organization handle risk management for high-risk AI systems as outlined in Article 9?",
+                        "9. Can you describe the post-market monitoring system that your organization implements for high-risk AI systems in accordance with Article 72?",
+                        "10. How does your organization handle communication with national competent authorities, notified bodies, and other relevant parties regarding high-risk AI systems?",
+                        "11. What record-keeping systems and procedures does your organization have in place for relevant documentation and information related to high-risk AI systems?",
+                        "12. How does your organization manage resource management, including security-of-supply related measures, for high-risk AI systems?",
+                        "13. Can you explain the accountability framework that sets out the responsibilities of management and staff with regard to all aspects listed in the regulation for high-risk AI systems?"
+                    ]
+                },
+                {
+                    "article": "Article 18: Documentation Keeping",
+                    "url": "https://artificialintelligenceact.eu/article/18/",
+                    "competency_questions": [
+                        "1. Can you describe the technical documentation required to be kept by the provider for a high-risk AI system for a period of 10 years?",
+                        "2. How does the documentation concerning the quality management system play a role in ensuring compliance with the regulations for high-risk AI systems?",
+                        "3. What is the significance of keeping documentation concerning changes approved by notified bodies for a high-risk AI system?",
+                        "4. How does the EU declaration of conformity play a role in demonstrating compliance with the regulations for high-risk AI systems?",
+                        "5. How does each Member State determine the conditions under which documentation remains at the disposal of national competent authorities in cases of bankruptcy or cessation of activity by the provider?",
+                        "6. How do financial institutions subject to Union financial services law maintain technical documentation for high-risk AI systems as part of their regulatory requirements?",
+                        "7. Can you explain the role of national competent authorities in accessing and reviewing the documentation kept by providers for high-risk AI systems?",
+                        "8. How do the obligations related to documentation for high-risk AI systems contribute to ensuring transparency and accountability in the deployment of AI technologies?",
+                        "9. How do the requirements for keeping documentation for high-risk AI systems align with the overall goal of promoting the safe and ethical use of AI technologies?",
+                        "10. How do the documentation requirements for high-risk AI systems help in monitoring and evaluating the performance and compliance of AI systems over time?"
+                    ]
+                },
+                {
+                    "article": "Article 19: Automatically Generated Logs",
+                    "url": "https://artificialintelligenceact.eu/article/19/",
+                    "competency_questions": [
+                        "1. Can you describe the requirements for providers of high-risk AI systems in terms of keeping logs generated by their systems?",
+                        "2. How long are providers required to keep the logs generated by their high-risk AI systems, according to the Act?",
+                        "3. What are the exceptions to the minimum six-month log retention period for high-risk AI systems, as outlined in the Act?",
+                        "4. How do financial institutions subject to Union financial services law handle the logs generated by their high-risk AI systems?",
+                        "5. Can you explain the relationship between the logs generated by high-risk AI systems and the documentation requirements under relevant financial services law for financial institutions?"
+                    ]
+                },
+                {
+                    "article": "Article 20: Corrective Actions and Duty of Information",
+                    "url": "https://artificialintelligenceact.eu/article/20/",
+                    "competency_questions": [
+                        "1. Can you describe the obligations of providers of high-risk AI systems under the Regulation?",
+                        "2. How should providers handle high-risk AI systems that are not in conformity with the Regulation?",
+                        "3. What steps should providers take if they become aware of a risk associated with a high-risk AI system?",
+                        "4. How should providers collaborate with deployers in investigating the causes of risks associated with high-risk AI systems?",
+                        "5. What information should providers provide to market surveillance authorities and notified bodies in case of non-compliance with the Regulation?"
+                    ]
+                },
+                {
+                    "article": "Article 21: Cooperation with Competent Authorities",
+                    "url": "https://artificialintelligenceact.eu/article/21/",
+                    "competency_questions": [
+                        "1. Can you provide examples of the information and documentation that would be necessary to demonstrate the conformity of a high-risk AI system with the requirements set out in Section 2?",
+                        "2. How would you ensure that the information and documentation provided to a competent authority is in a language that can be easily understood by them?",
+                        "3. How do you ensure that the automatically generated logs of a high-risk AI system are accessible to a competent authority upon request?",
+                        "4. How would you handle any confidential information obtained by a competent authority in accordance with the confidentiality obligations set out in Article 78?",
+                        "5. Can you explain the process by which providers of high-risk AI systems would respond to a reasoned request by a competent authority for information and documentation?"
+                    ]
+                },
+                {
+                    "article": "Article 22: Authorised Representatives of Providers of High-Risk AI Systems",
+                    "url": "https://artificialintelligenceact.eu/article/22/",
+                    "competency_questions": [
+                        "1. Can you describe the tasks that the authorised representative appointed by providers established in third countries must perform before making high-risk AI systems available on the Union market?",
+                        "2. How long must the authorised representative keep the contact details of the provider, the EU declaration of conformity, technical documentation, and any certificates issued by notified bodies for high-risk AI systems?",
+                        "3. What information and documentation must the authorised representative provide to competent authorities upon a reasoned request to demonstrate the conformity of a high-risk AI system with the requirements set out in Section 2?",
+                        "4. In what ways must the authorised representative cooperate with competent authorities to reduce and mitigate the risks posed by high-risk AI systems?",
+                        "5. When should the authorised representative terminate the mandate with the provider, and what actions should they take if they believe the provider is acting contrary to its obligations under the Regulation?"
+                    ]
+                },
+                {
+                    "article": "Article 23: Obligations of Importers",
+                    "url": "https://artificialintelligenceact.eu/article/23/",
+                    "competency_questions": [
+                        "1. Can you explain the steps importers need to take before placing a high-risk AI system on the market to ensure conformity with the Regulation?",
+                        "2. How should importers handle situations where they suspect a high-risk AI system is not in conformity or is falsified?",
+                        "3. What information must importers include on the high-risk AI system and its packaging/documentation?",
+                        "4. How can importers ensure that storage or transport conditions do not jeopardize the compliance of a high-risk AI system?",
+                        "5. What documentation must importers keep for a period of 10 years after a high-risk AI system is placed on the market?",
+                        "6. How should importers provide necessary information and documentation to competent authorities to demonstrate conformity of a high-risk AI system?",
+                        "7. In what ways should importers cooperate with competent authorities to reduce and mitigate risks posed by a high-risk AI system on the market?"
+                    ]
+                },
+                {
+                    "article": "Article 24: Obligations of Distributors",
+                    "url": "https://artificialintelligenceact.eu/article/24/",
+                    "competency_questions": [
+                        "1. Can you explain the process distributors must follow before making a high-risk AI system available on the market?",
+                        "2. How should distributors handle a situation where they believe a high-risk AI system is not in conformity with the requirements set out in Section 2?",
+                        "3. What responsibilities do distributors have in ensuring that storage or transport conditions do not jeopardize the compliance of a high-risk AI system?",
+                        "4. What actions should a distributor take if they discover a high-risk AI system they have made available on the market is not in conformity with the requirements?",
+                        "5. How should distributors respond to a reasoned request from a relevant competent authority regarding a high-risk AI system?",
+                        "6. In what ways are distributors expected to cooperate with relevant competent authorities in relation to high-risk AI systems made available on the market?"
+                    ]
+                },
+                {
+                    "article": "Article 25: Responsibilities Along the AI Value Chain",
+                    "url": "https://artificialintelligenceact.eu/article/25/",
+                    "competency_questions": [
+                        "1. Can you explain the circumstances under which a distributor, importer, deployer, or other third-party would be considered a provider of a high-risk AI system according to the Regulation?",
+                        "2. How should providers cooperate with new providers when the initial provider is no longer considered the provider of a specific AI system under the Regulation?",
+                        "3. In what situations would a product manufacturer be considered the provider of a high-risk AI system under the Regulation?",
+                        "4. What obligations do providers of high-risk AI systems and third parties supplying AI systems, tools, services, components, or processes to be used in high-risk AI systems have under the Regulation?",
+                        "5. How can providers of high-risk AI systems and third parties ensure compliance with the Regulation while observing and protecting intellectual property rights, confidential business information, and trade secrets?"
+                    ]
+                },
+                {
+                    "article": "Article 26: Obligations of Deployers of High-Risk AI Systems",
+                    "url": "https://artificialintelligenceact.eu/article/26/",
+                    "competency_questions": [
+                        "1. How do deployers of high-risk AI systems ensure they use the systems in accordance with the instructions for use accompanying the systems?",
+                        "2. What measures do deployers take to assign human oversight to individuals with the necessary competence, training, and authority for high-risk AI systems?",
+                        "3. How do deployers ensure that input data for high-risk AI systems is relevant and sufficiently representative for the intended purpose?",
+                        "4. What steps do deployers take to monitor the operation of high-risk AI systems and inform relevant parties in case of identified risks or incidents?",
+                        "5. How do deployers maintain logs generated by high-risk AI systems and for what period of time?",
+                        "6. How do deployers inform workers' representatives and affected workers about the use of high-risk AI systems in the workplace?",
+                        "7. What obligations do public authorities or Union institutions have in terms of registration and use of high-risk AI systems?",
+                        "8. How do deployers of high-risk AI systems comply with data protection impact assessments and relevant regulations?",
+                        "9. What authorization process is required for the use of high-risk AI systems for post-remote biometric identification in criminal investigations?",
+                        "10. How do deployers ensure that high-risk AI systems used for decision-making related to natural persons inform those individuals about their use of the system?"
+                    ]
+                },
+                {
+                    "article": "Article 27: Fundamental Rights Impact Assessment for High-Risk AI Systems",
+                    "url": "https://artificialintelligenceact.eu/article/27/",
+                    "competency_questions": [
+                        "1. Can you describe the processes within your organization where the high-risk AI system will be used in line with its intended purpose?",
+                        "2. How do you determine the period of time within which, and the frequency with which, each high-risk AI system is intended to be used?",
+                        "3. What categories of natural persons and groups are likely to be affected by the use of the high-risk AI system in the specific context?",
+                        "4. How do you identify the specific risks of harm likely to have an impact on the categories of natural persons or groups of persons identified?",
+                        "5. Can you describe the implementation of human oversight measures according to the instructions for use of the high-risk AI system?",
+                        "6. What measures do you have in place in case the identified risks materialize, including arrangements for internal governance and complaint mechanisms?",
+                        "7. How do you ensure that the fundamental rights impact assessment is updated if any of the elements listed in the assessment change or become outdated during the use of the high-risk AI system?",
+                        "8. Have you notified the market surveillance authority of the results of the fundamental rights impact assessment, submitting the filled-out template as part of the notification?",
+                        "9. Have you conducted a data protection impact assessment pursuant to Regulation (EU) 2016/679 or Directive (EU) 2016/680, and how does the fundamental rights impact assessment complement that assessment?",
+                        "10. Are you utilizing the template questionnaire developed by the AI Office to facilitate compliance with your obligations under this Article in a simplified manner?"
+                    ]
+                },
+                {
+                    "article": "Article 28: Notifying Authorities",
+                    "url": "https://artificialintelligenceact.eu/article/28/",
+                    "competency_questions": [
+                        "1. Can you describe the procedures for the assessment, designation, and notification of conformity assessment bodies as outlined in the Act?",
+                        "2. How would you ensure that notifying authorities do not have any conflicts of interest with conformity assessment bodies, as required by the Act?",
+                        "3. What measures would you put in place to safeguard the objectivity and impartiality of the activities of notifying authorities, as mandated by the Act?",
+                        "4. How would you ensure that decisions regarding the notification of conformity assessment bodies are made by competent persons different from those who assessed those bodies, as required by the Act?",
+                        "5. Can you explain how notifying authorities should handle confidentiality of information obtained, in accordance with Article 78 of the Act?",
+                        "6. How would you ensure that notifying authorities have an adequate number of competent personnel with the necessary expertise in fields such as information technologies, AI, and law, as required by the Act?"
+                    ]
+                },
+                {
+                    "article": "Article 29: Application of a Conformity Assessment Body for Notification",
+                    "url": "https://artificialintelligenceact.eu/article/29/",
+                    "competency_questions": [
+                        "1. Can you describe the process for conformity assessment bodies to submit an application for notification to the notifying authority?",
+                        "2. What information should be included in the application for notification, according to the regulation?",
+                        "3. How can a conformity assessment body demonstrate its competence for specific types of AI systems?",
+                        "4. What role does the accreditation certificate play in the notification process?",
+                        "5. What should a conformity assessment body do if it cannot provide an accreditation certificate?",
+                        "6. How can a conformity assessment body demonstrate compliance with the requirements laid down in Article 31?",
+                        "7. How can documents and certificates from designations under other Union harmonisation legislation support the designation procedure under this Regulation?",
+                        "8. How should a notified body update its documentation in order to ensure continuous compliance with the requirements of Article 31?"
+                    ]
+                },
+                {
+                    "article": "Article 30: Notification Procedure",
+                    "url": "https://artificialintelligenceact.eu/article/30/",
+                    "competency_questions": [
+                        "1. Can you provide examples of prohibited practices under the Act regarding AI systems?",
+                        "2. How would you ensure that conformity assessment bodies meet the requirements laid down in Article 31?",
+                        "3. What information should be included in the notification to the Commission and other Member States regarding conformity assessment bodies?",
+                        "4. How would you verify the competence of a conformity assessment body if the notification is not based on an accreditation certificate?",
+                        "5. How would you handle objections raised by the Commission or other Member States regarding a conformity assessment body?",
+                        "6. Can you explain the process for notifying authorities to notify conformity assessment bodies under the Act?",
+                        "7. How would you ensure that a conformity assessment body continues to satisfy the requirements laid down in Article 31?",
+                        "8. What are the core obligations of providers, deployers, and authorities under the Act regarding AI systems?",
+                        "9. How would you determine if the activities of a notified body can proceed based on objections raised by the Commission or other Member States?",
+                        "10. Can you provide examples of high-risk systems covered under the Act?"
+                    ]
+                },
+                {
+                    "article": "Article 31: Requirements Relating to Notified Bodies",
+                    "url": "https://artificialintelligenceact.eu/article/31/",
+                    "competency_questions": [
+                        "1. Can you explain the requirements for establishing a notified body under the national law of a Member State?",
+                        "2. How do notified bodies ensure confidence in their performance and the results of conformity assessment activities?",
+                        "3. What measures are in place to ensure the independence of notified bodies from providers of high-risk AI systems and other relevant parties?",
+                        "4. How do conformity assessment bodies ensure that their personnel are not directly involved in the design, development, marketing, or use of high-risk AI systems?",
+                        "5. What procedures are in place to safeguard the independence, objectivity, and impartiality of notified bodies' activities?",
+                        "6. How do notified bodies ensure the confidentiality of information obtained during conformity assessment activities?",
+                        "7. Can you explain the procedures for the performance of activities by notified bodies, taking into account the size of providers and the complexity of AI systems?",
+                        "8. What measures are in place to ensure that notified bodies have the necessary competence and integrity to carry out their tasks effectively?",
+                        "9. How do notified bodies ensure that they have sufficient internal competences to evaluate tasks conducted by external parties on their behalf?",
+                        "10. Can you describe the participation of notified bodies in coordination activities and European standardisation organisations?"
+                    ]
+                },
+                {
+                    "article": "Article 32: Presumption of Conformity with Requirements Relating to Notified Bodies",
+                    "url": "https://artificialintelligenceact.eu/article/32/",
+                    "competency_questions": [
+                        "1. Can you explain the different categories of AI systems as outlined in the Act?",
+                        "2. How do the prohibited practices outlined in the Act impact the development and deployment of AI systems?",
+                        "3. What are the key obligations that providers of AI systems must adhere to according to the Act?",
+                        "4. How do authorities play a role in regulating and overseeing the use of high-risk AI systems?",
+                        "5. Can you discuss the responsibilities of deployers of AI systems as outlined in the Act?",
+                        "6. How do harmonised standards play a role in ensuring compliance with the requirements set out in the Act?",
+                        "7. What are the core actors involved in the development, deployment, and regulation of AI systems according to the Act?"
+                    ]
+                },
+                {
+                    "article": "Article 33: Subsidiaries of Notified Bodies and Subcontracting",
+                    "url": "https://artificialintelligenceact.eu/article/33/",
+                    "competency_questions": [
+                        "1. Can you explain the requirements laid down in Article 31 regarding subcontractors or subsidiaries in the context of conformity assessment?",
+                        "2. How do notified bodies ensure that subcontractors or subsidiaries meet the necessary requirements as per the Act?",
+                        "3. What steps should be taken by notified bodies to inform the notifying authority about subcontractors or subsidiaries?",
+                        "4. How do notified bodies ensure that they take full responsibility for the tasks performed by subcontractors or subsidiaries?",
+                        "5. What is the process for obtaining agreement from the provider before subcontracting or carrying out activities with a subsidiary?",
+                        "6. How do notified bodies make a list of their subsidiaries publicly available as required by the Act?",
+                        "7. Can you explain the importance of keeping relevant documents concerning the assessment of qualifications of subcontractors or subsidiaries for a period of five years?",
+                        "8. How do notified bodies ensure that the work carried out by subcontractors or subsidiaries complies with the regulations outlined in the Act?",
+                        "9. What measures should be in place to ensure that subcontractors or subsidiaries do not engage in prohibited practices as per the Act?",
+                        "10. How do notified bodies ensure that subcontractors or subsidiaries do not pose a risk to the AI system categories outlined in the Act?"
+                    ]
+                },
+                {
+                    "article": "Article 34: Operational Obligations of Notified Bodies",
+                    "url": "https://artificialintelligenceact.eu/article/34/",
+                    "competency_questions": [
+                        "1. Can you explain the conformity assessment procedures set out in Article 43 for high-risk AI systems?",
+                        "2. How do notified bodies avoid unnecessary burdens for providers when verifying the conformity of high-risk AI systems?",
+                        "3. How do notified bodies take into account the size, sector, structure, and complexity of the provider when performing their activities?",
+                        "4. How do notified bodies minimize administrative burdens and compliance costs for micro- and small enterprises within the meaning of Recommendation 2003/361/EC?",
+                        "5. What relevant documentation, including providers' documentation, do notified bodies make available and submit upon request to the notifying authority for assessment, designation, notification, and monitoring activities?"
+                    ]
+                },
+                {
+                    "article": "Article 35: Identification Numbers and Lists of Notified Bodies",
+                    "url": "https://artificialintelligenceact.eu/article/35/",
+                    "competency_questions": [
+                        "1. Can you explain the process for assigning a single identification number to each notified body under the Regulation?",
+                        "2. How does the Commission ensure that the list of notified bodies, their identification numbers, and activities are kept up to date and publicly available?",
+                        "3. What are the main categories of AI systems covered under the Regulation?",
+                        "4. Can you provide examples of prohibited practices for AI systems under the Regulation?",
+                        "5. What are the obligations of providers, deployers, and authorities under the Regulation?",
+                        "6. How does the Regulation define high-risk systems and what additional requirements do they entail?",
+                        "7. How does the Regulation address the core actors involved in the deployment and oversight of AI systems?"
+                    ]
+                },
+                {
+                    "article": "Article 36: Changes to Notifications",
+                    "url": "https://artificialintelligenceact.eu/article/36/",
+                    "competency_questions": [
+                        "1. Can you explain the procedures for notifying the Commission and other Member States of any relevant changes to the notification of a notified body?",
+                        "2. How would you handle extensions of the scope of notification according to the procedures laid down in Articles 29 and 30?",
+                        "3. What steps should be taken if a notified body decides to cease its conformity assessment activities, including informing the notifying authority and providers concerned?",
+                        "4. How would you investigate and address concerns regarding a notified body no longer meeting requirements or failing to fulfill obligations, as outlined in Article 31?",
+                        "5. What actions should be taken by a notified body if its designation has been suspended, restricted, or fully or partially withdrawn?",
+                        "6. How would you assess the impact on certificates issued by a notified body in the event of a restriction, suspension, or withdrawal of designation?",
+                        "7. Can you outline the steps to ensure the validity of certificates in the event of a suspension or restriction of designation, with the exception of certificates unduly issued?",
+                        "8. How would you handle the validity of certificates in the event of a withdrawal of designation, with the exception of certificates unduly issued?",
+                        "9. What measures should be taken to ensure the continuity of conformity of high-risk AI systems on the market in the event of a suspension, restriction, or withdrawal of designation?"
+                    ]
+                },
+                {
+                    "article": "Article 37: Challenge to the Competence of Notified Bodies",
+                    "url": "https://artificialintelligenceact.eu/article/37/",
+                    "competency_questions": [
+                        "1. Can you provide examples of cases where there may be reasons to doubt the competence of a notified body in relation to AI system categories?",
+                        "2. How would you ensure that all relevant information relating to the notification or maintenance of competence of a notified body is provided to the Commission by the notifying authority?",
+                        "3. How would you ensure that sensitive information obtained during investigations is treated confidentially in accordance with Article 78?",
+                        "4. What steps would you take if a notified body is found to not meet the requirements for its notification in terms of prohibited practices for high-risk systems?",
+                        "5. How would you handle a situation where a Member State fails to take necessary corrective measures for a notified body, as outlined in the Act?",
+                        "6. Can you explain the process for suspending, restricting, or withdrawing the designation of a notified body by the Commission, as outlined in Article 98(2)?"
+                    ]
+                },
+                {
+                    "article": "Article 38: Coordination of Notified Bodies",
+                    "url": "https://artificialintelligenceact.eu/article/38/",
+                    "competency_questions": [
+                        "1. Can you provide examples of high-risk AI systems that would fall under the scope of this Regulation?",
+                        "2. How would you ensure appropriate coordination and cooperation between notified bodies in the conformity assessment procedures for high-risk AI systems?",
+                        "3. What steps would you take to ensure that bodies notified by a notifying authority participate in the work of a sectoral group of notified bodies?",
+                        "4. How would you facilitate the exchange of knowledge and best practices between notifying authorities in relation to AI systems?",
+                        "5. Can you explain the role and responsibilities of providers, deployers, and authorities in ensuring compliance with the Regulation for high-risk AI systems?",
+                        "6. How would you address prohibited practices related to AI systems as outlined in the Regulation?",
+                        "7. What obligations do providers and deployers have in relation to high-risk AI systems under this Regulation?"
+                    ]
+                },
+                {
+                    "article": "Article 39: Conformity Assessment Bodies of Third Countries",
+                    "url": "https://artificialintelligenceact.eu/article/39/",
+                    "competency_questions": [
+                        "1. Can you explain the different categories of AI systems as outlined in the Act?",
+                        "2. How do the prohibited practices outlined in the Act impact the deployment of AI systems?",
+                        "3. What are the key obligations of providers, deployers, and authorities under the Act?",
+                        "4. How do conformity assessment bodies from third countries play a role in ensuring compliance with the Regulation?",
+                        "5. Can you discuss the criteria for authorizing third country conformity assessment bodies to act as notified bodies under the Regulation?"
+                    ]
+                },
+                {
+                    "article": "Article 40: Harmonised Standards and Standardisation Deliverables",
+                    "url": "https://artificialintelligenceact.eu/article/40/",
+                    "competency_questions": [
+                        "1. Can you explain the categories of AI systems that are considered high-risk according to the Regulation?",
+                        "2. What are the prohibited practices for AI systems outlined in the Regulation?",
+                        "3. What are the major obligations for providers, deployers, and authorities regarding high-risk AI systems?",
+                        "4. How do harmonised standards play a role in ensuring conformity with the requirements of the Regulation for AI systems?",
+                        "5. How does the Commission ensure that standardisation requests cover all necessary requirements and obligations for AI systems?",
+                        "6. What role do stakeholders, including the advisory forum, play in the standardisation process for AI systems?",
+                        "7. How does the standardisation process aim to promote investment and innovation in AI while ensuring legal certainty and competitiveness in the Union market?",
+                        "8. How does the Regulation ensure that international standards in the field of AI align with Union values, fundamental rights, and interests?",
+                        "9. How is multi-stakeholder governance implemented to ensure balanced representation of interests and effective participation of relevant stakeholders in the standardisation process?"
+                    ]
+                },
+                {
+                    "article": "Article 41: Common Specifications",
+                    "url": "https://artificialintelligenceact.eu/article/41/",
+                    "competency_questions": [
+                        "1. Can you explain the conditions under which the Commission may adopt implementing acts establishing common specifications for AI system requirements and obligations?",
+                        "2. How does the Commission determine if the conditions for adopting implementing acts for common specifications have been fulfilled?",
+                        "3. What is the significance of high-risk AI systems or general-purpose AI models conforming to common specifications in terms of meeting requirements and obligations?",
+                        "4. How does the Commission handle the adoption of harmonised standards by European standardisation organisations in relation to AI system requirements and obligations?",
+                        "5. What are the obligations of providers of high-risk AI systems or general-purpose AI models if they do not comply with common specifications?",
+                        "6. How does a Member State address concerns regarding common specifications not meeting AI system requirements or obligations, and what is the role of the Commission in this process?"
+                    ]
+                },
+                {
+                    "article": "Article 42: Presumption of Conformity with Certain Requirements",
+                    "url": "https://artificialintelligenceact.eu/article/42/",
+                    "competency_questions": [
+                        "1. Can you provide examples of high-risk AI systems that have been trained and tested on data reflecting specific geographical, behavioural, contextual, or functional settings?",
+                        "2. How do you ensure that high-risk AI systems comply with the relevant requirements laid down in Article 10(4)?",
+                        "3. Have you obtained certification or a statement of conformity for high-risk AI systems under a cybersecurity scheme pursuant to Regulation (EU) 2019/881?",
+                        "4. How do you ensure that high-risk AI systems comply with cybersecurity requirements set out in Article 15 of the Regulation?",
+                        "5. Can you explain the process of publishing references of certified high-risk AI systems in the Official Journal of the European Union?",
+                        "6. How do you ensure that the cybersecurity certificate or statement of conformity covers all relevant requirements for high-risk AI systems?",
+                        "7. What measures do you take to verify compliance with the cybersecurity requirements for high-risk AI systems?"
+                    ]
+                },
+                {
+                    "article": "Article 43: Conformity Assessment",
+                    "url": "https://artificialintelligenceact.eu/article/43/",
+                    "competency_questions": [
+                        "1. Can you explain the different conformity assessment procedures that providers of high-risk AI systems must follow, as outlined in the Act?",
+                        "2. How do providers determine which conformity assessment procedure to follow for high-risk AI systems listed in Annex III?",
+                        "3. What role do harmonised standards and common specifications play in the conformity assessment process for high-risk AI systems?",
+                        "4. How does the involvement of a notified body impact the conformity assessment procedure for high-risk AI systems?",
+                        "5. What obligations do providers have in terms of conformity assessment for high-risk AI systems covered by Union harmonisation legislation listed in Section A of Annex I?",
+                        "6. When is a new conformity assessment procedure required for high-risk AI systems, and what constitutes a substantial modification?",
+                        "7. How does the Commission's power to adopt delegated acts impact the development and updating of Annexes VI and VII in relation to high-risk AI systems?",
+                        "8. How might the Commission's ability to adopt delegated acts impact the conformity assessment procedures for high-risk AI systems listed in points 2 to 8 of Annex III?"
+                    ]
+                },
+                {
+                    "article": "Article 44: Certificates",
+                    "url": "https://artificialintelligenceact.eu/article/44/",
+                    "competency_questions": [
+                        "1. Can you explain the requirements for certificates issued by notified bodies for AI systems covered by Annex I and Annex III?",
+                        "2. How do certificates for AI systems differ in validity period based on the categories outlined in Annex I and Annex III?",
+                        "3. What is the process for extending the validity of a certificate for AI systems covered by Annex I and Annex III?",
+                        "4. How does a notified body handle a situation where an AI system no longer meets the requirements set out in Section 2?",
+                        "5. What actions can a notified body take if an AI system fails to comply with the requirements outlined in Section 2?",
+                        "6. Can you describe the appeal procedure available against decisions of notified bodies, including on conformity certificates issued?"
+                    ]
+                },
+                {
+                    "article": "Article 45: Information Obligations of Notified Bodies",
+                    "url": "https://artificialintelligenceact.eu/article/45/",
+                    "competency_questions": [
+                        "1. Can you provide examples of Union technical documentation assessment certificates and quality management system approvals issued in accordance with Annex VII?",
+                        "2. How do you handle refusals, restrictions, suspensions, or withdrawals of Union technical documentation assessment certificates or quality management system approvals?",
+                        "3. How do you ensure that the scope of notification is accurately communicated to the notifying authority?",
+                        "4. How do you respond to requests for information from market surveillance authorities regarding conformity assessment activities?",
+                        "5. Can you describe the conformity assessment activities you perform within the scope of your notification, including any cross-border activities or subcontracting?",
+                        "6. How do you communicate quality management system approvals that have been refused, suspended, or withdrawn to other notified bodies?",
+                        "7. How do you handle refusals, withdrawals, suspensions, or restrictions of Union technical documentation assessment certificates or supplements?",
+                        "8. How do you share relevant information on negative and positive conformity assessment results with other notified bodies?",
+                        "9. How do you ensure the confidentiality of the information you obtain in accordance with Article 78?"
+                    ]
+                },
+                {
+                    "article": "Article 46: Derogation from Conformity Assessment Procedure",
+                    "url": "https://artificialintelligenceact.eu/article/46/",
+                    "competency_questions": [
+                        "1. Can you explain the process for requesting authorization for placing high-risk AI systems on the market for exceptional reasons of public security or protection of life and health?",
+                        "2. How would you handle a situation of urgency where law-enforcement authorities need to put a specific high-risk AI system into service without prior authorization?",
+                        "3. What criteria must a high-risk AI system meet in order to receive authorization from the market surveillance authority?",
+                        "4. How does the market surveillance authority inform the Commission and other Member States about authorizations issued for high-risk AI systems?",
+                        "5. What is the process for addressing objections raised by Member States or the Commission regarding authorizations issued for high-risk AI systems?",
+                        "6. How does the Commission handle situations where it considers an authorization for a high-risk AI system to be unjustified?",
+                        "7. Can you explain the specific derogations from conformity assessment for high-risk AI systems related to products covered by Union harmonization legislation listed in Section A of Annex I?"
+                    ]
+                },
+                {
+                    "article": "Article 47: EU Declaration of Conformity",
+                    "url": "https://artificialintelligenceact.eu/article/47/",
+                    "competency_questions": [
+                        "1. Can you describe the process for drawing up a written EU declaration of conformity for a high-risk AI system?",
+                        "2. How do you ensure that the EU declaration of conformity contains all the necessary information as outlined in Annex V?",
+                        "3. What steps do you take to keep the EU declaration of conformity up-to-date and in compliance with Section 2 requirements?",
+                        "4. How do you handle situations where a high-risk AI system is subject to multiple Union harmonisation legislations requiring a single EU declaration of conformity?",
+                        "5. How do you ensure that the EU declaration of conformity is easily understood by the national competent authorities of the Member States where the high-risk AI system is placed on the market or made available?"
+                    ]
+                },
+                {
+                    "article": "Article 48: CE Marking",
+                    "url": "https://artificialintelligenceact.eu/article/48/",
+                    "competency_questions": [
+                        "1. Can you explain the general principles set out in Article 30 of Regulation (EC) No 765/2008 in relation to the CE marking for AI systems?",
+                        "2. How would you ensure that a digital CE marking for high-risk AI systems can be easily accessed via the interface from which the system is accessed?",
+                        "3. What are the requirements for affixing the CE marking visibly, legibly, and indelibly for high-risk AI systems?",
+                        "4. How would you ensure that the identification number of the notified body responsible for conformity assessment procedures is affixed correctly to high-risk AI systems?",
+                        "5. Can you explain how the CE marking should be indicated for high-risk AI systems subject to other Union laws that also require the marking?"
+                    ]
+                },
+                {
+                    "article": "Article 49: Registration",
+                    "url": "https://artificialintelligenceact.eu/article/49/",
+                    "competency_questions": [
+                        "1. Can you explain the process for registering a high-risk AI system listed in Annex III in the EU database as outlined in Article 71?",
+                        "2. How would you differentiate between a high-risk AI system and a non-high-risk AI system according to Article 6(3) for registration purposes?",
+                        "3. What are the specific requirements for deployers who are public authorities or acting on behalf of public authorities when registering a high-risk AI system in the EU database?",
+                        "4. How would you ensure that the registration of high-risk AI systems in the areas of law enforcement, migration, asylum, and border control management is done securely in the non-public section of the EU database as specified in Article 71?",
+                        "5. Can you outline the information that needs to be included in the registration of high-risk AI systems referred to in point 2 of Annex III at the national level?"
+                    ]
+                }
+            ]
+        },
+        {
+            "chapter": "Chapter IV: Transparency Obligations for Providers and Deployers of Certain AI Systems",
+            "list_article_cqs": [
+                {
+                    "article": "Article 50: Transparency Obligations for Providers and Deployers of Certain AI Systems",
+                    "url": "https://artificialintelligenceact.eu/article/50/",
+                    "competency_questions": [
+                        "1. How can providers ensure that natural persons interacting with AI systems are informed that they are interacting with an AI system, as required by the Act?",
+                        "2. What technical solutions can providers implement to mark the outputs of AI systems generating synthetic content in a machine-readable format, as mandated by the Act?",
+                        "3. How should deployers inform natural persons exposed to emotion recognition or biometric categorisation systems about the operation of the system, in compliance with the Act?",
+                        "4. What measures can deployers take to disclose that image, audio, or video content generated by an AI system is a deep fake, as required by the Act?",
+                        "5. In what manner should information be provided to natural persons at the time of the first interaction or exposure with an AI system, as specified in the Act?",
+                        "6. How can the AI Office encourage and facilitate the drawing up of codes of practice at the Union level to ensure effective implementation of obligations regarding the detection and labeling of artificially generated or manipulated content, as outlined in the Act?"
+                    ]
+                }
+            ]
+        },
+        {
+            "chapter": "Chapter V: General-Purpose AI Models",
+            "list_article_cqs": [
+                {
+                    "article": "Article 51: Classification of General-Purpose AI Models as General-Purpose AI Models with Systemic Risk",
+                    "url": "https://artificialintelligenceact.eu/article/51/",
+                    "competency_questions": [
+                        "1. Can you provide examples of high impact capabilities of a general-purpose AI model that would classify it as a general-purpose AI model with systemic risk?",
+                        "2. How would you evaluate the impact capabilities of a general-purpose AI model using appropriate technical tools and methodologies?",
+                        "3. What criteria would you consider when determining if a general-purpose AI model has capabilities or an impact equivalent to those with high impact capabilities?",
+                        "4. How would you calculate the cumulative amount of computation used for training a general-purpose AI model to determine if it meets the threshold for high impact capabilities?",
+                        "5. How would you propose amending the thresholds listed in paragraphs 1 and 2 of the Act to reflect evolving technological developments in AI systems?",
+                        "6. Can you explain the process for supplementing benchmarks and indicators in the Act in light of technological advancements in AI systems?",
+                        "7. How would you ensure that the thresholds for high impact capabilities in AI systems accurately reflect the state of the art in the field?"
+                    ]
+                },
+                {
+                    "article": "Article 52: Procedure",
+                    "url": "https://artificialintelligenceact.eu/article/52/",
+                    "competency_questions": [
+                        "1. Can you explain the process for notifying the Commission when a general-purpose AI model meets the conditions outlined in Article 51(1), point (a)?",
+                        "2. How would you present sufficiently substantiated arguments to demonstrate that a general-purpose AI model, despite meeting the requirements, does not present systemic risks?",
+                        "3. What steps would you take if the Commission concludes that your arguments are not sufficiently substantiated and the general-purpose AI model is considered to have systemic risks?",
+                        "4. How can the Commission designate a general-purpose AI model as presenting systemic risks, either ex officio or following a qualified alert from the scientific panel?",
+                        "5. What criteria are set out in Annex XIII for designating a general-purpose AI model as presenting systemic risks, and how can these criteria be updated?",
+                        "6. What is the process for requesting a reassessment of a general-purpose AI model that has been designated as having systemic risks, and what information should be included in the request?",
+                        "7. How does the Commission ensure that the list of general-purpose AI models with systemic risk is published and kept up to date while protecting intellectual property rights and confidential business information?"
+                    ]
+                },
+                {
+                    "article": "Article 53: Obligations for Providers of General-Purpose AI Models",
+                    "url": "https://artificialintelligenceact.eu/article/53/",
+                    "competency_questions": [
+                        "1. Can you describe the process for drawing up and keeping up-to-date the technical documentation of a general-purpose AI model, including its training and testing process and the results of its evaluation?",
+                        "2. How do you ensure that the information and documentation provided to providers of AI systems who intend to integrate the general-purpose AI model into their AI systems enable them to have a good understanding of the capabilities and limitations of the model?",
+                        "3. What measures do you have in place to comply with Union law on copyright and related rights, particularly in identifying and complying with a reservation of rights expressed pursuant to Directive (EU) 2019/790?",
+                        "4. How do you ensure that a sufficiently detailed summary about the content used for training of the general-purpose AI model is drawn up and made publicly available according to the template provided by the AI Office?",
+                        "5. Can you explain how providers of general-purpose AI models can demonstrate compliance with the obligations set out in paragraph 1 of this Article through codes of practice until a harmonised standard is published?",
+                        "6. How do you cooperate with the Commission and national competent authorities in the exercise of their competences and powers pursuant to this Regulation as a provider of general-purpose AI models?",
+                        "7. How do you ensure that any information or documentation obtained pursuant to this Article, including trade secrets, is treated in accordance with the confidentiality obligations set out in Article 78?"
+                    ]
+                },
+                {
+                    "article": "Article 54: Authorised Representatives of Providers of General-Purpose AI Models",
+                    "url": "https://artificialintelligenceact.eu/article/54/",
+                    "competency_questions": [
+                        "1. Can you describe the tasks that the authorised representative appointed by providers established in third countries must perform according to the Regulation?",
+                        "2. How long is the authorised representative required to keep a copy of the technical documentation specified in Annex XI at the disposal of the AI Office and national competent authorities?",
+                        "3. What information and documentation must the authorised representative provide to the AI Office upon a reasoned request to demonstrate compliance with the obligations in this Chapter?",
+                        "4. In what circumstances can the authorised representative terminate the mandate with the provider and what actions must they take in such a situation?",
+                        "5. Under what conditions does the obligation for providers of general-purpose AI models to appoint an authorised representative not apply according to the Regulation?"
+                    ]
+                },
+                {
+                    "article": "Article 55: Obligations for Providers of General-Purpose AI Models with Systemic Risk",
+                    "url": "https://artificialintelligenceact.eu/article/55/",
+                    "competency_questions": [
+                        "1. Can you describe the standardized protocols and tools you use for model evaluation of general-purpose AI models with systemic risk?",
+                        "2. How do you conduct and document adversarial testing of the model to identify and mitigate systemic risks?",
+                        "3. How do you assess and mitigate possible systemic risks at the Union level that may stem from the development, placing on the market, or use of general-purpose AI models with systemic risk?",
+                        "4. How do you keep track of, document, and report relevant information about serious incidents and possible corrective measures to the AI Office and national competent authorities?",
+                        "5. How do you ensure an adequate level of cybersecurity protection for the general-purpose AI model with systemic risk and its physical infrastructure?",
+                        "6. How do you demonstrate compliance with the obligations set out in paragraph 1 of this Article using codes of practice or European harmonized standards?",
+                        "7. How do you handle information or documentation obtained pursuant to this Article, including trade secrets, in accordance with confidentiality obligations set out in Article 78?"
+                    ]
+                },
+                {
+                    "article": "Article 56: Codes of Practice",
+                    "url": "https://artificialintelligenceact.eu/article/56/",
+                    "competency_questions": [
+                        "1. Can you explain the main elements of the Act related to AI system categories, prohibited practices, high-risk systems, core actors (providers, deployers, authorities), and major obligations?",
+                        "2. How would you ensure that the information required in Article 53 is kept up to date in light of market and technological developments?",
+                        "3. What measures would you propose for the assessment and management of systemic risks at Union level, taking into consideration severity, probability, and specific challenges along the AI value chain?",
+                        "4. How would you involve providers of general-purpose AI models and national competent authorities in the drawing-up of codes of practice?",
+                        "5. Can you outline the specific objectives and commitments that should be included in the codes of practice to ensure proper application of the Regulation?",
+                        "6. How would you monitor and evaluate the achievement of objectives in the codes of practice by participants and their contribution to the Regulation?",
+                        "7. What criteria would you use to approve a code of practice and give it general validity within the Union?",
+                        "8. How would you encourage providers of general-purpose AI models to adhere to the codes of practice, especially in light of emerging standards?",
+                        "9. How would you ensure that codes of practice are finalized by the deadline and what steps would you take if a code cannot be finalized or is deemed inadequate?"
+                    ]
+                }
+            ]
+        },
+        {
+            "chapter": "Chapter VI:\nMeasures in Support of Innovation",
+            "list_article_cqs": [
+                {
+                    "article": "Article 57: AI Regulatory Sandboxes",
+                    "url": "https://artificialintelligenceact.eu/article/57/",
+                    "competency_questions": [
+                        "1. How can the establishment of AI regulatory sandboxes contribute to improving legal certainty for achieving regulatory compliance with the Regulation and other applicable Union and national laws?",
+                        "2. What measures can be taken within AI regulatory sandboxes to support the sharing of best practices through cooperation with relevant authorities?",
+                        "3. In what ways can AI regulatory sandboxes foster innovation and competitiveness while facilitating the development of an AI ecosystem?",
+                        "4. How can AI regulatory sandboxes contribute to evidence-based regulatory learning and accelerate access to the Union market for AI systems, particularly those provided by SMEs and start-ups?",
+                        "5. How should national competent authorities ensure the involvement of national data protection authorities and other relevant authorities in the operation and supervision of AI regulatory sandboxes, especially when personal data processing is involved?",
+                        "6. What actions should national competent authorities take in response to significant risks to health and safety and fundamental rights identified during the development and testing of AI systems within the sandbox?",
+                        "7. How can providers and prospective providers participating in AI regulatory sandboxes remain liable under applicable Union and national liability law while avoiding administrative fines for infringements of the Regulation?",
+                        "8. What strategies can be implemented within AI regulatory sandboxes to facilitate cross-border cooperation between national competent authorities and ensure coordination and cooperation within the framework of the Board?",
+                        "9. How should national competent authorities report on the progress and results of AI regulatory sandboxes, including best practices, incidents, lessons learned, and recommendations for setup and application of the Regulation and other supervised Union laws?",
+                        "10. What role should the Commission play in developing a single and dedicated interface for stakeholders to interact with AI regulatory sandboxes, seek nonbinding guidance, and coordinate with national competent authorities?"
+                    ]
+                },
+                {
+                    "article": "Article 58: Detailed Arrangements for, and Functioning of, AI Regulatory Sandboxes",
+                    "url": "https://artificialintelligenceact.eu/article/58/",
+                    "competency_questions": [
+                        "1. Can you explain the eligibility and selection criteria for participation in the AI regulatory sandbox as outlined in the implementing acts?",
+                        "2. How do the implementing acts ensure broad and equal access to AI regulatory sandboxes for providers and prospective providers?",
+                        "3. What are the detailed arrangements for, and conditions concerning AI regulatory sandboxes to support flexibility for national competent authorities?",
+                        "4. How does the AI regulatory sandbox facilitate compliance with conformity assessment obligations under the Regulation and the voluntary application of codes of conduct?",
+                        "5. How are other relevant actors within the AI ecosystem involved in the AI regulatory sandbox according to the implementing acts?",
+                        "6. Can you describe the procedures, processes, and administrative requirements for application, selection, participation, and exiting the AI regulatory sandbox as outlined in the implementing acts?",
+                        "7. How is participation in the AI regulatory sandbox limited to an appropriate period according to the complexity and scale of the project?",
+                        "8. How do AI regulatory sandboxes facilitate the development of tools and infrastructure for testing, benchmarking, assessing, and explaining dimensions of AI systems relevant for regulatory learning?",
+                        "9. How are prospective providers, especially SMEs and start-ups, directed to pre-deployment services and other value-adding services within the AI regulatory sandbox?",
+                        "10. How do national competent authorities ensure appropriate safeguards for testing in real-world conditions supervised within the framework of an AI regulatory sandbox, in order to protect fundamental rights, health, and safety?"
+                    ]
+                },
+                {
+                    "article": "Article 59: Further Processing of Personal Data for Developing Certain AI Systems in the Public Interest in the AI Regulatory Sandbox",
+                    "url": "https://artificialintelligenceact.eu/article/59/",
+                    "competency_questions": [
+                        "1. Can you provide examples of AI systems that would fall under the categories outlined in the Act for safeguarding substantial public interest?",
+                        "2. How would you ensure that the data processed in the AI regulatory sandbox is necessary for complying with the requirements outlined in Chapter III, Section 2 of the Act?",
+                        "3. What effective monitoring mechanisms would you implement to identify and mitigate any high risks to the rights and freedoms of data subjects during sandbox experimentation?",
+                        "4. How would you ensure that any personal data processed in the sandbox is kept in a functionally separate, isolated, and protected data processing environment?",
+                        "5. Can you explain how you would ensure that any personal data created in the sandbox is not shared outside the sandbox in accordance with Union data protection law?",
+                        "6. How would you guarantee that any processing of personal data in the sandbox does not lead to measures or decisions affecting data subjects or their rights under Union law on the protection of personal data?",
+                        "7. What technical and organisational measures would you implement to protect personal data processed in the sandbox and ensure its deletion once participation in the sandbox has terminated?",
+                        "8. How would you ensure that logs of the processing of personal data in the sandbox are kept for the duration of participation, as required by the Act?",
+                        "9. Can you describe the process and rationale behind the training, testing, and validation of an AI system as outlined in Annex IV of the Act?",
+                        "10. How would you ensure that a short summary of the AI project developed in the sandbox, its objectives, and expected results is published on the website of the competent authorities while protecting sensitive operational data?"
+                    ]
+                },
+                {
+                    "article": "Article 60: Testing of High-Risk AI Systems in Real World Conditions Outside AI Regulatory Sandboxes",
+                    "url": "https://artificialintelligenceact.eu/article/60/",
+                    "competency_questions": [
+                        "1. Can you describe the detailed elements of a real-world testing plan for high-risk AI systems as specified by the Commission?",
+                        "2. How do providers or prospective providers ensure that testing of high-risk AI systems in real world conditions complies with ethical reviews required by Union or national law?",
+                        "3. What conditions must be met by providers or prospective providers before conducting testing of high-risk AI systems in real world conditions?",
+                        "4. How do providers or prospective providers ensure that data collected and processed during testing in real world conditions is transferred to third countries with appropriate safeguards under Union law?",
+                        "5. How do providers or prospective providers protect vulnerable groups during testing in real world conditions, particularly those belonging to vulnerable groups due to age or disability?",
+                        "6. Can you explain the process for obtaining informed consent from subjects of testing in real world conditions, as outlined in Article 61?",
+                        "7. How do providers or prospective providers ensure that predictions, recommendations, or decisions of the AI system can be effectively reversed and disregarded during testing in real world conditions?",
+                        "8. What measures are in place for reporting and addressing serious incidents identified during testing in real world conditions, as required by Article 73?",
+                        "9. How do providers or prospective providers ensure compliance with applicable Union and national liability laws for any damage caused during testing in real world conditions?"
+                    ]
+                },
+                {
+                    "article": "Article 61: Informed Consent to Participate in Testing in Real World Conditions Outside AI Regulatory Sandboxes",
+                    "url": "https://artificialintelligenceact.eu/article/61/",
+                    "competency_questions": [
+                        "1. Can you explain the main elements of the Act related to AI system categories as outlined in Article 60?",
+                        "2. How would you ensure that freely-given informed consent is obtained from subjects of testing prior to their participation in real world conditions testing?",
+                        "3. How would you inform subjects of testing about the nature and objectives of the testing, as well as any possible inconveniences they may experience?",
+                        "4. How would you ensure that subjects of testing are aware of their rights, including the right to refuse participation or withdraw at any time without detriment?",
+                        "5. How would you handle requests for the reversal or disregarding of predictions, recommendations, or decisions made by the AI system during testing?",
+                        "6. Can you explain the importance of providing subjects of testing with the Union-wide unique single identification number of the testing in real world conditions?",
+                        "7. How would you document and provide a copy of the informed consent to subjects of testing or their legal representative?"
+                    ]
+                },
+                {
+                    "article": "Article 62: Measures for Providers and Deployers, in Particular SMEs, Including Start-Ups",
+                    "url": "https://artificialintelligenceact.eu/article/62/",
+                    "competency_questions": [
+                        "1. Can you provide examples of how you have prioritized SMEs, including start-ups, in accessing AI regulatory sandboxes in the past?",
+                        "2. How have you tailored awareness raising and training activities on AI regulations to meet the specific needs of SMEs, including start-ups?",
+                        "3. How have you utilized existing communication channels and established new ones to provide advice and respond to queries from SMEs, deployers, and local public authorities regarding AI regulations?",
+                        "4. Can you give examples of how you have facilitated the participation of SMEs and other stakeholders in the standardization development process related to AI systems?",
+                        "5. How have you taken into account the specific interests and needs of SME providers, including start-ups, when setting fees for conformity assessment under Article 43?",
+                        "6. How have you provided standardized templates for areas covered by AI regulations and maintained a single information platform for operators across the Union?",
+                        "7. Can you provide examples of communication campaigns you have organized to raise awareness about the obligations arising from AI regulations?",
+                        "8. How have you evaluated and promoted the convergence of best practices in public procurement procedures related to AI systems?"
+                    ]
+                },
+                {
+                    "article": "Article 63: Derogations for Specific Operators",
+                    "url": "https://artificialintelligenceact.eu/article/63/",
+                    "competency_questions": [
+                        "1. Can you explain the main elements of the quality management system required by Article 17 of the Regulation?",
+                        "2. How would you ensure that microenterprises comply with the quality management system in a simplified manner, considering the needs of microenterprises?",
+                        "3. How do you define partner enterprises or linked enterprises within the meaning of Recommendation 2003/361/EC?",
+                        "4. How would you develop guidelines on the elements of the quality management system that may be complied with in a simplified manner for microenterprises?",
+                        "5. How do you ensure that the level of protection is not affected while allowing microenterprises to comply with the quality management system in a simplified manner?",
+                        "6. Can you explain how Paragraph 1 of this Article does not exempt operators from fulfilling other requirements or obligations laid down in the Regulation?",
+                        "7. How would you ensure that operators fulfill all requirements and obligations established in Articles 9, 10, 11, 12, 13, 14, 15, 72, and 73 of the Regulation?"
+                    ]
+                }
+            ]
+        },
+        {
+            "chapter": "Chapter VII:\nGovernance",
+            "list_article_cqs": [
+                {
+                    "article": "Article 64: AI Office",
+                    "url": "https://artificialintelligenceact.eu/article/64/",
+                    "competency_questions": [
+                        "1. Can you explain the different categories of AI systems as outlined in the regulation?",
+                        "2. How do you define prohibited practices in the context of AI systems?",
+                        "3. What are the characteristics of high-risk AI systems according to the regulation?",
+                        "4. Can you describe the roles and responsibilities of providers, deployers, and authorities in relation to AI systems?",
+                        "5. What are the major obligations that need to be fulfilled by the core actors in the AI ecosystem as per the regulation?"
+                    ]
+                },
+                {
+                    "article": "Article 65: Establishment and Structure of the European Artificial Intelligence Board",
+                    "url": "https://artificialintelligenceact.eu/article/65/",
+                    "competency_questions": [
+                        "1. Can you provide examples of different categories of AI systems that would fall under the scope of this regulation?",
+                        "2. How would you ensure that prohibited practices related to AI systems are effectively identified and addressed?",
+                        "3. What specific obligations do providers of AI systems have under this regulation, and how would you ensure compliance with these obligations?",
+                        "4. How would you facilitate consistency and coordination between national competent authorities in the implementation of this regulation as a designated representative on the Board?",
+                        "5. How would you ensure the objectivity and impartiality of the Board's activities in relation to AI systems?",
+                        "6. Can you explain the role of the standing sub-groups established by the Board in relation to market surveillance and notified bodies?",
+                        "7. How would you ensure that the Board operates in a transparent and efficient manner as the Chair of the Board?",
+                        "8. How would you collaborate with other national and Union authorities, bodies, or experts to address specific issues related to AI systems as a representative on the Board?"
+                    ]
+                },
+                {
+                    "article": "Article 66: Tasks of the Board",
+                    "url": "https://artificialintelligenceact.eu/article/66/",
+                    "competency_questions": [
+                        "1. How can the Board contribute to the coordination among national competent authorities responsible for the application of the Regulation?",
+                        "2. What methods can the Board use to collect and share technical and regulatory expertise and best practices among Member States?",
+                        "3. In what ways can the Board provide advice on the implementation of the Regulation, particularly in relation to the enforcement of rules on general-purpose AI models?",
+                        "4. How can the Board contribute to the harmonisation of administrative practices in the Member States, including in relation to derogation from conformity assessment procedures and the functioning of AI regulatory sandboxes?",
+                        "5. What recommendations and written opinions can the Board issue on relevant matters related to the implementation of the Regulation and its consistent and effective application?",
+                        "6. How can the Board support the Commission in promoting AI literacy, public awareness, and understanding of the benefits, risks, safeguards, and rights and obligations in relation to the use of AI systems?",
+                        "7. What role can the Board play in facilitating the development of common criteria and a shared understanding among market operators and competent authorities of the relevant concepts provided for in the Regulation?",
+                        "8. How can the Board cooperate with other Union institutions, bodies, offices, and agencies in fields such as product safety, cybersecurity, competition, and consumer protection?",
+                        "9. In what ways can the Board assist national competent authorities and the Commission in developing the organizational and technical expertise required for the implementation of the Regulation?",
+                        "10. How can the Board contribute to the development of guidance documents and provide relevant advice on international matters related to AI?"
+                    ]
+                },
+                {
+                    "article": "Article 67: Advisory Forum",
+                    "url": "https://artificialintelligenceact.eu/article/67/",
+                    "competency_questions": [
+                        "1. Can you provide examples of stakeholders that should be represented in the advisory forum for technical expertise on AI systems?",
+                        "2. How would you ensure a balanced selection of stakeholders, including industry, start-ups, SMEs, civil society, and academia, in the advisory forum?",
+                        "3. What criteria should be considered when appointing members to the advisory forum based on their expertise in the field of AI?",
+                        "4. How would you determine the term of office for members of the advisory forum and any possible extensions?",
+                        "5. What role should permanent members like the Fundamental Rights Agency, ENISA, CEN, CENELEC, and ETSI play in the advisory forum?",
+                        "6. How would you establish rules of procedure for the advisory forum and elect co-chairs based on set criteria?",
+                        "7. How often should the advisory forum hold meetings and what stakeholders should be invited to participate?",
+                        "8. In what circumstances should the advisory forum prepare opinions, recommendations, and written contributions for the Board or the Commission?",
+                        "9. When should standing or temporary sub-groups be established by the advisory forum to examine specific questions related to the objectives of the Regulation?",
+                        "10. How should the annual report on the advisory forum's activities be prepared and made publicly available?"
+                    ]
+                },
+                {
+                    "article": "Article 68: Scientific Panel of Independent Experts",
+                    "url": "https://artificialintelligenceact.eu/article/68/",
+                    "competency_questions": [
+                        "1. Can you provide examples of prohibited practices related to AI systems as outlined in the Act?",
+                        "2. How would you define high-risk systems according to the Act and what are the implications for providers and deployers?",
+                        "3. What are the major obligations of core actors such as providers, deployers, and authorities under the Act?",
+                        "4. How does the Act categorize AI systems and what are the specific requirements for each category?",
+                        "5. How does the Act ensure the independence and expertise of the scientific panel of experts supporting enforcement activities?",
+                        "6. What role does the scientific panel play in advising and supporting the AI Office in the implementation and enforcement of the Regulation?",
+                        "7. How does the Act ensure impartiality, objectivity, and confidentiality among the experts on the scientific panel?",
+                        "8. What measures are in place to prevent conflicts of interest among the members of the scientific panel?",
+                        "9. Can you explain the process for issuing alerts and requesting assistance from the AI Office as outlined in the implementing act?",
+                        "10. How does the Act ensure fair gender and geographical representation within the scientific panel of experts?"
+                    ]
+                },
+                {
+                    "article": "Article 69: Access to the Pool of Experts by the Member States",
+                    "url": "https://artificialintelligenceact.eu/article/69/",
+                    "competency_questions": [
+                        "1. How can experts of the scientific panel support Member States in enforcing the regulations outlined in this Act?",
+                        "2. What considerations should be taken into account when determining the structure and level of fees for expert advice and support provided to Member States?",
+                        "3. How can the Commission ensure timely access to experts for Member States, while also ensuring cost-effectiveness and effective access for all Member States?",
+                        "4. How can the combination of support activities from Union AI testing support and experts be efficiently organized to provide the best possible added value for Member States?",
+                        "5. What role do experts play in ensuring the adequate implementation of this Regulation and preventing prohibited practices in high-risk AI systems?",
+                        "6. How can the expertise of the scientific panel be utilized to support core actors such as providers, deployers, and authorities in complying with their obligations under this Act?"
+                    ]
+                },
+                {
+                    "article": "Article 70: Designation of National Competent Authorities and Single Point of Contact",
+                    "url": "https://artificialintelligenceact.eu/article/70/",
+                    "competency_questions": [
+                        "1. How does the establishment or designation of national competent authorities contribute to safeguarding the objectivity of activities and tasks related to the Regulation?",
+                        "2. What steps should Member States take to communicate the identity of notifying authorities and market surveillance authorities to the Commission?",
+                        "3. How can Member States ensure that national competent authorities have adequate technical, financial, and human resources to effectively fulfill their tasks under the Regulation?",
+                        "4. What measures should national competent authorities take to ensure an adequate level of cybersecurity when performing their tasks?",
+                        "5. How should national competent authorities handle confidentiality obligations when performing their tasks?",
+                        "6. What reporting requirements do Member States have regarding the financial and human resources of national competent authorities, and how often should these reports be submitted to the Commission?",
+                        "7. How can the Commission facilitate the exchange of experience between national competent authorities?",
+                        "8. In what ways can national competent authorities provide guidance and advice on the implementation of the Regulation, particularly to SMEs and start-ups?",
+                        "9. What role does the European Data Protection Supervisor play as the competent authority for the supervision of Union institutions, bodies, offices, or agencies under the Regulation?"
+                    ]
+                }
+            ]
+        },
+        {
+            "chapter": "Chapter VIII: EU Database for High-Risk AI Systems",
+            "list_article_cqs": [
+                {
+                    "article": "Article 71: EU Database for High-Risk AI Systems Listed in Annex III",
+                    "url": "https://artificialintelligenceact.eu/article/71/",
+                    "competency_questions": [
+                        "1. Can you explain the main categories of AI systems that are considered high-risk according to Article 6 of the regulation?",
+                        "2. What are the prohibited practices for AI systems as outlined in the regulation?",
+                        "3. Who are the core actors involved in the regulation, specifically providers, deployers, and authorities? Can you describe their roles and responsibilities?",
+                        "4. What are the major obligations for providers and deployers in terms of registering AI systems in the EU database?",
+                        "5. How does the regulation ensure that the information in the EU database is accessible and publicly available in a user-friendly and machine-readable format?",
+                        "6. How does the regulation address the handling of personal data in the EU database, particularly in relation to the names and contact details of responsible individuals representing providers and deployers?",
+                        "7. What measures does the Commission take to ensure compliance with accessibility requirements for the EU database and provide technical and administrative support to providers and deployers?"
+                    ]
+                }
+            ]
+        },
+        {
+            "chapter": "Chapter IX: Post-Market Monitoring, Information Sharing and Market Surveillance",
+            "list_article_cqs": [
+                {
+                    "article": "Article 72: Post-Market Monitoring by Providers and Post-Market Monitoring Plan for High-Risk AI Systems",
+                    "url": "https://artificialintelligenceact.eu/article/72/",
+                    "competency_questions": [
+                        "1. Can you describe how providers should establish and document a post-market monitoring system for AI technologies in compliance with the Act?",
+                        "2. How should the post-market monitoring system actively and systematically collect, document, and analyze relevant data on the performance of high-risk AI systems throughout their lifetime?",
+                        "3. What is the significance of the post-market monitoring plan in ensuring continuous compliance of AI systems with the requirements set out in Chapter III, Section 2 of the Act?",
+                        "4. How can providers integrate necessary elements into existing systems and plans under Union harmonization legislation to ensure consistency and minimize additional burdens?",
+                        "5. What role does the Commission play in adopting detailed provisions for the post-market monitoring plan and the list of elements to be included in the plan by the specified deadline?"
+                    ]
+                },
+                {
+                    "article": "Article 73: Reporting of Serious Incidents",
+                    "url": "https://artificialintelligenceact.eu/article/73/",
+                    "competency_questions": [
+                        "1. Can you explain the reporting obligations for providers of high-risk AI systems in the Union market in case of a serious incident?",
+                        "2. How soon should a provider report a serious incident to the market surveillance authorities after establishing a causal link between the AI system and the incident?",
+                        "3. What actions should a provider take following the reporting of a serious incident, according to the regulation?",
+                        "4. How should a provider cooperate with competent authorities and notified bodies during investigations into a serious incident involving an AI system?",
+                        "5. What measures should the market surveillance authority take within seven days of receiving a notification of a serious incident related to a high-risk AI system?",
+                        "6. How are notifications of serious incidents limited for high-risk AI systems covered by specific Union legislative instruments or safety regulations?",
+                        "7. What role do national competent authorities play in notifying the Commission of any serious incidents involving high-risk AI systems?"
+                    ]
+                },
+                {
+                    "article": "Article 74: Market Surveillance and Control of AI Systems in the Union Market",
+                    "url": "https://artificialintelligenceact.eu/article/74/",
+                    "competency_questions": [
+                        "1. Can you explain the main categories of AI systems covered by Regulation (EU) 2019/1020?",
+                        "2. What are the prohibited practices outlined in the Regulation?",
+                        "3. Who are the core actors involved in the implementation of the Regulation, such as providers, deployers, and authorities?",
+                        "4. What are the major obligations that providers of AI systems must adhere to under the Regulation?",
+                        "5. How do market surveillance authorities report annually to the Commission and relevant national competition authorities under the Regulation?",
+                        "6. How are high-risk AI systems related to products covered by Union harmonisation legislation monitored by market surveillance authorities?",
+                        "7. In what circumstances can Member States designate another relevant authority as a market surveillance authority for high-risk AI systems?",
+                        "8. How are market surveillance authorities empowered to ensure the effective enforcement of the Regulation, particularly in relation to financial institutions regulated by Union financial services law?",
+                        "9. How are market surveillance authorities designated for high-risk AI systems used for law enforcement purposes, border management, and justice and democracy?",
+                        "10. How do Member States facilitate coordination between market surveillance authorities and other relevant national authorities or bodies for the supervision of high-risk AI systems?",
+                        "11. Can you explain the joint activities and investigations proposed by market surveillance authorities and the Commission to promote compliance with the Regulation?",
+                        "12. How are market surveillance authorities granted access to documentation, training, validation, and testing data sets used for the development of high-risk AI systems?",
+                        "13. Under what conditions can market surveillance authorities access the source code of a high-risk AI system?",
+                        "14. How should information or documentation obtained by market surveillance authorities be treated in accordance with confidentiality obligations?"
+                    ]
+                },
+                {
+                    "article": "Article 75: Mutual Assistance, Market Surveillance and Control of General-Purpose AI Systems",
+                    "url": "https://artificialintelligenceact.eu/article/75/",
+                    "competency_questions": [
+                        "1. Can you explain the powers granted to the AI Office for monitoring and supervising compliance of AI systems under this Regulation?",
+                        "2. How do market surveillance authorities cooperate with the AI Office in carrying out compliance evaluations for general-purpose AI systems classified as high-risk?",
+                        "3. What steps can a market surveillance authority take if they are unable to access certain information related to a general-purpose AI model during an investigation of a high-risk AI system?",
+                        "4. How does the AI Office ensure timely access to relevant information for market surveillance authorities in order to establish compliance of high-risk AI systems?",
+                        "5. How do market surveillance authorities safeguard the confidentiality of information obtained during investigations in accordance with Article 78 of this Regulation?"
+                    ]
+                },
+                {
+                    "article": "Article 76: Supervision of Testing in Real World Conditions by Market Surveillance Authorities",
+                    "url": "https://artificialintelligenceact.eu/article/76/",
+                    "competency_questions": [
+                        "1. Can you explain the competences and powers that market surveillance authorities have in ensuring testing in real world conditions is in accordance with the Regulation?",
+                        "2. How do market surveillance authorities verify compliance with Article 60 when testing AI systems supervised within an AI regulatory sandbox?",
+                        "3. What actions can a market surveillance authority take if they have grounds to believe that the conditions set out in Articles 60 and 61 are not being met during testing in real world conditions?",
+                        "4. How should a market surveillance authority communicate the grounds for their decision to suspend or terminate testing in real world conditions to the provider or prospective provider?",
+                        "5. What steps should a market surveillance authority take if they issue an objection within the meaning of Article 60 (4), point (b) during testing in real world conditions?",
+                        "6. How should a market surveillance authority communicate the grounds for their decision to other Member States where the AI system has been tested in accordance with the testing plan?"
+                    ]
+                },
+                {
+                    "article": "Article 77: Powers of Authorities Protecting Fundamental Rights",
+                    "url": "https://artificialintelligenceact.eu/article/77/",
+                    "competency_questions": [
+                        "1. Can you provide examples of high-risk AI systems that fall under the categories outlined in Annex III of the regulation?",
+                        "2. How do you ensure that prohibited practices, as defined in the regulation, are not present in the AI systems you develop or deploy?",
+                        "3. What measures do you have in place to ensure compliance with the obligations set forth in the regulation, particularly in relation to fundamental rights and non-discrimination?",
+                        "4. How do you collaborate with national public authorities or bodies to provide them with necessary documentation in accessible language and format when requested?",
+                        "5. Can you explain the process by which you identify and notify the public authorities or bodies responsible for supervising the use of high-risk AI systems in your Member State?",
+                        "6. How do you handle requests from public authorities for testing of high-risk AI systems to ascertain compliance with fundamental rights obligations?",
+                        "7. How do you ensure that any information or documentation obtained by national public authorities is treated in accordance with the confidentiality obligations outlined in Article 78 of the regulation?"
+                    ]
+                },
+                {
+                    "article": "Article 78: Confidentiality",
+                    "url": "https://artificialintelligenceact.eu/article/78/",
+                    "competency_questions": [
+                        "1. Can you explain the main categories of AI systems outlined in the Regulation?",
+                        "2. How are prohibited practices defined within the Regulation, and what are some examples?",
+                        "3. What are the key obligations of providers, deployers, and authorities under this Regulation?",
+                        "4. How does the Regulation address high-risk AI systems, and what measures are in place to mitigate associated risks?",
+                        "5. How does the Regulation ensure the protection of intellectual property rights and confidential business information?",
+                        "6. Can you discuss the role of market surveillance authorities and notified bodies in enforcing the Regulation?",
+                        "7. How does the Regulation address public and national security interests in relation to AI systems?",
+                        "8. What cybersecurity measures are required to protect the security and confidentiality of information and data obtained under the Regulation?",
+                        "9. How does the Regulation govern the exchange of information between national competent authorities and the Commission?",
+                        "10. How do the provisions of the Regulation impact cross-border cooperation and the exchange of information with regulatory authorities of third countries?"
+                    ]
+                },
+                {
+                    "article": "Article 79: Procedure at National Level for Dealing with AI Systems Presenting a Risk",
+                    "url": "https://artificialintelligenceact.eu/article/79/",
+                    "competency_questions": [
+                        "1. Can you explain the main elements of the Act in relation to AI system categories?",
+                        "2. How would you define prohibited practices within the context of AI systems?",
+                        "3. What are the key characteristics of high-risk systems as outlined in the Act?",
+                        "4. Can you identify the core actors involved in the regulation of AI systems, such as providers, deployers, and authorities?",
+                        "5. What major obligations are imposed on operators of AI systems under the Act?",
+                        "6. How does the Act address risks to vulnerable groups posed by AI systems?",
+                        "7. What steps should be taken by market surveillance authorities when non-compliance with the Act is identified?",
+                        "8. How does the Act ensure cooperation between national public authorities and market surveillance authorities in cases of non-compliance?",
+                        "9. What measures can market surveillance authorities take to prohibit or restrict the availability of non-compliant AI systems on the market?",
+                        "10. How does the Act address disagreements between market surveillance authorities regarding non-compliance measures?"
+                    ]
+                },
+                {
+                    "article": "Article 80: Procedure for Dealing with AI Systems Classified by the Provider as Non-High-Risk in Application of Annex III",
+                    "url": "https://artificialintelligenceact.eu/article/80/",
+                    "competency_questions": [
+                        "1. Can you explain the conditions set out in Article 6(3) that determine whether an AI system is classified as high-risk or non-high-risk?",
+                        "2. How would you ensure that an AI system found to be high-risk is brought into compliance with the requirements and obligations laid down in the Regulation?",
+                        "3. What steps would you take if a market surveillance authority determines that an AI system is not restricted to national territory?",
+                        "4. How would you ensure that all necessary actions are taken to bring an AI system into compliance with the Regulation if the provider fails to do so within the prescribed period?",
+                        "5. What measures would you put in place to ensure that appropriate corrective action is taken for all AI systems made available on the Union market?",
+                        "6. How would you handle a situation where a provider does not take adequate corrective action within the prescribed period?",
+                        "7. How would you address a scenario where an AI system was misclassified by the provider to circumvent requirements in Chapter III, Section 2?",
+                        "8. How would you utilize the EU database referred to in Article 71 to monitor the application of the Regulation?"
+                    ]
+                },
+                {
+                    "article": "Article 81: Union Safeguard Procedure",
+                    "url": "https://artificialintelligenceact.eu/article/81/",
+                    "competency_questions": [
+                        "1. Can you provide examples of AI system categories that are prohibited under Article 5 of the Act?",
+                        "2. How would you handle objections raised by a market surveillance authority of a Member State to a national measure related to AI practices?",
+                        "3. What are the major obligations of core actors such as providers, deployers, and authorities under the Act?",
+                        "4. How would you evaluate a national measure related to AI practices within the specified timeframes outlined in the Act?",
+                        "5. What steps would you take if the Commission considers a national measure to be unjustified in relation to an AI system?",
+                        "6. How would you ensure appropriate restrictive measures are taken in respect of an AI system that is deemed to be non-compliant with the Act?",
+                        "7. Can you explain the procedure that the Commission would follow if the non-compliance of an AI system is attributed to shortcomings in harmonised standards or common specifications?"
+                    ]
+                },
+                {
+                    "article": "Article 82: Compliant AI Systems Which Present a Risk",
+                    "url": "https://artificialintelligenceact.eu/article/82/",
+                    "competency_questions": [
+                        "1. Can you provide examples of high-risk AI systems that may present a risk to the health or safety of persons, fundamental rights, or other aspects of public interest protection?",
+                        "2. How would you ensure that corrective action is taken in respect of all AI systems that have been made available on the Union market within the timeline prescribed by the market surveillance authority?",
+                        "3. What information would you include when informing the Commission and other Member States of a finding that a high-risk AI system presents a risk to health or safety, fundamental rights, or public interest protection?",
+                        "4. How would you enter into consultation with Member States and relevant operators to evaluate national measures taken in response to a high-risk AI system?",
+                        "5. Can you explain the process for communicating decisions on national measures to Member States and relevant operators, as well as informing other Member States?"
+                    ]
+                },
+                {
+                    "article": "Article 83: Formal Non-Compliance",
+                    "url": "https://artificialintelligenceact.eu/article/83/",
+                    "competency_questions": [
+                        "1. Can you explain the main categories of AI systems outlined in the Act?",
+                        "2. How does the Act define prohibited practices related to the CE marking and EU declaration of conformity?",
+                        "3. What are the obligations of providers in terms of affixing the CE marking and drawing up the EU declaration of conformity correctly?",
+                        "4. How does the Act address the issue of registration in the EU database and the appointment of an authorised representative?",
+                        "5. What measures can the market surveillance authority take if non-compliance with the Act persists, particularly in relation to high-risk AI systems?",
+                        "6. How does the Act define the core actors involved, such as providers, deployers, and authorities, and what are their respective roles and responsibilities?",
+                        "7. Can you outline the major obligations imposed on providers, deployers, and authorities under the Act in relation to AI systems?"
+                    ]
+                },
+                {
+                    "article": "Article 84: Union AI Testing Support Structures",
+                    "url": "https://artificialintelligenceact.eu/article/84/",
+                    "competency_questions": [
+                        "1. Can you provide examples of prohibited practices under Regulation (EU) 2019/1020 in the area of AI?",
+                        "2. How would you categorize AI systems according to the Act?",
+                        "3. What are the major obligations imposed on providers, deployers, and authorities under the Act?",
+                        "4. How do Union AI testing support structures contribute to the implementation of the Act?",
+                        "5. Can you explain the role of market surveillance authorities in ensuring compliance with the Act?"
+                    ]
+                },
+                {
+                    "article": "Article 85: Right to Lodge a Complaint with a Market Surveillance Authority",
+                    "url": "https://artificialintelligenceact.eu/article/85/",
+                    "competency_questions": [
+                        "1. Can you explain the different categories of AI systems covered under the Regulation?",
+                        "2. How are prohibited practices defined within the Regulation?",
+                        "3. What are the key obligations for providers of AI systems outlined in the Regulation?",
+                        "4. How are high-risk systems identified and regulated under the Regulation?",
+                        "5. What are the roles and responsibilities of deployers of AI systems as per the Regulation?",
+                        "6. How do authorities enforce compliance with the Regulation among AI system providers and deployers?",
+                        "7. Can you describe the dedicated procedures established by market surveillance authorities for handling complaints related to AI system infringements?",
+                        "8. How do market surveillance activities take complaints into account when assessing compliance with the Regulation?",
+                        "9. What are the potential consequences for AI system providers found to be in violation of the Regulation?",
+                        "10. How does the Regulation aim to protect individuals and organizations from potential harm caused by AI systems?"
+                    ]
+                },
+                {
+                    "article": "Article 86: Right to Explanation of Individual Decision-Making",
+                    "url": "https://artificialintelligenceact.eu/article/86/",
+                    "competency_questions": [
+                        "1. Can you explain the main elements of the Act related to AI system categories?",
+                        "2. How do you interpret the prohibited practices outlined in the Act?",
+                        "3. What are the key characteristics of high-risk systems as defined in the Act?",
+                        "4. How would you describe the core actors involved in the deployment of AI systems according to the Act?",
+                        "5. What are the major obligations imposed on providers, deployers, and authorities under the Act?",
+                        "6. Can you provide examples of situations where an affected person may seek explanations from the deployer regarding a decision made by a high-risk AI system?",
+                        "7. How does the Act address the rights of individuals impacted by decisions made by AI systems in terms of health, safety, and fundamental rights?",
+                        "8. How does Union or national law influence the application of the Act in relation to the use of AI systems?",
+                        "9. In what circumstances would the right to obtain explanations from the deployer not be covered by the Act but by other provisions of Union law?",
+                        "10. How do you ensure compliance with the obligations outlined in the Act when deploying AI systems in high-risk scenarios?"
+                    ]
+                },
+                {
+                    "article": "Article 87: Reporting of Infringements and Protection of Reporting Persons",
+                    "url": "https://artificialintelligenceact.eu/article/87/",
+                    "competency_questions": [
+                        "1. Can you explain the different categories of AI systems as outlined in Directive (EU) 2019/1937?",
+                        "2. How would you define prohibited practices in the context of AI systems according to the Directive?",
+                        "3. What are some examples of high-risk systems that fall under the scope of the Directive?",
+                        "4. Can you identify the core actors involved in the deployment and regulation of AI systems as specified in the Directive?",
+                        "5. What are the major obligations that providers of AI systems must adhere to under Directive (EU) 2019/1937?",
+                        "6. How does the Directive address the reporting of infringements and the protection of whistleblowers in relation to AI systems?"
+                    ]
+                },
+                {
+                    "article": "Article 88: Enforcement of the Obligations of Providers of General-Purpose AI Models",
+                    "url": "https://artificialintelligenceact.eu/article/88/",
+                    "competency_questions": [
+                        "1. Can you explain the exclusive powers of the Commission in supervising and enforcing Chapter V of the Act?",
+                        "2. How does the Commission entrust the implementation of tasks related to AI systems to the AI Office?",
+                        "3. What procedural guarantees are considered under Article 94 in the enforcement of Chapter V?",
+                        "4. How do market surveillance authorities interact with the Commission in requesting the exercise of powers under this Section?",
+                        "5. Can you outline the division of competences between Member States and the Union based on the Treaties in relation to the Act?",
+                        "6. What are the major obligations of providers, deployers, and authorities under the Act?",
+                        "7. How are prohibited practices related to AI systems categorized in the Act?",
+                        "8. What are the high-risk systems identified in the Act and how are they regulated?",
+                        "9. How do core actors such as providers, deployers, and authorities collaborate in ensuring compliance with the Act?",
+                        "10. Can you explain the role of the Commission in assisting market surveillance authorities in fulfilling their tasks under the Regulation?"
+                    ]
+                },
+                {
+                    "article": "Article 89 : Monitoring Actions",
+                    "url": "https://artificialintelligenceact.eu/article/89/",
+                    "competency_questions": [
+                        "1. Can you describe the main categories of AI systems covered by this Regulation?",
+                        "2. How do providers of general-purpose AI models demonstrate adherence to approved codes of practice?",
+                        "3. What are the prohibited practices outlined in this Regulation for AI systems?",
+                        "4. How can downstream providers lodge a complaint alleging an infringement of this Regulation?",
+                        "5. What information must be included in a complaint filed by a downstream provider?",
+                        "6. What are the major obligations of providers, deployers, and authorities under this Regulation?",
+                        "7. How does the AI Office monitor the effective implementation and compliance with this Regulation by providers of general-purpose AI models?"
+                    ]
+                },
+                {
+                    "article": "Article 90: Alerts of Systemic Risks by the Scientific Panel",
+                    "url": "https://artificialintelligenceact.eu/article/90/",
+                    "competency_questions": [
+                        "1. Can you provide an example of a situation where a general-purpose AI model poses a concrete identifiable risk at Union level?",
+                        "2. How would you handle a scenario where a general-purpose AI model meets the conditions referred to in Article 51?",
+                        "3. How would you inform the Board of any measure taken according to Articles 91 to 94 in response to a qualified alert?",
+                        "4. What steps would you take to ensure that a qualified alert is duly reasoned and includes all necessary information as outlined in the context?",
+                        "5. How would you assess the matter after receiving a qualified alert from the scientific panel?",
+                        "6. Can you explain the powers that the Commission may exercise through the AI Office in response to a qualified alert?",
+                        "7. How would you collaborate with the Board in handling a qualified alert related to a general-purpose AI model with systemic risk?",
+                        "8. How would you gather relevant information on your own initiative to address a qualified alert concerning a general-purpose AI model?",
+                        "9. How would you ensure compliance with the obligations outlined in the context when assessing a qualified alert situation?",
+                        "10. Can you provide an overview of the main elements of the Act related to AI system categories, prohibited practices, high-risk systems, core actors, and major obligations?"
+                    ]
+                },
+                {
+                    "article": "Article 91: Power to Request Documentation and Information",
+                    "url": "https://artificialintelligenceact.eu/article/91/",
+                    "competency_questions": [
+                        "1. Can you provide examples of the documentation that the Commission may request from the provider of a general-purpose AI model in accordance with Articles 53 and 55?",
+                        "2. How would you initiate a structured dialogue with the provider of a general-purpose AI model before sending a request for information?",
+                        "3. What criteria would need to be met for the Commission to issue a request for information to a provider of a general-purpose AI model upon a request from the scientific panel?",
+                        "4. How would you ensure that the request for information to a provider of a general-purpose AI model includes the necessary legal basis, purpose, required information, and specified timeframe for response?",
+                        "5. Who is responsible for supplying the requested information on behalf of the provider of a general-purpose AI model, and what are the consequences for supplying incorrect, incomplete, or misleading information?"
+                    ]
+                },
+                {
+                    "article": "Article 92: Power to Conduct Evaluations",
+                    "url": "https://artificialintelligenceact.eu/article/92/",
+                    "competency_questions": [
+                        "1. Can you explain the process for conducting evaluations of general-purpose AI models to assess compliance with obligations under the Regulation?",
+                        "2. How would you investigate systemic risks at the Union level for general-purpose AI models with systemic risk, particularly following a qualified alert from the scientific panel?",
+                        "3. What criteria must independent experts meet in order to be appointed by the Commission to carry out evaluations on its behalf?",
+                        "4. How would you request access to a general-purpose AI model through APIs or other technical means, including source code?",
+                        "5. What information must be included in a request for access to a general-purpose AI model, and what are the consequences for failure to provide access?",
+                        "6. How would providers of general-purpose AI models or their representatives supply the requested information for evaluations?",
+                        "7. Can you explain the detailed arrangements and conditions for evaluations, including the involvement of independent experts, as outlined in the implementing acts adopted by the Commission?",
+                        "8. How would you initiate a structured dialogue with the provider of a general-purpose AI model to gather more information on internal testing, safeguards, and measures taken to mitigate systemic risks?"
+                    ]
+                },
+                {
+                    "article": "Article 93: Power to Request Measures",
+                    "url": "https://artificialintelligenceact.eu/article/93/",
+                    "competency_questions": [
+                        "1. Can you describe the obligations set out in Articles 53 and 54 of the Act regarding AI system categories?",
+                        "2. How would you implement mitigation measures in response to serious and substantiated concerns of systemic risk at Union level, as outlined in Article 92?",
+                        "3. What steps would you take to restrict, withdraw, or recall a model if requested by the Commission?",
+                        "4. How would you initiate a structured dialogue with the provider of a general-purpose AI model before requesting a measure?",
+                        "5. Can you explain how commitments to implement mitigation measures to address systemic risk at Union level can be made binding by the Commission?"
+                    ]
+                },
+                {
+                    "article": "Article 94: Procedural Rights of Economic Operators of the General-Purpose AI Model",
+                    "url": "https://artificialintelligenceact.eu/article/94/",
+                    "competency_questions": [
+                        "1. Can you explain the different categories of AI systems as outlined in Regulation (EU) 2019/1020?",
+                        "2. What are the prohibited practices for AI systems under this regulation?",
+                        "3. Who are considered the core actors in the deployment of AI systems according to this regulation?",
+                        "4. What are the major obligations imposed on providers of general-purpose AI models?",
+                        "5. How does Article 18 of Regulation (EU) 2019/1020 impact the rights of providers of general-purpose AI models?"
+                    ]
+                }
+            ]
+        },
+        {
+            "chapter": "Chapter X: Codes of Conduct and Guidelines",
+            "list_article_cqs": [
+                {
+                    "article": "Article 95: Codes of Conduct for Voluntary Application of Specific Requirements",
+                    "url": "https://artificialintelligenceact.eu/article/95/",
+                    "competency_questions": [
+                        "1. Can you provide examples of codes of conduct that have been drawn up to foster the voluntary application of requirements to AI systems?",
+                        "2. How do codes of conduct address the impact of AI systems on environmental sustainability, and what key performance indicators are used to measure achievement in this area?",
+                        "3. Who is responsible for promoting AI literacy according to the codes of conduct, and how is this promoted within organizations?",
+                        "4. How are inclusive and diverse design principles incorporated into the development of AI systems, and what measures are taken to ensure stakeholder participation in the process?",
+                        "5. How do codes of conduct address the prevention of negative impacts on vulnerable persons or groups, particularly in terms of accessibility and gender equality?",
+                        "6. Who is involved in the development of codes of conduct for AI systems, and how are stakeholders, including civil society organizations and academia, represented in this process?",
+                        "7. How do codes of conduct take into account the interests and needs of SMEs, including start-ups, when encouraging the voluntary application of requirements to AI systems?"
+                    ]
+                },
+                {
+                    "article": "Article 96: Guidelines from the Commission on the Implementation of this Regulation",
+                    "url": "https://artificialintelligenceact.eu/article/96/",
+                    "competency_questions": [
+                        "1. Can you explain the requirements and obligations outlined in Articles 8 to 15 and Article 25 of the Regulation?",
+                        "2. How would you define the prohibited practices mentioned in Article 5 of the Regulation?",
+                        "3. How would you practically implement the provisions related to substantial modification as outlined in the Regulation?",
+                        "4. Can you provide detailed information on the transparency obligations laid down in Article 50 of the Regulation?",
+                        "5. How would you ensure consistency in the enforcement of this Regulation with Union harmonisation legislation listed in Annex I and other relevant Union law?",
+                        "6. How would you apply the definition of an AI system as set out in Article 3, point (1) of the Regulation?",
+                        "7. How would you address the needs of SMEs, start-ups, local public authorities, and sectors most likely to be affected by this Regulation when developing guidelines?",
+                        "8. How would you take into account the generally acknowledged state of the art on AI, relevant harmonised standards, and common specifications when issuing guidelines?",
+                        "9. Can you explain the process for updating guidelines previously adopted by the Commission when deemed necessary?"
+                    ]
+                }
+            ]
+        },
+        {
+            "chapter": "Chapter XI:\nDelegation of Power and Committee Procedure",
+            "list_article_cqs": [
+                {
+                    "article": "Article 97: Exercise of the Delegation",
+                    "url": "https://artificialintelligenceact.eu/article/97/",
+                    "competency_questions": [
+                        "1. Can you explain the different categories of AI systems outlined in the Act?",
+                        "2. What are the prohibited practices for AI systems as specified in the Act?",
+                        "3. Who are the core actors involved in the deployment of AI systems according to the Act?",
+                        "4. What are the major obligations imposed on providers of AI systems under the Act?",
+                        "5. How does the Act define high-risk systems and what are the requirements for deploying them?",
+                        "6. Can you describe the role of authorities in regulating AI systems as outlined in the Act?"
+                    ]
+                },
+                {
+                    "article": "Article 98: Committee Procedure",
+                    "url": "https://artificialintelligenceact.eu/article/98/",
+                    "competency_questions": [
+                        "1. Can you explain the different categories of AI systems as outlined in the Act?",
+                        "2. What are the prohibited practices for AI systems according to the Act?",
+                        "3. Who are the core actors involved in the deployment and regulation of AI systems as defined in the Act?",
+                        "4. What are the major obligations that providers of AI systems must adhere to under the Act?",
+                        "5. How does the Act define high-risk systems and what additional requirements do they entail?",
+                        "6. Can you explain the role of authorities in overseeing and enforcing the regulations outlined in the Act?",
+                        "7. How does Regulation (EU) No 182/2011 impact the implementation of the Act in relation to the committee assisting the Commission?"
+                    ]
+                }
+            ]
+        },
+        {
+            "chapter": "Chapter XII: Penalties",
+            "list_article_cqs": [
+                {
+                    "article": "Article 99: Penalties",
+                    "url": "https://artificialintelligenceact.eu/article/99/",
+                    "competency_questions": [
+                        "1. Can you explain the rules on penalties and other enforcement measures applicable to infringements of this Regulation by operators as laid down by Member States?",
+                        "2. How do Member States ensure that the penalties provided for are effective, proportionate, and dissuasive, taking into account the interests of SMEs and start-ups?",
+                        "3. What are the administrative fines for non-compliance with the prohibition of AI practices as outlined in Article 5?",
+                        "4. What are the administrative fines for non-compliance with obligations related to operators or notified bodies, other than those in Articles 5?",
+                        "5. What are the consequences of supplying incorrect, incomplete, or misleading information to notified bodies or national competent authorities?",
+                        "6. How are administrative fines adjusted for SMEs and start-ups in relation to the percentages or amounts specified in the Regulation?",
+                        "7. When deciding on the imposition and amount of administrative fines, what relevant circumstances are taken into account?",
+                        "8. What rules do Member States have in place regarding the imposition of administrative fines on public authorities and bodies?",
+                        "9. How are administrative fines imposed in Member States, and what equivalent effect do they have?",
+                        "10. What procedural safeguards are in place for the exercise of powers under this Regulation, including effective judicial remedies and due process?",
+                        "11. How do Member States report annually to the Commission regarding administrative fines issued and related litigation or judicial proceedings?"
+                    ]
+                },
+                {
+                    "article": "Article 100: Administrative Fines on Union Institutions, Bodies, Offices and Agencies",
+                    "url": "https://artificialintelligenceact.eu/article/100/",
+                    "competency_questions": [
+                        "1. Can you explain the nature, gravity, and duration of the infringement in the specific situation?",
+                        "2. What technical and organizational measures were implemented by the Union institution, body, office, or agency to prevent the infringement?",
+                        "3. What actions were taken to mitigate the damage suffered by affected persons?",
+                        "4. How did the Union institution, body, office, or agency cooperate with the European Data Protection Supervisor to remedy the infringement?",
+                        "5. Have there been any similar previous infringements by the Union institution, body, office, or agency?",
+                        "6. How did the infringement become known to the European Data Protection Supervisor and was it notified by the Union institution, body, office, or agency?",
+                        "7. Can you provide information on the annual budget of the Union institution, body, office, or agency?",
+                        "8. What are the prohibited AI practices referred to in Article 5 and how does non-compliance with these practices result in administrative fines?",
+                        "9. What are the requirements or obligations under this Regulation, other than those in Article 5, that could result in administrative fines for non-compliance?",
+                        "10. How does the European Data Protection Supervisor ensure the rights of defence of the parties concerned in the proceedings?"
+                    ]
+                },
+                {
+                    "article": "Article 101: Fines for Providers of General-Purpose AI Models",
+                    "url": "https://artificialintelligenceact.eu/article/101/",
+                    "competency_questions": [
+                        "1. Can you explain the main elements of the Act related to AI system categories as outlined in the context?",
+                        "2. How would you define the prohibited practices mentioned in the Act regarding AI systems?",
+                        "3. What are the high-risk systems identified in the Act and what measures are in place to regulate them?",
+                        "4. Can you elaborate on the core actors involved in the Act, such as providers, deployers, and authorities, and their respective roles and responsibilities?",
+                        "5. What are the major obligations imposed on providers of general-purpose AI models according to the Act?",
+                        "6. How do you ensure compliance with requests for documents or information as specified in the Act?",
+                        "7. What steps are taken to provide access to the general-purpose AI model for evaluation purposes as required by the Act?",
+                        "8. How do you assess the nature, gravity, and duration of infringements when determining fines or penalties under the Act?",
+                        "9. What commitments are taken into consideration when fixing fines or penalties according to the Act?",
+                        "10. How does the Commission ensure that fines imposed are effective, proportionate, and dissuasive as stated in the Act?"
+                    ]
+                }
+            ]
+        },
+        {
+            "chapter": "Chapter XIII:\nFinal Provisions",
+            "list_article_cqs": [
+                {
+                    "article": "Article 102: Amendment to Regulation (EC) No 300/2008",
+                    "url": "https://artificialintelligenceact.eu/article/102/",
+                    "competency_questions": [
+                        "1. Can you explain the different categories of AI systems as outlined in Regulation (EU) 2024/1689?",
+                        "2. What are the prohibited practices for AI systems according to the Artificial Intelligence Act?",
+                        "3. Who are the core actors involved in the regulation of AI systems, such as providers, deployers, and authorities?",
+                        "4. What are the major obligations that need to be followed by those involved in the approval and use of security equipment for AI systems?",
+                        "5. How does Chapter III, Section 2 of Regulation (EU) 2024/1689 impact the adoption of detailed measures related to technical specifications and procedures for AI systems?"
+                    ]
+                },
+                {
+                    "article": "Article 103: Amendment to Regulation (EU) No 167/2013",
+                    "url": "https://artificialintelligenceact.eu/article/103/",
+                    "competency_questions": [
+                        "1. Can you explain the different categories of AI systems outlined in Regulation (EU) No 167/2013?",
+                        "2. What are the prohibited practices for AI systems as specified in the Act?",
+                        "3. How are high-risk systems defined in the context of the Act?",
+                        "4. Who are the core actors involved in the regulation of AI systems, such as providers, deployers, and authorities?",
+                        "5. What are the major obligations that providers and deployers of AI systems must adhere to according to the Act?"
+                    ]
+                },
+                {
+                    "article": "Article 104: Amendment to Regulation (EU) No 168/2013",
+                    "url": "https://artificialintelligenceact.eu/article/104/",
+                    "competency_questions": [
+                        "1. Can you explain the different categories of AI systems outlined in Regulation (EU) No 168/2013?",
+                        "2. What are the prohibited practices for AI systems as specified in the Act?",
+                        "3. How are high-risk systems defined in the context of the Act?",
+                        "4. Who are the core actors involved in the regulation of AI systems, such as providers, deployers, and authorities?",
+                        "5. What are the major obligations that providers and deployers of AI systems must adhere to according to the Act?"
+                    ]
+                },
+                {
+                    "article": "Article 105: Amendment to Directive 2014/90/EU",
+                    "url": "https://artificialintelligenceact.eu/article/105/",
+                    "competency_questions": [
+                        "1. Can you explain the different categories of AI systems outlined in Directive 2014/90/EU?",
+                        "2. How do the prohibited practices mentioned in the Directive impact the development and deployment of AI systems?",
+                        "3. What are the key obligations for providers, deployers, and authorities under the Directive?",
+                        "4. How do high-risk systems defined in the Directive affect the regulatory framework for AI?",
+                        "5. Can you discuss the role of core actors such as providers, deployers, and authorities in ensuring compliance with the Directive?"
+                    ]
+                },
+                {
+                    "article": "Article 106: Amendment to Directive (EU) 2016/797",
+                    "url": "https://artificialintelligenceact.eu/article/106/",
+                    "competency_questions": [
+                        "1. Can you explain the different categories of AI systems outlined in the Directive (EU) 2016/797?",
+                        "2. What are the prohibited practices for AI systems as specified in the Directive?",
+                        "3. How are high-risk systems defined in the Directive, and what obligations do they entail?",
+                        "4. Who are the core actors involved in the implementation of AI systems according to the Directive?",
+                        "5. What are the major obligations imposed on providers, deployers, and authorities in relation to AI systems under the Directive?"
+                    ]
+                },
+                {
+                    "article": "Article 107: Amendment to Regulation (EU) 2018/858",
+                    "url": "https://artificialintelligenceact.eu/article/107/",
+                    "competency_questions": [
+                        "1. Can you explain the different categories of AI systems outlined in Regulation (EU) 2018/858?",
+                        "2. What are the prohibited practices for AI systems as specified in the Act?",
+                        "3. How are high-risk systems defined in the context of the Act?",
+                        "4. What are the key obligations for providers of AI systems under Regulation (EU) 2018/858?",
+                        "5. Can you discuss the roles and responsibilities of deployers of AI systems as outlined in the Act?",
+                        "6. How do authorities play a role in the regulation of AI systems according to the Act?",
+                        "7. How does Regulation (EU) 2024/1689 impact the requirements for safety components of AI systems under Regulation (EU) 2018/858?",
+                        "8. Can you elaborate on the major obligations set out in Chapter III, Section 2 of Regulation (EU) 2024/1689 in relation to AI systems?"
+                    ]
+                },
+                {
+                    "article": "Article 108: Amendments to Regulation (EU) 2018/1139",
+                    "url": "https://artificialintelligenceact.eu/article/108/",
+                    "competency_questions": [
+                        "1. Can you explain the main categories of AI systems outlined in Regulation (EU) 2018/1139?",
+                        "2. What are the prohibited practices related to AI systems as specified in the Act?",
+                        "3. Who are the core actors involved in the regulation of AI systems according to the Act?",
+                        "4. What are the major obligations imposed on providers of AI systems under Regulation (EU) 2018/1139?",
+                        "5. How does the Act address high-risk AI systems and what measures are in place to regulate them?",
+                        "6. What are the responsibilities of deployers of AI systems as outlined in the Act?",
+                        "7. How are authorities expected to enforce the regulations concerning AI systems under Regulation (EU) 2018/1139?",
+                        "8. Can you discuss the requirements set out in Chapter III, Section 2, of Regulation (EU) 2024/1689 that must be taken into account when adopting implementing acts related to AI systems?"
+                    ]
+                },
+                {
+                    "article": "Article 109: Amendment to Regulation (EU) 2019/2144",
+                    "url": "https://artificialintelligenceact.eu/article/109/",
+                    "competency_questions": [
+                        "1. Can you explain the different categories of AI systems outlined in Regulation (EU) 2019/2144?",
+                        "2. What are the prohibited practices for AI systems as specified in the Act?",
+                        "3. How are high-risk systems defined in the context of the Act?",
+                        "4. What are the key obligations for providers of AI systems under Regulation (EU) 2019/2144?",
+                        "5. Can you discuss the roles and responsibilities of deployers of AI systems according to the Act?",
+                        "6. How are authorities defined in the Act and what are their main functions in relation to AI systems?",
+                        "7. How does Chapter III, Section 2 of Regulation (EU) 2024/1689 impact the requirements for safety components of AI systems under Regulation (EU) 2019/2144?"
+                    ]
+                },
+                {
+                    "article": "Article 110: Amendment to Directive (EU) 2020/1828",
+                    "url": "https://artificialintelligenceact.eu/article/110/",
+                    "competency_questions": [
+                        "1. Can you explain the different categories of AI systems outlined in the Artificial Intelligence Act?",
+                        "2. What are the prohibited practices for AI systems as specified in the Act?",
+                        "3. Who are the core actors involved in the regulation of AI systems according to the Act?",
+                        "4. What are the major obligations imposed on providers of AI systems under the Artificial Intelligence Act?",
+                        "5. How does the Act define high-risk systems and what additional requirements do they entail for deployers?",
+                        "6. What role do authorities play in enforcing the regulations outlined in the Artificial Intelligence Act?"
+                    ]
+                },
+                {
+                    "article": "Article 111: AI Systems Already Placed on the Market or put into Service and General-Purpose AI Models Already Placed on the Marked [sic]",
+                    "url": "https://artificialintelligenceact.eu/article/111/",
+                    "competency_questions": [
+                        "1. Can you explain the categories of AI systems covered by the regulation and how they are defined?",
+                        "2. How do the prohibited practices outlined in the regulation impact the development and deployment of AI systems?",
+                        "3. What are the key obligations for providers, deployers, and authorities under this regulation?",
+                        "4. How are high-risk systems identified and what steps must be taken to ensure compliance for these systems?",
+                        "5. How do the timelines for compliance differ for AI systems placed on the market before specific dates? ",
+                        "6. Can you discuss the role of authorities in overseeing compliance with the regulation and enforcing its requirements?",
+                        "7. How are large-scale IT systems impacted by this regulation, and what measures must be taken to ensure compliance for these systems?",
+                        "8. What are the implications for providers of general-purpose AI models in terms of meeting the obligations set forth in the regulation?",
+                        "9. How do changes in design impact the applicability of the regulation to high-risk AI systems placed on the market before specific dates?",
+                        "10. How do the obligations and requirements of this regulation align with the goal of promoting the responsible development and deployment of AI technologies?"
+                    ]
+                },
+                {
+                    "article": "Article 112: Evaluation and Review",
+                    "url": "https://artificialintelligenceact.eu/article/112/",
+                    "competency_questions": [
+                        "1. How often does the Commission assess the need for amendment of the list set out in Annex III and the list of prohibited AI practices?",
+                        "2. What is the timeline for the Commission to evaluate and report on the need for amendments to extend existing area headings or add new area headings in Annex III?",
+                        "3. What reports are required to be submitted by the Commission regarding the evaluation and review of this Regulation to the European Parliament and the Council?",
+                        "4. What specific aspects are the reports referred to in paragraph 2 required to pay attention to?",
+                        "5. When does the Commission evaluate the functioning of the AI Office and what factors are considered in the evaluation?",
+                        "6. How often does the Commission submit a report on the review of the progress on the development of standardisation deliverables on the energy-efficient development of general-purpose AI models?",
+                        "7. What is the timeline for the Commission to evaluate the impact and effectiveness of voluntary codes of conduct for AI systems other than high-risk AI systems?",
+                        "8. What information is required to be provided by the Board, Member States, and national competent authorities to the Commission upon request for the purposes of paragraphs 1 to 7?",
+                        "9. Which bodies or sources should the Commission take into account when carrying out the evaluations and reviews referred to in paragraphs 1 to 7?",
+                        "10. When should the Commission submit appropriate proposals to amend the Regulation, particularly in light of developments in technology and the effect of AI systems on health and safety?",
+                        "11. What methodology is the AI Office tasked with developing to guide the evaluations and reviews of risk levels for AI systems?",
+                        "12. How should any amendment to the Regulation concerning sectoral Union harmonisation legislation listed in Section B of Annex I take into account the regulatory specificities of each sector?",
+                        "13. When is the Commission required to carry out an assessment of the enforcement of this Regulation and report on it to the European Parliament, the Council, and the European Economic and Social Committee?"
+                    ]
+                },
+                {
+                    "article": "Article 113: Entry into Force and Application",
+                    "url": "https://artificialintelligenceact.eu/article/113/",
+                    "competency_questions": [
+                        "1. Can you explain the different categories of AI systems outlined in the Regulation?",
+                        "2. What are the prohibited practices for AI systems as stated in the Regulation?",
+                        "3. Who are the core actors involved in the implementation of the Regulation, such as providers, deployers, and authorities?",
+                        "4. What are the major obligations for providers and deployers of AI systems under the Regulation?",
+                        "5. How does the Regulation define high-risk systems and what additional requirements do they entail?",
+                        "6. Can you discuss the timeline for the application of different chapters and articles within the Regulation?",
+                        "7. What is the significance of Article 6(1) and when does it come into effect according to the Regulation?",
+                        "8. How does the Regulation address the accountability and responsibility of authorities in overseeing AI systems?",
+                        "9. Can you provide examples of specific obligations outlined in Chapter III Section 4, Chapter V, Chapter VII, and Chapter XII of the Regulation?",
+                        "10. How does the Regulation aim to ensure compliance and enforcement of its provisions among the various actors involved in AI systems?"
                     ]
                 }
             ]
@@ -69,5 +1618,5 @@
     "regulation": "EU AI Act",
     "citation": "Regulation (EU) 2024/1689",
     "source_url": "https://artificialintelligenceact.eu/ai-act-explorer/",
-    "scraped_at": "2026-06-13T09:47:09.138565+00:00"
+    "scraped_at": "2026-06-14T08:47:53.927180+00:00"
 }
