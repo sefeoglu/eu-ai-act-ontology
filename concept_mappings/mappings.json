@@ -1,222 +1,86 @@
-[
+{
+  "corresponding_classes": [
     {
-        "corresspoding_classess": [
-            {
-                "uri": "http://www.semanticweb.org/owl/owlapi/turtle#API",
-                "label": "API"
-            },
-            {
-                "uri": "http://www.w3.org/2004/02/skos/core#Concept",
-                "label": "Concept"
-            },
-            {
-                "uri": "http://www.w3.org/ns/dcat#Resource",
-                "label": "Resource"
-            },
-            {
-                "uri": "https://w3id.org/airo#AICapability",
-                "label": "AICapability"
-            }
-        ],
-        "corresspoding_properties": [
-            {
-                "uri": "http://purl.org/dc/terms/accessRights",
-                "label": "accessRights"
-            },
-            {
-                "uri": "http://purl.org/dc/terms/bibliographicCitation",
-                "label": "bibliographicCitation"
-            },
-            {
-                "uri": "http://purl.org/dc/terms/contributor",
-                "label": "contributor"
-            },
-            {
-                "uri": "http://purl.org/dc/terms/created",
-                "label": "created"
-            }
-        ]
+      "entity1": {
+        "uri": "https://w3id.org/airo#AISystem",
+        "label": "AISystem",
+        "definition": "A system that uses artificial intelligence to perform tasks.",
+        "comments": "Ontology reference/source: AIRO"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#AI_System",
+        "label": "AI System",
+        "definition": "A system that employs artificial intelligence technologies.",
+        "comments": "Ontology reference/source: VAIR"
+      },
+      "relation": "=",
+      "measure": 1.0
     },
     {
-        "corresspoding_classess": [
-            {
-                "uri": "http://www.semanticweb.org/owl/owlapi/turtle#API",
-                "label": "API"
-            },
-            {
-                "uri": "http://www.w3.org/2004/02/skos/core#Concept",
-                "label": "Concept"
-            },
-            {
-                "uri": "http://www.w3.org/ns/dcat#Resource",
-                "label": "Resource"
-            },
-            {
-                "uri": "https://w3id.org/airo#AICapability",
-                "label": "AICapability"
-            }
-        ],
-        "corresspoding_properties": [
-            {
-                "uri": "http://purl.org/dc/terms/accessRights",
-                "label": "accessRights"
-            },
-            {
-                "uri": "http://purl.org/dc/terms/bibliographicCitation",
-                "label": "bibliographicCitation"
-            },
-            {
-                "uri": "http://purl.org/dc/terms/contributor",
-                "label": "contributor"
-            },
-            {
-                "uri": "http://purl.org/dc/terms/created",
-                "label": "created"
-            }
-        ]
+      "entity1": {
+        "uri": "https://w3id.org/dpv/owl#HighRiskAISystem",
+        "label": "HighRiskAISystem",
+        "definition": "An AI system that poses a high risk to rights and safety.",
+        "comments": "Ontology reference/source: DPV"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#High_Risk_AI_System",
+        "label": "High Risk AI System",
+        "definition": "An AI system identified as having high risk potential.",
+        "comments": "Ontology reference/source: VAIR"
+      },
+      "relation": "=",
+      "measure": 1.0
     },
     {
-        "corresspoding_classess": [
-            {
-                "uri": "http://www.semanticweb.org/owl/owlapi/turtle#API",
-                "label": "API"
-            },
-            {
-                "uri": "http://www.w3.org/2004/02/skos/core#Concept",
-                "label": "Concept"
-            },
-            {
-                "uri": "http://www.w3.org/ns/dcat#Resource",
-                "label": "Resource"
-            },
-            {
-                "uri": "https://w3id.org/airo#AICapability",
-                "label": "AICapability"
-            }
-        ],
-        "corresspoding_properties": [
-            {
-                "uri": "http://purl.org/dc/terms/accessRights",
-                "label": "accessRights"
-            },
-            {
-                "uri": "http://purl.org/dc/terms/bibliographicCitation",
-                "label": "bibliographicCitation"
-            },
-            {
-                "uri": "http://purl.org/dc/terms/contributor",
-                "label": "contributor"
-            },
-            {
-                "uri": "http://purl.org/dc/terms/created",
-                "label": "created"
-            }
-        ]
-    },
-    {
-        "corresspoding_classess": {
-            "map": [
-                {
-                    "entity1": {
-                        "uri": "https://w3id.org/airo#AICapability",
-                        "label": "AICapability"
-                    },
-                    "entity2": {
-                        "uri": "https://w3id.org/airo#Person",
-                        "label": "Person"
-                    },
-                    "relation": "usedBy",
-                    "measure": 1.0
-                },
-                {
-                    "entity1": {
-                        "uri": "https://w3id.org/airo#Person",
-                        "label": "Person"
-                    },
-                    "entity2": {
-                        "uri": "https://w3id.org/airo#Organization",
-                        "label": "Organization"
-                    },
-                    "relation": "hasEmployees",
-                    "measure": 1.0
-                },
-                {
-                    "entity1": {
-                        "uri": "https://w3id.org/airo#Person",
-                        "label": "Person"
-                    },
-                    "entity2": {
-                        "uri": "https://w3id.org/airo#Organization",
-                        "label": "Organization"
-                    },
-                    "relation": "hasStakeholders",
-                    "measure": 1.0
-                }
-            ]
-        },
-        "corresspoding_properties": {
-            "map": [
-                {
-                    "entity1": {
-                        "uri": "https://w3id.org/airo#Person",
-                        "label": "Person"
-                    },
-                    "entity2": {
-                        "uri": "http://purl.org/dc/terms/accessRights",
-                        "label": "accessRights"
-                    },
-                    "relation": "hasAIExperience",
-                    "measure": 1.0
-                },
-                {
-                    "entity1": {
-                        "uri": "https://w3id.org/airo#Person",
-                        "label": "Person"
-                    },
-                    "entity2": {
-                        "uri": "http://purl.org/dc/terms/bibliographicCitation",
-                        "label": "bibliographicCitation"
-                    },
-                    "relation": "hasAIEducation",
-                    "measure": 1.0
-                },
-                {
-                    "entity1": {
-                        "uri": "https://w3id.org/airo#Person",
-                        "label": "Person"
-                    },
-                    "entity2": {
-                        "uri": "http://purl.org/dc/terms/contributor",
-                        "label": "contributor"
-                    },
-                    "relation": "hasAITraining",
-                    "measure": 1.0
-                },
-                {
-                    "entity1": {
-                        "uri": "https://w3id.org/airo#Person",
-                        "label": "Person"
-                    },
-                    "entity2": {
-                        "uri": "https://w3id.org/airo#Person",
-                        "label": "Person"
-                    },
-                    "relation": "implementedBy",
-                    "measure": 1.0
-                },
-                {
-                    "entity1": {
-                        "uri": "https://w3id.org/airo#Person",
-                        "label": "Person"
-                    },
-                    "entity2": {
-                        "uri": "http://purl.obolibrary.org/obo/BFO_0000051",
-                        "label": "has part"
-                    },
-                    "relation": "focusOnAI",
-                    "measure": 1.0
-                }
-            ]
-        }
+      "entity1": {
+        "uri": "https://w3id.org/dpv/owl#HighRiskAISystem",
+        "label": "HighRiskAISystem",
+        "definition": "An AI system that poses a high risk to rights and safety.",
+        "comments": "Ontology reference/source: DPV"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#HighRiskAISystem",
+        "label": "High Risk AI System",
+        "definition": "An AI system identified as high risk due to its potential impact.",
+        "comments": "Ontology reference/source: VAIR"
+      },
+      "relation": "=",
+      "measure": 1.0
     }
-]
+  ],
+  "corresponding_properties": [
+    {
+      "entity1": {
+        "uri": "https://w3id.org/dpv/owl#hasObligation",
+        "label": "hasObligation",
+        "definition": "Indicates an obligation associated with an entity.",
+        "comments": "Ontology reference/source: DPV"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#hasObligation",
+        "label": "has Obligation",
+        "definition": "Denotes an obligation that an entity must fulfill.",
+        "comments": "Ontology reference/source: VAIR"
+      },
+      "relation": "=",
+      "measure": 1.0
+    },
+    {
+      "entity1": {
+        "uri": "https://w3id.org/dpv/owl#hasCategory",
+        "label": "hasCategory",
+        "definition": "Specifies the category to which an entity belongs.",
+        "comments": "Ontology reference/source: DPV"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#hasCategory",
+        "label": "has Category",
+        "definition": "Indicates the category classification of an entity.",
+        "comments": "Ontology reference/source: VAIR"
+      },
+      "relation": "=",
+      "measure": 1.0
+    }
+  ]
+}
