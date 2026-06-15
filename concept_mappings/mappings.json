@@ -2,85 +2,2523 @@
   "corresponding_classes": [
     {
       "entity1": {
+        "uri": "http://example.org/eu-ai-act#ai_system",
+        "label": "AI system",
+        "definition": "A machine-based system designed to operate with varying levels of autonomy and that may exhibit adaptiveness after deployment, inferring from inputs how to generate outputs such as predictions, content, recommendations, or decisions.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; Article 3(1).",
+        "source": "Generated EU AI Act ontology"
+      },
+      "entity2": {
         "uri": "https://w3id.org/airo#AISystem",
         "label": "AISystem",
-        "definition": "A system that uses artificial intelligence to perform tasks.",
-        "comments": "Ontology reference/source: AIRO"
+        "definition": "An AI system.",
+        "comments": "Ontology reference/source: AIRO ontology.",
+        "source": "AIRO"
+      },
+      "relation": "=",
+      "measure": 0.98
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act#high_risk_ai_system",
+        "label": "High-risk AI system",
+        "definition": "An AI system classified as high-risk because it falls within the categories and conditions established by the Act.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; Article 6.",
+        "source": "Generated EU AI Act ontology"
       },
       "entity2": {
-        "uri": "https://w3id.org/vair#AI_System",
+        "uri": "https://w3id.org/airo#AISystem",
+        "label": "AISystem",
+        "definition": "An AI system.",
+        "comments": "Ontology reference/source: AIRO ontology.",
+        "source": "AIRO"
+      },
+      "relation": "=",
+      "measure": 0.72
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act#provider",
+        "label": "Provider",
+        "definition": "A natural or legal person, public authority, agency, or other body that develops an AI system or has it developed and places it on the market or puts it into service under its own name or trademark.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; Article 3.",
+        "source": "Generated EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/airo#AIOperator",
+        "label": "AIOperator",
+        "definition": "An operator involved in the lifecycle of an AI system.",
+        "comments": "Ontology reference/source: AIRO ontology.",
+        "source": "AIRO"
+      },
+      "relation": "=",
+      "measure": 0.74
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act#deployer",
+        "label": "Deployer",
+        "definition": "A natural or legal person, public authority, agency, or other body using an AI system under its authority, except where the system is used in the course of a personal non-professional activity.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; Article 3.",
+        "source": "Generated EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/airo#AIOperator",
+        "label": "AIOperator",
+        "definition": "An operator involved in the lifecycle of an AI system.",
+        "comments": "Ontology reference/source: AIRO ontology.",
+        "source": "AIRO"
+      },
+      "relation": "=",
+      "measure": 0.72
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act#competent_authority",
+        "label": "Competent authority",
+        "definition": "An authority designated by a Member State to carry out tasks under the Regulation.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; Article 3.",
+        "source": "Generated EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#Authority",
+        "label": "Authority",
+        "definition": "A public authority or other body with governance, supervisory, or enforcement responsibilities related to AI systems.",
+        "comments": "Ontology reference/source: DPV ontology.",
+        "source": "DPV"
+      },
+      "relation": "=",
+      "measure": 0.76
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act#market_surveillance_authority",
+        "label": "Market surveillance authority",
+        "definition": "A national authority responsible for monitoring compliance of AI systems placed on the market or put into service.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; Article 70.",
+        "source": "Generated EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#NationalAuthority",
+        "label": "NationalAuthority",
+        "definition": "A national authority.",
+        "comments": "Ontology reference/source: DPV ontology.",
+        "source": "DPV"
+      },
+      "relation": "=",
+      "measure": 0.7
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act#notifying_authority",
+        "label": "Notifying authority",
+        "definition": "A national authority responsible for setting up and carrying out the procedures for assessment, designation, and monitoring of notified bodies.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; Article 28.",
+        "source": "Generated EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#Authority",
+        "label": "Authority",
+        "definition": "A public authority or other body with governance, supervisory, or enforcement responsibilities related to AI systems.",
+        "comments": "Ontology reference/source: DPV ontology.",
+        "source": "DPV"
+      },
+      "relation": "=",
+      "measure": 0.74
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act#notified_body",
+        "label": "Notified body",
+        "definition": "A conformity assessment body designated to perform third-party assessment tasks under the Act.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; Articles 30-39.",
+        "source": "Generated EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#ConformityAssessment",
+        "label": "ConformityAssessment",
+        "definition": "The process used to demonstrate that an AI system complies with applicable requirements.",
+        "comments": "Ontology reference/source: DPV ontology.",
+        "source": "DPV"
+      },
+      "relation": "=",
+      "measure": 0.68
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act#conformity_assessment",
+        "label": "Conformity assessment",
+        "definition": "The process used to demonstrate that an AI system complies with applicable requirements.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; Articles 43-49.",
+        "source": "Generated EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#ConformanceAssessment",
+        "label": "ConformanceAssessment",
+        "definition": "An assessment of whether something conforms to requirements.",
+        "comments": "Ontology reference/source: DPV ontology.",
+        "source": "DPV"
+      },
+      "relation": "=",
+      "measure": 0.95
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act#risk_management_system",
+        "label": "Risk management system",
+        "definition": "A continuous iterative process for identifying, analyzing, estimating, and evaluating risks and adopting mitigation measures.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; Article 9.",
+        "source": "Generated EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#RiskManagement",
+        "label": "RiskManagement",
+        "definition": "Risk management activities and measures.",
+        "comments": "Ontology reference/source: DPV ontology.",
+        "source": "DPV"
+      },
+      "relation": "=",
+      "measure": 0.93
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act#technical_documentation",
+        "label": "Technical documentation",
+        "definition": "Documentation demonstrating compliance with the requirements applicable to high-risk AI systems.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; Article 11.",
+        "source": "Generated EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#TechnicalDocumentation",
+        "label": "Technical Documentation",
+        "definition": "Documentation describing the AI system, its intended purpose, design, development, and compliance.",
+        "comments": "Ontology reference/source: VAIR ontology.",
+        "source": "VAIR"
+      },
+      "relation": "=",
+      "measure": 0.97
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act#record_keeping",
+        "label": "Record keeping",
+        "definition": "Logging capabilities enabling traceability of the AI system's operation.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; Article 12.",
+        "source": "Generated EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#Record",
+        "label": "Record",
+        "definition": "A record.",
+        "comments": "Ontology reference/source: DPV ontology.",
+        "source": "DPV"
+      },
+      "relation": "=",
+      "measure": 0.7
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act#human_oversight",
+        "label": "Human oversight",
+        "definition": "Measures enabling effective human oversight of the AI system.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; Article 14.",
+        "source": "Generated EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/airo#HumanInvolvement",
+        "label": "HumanInvolvement",
+        "definition": "Human involvement in AI system operation or oversight.",
+        "comments": "Ontology reference/source: AIRO ontology.",
+        "source": "AIRO"
+      },
+      "relation": "=",
+      "measure": 0.9
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act#accuracy_robustness_cybersecurity",
+        "label": "Accuracy, robustness and cybersecurity",
+        "definition": "Requirements ensuring the AI system performs consistently and is resilient against errors and attacks.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; Article 15.",
+        "source": "Generated EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#TechnicalMeasure",
+        "label": "Technical Measure",
+        "definition": "A technical measure.",
+        "comments": "Ontology reference/source: VAIR ontology.",
+        "source": "VAIR"
+      },
+      "relation": "=",
+      "measure": 0.66
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act#general_purpose_ai_model",
+        "label": "General-purpose AI model",
+        "definition": "An AI model, including where such a model is trained with a large amount of data using self-supervision at scale, that displays significant generality and is capable of competently performing a wide range of distinct tasks.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; Article 3(63).",
+        "source": "Generated EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#Model",
+        "label": "Model",
+        "definition": "A model.",
+        "comments": "Ontology reference/source: VAIR ontology.",
+        "source": "VAIR"
+      },
+      "relation": "=",
+      "measure": 0.78
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act#ai_office",
+        "label": "AI Office",
+        "definition": "The Union-level body supporting implementation, supervision, and enforcement of the Regulation.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; Article 64.",
+        "source": "Generated EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#AIGovernance",
+        "label": "AIGovernance",
+        "definition": "AI governance activities and structures.",
+        "comments": "Ontology reference/source: DPV ontology.",
+        "source": "DPV"
+      },
+      "relation": "=",
+      "measure": 0.69
+    },
+    {
+      "entity1": {
+        "uri": "generated:ai_system",
+        "label": "AI system",
+        "definition": "A machine-based system designed to operate with varying levels of autonomy and that may infer from inputs how to generate outputs such as predictions, content, recommendations, or decisions.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted entities); referenceArticle: Article 3(1).",
+        "ontology_reference": "EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/airo#AISystem",
+        "label": "AISystem",
+        "definition": "A machine-based system designed to operate with varying levels of autonomy and that may exhibit adaptiveness after deployment.",
+        "comments": "Ontology reference/source: AIRO ontology.",
+        "ontology_reference": "AIRO"
+      },
+      "relation": "=",
+      "measure": 0.98
+    },
+    {
+      "entity1": {
+        "uri": "generated:high_risk_ai_system",
+        "label": "High-risk AI system",
+        "definition": "An AI system classified as high-risk because it falls within the categories and conditions established by the Act.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted entities); referenceArticle: Article 6.",
+        "ontology_reference": "EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/airo#AISystem",
+        "label": "AISystem",
+        "definition": "A machine-based system designed to operate with varying levels of autonomy and that may exhibit adaptiveness after deployment.",
+        "comments": "Ontology reference/source: AIRO ontology. Close but not equivalent; high-risk is a subclass/category of AI system rather than the same concept.",
+        "ontology_reference": "AIRO"
+      },
+      "relation": "=",
+      "measure": 0.74
+    },
+    {
+      "entity1": {
+        "uri": "generated:prohibited_ai_practice",
+        "label": "Prohibited AI practice",
+        "definition": "An AI practice that is banned under the Act because it presents unacceptable risk.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted entities); referenceArticle: Article 5.",
+        "ontology_reference": "EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#ProhibitedPractice",
+        "label": "Prohibited Practice",
+        "definition": "An AI practice that is forbidden under the Act.",
+        "comments": "Ontology reference/source: VAIR ontology. Semantically very close.",
+        "ontology_reference": "VAIR"
+      },
+      "relation": "=",
+      "measure": 0.97
+    },
+    {
+      "entity1": {
+        "uri": "generated:limited_risk_ai_system",
+        "label": "Limited-risk AI system",
+        "definition": "An AI system subject to transparency obligations rather than the full high-risk regime.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted entities); referenceArticle: Articles 50 and related provisions.",
+        "ontology_reference": "EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#Concept",
+        "label": "Concept",
+        "definition": "A concept used in the VAIR ontology.",
+        "comments": "Ontology reference/source: VAIR ontology. No strong direct equivalent found; mapped only as a loose conceptual placeholder.",
+        "ontology_reference": "VAIR"
+      },
+      "relation": "=",
+      "measure": 0.35
+    },
+    {
+      "entity1": {
+        "uri": "generated:minimal_risk_ai_system",
+        "label": "Minimal-risk AI system",
+        "definition": "An AI system not subject to specific obligations under the Act beyond general legal requirements.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted entities); referenceArticle: Recitals and general structure of the Act.",
+        "ontology_reference": "EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#Concept",
+        "label": "Concept",
+        "definition": "A concept used in the VAIR ontology.",
+        "comments": "Ontology reference/source: VAIR ontology. No strong direct equivalent found; mapped only as a loose conceptual placeholder.",
+        "ontology_reference": "VAIR"
+      },
+      "relation": "=",
+      "measure": 0.3
+    },
+    {
+      "entity1": {
+        "uri": "generated:provider",
+        "label": "Provider",
+        "definition": "A natural or legal person, public authority, agency, or other body that develops an AI system or has it developed and places it on the market or puts it into service under its own name or trademark.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted entities); referenceArticle: Article 3.",
+        "ontology_reference": "EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/airo#AISubject",
+        "label": "AISubject",
+        "definition": "An entity that is subject to AI-related processes or governance.",
+        "comments": "Ontology reference/source: AIRO ontology. Close in role/subject sense, but not a perfect equivalence.",
+        "ontology_reference": "AIRO"
+      },
+      "relation": "=",
+      "measure": 0.62
+    },
+    {
+      "entity1": {
+        "uri": "generated:deployer",
+        "label": "Deployer",
+        "definition": "A natural or legal person, public authority, agency, or other body using an AI system under its authority, except where the system is used in the course of a personal non-professional activity.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted entities); referenceArticle: Article 3.",
+        "ontology_reference": "EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/airo#AIOperator",
+        "label": "AIOperator",
+        "definition": "An operator involved in the use or operation of an AI system.",
+        "comments": "Ontology reference/source: AIRO ontology. Close role equivalence.",
+        "ontology_reference": "AIRO"
+      },
+      "relation": "=",
+      "measure": 0.9
+    },
+    {
+      "entity1": {
+        "uri": "generated:competent_authority",
+        "label": "Competent authority",
+        "definition": "A public authority responsible for enforcing or supervising compliance with the Act.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted entities); referenceArticle: Article 3, Title VI.",
+        "ontology_reference": "EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#Authority",
+        "label": "Authority",
+        "definition": "A public authority or other body with governance, supervisory, or enforcement responsibilities related to AI systems.",
+        "comments": "Ontology reference/source: DPV ontology. Close but broader than competent authority.",
+        "ontology_reference": "DPV"
+      },
+      "relation": "=",
+      "measure": 0.84
+    },
+    {
+      "entity1": {
+        "uri": "generated:market_surveillance_authority",
+        "label": "Market surveillance authority",
+        "definition": "A national authority responsible for monitoring compliance of AI systems placed on the market or put into service.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted entities); referenceArticle: Article 70.",
+        "ontology_reference": "EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#NationalAuthority",
+        "label": "NationalAuthority",
+        "definition": "A national authority.",
+        "comments": "Ontology reference/source: DPV ontology. No exact market-surveillance-specific class found; mapped as closest authority concept.",
+        "ontology_reference": "DPV"
+      },
+      "relation": "=",
+      "measure": 0.7
+    },
+    {
+      "entity1": {
+        "uri": "generated:notifying_authority",
+        "label": "Notifying authority",
+        "definition": "A national authority responsible for setting up and carrying out the procedures for assessment, designation, and monitoring of notified bodies.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted entities); referenceArticle: Article 28.",
+        "ontology_reference": "EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#Authority",
+        "label": "Authority",
+        "definition": "A public authority or other body with governance, supervisory, or enforcement responsibilities related to AI systems.",
+        "comments": "Ontology reference/source: DPV ontology. Close but broader.",
+        "ontology_reference": "DPV"
+      },
+      "relation": "=",
+      "measure": 0.8
+    },
+    {
+      "entity1": {
+        "uri": "generated:notified_body",
+        "label": "Notified body",
+        "definition": "A conformity assessment body designated to perform third-party assessment tasks.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted entities); referenceArticle: Article 3, Article 28.",
+        "ontology_reference": "EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#Conformity_Assessment_Body",
+        "label": "Conformity_Assessment_Body",
+        "definition": "A body that performs third-party conformity assessment activities, including testing, certification, and related tasks.",
+        "comments": "Ontology reference/source: VAIR ontology. Strong equivalence.",
+        "ontology_reference": "VAIR"
+      },
+      "relation": "=",
+      "measure": 0.96
+    },
+    {
+      "entity1": {
+        "uri": "generated:conformity_assessment",
+        "label": "Conformity assessment",
+        "definition": "The process used to demonstrate that an AI system complies with applicable requirements.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted entities); referenceArticle: Articles 16-29, Article 43.",
+        "ontology_reference": "EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#ConformanceAssessment",
+        "label": "ConformanceAssessment",
+        "definition": "An assessment carried out to determine whether the use of an AI system is lawful.",
+        "comments": "Ontology reference/source: DPV ontology. Close but not exact; conformance vs conformity wording.",
+        "ontology_reference": "DPV"
+      },
+      "relation": "=",
+      "measure": 0.88
+    },
+    {
+      "entity1": {
+        "uri": "generated:risk_management_system",
+        "label": "Risk management system",
+        "definition": "A continuous iterative process for identifying, analyzing, estimating, and evaluating risks and adopting mitigation measures.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted entities); referenceArticle: Article 9.",
+        "ontology_reference": "EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#RiskManagement",
+        "label": "RiskManagement",
+        "definition": "A process for identifying, analyzing, evaluating, and mitigating risks.",
+        "comments": "Ontology reference/source: DPV ontology. Strong equivalence.",
+        "ontology_reference": "DPV"
+      },
+      "relation": "=",
+      "measure": 0.95
+    },
+    {
+      "entity1": {
+        "uri": "generated:data_governance",
+        "label": "Data governance",
+        "definition": "Practices ensuring training, validation, and testing data are relevant, representative, free of errors, and complete as appropriate.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted entities); referenceArticle: Article 10.",
+        "ontology_reference": "EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#DataGovernance",
+        "label": "DataGovernance",
+        "definition": "Practices ensuring training, validation, and testing data are relevant, representative, free of errors, and complete as appropriate.",
+        "comments": "Ontology reference/source: DPV ontology. Strong equivalence.",
+        "ontology_reference": "DPV"
+      },
+      "relation": "=",
+      "measure": 0.98
+    },
+    {
+      "entity1": {
+        "uri": "generated:technical_documentation",
+        "label": "Technical documentation",
+        "definition": "Documentation demonstrating compliance with the requirements applicable to high-risk AI systems.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted entities); referenceArticle: Article 11.",
+        "ontology_reference": "EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/airo#Documentation",
+        "label": "Documentation",
+        "definition": "Documentation.",
+        "comments": "Ontology reference/source: AIRO ontology. Generic documentation concept; close but broader than technical documentation.",
+        "ontology_reference": "AIRO"
+      },
+      "relation": "=",
+      "measure": 0.78
+    },
+    {
+      "entity1": {
+        "uri": "generated:record_keeping",
+        "label": "Record keeping",
+        "definition": "Logging capabilities enabling traceability of the AI system's operation.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted entities); referenceArticle: Article 12.",
+        "ontology_reference": "EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#RecordManagement",
+        "label": "RecordManagement",
+        "definition": "A process for managing records.",
+        "comments": "Ontology reference/source: DPV ontology. Close but broader.",
+        "ontology_reference": "DPV"
+      },
+      "relation": "=",
+      "measure": 0.86
+    },
+    {
+      "entity1": {
+        "uri": "generated:human_oversight",
+        "label": "Human oversight",
+        "definition": "Measures enabling effective human oversight of the AI system.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted entities); referenceArticle: Article 14.",
+        "ontology_reference": "EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#HumanOversight",
+        "label": "HumanOversight",
+        "definition": "Human monitoring and intervention capability during AI system use.",
+        "comments": "Ontology reference/source: DPV ontology. Strong equivalence.",
+        "ontology_reference": "DPV"
+      },
+      "relation": "=",
+      "measure": 0.97
+    },
+    {
+      "entity1": {
+        "uri": "generated:accuracy_robustness_cybersecurity",
+        "label": "Accuracy, robustness and cybersecurity",
+        "definition": "Requirements ensuring the AI system performs consistently and is resilient against errors and attacks.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted entities); referenceArticle: Article 15.",
+        "ontology_reference": "EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#TechnicalMeasure",
+        "label": "Technical Measure",
+        "definition": "A technical measure.",
+        "comments": "Ontology reference/source: VAIR ontology. No exact equivalent; closest technical requirement concept.",
+        "ontology_reference": "VAIR"
+      },
+      "relation": "=",
+      "measure": 0.55
+    },
+    {
+      "entity1": {
+        "uri": "generated:operator",
+        "label": "Operator",
+        "definition": "A provider, deployer, importer, distributor, product manufacturer, or authorized representative involved in the lifecycle of an AI system.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted entities); referenceArticle: Article 3.",
+        "ontology_reference": "EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/airo#AIOperator",
+        "label": "AIOperator",
+        "definition": "An operator involved in the use or operation of an AI system.",
+        "comments": "Ontology reference/source: AIRO ontology. Strong equivalence at a high level.",
+        "ontology_reference": "AIRO"
+      },
+      "relation": "=",
+      "measure": 0.9
+    },
+    {
+      "entity1": {
+        "uri": "generated:general_purpose_ai_model",
+        "label": "General-purpose AI model",
+        "definition": "An AI model, including where such a model is trained with a large amount of data using self-supervision at scale, that displays significant generality and is capable of competently performing a wide range of distinct tasks.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted entities); referenceArticle: Article 3(63).",
+        "ontology_reference": "EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#GeneralAI",
+        "label": "General AI",
+        "definition": "General AI.",
+        "comments": "Ontology reference/source: VAIR ontology. Related but not exact; used as closest available model-level concept.",
+        "ontology_reference": "VAIR"
+      },
+      "relation": "=",
+      "measure": 0.72
+    },
+    {
+      "entity1": {
+        "uri": "http://www.semanticweb.org/owl/owlapi/turtle#AI_System",
+        "label": "AI system",
+        "definition": "A machine-based system designed to operate with varying levels of autonomy and that may infer from input how to generate outputs such as predictions, content, recommendations, or decisions.",
+        "comments": "Matched to existing class https://w3id.org/vair#AI system as semantically equivalent. Ontology reference/source: VAIR; AI Act Article 3."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#AI system",
+        "label": "AI system",
+        "definition": "A machine-based system designed to operate with varying levels of autonomy and that may exhibit adaptiveness after deployment, inferring from inputs how to generate outputs such as predictions, content, recommendations, or decisions.",
+        "comments": "Ontology reference/source: VAIR."
+      },
+      "relation": "=",
+      "measure": 0.99
+    },
+    {
+      "entity1": {
+        "uri": "http://www.semanticweb.org/owl/owlapi/turtle#Prohibited_AI_Practice",
+        "label": "Prohibited AI practice",
+        "definition": "An AI practice that is banned under the Act because it is considered unacceptable due to its harmful effects or manipulation/exploitation risks.",
+        "comments": "Matched to existing class https://w3id.org/vair#Prohibited AI practice as semantically equivalent. Ontology reference/source: VAIR; AI Act Article 5."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#Prohibited AI practice",
+        "label": "Prohibited AI practice",
+        "definition": "An AI practice that is banned under the Act because it is considered unacceptable.",
+        "comments": "Ontology reference/source: VAIR."
+      },
+      "relation": "=",
+      "measure": 0.98
+    },
+    {
+      "entity1": {
+        "uri": "http://www.semanticweb.org/owl/owlapi/turtle#High_Risk_AI_System",
+        "label": "High-risk AI system",
+        "definition": "An AI system classified as high-risk because it is either a safety component of a product or falls within Annex III use-cases and meets the applicable legal conditions.",
+        "comments": "Matched to existing class https://w3id.org/vair#High-risk AI system as semantically equivalent. Ontology reference/source: VAIR; AI Act Article 6."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#High-risk AI system",
+        "label": "High-risk AI system",
+        "definition": "An AI system classified as high-risk because it falls within the categories and conditions established by the Act.",
+        "comments": "Ontology reference/source: VAIR."
+      },
+      "relation": "=",
+      "measure": 0.98
+    },
+    {
+      "entity1": {
+        "uri": "http://www.semanticweb.org/owl/owlapi/turtle#Limited_Risk_AI_System",
+        "label": "Limited-risk AI system",
+        "definition": "An AI system subject to transparency or other limited obligations rather than the full high-risk regime.",
+        "comments": "Matched to existing class https://w3id.org/vair#Limited-risk AI system as sufficiently close. Ontology reference/source: VAIR; AI Act Articles 50 and related provisions."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#Limited-risk AI system",
+        "label": "Limited-risk AI system",
+        "definition": "An AI system subject to transparency obligations rather than the full high-risk regime.",
+        "comments": "Ontology reference/source: VAIR."
+      },
+      "relation": "=",
+      "measure": 0.95
+    },
+    {
+      "entity1": {
+        "uri": "http://www.semanticweb.org/owl/owlapi/turtle#Minimal_Risk_AI_System",
+        "label": "Minimal-risk AI system",
+        "definition": "An AI system that is not prohibited and does not fall under high-risk or specific limited-risk obligations.",
+        "comments": "Matched to existing class https://w3id.org/vair#Minimal-risk AI system as sufficiently close. Ontology reference/source: VAIR; AI Act recitals/general structure."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#Minimal-risk AI system",
+        "label": "Minimal-risk AI system",
+        "definition": "An AI system not subject to specific obligations under the Act beyond general legal requirements.",
+        "comments": "Ontology reference/source: VAIR."
+      },
+      "relation": "=",
+      "measure": 0.93
+    },
+    {
+      "entity1": {
+        "uri": "http://www.semanticweb.org/owl/owlapi/turtle#Provider",
+        "label": "Provider",
+        "definition": "A natural or legal person, public authority, agency, or other body that develops an AI system or has it developed and places it on the market or puts it into service under its own name or trademark.",
+        "comments": "Matched to existing class https://w3id.org/vair#Provider as semantically equivalent. Ontology reference/source: VAIR; AI Act Article 3."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#Provider",
+        "label": "provider",
+        "definition": "An entity that develops or places an AI system on the market or puts it into service under the Act.",
+        "comments": "Ontology reference/source: VAIR."
+      },
+      "relation": "=",
+      "measure": 0.98
+    },
+    {
+      "entity1": {
+        "uri": "http://www.semanticweb.org/owl/owlapi/turtle#Deployer",
+        "label": "Deployer",
+        "definition": "A natural or legal person, public authority, agency, or other body using an AI system under its authority, except for personal non-professional activity.",
+        "comments": "Matched to existing class https://w3id.org/vair#Deployer as semantically equivalent. Ontology reference/source: VAIR; AI Act Article 3."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#Deployer",
+        "label": "deployer",
+        "definition": "An entity that uses an AI system under its authority, except for personal non-professional use.",
+        "comments": "Ontology reference/source: VAIR."
+      },
+      "relation": "=",
+      "measure": 0.98
+    },
+    {
+      "entity1": {
+        "uri": "http://www.semanticweb.org/owl/owlapi/turtle#Importer",
+        "label": "Importer",
+        "definition": "A person or body established in the Union that places on the market an AI system bearing the name or trademark of a person established outside the Union.",
+        "comments": "Matched to existing class https://w3id.org/vair#Importer as semantically equivalent. Ontology reference/source: VAIR; AI Act Article 3."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#Importer",
+        "label": "importer",
+        "definition": "An entity established in the Union that places an AI system from a third country on the market.",
+        "comments": "Ontology reference/source: VAIR."
+      },
+      "relation": "=",
+      "measure": 0.97
+    },
+    {
+      "entity1": {
+        "uri": "http://www.semanticweb.org/owl/owlapi/turtle#Distributor",
+        "label": "Distributor",
+        "definition": "A person in the supply chain, other than the provider or importer, that makes an AI system available on the market.",
+        "comments": "Matched to existing class https://w3id.org/vair#Distributor as semantically equivalent. Ontology reference/source: VAIR; AI Act Article 3."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#Distributor",
+        "label": "distributor",
+        "definition": "An entity in the supply chain that makes an AI system available on the market without being the provider or importer.",
+        "comments": "Ontology reference/source: VAIR."
+      },
+      "relation": "=",
+      "measure": 0.97
+    },
+    {
+      "entity1": {
+        "uri": "http://www.semanticweb.org/owl/owlapi/turtle#AuthorizedRepresentative",
+        "label": "Authorized representative",
+        "definition": "A person or body established in the Union mandated by a provider to act on its behalf.",
+        "comments": "Matched to existing class https://w3id.org/vair#AuthorisedRepresentative as semantically equivalent. Ontology reference/source: VAIR; AI Act Article 3."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#AuthorisedRepresentative",
+        "label": "authorised representative",
+        "definition": "A natural or legal person established in the Union who has received and accepted a written mandate from a provider to act on its behalf.",
+        "comments": "Ontology reference/source: VAIR."
+      },
+      "relation": "=",
+      "measure": 0.97
+    },
+    {
+      "entity1": {
+        "uri": "http://www.semanticweb.org/owl/owlapi/turtle#CompetentAuthority",
+        "label": "Competent authority",
+        "definition": "A public authority responsible for enforcing or supervising compliance with the Act.",
+        "comments": "Matched to existing class https://w3id.org/vair#Competent authority as semantically equivalent. Ontology reference/source: VAIR; AI Act Article 3."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#Competent authority",
+        "label": "competent authority",
+        "definition": "A public authority designated to perform tasks under the Act, including supervision and enforcement.",
+        "comments": "Ontology reference/source: VAIR."
+      },
+      "relation": "=",
+      "measure": 0.97
+    },
+    {
+      "entity1": {
+        "uri": "http://www.semanticweb.org/owl/owlapi/turtle#MarketSurveillanceAuthority",
+        "label": "Market surveillance authority",
+        "definition": "A national authority responsible for monitoring compliance of AI systems placed on the market or put into service.",
+        "comments": "Matched to existing class https://w3id.org/vair#Market surveillance authority as semantically equivalent. Ontology reference/source: VAIR; AI Act Article 70."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#Market surveillance authority",
+        "label": "market surveillance authority",
+        "definition": "A national authority responsible for market surveillance and enforcement of the Act.",
+        "comments": "Ontology reference/source: VAIR."
+      },
+      "relation": "=",
+      "measure": 0.96
+    },
+    {
+      "entity1": {
+        "uri": "http://www.semanticweb.org/owl/owlapi/turtle#NotifiedBody",
+        "label": "Notified body",
+        "definition": "A conformity assessment body designated to perform third-party assessment tasks under the Act.",
+        "comments": "Matched to existing class https://w3id.org/vair#Notified body as semantically equivalent. Ontology reference/source: VAIR; AI Act Articles 30-39."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#Notified body",
+        "label": "notified body",
+        "definition": "A conformity assessment body designated under the Act to perform third-party conformity assessment tasks.",
+        "comments": "Ontology reference/source: VAIR."
+      },
+      "relation": "=",
+      "measure": 0.97
+    },
+    {
+      "entity1": {
+        "uri": "http://www.semanticweb.org/owl/owlapi/turtle#ConformityAssessment",
+        "label": "Conformity assessment",
+        "definition": "The procedure used to demonstrate that an AI system complies with applicable requirements.",
+        "comments": "Matched to existing class https://w3id.org/vair#Conformity assessment as semantically equivalent. Ontology reference/source: VAIR; AI Act Articles 43-48."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#Conformity assessment",
+        "label": "conformity assessment",
+        "definition": "The procedure used to demonstrate that an AI system meets the applicable requirements.",
+        "comments": "Ontology reference/source: VAIR."
+      },
+      "relation": "=",
+      "measure": 0.98
+    },
+    {
+      "entity1": {
+        "uri": "http://www.semanticweb.org/owl/owlapi/turtle#RiskManagementSystem",
+        "label": "Risk management system",
+        "definition": "A continuous iterative process for identifying, analyzing, estimating, and evaluating risks and adopting mitigation measures.",
+        "comments": "Matched to existing class https://w3id.org/vair#Risk management system as semantically equivalent. Ontology reference/source: VAIR; AI Act Article 9."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#Risk management system",
+        "label": "risk management system",
+        "definition": "A systematic process for identifying, analyzing, evaluating, and mitigating risks associated with an AI system.",
+        "comments": "Ontology reference/source: VAIR."
+      },
+      "relation": "=",
+      "measure": 0.98
+    },
+    {
+      "entity1": {
+        "uri": "http://www.semanticweb.org/owl/owlapi/turtle#TechnicalDocumentation",
+        "label": "Technical documentation",
+        "definition": "Documentation demonstrating compliance with the requirements applicable to high-risk AI systems.",
+        "comments": "Matched to existing class https://w3id.org/vair#Technical documentation as semantically equivalent. Ontology reference/source: VAIR; AI Act Article 11."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#Technical documentation",
+        "label": "technical documentation",
+        "definition": "Documentation describing the AI system, its intended purpose, design, development, and compliance measures.",
+        "comments": "Ontology reference/source: VAIR."
+      },
+      "relation": "=",
+      "measure": 0.97
+    },
+    {
+      "entity1": {
+        "uri": "http://www.semanticweb.org/owl/owlapi/turtle#RecordKeeping",
+        "label": "Record keeping",
+        "definition": "Logging capabilities enabling traceability of the AI system's operation.",
+        "comments": "Matched to existing class https://w3id.org/vair#Record keeping as semantically equivalent/close. Ontology reference/source: VAIR; AI Act Article 12."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#Record keeping",
+        "label": "record keeping",
+        "definition": "Logs or records maintained to ensure traceability and monitoring of the AI system.",
+        "comments": "Ontology reference/source: VAIR."
+      },
+      "relation": "=",
+      "measure": 0.95
+    },
+    {
+      "entity1": {
+        "uri": "http://www.semanticweb.org/owl/owlapi/turtle#TransparencyAndInformation",
+        "label": "Transparency and information",
+        "definition": "Information and instructions provided to deployers to enable proper use of the system.",
+        "comments": "Matched to existing class https://w3id.org/vair#Transparency obligation as a close regulatory equivalent. Ontology reference/source: VAIR; AI Act Article 13."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#Transparency obligation",
+        "label": "transparency obligation",
+        "definition": "A legal duty requiring disclosure, marking, or informing natural persons about AI-generated or AI-interacted content or systems.",
+        "comments": "Ontology reference/source: VAIR."
+      },
+      "relation": "=",
+      "measure": 0.9
+    },
+    {
+      "entity1": {
+        "uri": "http://www.semanticweb.org/owl/owlapi/turtle#HumanOversight",
+        "label": "Human oversight",
+        "definition": "Measures enabling effective human oversight of the AI system.",
+        "comments": "Matched to existing class https://w3id.org/vair#Human oversight as semantically equivalent. Ontology reference/source: VAIR; AI Act Article 14."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#Human oversight",
+        "label": "human oversight",
+        "definition": "Measures ensuring that natural persons can oversee, interpret, and intervene in the operation of an AI system.",
+        "comments": "Ontology reference/source: VAIR."
+      },
+      "relation": "=",
+      "measure": 0.98
+    },
+    {
+      "entity1": {
+        "uri": "http://www.semanticweb.org/owl/owlapi/turtle#AccuracyRobustnessCybersecurity",
+        "label": "Accuracy, robustness and cybersecurity",
+        "definition": "Requirements ensuring the AI system performs consistently and is resilient against errors and attacks.",
+        "comments": "Matched to existing class https://w3id.org/vair#Accuracy, robustness and cybersecurity as semantically equivalent. Ontology reference/source: VAIR; AI Act Article 15."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#Accuracy, robustness and cybersecurity",
+        "label": "accuracy, robustness and cybersecurity",
+        "definition": "Requirements ensuring the system performs accurately, robustly, and securely.",
+        "comments": "Ontology reference/source: VAIR."
+      },
+      "relation": "=",
+      "measure": 0.98
+    },
+    {
+      "entity1": {
+        "uri": "ai_system",
+        "label": "AI system",
+        "definition": "A machine-based system designed to operate with varying levels of autonomy and that may exhibit adaptiveness after deployment, inferring from inputs how to generate outputs such as predictions, content, recommendations, or decisions.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; referenceArticle: Article 3(1).",
+        "alignment": "<map>\n  <Cell>\n    <entity1 rdf:resource=\"ai_system\"/>\n    <entity2 rdf:resource=\"https://w3id.org/airo#AISystem\"/>\n    <relation>=</relation>\n    <measure rdf:datatype=\"xsd:float\">0.99</measure>\n  </Cell>\n</map>"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/airo#AISystem",
         "label": "AI System",
-        "definition": "A system that employs artificial intelligence technologies.",
-        "comments": "Ontology reference/source: VAIR"
-      },
-      "relation": "=",
-      "measure": 1.0
+        "definition": "A machine-based system designed to operate with varying levels of autonomy and that may exhibit adaptiveness after deployment.",
+        "comments": "Ontology reference/source: AIRO ontology."
+      }
     },
     {
       "entity1": {
-        "uri": "https://w3id.org/dpv/owl#HighRiskAISystem",
-        "label": "HighRiskAISystem",
-        "definition": "An AI system that poses a high risk to rights and safety.",
-        "comments": "Ontology reference/source: DPV"
-      },
-      "entity2": {
-        "uri": "https://w3id.org/vair#High_Risk_AI_System",
-        "label": "High Risk AI System",
-        "definition": "An AI system identified as having high risk potential.",
-        "comments": "Ontology reference/source: VAIR"
-      },
-      "relation": "=",
-      "measure": 1.0
-    },
-    {
-      "entity1": {
-        "uri": "https://w3id.org/dpv/owl#HighRiskAISystem",
-        "label": "HighRiskAISystem",
-        "definition": "An AI system that poses a high risk to rights and safety.",
-        "comments": "Ontology reference/source: DPV"
+        "uri": "high_risk_ai_system",
+        "label": "High-risk AI system",
+        "definition": "An AI system classified as high-risk because it falls within the categories and conditions established by the Act.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; referenceArticle: Article 6.",
+        "alignment": "<map>\n  <Cell>\n    <entity1 rdf:resource=\"high_risk_ai_system\"/>\n    <entity2 rdf:resource=\"https://w3id.org/vair#HighRiskAISystem\"/>\n    <relation>=</relation>\n    <measure rdf:datatype=\"xsd:float\">0.98</measure>\n  </Cell>\n</map>"
       },
       "entity2": {
         "uri": "https://w3id.org/vair#HighRiskAISystem",
-        "label": "High Risk AI System",
-        "definition": "An AI system identified as high risk due to its potential impact.",
-        "comments": "Ontology reference/source: VAIR"
+        "label": "High-risk AI system",
+        "definition": "An AI system classified as high-risk because it falls within the categories and conditions established by the Act.",
+        "comments": "Ontology reference/source: VAIR ontology."
+      }
+    },
+    {
+      "entity1": {
+        "uri": "prohibited_ai_practice",
+        "label": "Prohibited AI practice",
+        "definition": "An AI practice that is banned under the Act because it presents unacceptable risk.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; referenceArticle: Article 5.",
+        "alignment": "<map>\n  <Cell>\n    <entity1 rdf:resource=\"prohibited_ai_practice\"/>\n    <entity2 rdf:resource=\"https://w3id.org/vair#ProhibitedPractice\"/>\n    <relation>=</relation>\n    <measure rdf:datatype=\"xsd:float\">0.98</measure>\n  </Cell>\n</map>"
       },
-      "relation": "=",
-      "measure": 1.0
+      "entity2": {
+        "uri": "https://w3id.org/vair#ProhibitedPractice",
+        "label": "Prohibited practice",
+        "definition": "An AI practice that is banned under the Act because it is considered unacceptable.",
+        "comments": "Ontology reference/source: VAIR ontology."
+      }
+    },
+    {
+      "entity1": {
+        "uri": "provider",
+        "label": "Provider",
+        "definition": "A natural or legal person, public authority, agency, or other body that develops an AI system or has it developed and places it on the market or puts it into service under its own name or trademark.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; referenceArticle: Article 3.",
+        "alignment": "<map>\n  <Cell>\n    <entity1 rdf:resource=\"provider\"/>\n    <entity2 rdf:resource=\"https://w3id.org/airo#AIProvider\"/>\n    <relation>=</relation>\n    <measure rdf:datatype=\"xsd:float\">0.95</measure>\n  </Cell>\n</map>"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/airo#AIProvider",
+        "label": "AI Provider",
+        "definition": "An entity that develops, supplies, or places an AI system on the market.",
+        "comments": "Ontology reference/source: AIRO ontology."
+      }
+    },
+    {
+      "entity1": {
+        "uri": "deployer",
+        "label": "Deployer",
+        "definition": "A natural or legal person, public authority, agency, or other body using an AI system under its authority, except where the system is used in the course of a personal non-professional activity.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; referenceArticle: Article 3.",
+        "alignment": "<map>\n  <Cell>\n    <entity1 rdf:resource=\"deployer\"/>\n    <entity2 rdf:resource=\"https://w3id.org/airo#AIDeployer\"/>\n    <relation>=</relation>\n    <measure rdf:datatype=\"xsd:float\">0.95</measure>\n  </Cell>\n</map>"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/airo#AIDeployer",
+        "label": "AI Deployer",
+        "definition": "An entity that uses or deploys an AI system.",
+        "comments": "Ontology reference/source: AIRO ontology."
+      }
+    },
+    {
+      "entity1": {
+        "uri": "importer",
+        "label": "Importer",
+        "definition": "A natural or legal person established in the Union that places on the market an AI system bearing the name or trademark of a person established outside the Union.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; referenceArticle: Article 3.",
+        "alignment": "<map>\n  <Cell>\n    <entity1 rdf:resource=\"importer\"/>\n    <entity2 rdf:resource=\"https://w3id.org/airo#AIComponent\"/>\n    <relation>=</relation>\n    <measure rdf:datatype=\"xsd:float\">0.55</measure>\n  </Cell>\n</map>"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/airo#AIComponent",
+        "label": "AI Component",
+        "definition": "A component of an AI system.",
+        "comments": "Ontology reference/source: AIRO ontology. Partial/weak match only."
+      }
+    },
+    {
+      "entity1": {
+        "uri": "distributor",
+        "label": "Distributor",
+        "definition": "A natural or legal person in the supply chain, other than the provider or importer, that makes an AI system available on the market.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; referenceArticle: Article 3.",
+        "alignment": "<map>\n  <Cell>\n    <entity1 rdf:resource=\"distributor\"/>\n    <entity2 rdf:resource=\"https://w3id.org/airo#AIComponent\"/>\n    <relation>=</relation>\n    <measure rdf:datatype=\"xsd:float\">0.5</measure>\n  </Cell>\n</map>"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/airo#AIComponent",
+        "label": "AI Component",
+        "definition": "A component of an AI system.",
+        "comments": "Ontology reference/source: AIRO ontology. Partial/weak match only."
+      }
+    },
+    {
+      "entity1": {
+        "uri": "notified_body",
+        "label": "Notified body",
+        "definition": "A conformity assessment body designated under the Act to perform third-party conformity assessment tasks.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; referenceArticle: Article 3, Articles 30-39.",
+        "alignment": "<map>\n  <Cell>\n    <entity1 rdf:resource=\"notified_body\"/>\n    <entity2 rdf:resource=\"https://w3id.org/vair#NotifiedBody\"/>\n    <relation>=</relation>\n    <measure rdf:datatype=\"xsd:float\">0.99</measure>\n  </Cell>\n</map>"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#NotifiedBody",
+        "label": "Notified body",
+        "definition": "A conformity assessment body designated to perform third-party assessment tasks under the Act.",
+        "comments": "Ontology reference/source: VAIR ontology."
+      }
+    },
+    {
+      "entity1": {
+        "uri": "conformity_assessment",
+        "label": "Conformity assessment",
+        "definition": "The procedure used to demonstrate that an AI system complies with applicable requirements.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; referenceArticle: Articles 16-29, Article 43.",
+        "alignment": "<map>\n  <Cell>\n    <entity1 rdf:resource=\"conformity_assessment\"/>\n    <entity2 rdf:resource=\"https://w3id.org/vair#Assessment\"/>\n    <relation>=</relation>\n    <measure rdf:datatype=\"xsd:float\">0.9</measure>\n  </Cell>\n</map>"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#Assessment",
+        "label": "Assessment",
+        "definition": "A general evaluation or assessment activity.",
+        "comments": "Ontology reference/source: VAIR ontology. Broad but close match."
+      }
+    },
+    {
+      "entity1": {
+        "uri": "technical_documentation",
+        "label": "Technical documentation",
+        "definition": "Documentation demonstrating compliance with the Act and describing the AI system, its design, development, and operation.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; referenceArticle: Article 11 / Annex IV.",
+        "alignment": "<map>\n  <Cell>\n    <entity1 rdf:resource=\"technical_documentation\"/>\n    <entity2 rdf:resource=\"https://w3id.org/vair#TechnicalDocumentation\"/>\n    <relation>=</relation>\n    <measure rdf:datatype=\"xsd:float\">0.99</measure>\n  </Cell>\n</map>"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#TechnicalDocumentation",
+        "label": "Technical Documentation",
+        "definition": "Documentation describing the AI system, its intended purpose, design, development, and compliance.",
+        "comments": "Ontology reference/source: VAIR ontology."
+      }
+    },
+    {
+      "entity1": {
+        "uri": "record_keeping",
+        "label": "Record keeping",
+        "definition": "Logging capabilities enabling traceability of the AI system's operation.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; referenceArticle: Article 12.",
+        "alignment": "<map>\n  <Cell>\n    <entity1 rdf:resource=\"record_keeping\"/>\n    <entity2 rdf:resource=\"https://w3id.org/vair#LoggingMeasure\"/>\n    <relation>=</relation>\n    <measure rdf:datatype=\"xsd:float\">0.88</measure>\n  </Cell>\n</map>"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#LoggingMeasure",
+        "label": "Logging Measure",
+        "definition": "A measure related to logging and traceability.",
+        "comments": "Ontology reference/source: VAIR ontology."
+      }
+    },
+    {
+      "entity1": {
+        "uri": "human_oversight",
+        "label": "Human oversight",
+        "definition": "Measures enabling effective human oversight of the AI system.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; referenceArticle: Article 14.",
+        "alignment": "<map>\n  <Cell>\n    <entity1 rdf:resource=\"human_oversight\"/>\n    <entity2 rdf:resource=\"https://w3id.org/vair#HumanOversightMeasure\"/>\n    <relation>=</relation>\n    <measure rdf:datatype=\"xsd:float\">0.98</measure>\n  </Cell>\n</map>"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#HumanOversightMeasure",
+        "label": "Human Oversight Measure",
+        "definition": "A measure intended to enable human oversight of an AI system.",
+        "comments": "Ontology reference/source: VAIR ontology."
+      }
+    },
+    {
+      "entity1": {
+        "uri": "risk_management_system",
+        "label": "Risk management system",
+        "definition": "A continuous iterative process for identifying, analyzing, estimating, and evaluating risks and adopting mitigation measures.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; referenceArticle: Article 9.",
+        "alignment": "<map>\n  <Cell>\n    <entity1 rdf:resource=\"risk_management_system\"/>\n    <entity2 rdf:resource=\"https://w3id.org/dpv/owl#RiskManagement\"/>\n    <relation>=</relation>\n    <measure rdf:datatype=\"xsd:float\">0.9</measure>\n  </Cell>\n</map>"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#RiskManagement",
+        "label": "RiskManagement",
+        "definition": "A process or framework for managing risk.",
+        "comments": "Ontology reference/source: DPV ontology. Closest available match."
+      }
+    },
+    {
+      "entity1": {
+        "uri": "market_surveillance_authority",
+        "label": "Market surveillance authority",
+        "definition": "A national authority responsible for monitoring compliance of AI systems placed on the market or put into service.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; referenceArticle: Article 3, Article 70.",
+        "alignment": "<map>\n  <Cell>\n    <entity1 rdf:resource=\"market_surveillance_authority\"/>\n    <entity2 rdf:resource=\"https://w3id.org/vair#MarketSurveillanceAuthority\"/>\n    <relation>=</relation>\n    <measure rdf:datatype=\"xsd:float\">0.99</measure>\n  </Cell>\n</map>"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#MarketSurveillanceAuthority",
+        "label": "Market surveillance authority",
+        "definition": "A national authority responsible for market surveillance and enforcement of the Act.",
+        "comments": "Ontology reference/source: VAIR ontology."
+      }
+    },
+    {
+      "entity1": {
+        "uri": "competent_authority",
+        "label": "Competent authority",
+        "definition": "An authority designated by a Member State to carry out tasks under the Regulation.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; referenceArticle: Article 3.",
+        "alignment": "<map>\n  <Cell>\n    <entity1 rdf:resource=\"competent_authority\"/>\n    <entity2 rdf:resource=\"https://w3id.org/vair#CompetentAuthority\"/>\n    <relation>=</relation>\n    <measure rdf:datatype=\"xsd:float\">0.98</measure>\n  </Cell>\n</map>"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#CompetentAuthority",
+        "label": "Competent authority",
+        "definition": "An authority designated to perform tasks under the Act, including supervision, enforcement, or coordination.",
+        "comments": "Ontology reference/source: VAIR ontology."
+      }
+    },
+    {
+      "entity1": {
+        "uri": "ai_system_category",
+        "label": "AI system category",
+        "definition": "A classification of AI systems used to organize systems according to their regulatory status or functional characteristics.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; referenceArticle: Article 3.",
+        "alignment": "<map>\n  <Cell>\n    <entity1 rdf:resource=\"ai_system_category\"/>\n    <entity2 rdf:resource=\"https://w3id.org/vair#Concept\"/>\n    <relation>=</relation>\n    <measure rdf:datatype=\"xsd:float\">0.72</measure>\n  </Cell>\n</map>"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#Concept",
+        "label": "Concept",
+        "definition": "A general concept used for classification or annotation.",
+        "comments": "Ontology reference/source: VAIR ontology. Broad conceptual match."
+      }
     }
   ],
   "corresponding_properties": [
     {
       "entity1": {
-        "uri": "https://w3id.org/dpv/owl#hasObligation",
-        "label": "hasObligation",
-        "definition": "Indicates an obligation associated with an entity.",
-        "comments": "Ontology reference/source: DPV"
+        "uri": "http://example.org/eu-ai-act#placing_on_market",
+        "label": "Placing on the market",
+        "definition": "The first making available of an AI system on the Union market.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; Article 3.",
+        "source": "Generated EU AI Act ontology"
       },
       "entity2": {
-        "uri": "https://w3id.org/vair#hasObligation",
-        "label": "has Obligation",
-        "definition": "Denotes an obligation that an entity must fulfill.",
-        "comments": "Ontology reference/source: VAIR"
+        "uri": "https://w3id.org/dpv/owl#MakeAvailable",
+        "label": "MakeAvailable",
+        "definition": "Make available.",
+        "comments": "Ontology reference/source: DPV ontology.",
+        "source": "DPV"
       },
       "relation": "=",
-      "measure": 1.0
+      "measure": 0.92
     },
     {
       "entity1": {
-        "uri": "https://w3id.org/dpv/owl#hasCategory",
-        "label": "hasCategory",
-        "definition": "Specifies the category to which an entity belongs.",
-        "comments": "Ontology reference/source: DPV"
+        "uri": "http://example.org/eu-ai-act#putting_into_service",
+        "label": "Putting into service",
+        "definition": "The supply of an AI system for first use directly to the deployer or for own use in the Union.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; Article 3.",
+        "source": "Generated EU AI Act ontology"
       },
       "entity2": {
-        "uri": "https://w3id.org/vair#hasCategory",
-        "label": "has Category",
-        "definition": "Indicates the category classification of an entity.",
-        "comments": "Ontology reference/source: VAIR"
+        "uri": "https://w3id.org/dpv/owl#Use",
+        "label": "Use",
+        "definition": "Use.",
+        "comments": "Ontology reference/source: DPV ontology.",
+        "source": "DPV"
       },
       "relation": "=",
-      "measure": 1.0
+      "measure": 0.74
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act#use_of_ai_system",
+        "label": "Use of AI system",
+        "definition": "The operation or deployment of an AI system by a user or deployer in the Union.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; Article 3.",
+        "source": "Generated EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#Use",
+        "label": "Use",
+        "definition": "Use.",
+        "comments": "Ontology reference/source: DPV ontology.",
+        "source": "DPV"
+      },
+      "relation": "=",
+      "measure": 0.9
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act#risk_management_system",
+        "label": "Risk management system",
+        "definition": "A continuous iterative process for identifying, analyzing, estimating, and evaluating risks and adopting mitigation measures.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; Article 9.",
+        "source": "Generated EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#RiskAssessment",
+        "label": "RiskAssessment",
+        "definition": "Risk assessment activities.",
+        "comments": "Ontology reference/source: DPV ontology.",
+        "source": "DPV"
+      },
+      "relation": "=",
+      "measure": 0.88
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act#data_governance",
+        "label": "Data governance",
+        "definition": "Practices ensuring training, validation, and testing data are relevant, representative, free of errors, and complete as appropriate.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; Article 10.",
+        "source": "Generated EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#DataGovernance",
+        "label": "DataGovernance",
+        "definition": "Data governance activities.",
+        "comments": "Ontology reference/source: DPV ontology.",
+        "source": "DPV"
+      },
+      "relation": "=",
+      "measure": 0.96
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act#technical_documentation",
+        "label": "Technical documentation",
+        "definition": "Documentation demonstrating compliance with the requirements applicable to high-risk AI systems.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; Article 11.",
+        "source": "Generated EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#TechnicalDocumentation",
+        "label": "Technical Documentation",
+        "definition": "Documentation describing the AI system, its intended purpose, design, development, and compliance.",
+        "comments": "Ontology reference/source: VAIR ontology.",
+        "source": "VAIR"
+      },
+      "relation": "=",
+      "measure": 0.98
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act#record_keeping",
+        "label": "Record keeping",
+        "definition": "Logging capabilities enabling traceability of the AI system's operation.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; Article 12.",
+        "source": "Generated EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#LoggingMeasure",
+        "label": "Logging Measure",
+        "definition": "A logging measure.",
+        "comments": "Ontology reference/source: VAIR ontology.",
+        "source": "VAIR"
+      },
+      "relation": "=",
+      "measure": 0.91
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act#transparency_and_information",
+        "label": "Transparency and information",
+        "definition": "Information and instructions provided to deployers to enable proper use of the system.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; Article 13.",
+        "source": "Generated EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#AINotice",
+        "label": "AINotice",
+        "definition": "AI notice / information notice.",
+        "comments": "Ontology reference/source: DPV ontology.",
+        "source": "DPV"
+      },
+      "relation": "=",
+      "measure": 0.89
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act#human_oversight",
+        "label": "Human oversight",
+        "definition": "Measures enabling effective human oversight of the AI system.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; Article 14.",
+        "source": "Generated EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/airo#HumanOversight",
+        "label": "HumanOversight",
+        "definition": "Human oversight.",
+        "comments": "Ontology reference/source: AIRO ontology.",
+        "source": "AIRO"
+      },
+      "relation": "=",
+      "measure": 0.97
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act#accuracy_robustness_cybersecurity",
+        "label": "Accuracy, robustness and cybersecurity",
+        "definition": "Requirements ensuring the AI system performs consistently and is resilient against errors and attacks.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; Article 15.",
+        "source": "Generated EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#SecurityMeasure",
+        "label": "Security Measure",
+        "definition": "A security measure.",
+        "comments": "Ontology reference/source: VAIR ontology.",
+        "source": "VAIR"
+      },
+      "relation": "=",
+      "measure": 0.8
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act#market_placement",
+        "label": "Market placement",
+        "definition": "The first making available of an AI system on the Union market.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; Article 3.",
+        "source": "Generated EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#MakeAvailable",
+        "label": "MakeAvailable",
+        "definition": "Make available.",
+        "comments": "Ontology reference/source: DPV ontology.",
+        "source": "DPV"
+      },
+      "relation": "=",
+      "measure": 0.93
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act#conformity_assessment",
+        "label": "Conformity assessment",
+        "definition": "The process used to demonstrate that an AI system complies with applicable requirements.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; Articles 43-49.",
+        "source": "Generated EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#ConformanceAssessment",
+        "label": "ConformanceAssessment",
+        "definition": "An assessment of whether something conforms to requirements.",
+        "comments": "Ontology reference/source: DPV ontology.",
+        "source": "DPV"
+      },
+      "relation": "=",
+      "measure": 0.96
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act#registration",
+        "label": "Registration",
+        "definition": "Entry of an AI system or its use into an official database.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; Article 49.",
+        "source": "Generated EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#Record",
+        "label": "Record",
+        "definition": "A record.",
+        "comments": "Ontology reference/source: DPV ontology.",
+        "source": "DPV"
+      },
+      "relation": "=",
+      "measure": 0.67
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act#post_market_monitoring",
+        "label": "Post-market monitoring",
+        "definition": "Ongoing monitoring by providers of the performance of AI systems after they are placed on the market.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; Article 61.",
+        "source": "Generated EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#MonitoringPolicy",
+        "label": "MonitoringPolicy",
+        "definition": "Monitoring policy.",
+        "comments": "Ontology reference/source: DPV ontology.",
+        "source": "DPV"
+      },
+      "relation": "=",
+      "measure": 0.84
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act#serious_incident",
+        "label": "Serious incident",
+        "definition": "An incident or malfunction that leads to or might lead to death, serious harm, or serious disruption.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; Article 73.",
+        "source": "Generated EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#SecurityIncidentNotice",
+        "label": "SecurityIncidentNotice",
+        "definition": "Security incident notice.",
+        "comments": "Ontology reference/source: DPV ontology.",
+        "source": "DPV"
+      },
+      "relation": "=",
+      "measure": 0.79
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act#real_world_testing",
+        "label": "Real-world testing",
+        "definition": "Testing of AI systems under real conditions for a limited period and under specific safeguards.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; Article 60.",
+        "source": "Generated EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#Validation",
+        "label": "Validation",
+        "definition": "Validation.",
+        "comments": "Ontology reference/source: VAIR ontology.",
+        "source": "VAIR"
+      },
+      "relation": "=",
+      "measure": 0.71
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/hasCategory",
+        "label": "has category",
+        "definition": "Links an AI system to its regulatory category.",
+        "comments": "Ontology reference/source: EU AI Act generated ontology; aligns with classification-related properties in the domain ontology."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#hasCategory",
+        "label": "has category",
+        "definition": "Links an AI system to the category under which it is classified.",
+        "comments": "Ontology reference/source: DPV reference ontology."
+      },
+      "relation": "=",
+      "measure": 0.98,
+      "alignment": "<map>\n  <Cell>\n    <entity1 rdf:resource=\"http://example.org/eu-ai-act/hasCategory\"/>\n    <entity2 rdf:resource=\"https://w3id.org/dpv/owl#hasCategory\"/>\n    <relation>=</relation>\n    <measure rdf:datatype=\"xsd:float\">0.98</measure>\n  </Cell>\n</map>"
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/isProhibitedUnder",
+        "label": "is prohibited under",
+        "definition": "Indicates that an AI system or practice is prohibited by a specific legal provision.",
+        "comments": "Ontology reference/source: EU AI Act generated ontology; aligns with prohibition-related properties in the domain ontology."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#isProhibitedUnder",
+        "label": "is prohibited under",
+        "definition": "Indicates that an AI practice is prohibited by a specific legal provision.",
+        "comments": "Ontology reference/source: DPV reference ontology."
+      },
+      "relation": "=",
+      "measure": 0.99,
+      "alignment": "<map>\n  <Cell>\n    <entity1 rdf:resource=\"http://example.org/eu-ai-act/isProhibitedUnder\"/>\n    <entity2 rdf:resource=\"https://w3id.org/dpv/owl#isProhibitedUnder\"/>\n    <relation>=</relation>\n    <measure rdf:datatype=\"xsd:float\">0.99</measure>\n  </Cell>\n</map>"
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/hasIntendedPurpose",
+        "label": "has intended purpose",
+        "definition": "Links an AI system to its intended purpose.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; close semantic match to intended-purpose relation in the reference ontology."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#hasPurpose",
+        "label": "hasPurpose",
+        "definition": "Links an AI system or process to its purpose.",
+        "comments": "Ontology reference/source: DPV reference ontology. Closest available purpose relation; sufficiently close for equivalence in this context."
+      },
+      "relation": "=",
+      "measure": 0.9,
+      "alignment": "<map>\n  <Cell>\n    <entity1 rdf:resource=\"http://example.org/eu-ai-act/hasIntendedPurpose\"/>\n    <entity2 rdf:resource=\"https://w3id.org/dpv/owl#hasPurpose\"/>\n    <relation>=</relation>\n    <measure rdf:datatype=\"xsd:float\">0.9</measure>\n  </Cell>\n</map>"
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/fallsWithinAnnexIII",
+        "label": "falls within Annex III",
+        "definition": "Indicates whether an AI system use case appears in Annex III.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted entity); no exact existing ontology property found, but semantically close to https://w3id.org/dpv/owl#isApplicableFor / https://w3id.org/dpv/owl#hasScope."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#isApplicableFor",
+        "label": "isApplicableFor",
+        "definition": "Indicates that a rule, policy, or concept applies to a specified entity or context.",
+        "comments": "Ontology reference/source: DPV ontology."
+      },
+      "relation": "=",
+      "measure": 0.72
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/hasRole",
+        "label": "has role",
+        "definition": "Links an actor to its role under the Act.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; aligned with existing reference ontology role relation."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#hasRole",
+        "label": "has role",
+        "definition": "Links a person or body to its role under the Act.",
+        "comments": "Ontology reference/source: DPV reference ontology."
+      },
+      "relation": "=",
+      "measure": 0.98,
+      "alignment": "<map>\n  <Cell>\n    <entity1 rdf:resource=\"http://example.org/eu-ai-act/hasRole\"/>\n    <entity2 rdf:resource=\"https://w3id.org/dpv/owl#hasRole\"/>\n    <relation>=</relation>\n    <measure rdf:datatype=\"xsd:float\">0.98</measure>\n  </Cell>\n</map>"
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/hasObligation",
+        "label": "has obligation",
+        "definition": "Links an actor to a legal obligation imposed by the Act.",
+        "comments": "Ontology reference/source: EU AI Act generated ontology; aligns with obligation relations in the domain ontology."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#hasObligation",
+        "label": "has obligation",
+        "definition": "Links an actor to a legal obligation.",
+        "comments": "Ontology reference/source: DPV reference ontology."
+      },
+      "relation": "=",
+      "measure": 0.99,
+      "alignment": "<map>\n  <Cell>\n    <entity1 rdf:resource=\"http://example.org/eu-ai-act/hasObligation\"/>\n    <entity2 rdf:resource=\"https://w3id.org/dpv/owl#hasObligation\"/>\n    <relation>=</relation>\n    <measure rdf:datatype=\"xsd:float\">0.99</measure>\n  </Cell>\n</map>"
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/hasRiskLevel",
+        "label": "has risk level",
+        "definition": "Links an AI system to its risk classification.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; aligned with existing reference ontology risk classification relation."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#hasRiskLevel",
+        "label": "hasRiskLevel",
+        "definition": "Links an AI system to its risk level.",
+        "comments": "Ontology reference/source: DPV reference ontology."
+      },
+      "relation": "=",
+      "measure": 0.99,
+      "alignment": "<map>\n  <Cell>\n    <entity1 rdf:resource=\"http://example.org/eu-ai-act/hasRiskLevel\"/>\n    <entity2 rdf:resource=\"https://w3id.org/dpv/owl#hasRiskLevel\"/>\n    <relation>=</relation>\n    <measure rdf:datatype=\"xsd:float\">0.99</measure>\n  </Cell>\n</map>"
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/hasClassificationCriterion",
+        "label": "has classification criterion",
+        "definition": "Links an AI system to the criterion used to determine high-risk status.",
+        "comments": "Ontology reference/source: EU AI Act generated ontology; aligns with classification-criterion modeling in the domain ontology."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#hasClassificationCriterion",
+        "label": "has classification criterion",
+        "definition": "Associates an AI system or category with the criteria used for classification.",
+        "comments": "Ontology reference/source: DPV reference ontology."
+      },
+      "relation": "=",
+      "measure": 0.96,
+      "alignment": "<map>\n  <Cell>\n    <entity1 rdf:resource=\"http://example.org/eu-ai-act/hasClassificationCriterion\"/>\n    <entity2 rdf:resource=\"https://w3id.org/dpv/owl#hasClassificationCriterion\"/>\n    <relation>=</relation>\n    <measure rdf:datatype=\"xsd:float\">0.96</measure>\n  </Cell>\n</map>"
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/placesOnMarket",
+        "label": "places on market",
+        "definition": "Indicates that a provider makes an AI system available on the market.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted entity); aligns with existing ontology property https://w3id.org/dpv/owl#placesOnMarket."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#placesOnMarket",
+        "label": "placesOnMarket",
+        "definition": "Indicates that an entity makes an AI system or model available on the market.",
+        "comments": "Ontology reference/source: DPV ontology."
+      },
+      "relation": "=",
+      "measure": 0.99
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/putsIntoService",
+        "label": "puts into service",
+        "definition": "Indicates that a provider activates or deploys an AI system for use.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted entity); aligns with existing ontology property https://w3id.org/dpv/owl#putsIntoService."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#putsIntoService",
+        "label": "putsIntoService",
+        "definition": "Indicates that an entity first uses an AI system or model for its intended purpose.",
+        "comments": "Ontology reference/source: DPV ontology."
+      },
+      "relation": "=",
+      "measure": 0.99
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/usesUnderAuthority",
+        "label": "uses under authority",
+        "definition": "Indicates that a deployer operates an AI system under its control or authority.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted entity); aligns with existing ontology property https://w3id.org/dpv/owl#usesUnderAuthority."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#usesUnderAuthority",
+        "label": "usesUnderAuthority",
+        "definition": "Indicates that an entity uses an AI system under its authority.",
+        "comments": "Ontology reference/source: DPV ontology."
+      },
+      "relation": "=",
+      "measure": 0.99
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/hasTechnicalDocumentation",
+        "label": "has technical documentation",
+        "definition": "Links a system to its technical documentation.",
+        "comments": "Ontology reference/source: EU AI Act generated ontology; aligns with documentation relations in the domain ontology."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#hasPart",
+        "label": "hasPart",
+        "definition": "Relates a whole to one of its parts.",
+        "comments": "Ontology reference/source: DPV reference ontology. Approximate structural match for documentation containment."
+      },
+      "relation": "=",
+      "measure": 0.61,
+      "alignment": "<map>\n  <Cell>\n    <entity1 rdf:resource=\"http://example.org/eu-ai-act/hasTechnicalDocumentation\"/>\n    <entity2 rdf:resource=\"https://w3id.org/dpv/owl#hasPart\"/>\n    <relation>=</relation>\n    <measure rdf:datatype=\"xsd:float\">0.61</measure>\n  </Cell>\n</map>"
+    },
+    {
+      "entity1": {
+        "uri": "generated:referenceArticle",
+        "label": "referenceArticle",
+        "definition": "A citation to the relevant article or provision in the EU AI Act.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted properties).",
+        "ontology_reference": "EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "http://www.w3.org/2000/01/rdf-schema#comment",
+        "label": "comment",
+        "definition": "An annotation providing additional information about a resource.",
+        "comments": "Ontology reference/source: RDFS.",
+        "ontology_reference": "RDFS"
+      },
+      "relation": "=",
+      "measure": 0.58
+    },
+    {
+      "entity1": {
+        "uri": "generated:label",
+        "label": "label",
+        "definition": "A human-readable name for an entity.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted properties).",
+        "ontology_reference": "EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+        "label": "label",
+        "definition": "The human-readable name of a resource.",
+        "comments": "Ontology reference/source: RDFS.",
+        "ontology_reference": "RDFS"
+      },
+      "relation": "=",
+      "measure": 0.99
+    },
+    {
+      "entity1": {
+        "uri": "generated:definition",
+        "label": "definition",
+        "definition": "A textual explanation of the meaning of an entity.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted properties).",
+        "ontology_reference": "EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "http://www.w3.org/2004/02/skos/core#definition",
+        "label": "definition",
+        "definition": "A statement or formal explanation of the meaning of a concept.",
+        "comments": "Ontology reference/source: SKOS.",
+        "ontology_reference": "SKOS"
+      },
+      "relation": "=",
+      "measure": 0.99
+    },
+    {
+      "entity1": {
+        "uri": "generated:comments",
+        "label": "comments",
+        "definition": "Additional explanatory notes, including ontology reference/source.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted properties).",
+        "ontology_reference": "EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "http://www.w3.org/2000/01/rdf-schema#comment",
+        "label": "comment",
+        "definition": "An annotation providing additional information about a resource.",
+        "comments": "Ontology reference/source: RDFS.",
+        "ontology_reference": "RDFS"
+      },
+      "relation": "=",
+      "measure": 0.98
+    },
+    {
+      "entity1": {
+        "uri": "generated:sourceLabel",
+        "label": "sourceLabel",
+        "definition": "A label indicating the source content or source question used to generate the entity.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted properties).",
+        "ontology_reference": "EU AI Act ontology"
+      },
+      "entity2": {
+        "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+        "label": "label",
+        "definition": "The human-readable name of a resource.",
+        "comments": "Ontology reference/source: RDFS. Close but not equivalent; sourceLabel is provenance metadata.",
+        "ontology_reference": "RDFS"
+      },
+      "relation": "=",
+      "measure": 0.45
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/isProhibitedUnder",
+        "label": "is prohibited under",
+        "definition": "Indicates that an AI system or practice is prohibited by a specific legal provision.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; close semantic match to prohibition relation in the reference ontology."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#isApplicableFor",
+        "label": "isApplicableFor",
+        "definition": "Indicates that a concept is applicable for a specified entity or context.",
+        "comments": "Ontology reference/source: DPV reference ontology. Used as the closest available legal-applicability relation; not a perfect equivalence but sufficiently close for mapping."
+      },
+      "relation": "=",
+      "measure": 0.72,
+      "alignment": "<map>\n  <Cell>\n    <entity1 rdf:resource=\"http://example.org/eu-ai-act/isProhibitedUnder\"/>\n    <entity2 rdf:resource=\"https://w3id.org/dpv/owl#isApplicableFor\"/>\n    <relation>=</relation>\n    <measure rdf:datatype=\"xsd:float\">0.72</measure>\n  </Cell>\n</map>"
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/hasProviderObligation",
+        "label": "has provider obligation",
+        "definition": "Links a provider to a legal duty applicable to high-risk AI systems.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted entity); aligns with existing ontology property https://w3id.org/dpv/owl#hasObligation."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#hasObligation",
+        "label": "hasObligation",
+        "definition": "Links an entity to an obligation that applies to it.",
+        "comments": "Ontology reference/source: DPV ontology."
+      },
+      "relation": "=",
+      "measure": 0.95
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/hasDeployerObligation",
+        "label": "has deployer obligation",
+        "definition": "Links a deployer to a legal duty applicable when using a high-risk AI system.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted entity); aligns with existing ontology property https://w3id.org/dpv/owl#hasObligation."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#hasObligation",
+        "label": "hasObligation",
+        "definition": "Links an entity to an obligation that applies to it.",
+        "comments": "Ontology reference/source: DPV ontology."
+      },
+      "relation": "=",
+      "measure": 0.95
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/hasClassification",
+        "label": "has classification",
+        "definition": "Links an AI system to its legal category or classification under the Act.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; close semantic match to classification relation."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#hasCategory",
+        "label": "hasCategory",
+        "definition": "Links an AI system to the category under which it is classified.",
+        "comments": "Ontology reference/source: DPV reference ontology. Closest available category/classification relation."
+      },
+      "relation": "=",
+      "measure": 0.93,
+      "alignment": "<map>\n  <Cell>\n    <entity1 rdf:resource=\"http://example.org/eu-ai-act/hasClassification\"/>\n    <entity2 rdf:resource=\"https://w3id.org/dpv/owl#hasCategory\"/>\n    <relation>=</relation>\n    <measure rdf:datatype=\"xsd:float\">0.93</measure>\n  </Cell>\n</map>"
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/hasRiskCategory",
+        "label": "has risk category",
+        "definition": "Links an AI system to its risk classification category.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; aligned with existing reference ontology risk category relation."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#hasRiskLevel",
+        "label": "hasRiskLevel",
+        "definition": "Links an AI system to its risk level.",
+        "comments": "Ontology reference/source: DPV reference ontology."
+      },
+      "relation": "=",
+      "measure": 0.95,
+      "alignment": "<map>\n  <Cell>\n    <entity1 rdf:resource=\"http://example.org/eu-ai-act/hasRiskCategory\"/>\n    <entity2 rdf:resource=\"https://w3id.org/dpv/owl#hasRiskLevel\"/>\n    <relation>=</relation>\n    <measure rdf:datatype=\"xsd:float\">0.95</measure>\n  </Cell>\n</map>"
+    },
+    {
+      "entity1": {
+        "uri": "http://www.semanticweb.org/owl/owlapi/turtle#hasProvider",
+        "label": "provider",
+        "definition": "The actor responsible for developing or placing an AI system on the market or putting it into service.",
+        "comments": "Matched to existing property in VAIR/DPV-style actor relations. Ontology reference/source: AI Act Article 3; VAIR/DPV provider-related properties."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#provider",
+        "label": "provider",
+        "definition": "An entity that develops or places an AI system on the market or puts it into service under the Act.",
+        "comments": "Ontology reference/source: VAIR."
+      },
+      "relation": "=",
+      "measure": 0.94
+    },
+    {
+      "entity1": {
+        "uri": "http://www.semanticweb.org/owl/owlapi/turtle#hasDeployer",
+        "label": "deployer",
+        "definition": "The actor using an AI system under its authority.",
+        "comments": "Matched to existing property in VAIR/DPV-style actor relations. Ontology reference/source: AI Act Article 3; VAIR/DPV deployer-related properties."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#deployer",
+        "label": "deployer",
+        "definition": "An entity that uses an AI system under its authority, except for personal non-professional use.",
+        "comments": "Ontology reference/source: VAIR."
+      },
+      "relation": "=",
+      "measure": 0.94
+    },
+    {
+      "entity1": {
+        "uri": "http://www.semanticweb.org/owl/owlapi/turtle#hasCompetentAuthority",
+        "label": "competent authority",
+        "definition": "A public authority designated to supervise, enforce, or support compliance with the Act.",
+        "comments": "Matched to existing property in VAIR/DPV-style authority relations. Ontology reference/source: AI Act Article 3; VAIR/DPV authority-related properties."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#competentAuthority",
+        "label": "competent authority",
+        "definition": "An authority designated to perform tasks under the Act, including supervision and enforcement.",
+        "comments": "Ontology reference/source: VAIR."
+      },
+      "relation": "=",
+      "measure": 0.93
+    },
+    {
+      "entity1": {
+        "uri": "http://www.semanticweb.org/owl/owlapi/turtle#hasMarketSurveillanceAuthority",
+        "label": "market surveillance authority",
+        "definition": "A national authority responsible for monitoring AI systems placed on the market or put into service.",
+        "comments": "Matched to existing property in VAIR/DPV-style authority relations. Ontology reference/source: AI Act Article 70; VAIR/DPV authority-related properties."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#marketSurveillanceAuthority",
+        "label": "market surveillance authority",
+        "definition": "A national authority responsible for market surveillance and enforcement of the Act.",
+        "comments": "Ontology reference/source: VAIR."
+      },
+      "relation": "=",
+      "measure": 0.93
+    },
+    {
+      "entity1": {
+        "uri": "http://www.semanticweb.org/owl/owlapi/turtle#hasNotifiedBody",
+        "label": "notified body",
+        "definition": "A conformity assessment body designated to perform third-party assessment tasks under the Act.",
+        "comments": "Matched to existing property in VAIR/DPV-style conformity assessment relations. Ontology reference/source: AI Act Articles 30-39; VAIR/DPV notified-body-related properties."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#notifiedBody",
+        "label": "notified body",
+        "definition": "A conformity assessment body designated under the Act to perform third-party conformity assessment tasks.",
+        "comments": "Ontology reference/source: VAIR."
+      },
+      "relation": "=",
+      "measure": 0.94
+    },
+    {
+      "entity1": {
+        "uri": "http://www.semanticweb.org/owl/owlapi/turtle#hasConformityAssessment",
+        "label": "conformity assessment",
+        "definition": "The procedure used to demonstrate that an AI system complies with applicable requirements.",
+        "comments": "Matched to existing property in VAIR/DPV-style compliance relations. Ontology reference/source: AI Act Articles 43-48; VAIR/DPV conformity-assessment-related properties."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#conformityAssessment",
+        "label": "conformity assessment",
+        "definition": "The procedure used to verify that a high-risk AI system meets the applicable requirements.",
+        "comments": "Ontology reference/source: VAIR."
+      },
+      "relation": "=",
+      "measure": 0.97
+    },
+    {
+      "entity1": {
+        "uri": "http://www.semanticweb.org/owl/owlapi/turtle#hasRiskManagementSystem",
+        "label": "risk management system",
+        "definition": "A continuous iterative process for identifying, analyzing, estimating, and evaluating risks and adopting mitigation measures.",
+        "comments": "Matched to existing property in VAIR/DPV-style risk-management relations. Ontology reference/source: AI Act Article 9; VAIR/DPV risk-management-related properties."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#riskManagementSystem",
+        "label": "risk management system",
+        "definition": "A systematic process for identifying, analyzing, evaluating, and mitigating risks associated with an AI system.",
+        "comments": "Ontology reference/source: VAIR."
+      },
+      "relation": "=",
+      "measure": 0.97
+    },
+    {
+      "entity1": {
+        "uri": "http://www.semanticweb.org/owl/owlapi/turtle#hasTechnicalDocumentation",
+        "label": "technical documentation",
+        "definition": "Documentation demonstrating compliance with the requirements applicable to high-risk AI systems.",
+        "comments": "Matched to existing property in VAIR/DPV-style documentation relations. Ontology reference/source: AI Act Article 11; VAIR/DPV technical-documentation-related properties."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#technicalDocumentation",
+        "label": "technical documentation",
+        "definition": "Documentation describing the AI system, its intended purpose, design, development, and compliance measures.",
+        "comments": "Ontology reference/source: VAIR."
+      },
+      "relation": "=",
+      "measure": 0.96
+    },
+    {
+      "entity1": {
+        "uri": "http://www.semanticweb.org/owl/owlapi/turtle#hasInstructionsForUse",
+        "label": "instructions for use",
+        "definition": "Information provided by the provider to enable proper use of the AI system.",
+        "comments": "Matched to existing property in VAIR/DPV-style documentation/information relations. Ontology reference/source: AI Act Article 13; VAIR/DPV instructions-for-use-related properties."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#instructionsForUse",
+        "label": "instructions for use",
+        "definition": "Information provided by the provider describing how the AI system should be used.",
+        "comments": "Ontology reference/source: VAIR."
+      },
+      "relation": "=",
+      "measure": 0.95
+    },
+    {
+      "entity1": {
+        "uri": "http://www.semanticweb.org/owl/owlapi/turtle#hasHumanOversight",
+        "label": "human oversight",
+        "definition": "Human monitoring and intervention capability during AI system use.",
+        "comments": "Matched to existing property in VAIR/DPV-style oversight relations. Ontology reference/source: AI Act Article 14; VAIR/DPV human-oversight-related properties."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#humanOversight",
+        "label": "human oversight",
+        "definition": "Measures ensuring that natural persons can oversee, interpret, and intervene in the operation of an AI system.",
+        "comments": "Ontology reference/source: VAIR."
+      },
+      "relation": "=",
+      "measure": 0.97
+    },
+    {
+      "entity1": {
+        "uri": "http://www.semanticweb.org/owl/owlapi/turtle#hasTransparencyObligation",
+        "label": "transparency obligation",
+        "definition": "A duty to inform persons that they are interacting with an AI system or that content has been artificially generated or manipulated.",
+        "comments": "Matched to existing property in VAIR/DPV-style transparency relations. Ontology reference/source: AI Act Article 50; VAIR/DPV transparency-obligation-related properties."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#transparencyObligation",
+        "label": "transparency obligation",
+        "definition": "A legal duty requiring disclosure, marking, or informing natural persons about AI-generated or AI-interacted content or systems.",
+        "comments": "Ontology reference/source: VAIR."
+      },
+      "relation": "=",
+      "measure": 0.94
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/isProhibitedUnder",
+        "label": "is prohibited under",
+        "definition": "Indicates that an AI system or practice is prohibited by a specific legal provision.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted entity); aligns with existing ontology property https://w3id.org/dpv/owl#hasProhibition / related prohibition semantics."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#hasProhibition",
+        "label": "has prohibition",
+        "definition": "Links a policy, process, or entity to a prohibition that applies to it.",
+        "comments": "Ontology reference/source: DPV ontology."
+      },
+      "relation": "=",
+      "measure": 0.84
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/hasRequirement",
+        "label": "has requirement",
+        "definition": "Links a high-risk AI system to a mandatory compliance requirement.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted entity); semantically close to https://w3id.org/dpv/owl#hasObligation and https://w3id.org/dpv/owl#hasRule."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#hasObligation",
+        "label": "hasObligation",
+        "definition": "Links an entity to an obligation that applies to it.",
+        "comments": "Ontology reference/source: DPV ontology."
+      },
+      "relation": "=",
+      "measure": 0.91
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/isHighRiskBecause",
+        "label": "is high-risk because",
+        "definition": "Links a high-risk AI system to the reason for its classification.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted entity); semantically close to https://w3id.org/dpv/owl#hasRiskCriterion and https://w3id.org/dpv/owl#hasJustification."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#hasRiskCriterion",
+        "label": "hasRiskCriterion",
+        "definition": "Relates an AI system to the criteria used to determine whether it is high-risk.",
+        "comments": "Ontology reference/source: DPV ontology."
+      },
+      "relation": "=",
+      "measure": 0.86
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/hasAssessment",
+        "label": "has assessment",
+        "definition": "Links an AI system or process to an assessment.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted entity); semantically close to https://w3id.org/dpv/owl#hasAssessment."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#hasAssessment",
+        "label": "hasAssessment",
+        "definition": "Links an entity to an assessment associated with it.",
+        "comments": "Ontology reference/source: DPV ontology."
+      },
+      "relation": "=",
+      "measure": 0.97
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/hasRisk",
+        "label": "has risk",
+        "definition": "Links an AI system or use-case to an identified risk.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted entity); aligns with existing ontology property https://w3id.org/dpv/owl#hasRisk."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#hasRisk",
+        "label": "hasRisk",
+        "definition": "Links an entity to a risk associated with it.",
+        "comments": "Ontology reference/source: DPV ontology."
+      },
+      "relation": "=",
+      "measure": 0.99
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/hasRiskMitigationMeasure",
+        "label": "has risk mitigation measure",
+        "definition": "Links an AI system risk assessment to measures that prevent or minimise risks.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted entity); aligns with existing ontology property https://w3id.org/dpv/owl#hasTechnicalOrganisationalMeasure / https://w3id.org/dpv/owl#isMitigatedByMeasure."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#isMitigatedByMeasure",
+        "label": "isMitigatedByMeasure",
+        "definition": "Indicates that a risk is mitigated by a measure.",
+        "comments": "Ontology reference/source: DPV ontology."
+      },
+      "relation": "=",
+      "measure": 0.9
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/hasSupervisoryResponsibility",
+        "label": "has supervisory responsibility",
+        "definition": "Indicates that a competent authority supervises compliance with the Act.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted entity); aligns with existing ontology property https://w3id.org/dpv/owl#hasOversightFunction / https://w3id.org/dpv/owl#hasAuthority."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#hasOversightFunction",
+        "label": "has oversight function",
+        "definition": "Indicates that an authority has oversight responsibilities.",
+        "comments": "Ontology reference/source: DPV ontology."
+      },
+      "relation": "=",
+      "measure": 0.88
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/hasEnforcementResponsibility",
+        "label": "has enforcement responsibility",
+        "definition": "Indicates that a competent authority may enforce obligations under the Act.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted entity); aligns with existing ontology property https://w3id.org/dpv/owl#hasEnforcementFunction."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#hasEnforcementFunction",
+        "label": "has enforcement function",
+        "definition": "Indicates that an authority has enforcement responsibilities.",
+        "comments": "Ontology reference/source: DPV ontology."
+      },
+      "relation": "=",
+      "measure": 0.9
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/hasUseCase",
+        "label": "has use-case",
+        "definition": "Links a sector or AI system to a specific Annex III use-case.",
+        "comments": "Ontology reference/source: EU AI Act ontology (generated/extracted entity); semantically close to https://w3id.org/dpv/owl#hasScope and https://w3id.org/dpv/owl#isApplicableFor."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/dpv/owl#hasScope",
+        "label": "hasScope",
+        "definition": "Links an entity to the scope or extent of applicability.",
+        "comments": "Ontology reference/source: DPV ontology."
+      },
+      "relation": "=",
+      "measure": 0.74
+    },
+    {
+      "entity1": {
+        "uri": "ai_system",
+        "label": "AI system",
+        "definition": "A machine-based system designed to operate with varying levels of autonomy and that may exhibit adaptiveness after deployment, inferring from inputs how to generate outputs such as predictions, content, recommendations, or decisions.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; referenceArticle: Article 3(1).",
+        "alignment": "<map>\n  <Cell>\n    <entity1 rdf:resource=\"ai_system\"/>\n    <entity2 rdf:resource=\"https://w3id.org/vair#AI_System\"/>\n    <relation>=</relation>\n    <measure rdf:datatype=\"xsd:float\">0.99</measure>\n  </Cell>\n</map>"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#AI_System",
+        "label": "AI system",
+        "definition": "A machine-based system designed to operate with varying levels of autonomy and that may infer from input how to generate outputs such as predictions, content, recommendations, or decisions.",
+        "comments": "Ontology reference/source: VAIR ontology."
+      }
+    },
+    {
+      "entity1": {
+        "uri": "prohibited_ai_practice",
+        "label": "Prohibited AI practice",
+        "definition": "An AI practice that is banned under the Act because it presents unacceptable risk.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; referenceArticle: Article 5.",
+        "alignment": "<map>\n  <Cell>\n    <entity1 rdf:resource=\"prohibited_ai_practice\"/>\n    <entity2 rdf:resource=\"https://w3id.org/vair#Prohibited_AI_Practice\"/>\n    <relation>=</relation>\n    <measure rdf:datatype=\"xsd:float\">0.98</measure>\n  </Cell>\n</map>"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#Prohibited_AI_Practice",
+        "label": "Prohibited AI practice",
+        "definition": "An AI practice that is banned under the Act because it is considered unacceptable or incompatible with Union values and fundamental rights.",
+        "comments": "Ontology reference/source: VAIR ontology."
+      }
+    },
+    {
+      "entity1": {
+        "uri": "high_risk_ai_system",
+        "label": "High-risk AI system",
+        "definition": "An AI system classified as high-risk because it falls within the categories and conditions established by the Act.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; referenceArticle: Article 6.",
+        "alignment": "<map>\n  <Cell>\n    <entity1 rdf:resource=\"high_risk_ai_system\"/>\n    <entity2 rdf:resource=\"https://w3id.org/vair#High_Risk_AI_System\"/>\n    <relation>=</relation>\n    <measure rdf:datatype=\"xsd:float\">0.98</measure>\n  </Cell>\n</map>"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#High_Risk_AI_System",
+        "label": "High-risk AI system",
+        "definition": "An AI system classified as high-risk because it falls within the categories and conditions established by the Regulation.",
+        "comments": "Ontology reference/source: VAIR ontology."
+      }
+    },
+    {
+      "entity1": {
+        "uri": "limited_risk_ai_system",
+        "label": "Limited-risk AI system",
+        "definition": "An AI system subject to transparency obligations rather than the full set of high-risk requirements.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; referenceArticle: Articles 50 and related provisions.",
+        "alignment": "<map>\n  <Cell>\n    <entity1 rdf:resource=\"limited_risk_ai_system\"/>\n    <entity2 rdf:resource=\"https://w3id.org/vair#Limited_Risk_AI_System\"/>\n    <relation>=</relation>\n    <measure rdf:datatype=\"xsd:float\">0.95</measure>\n  </Cell>\n</map>"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#Limited_Risk_AI_System",
+        "label": "Limited-risk AI system",
+        "definition": "An AI system subject to transparency obligations rather than the full high-risk regime.",
+        "comments": "Ontology reference/source: VAIR ontology."
+      }
+    },
+    {
+      "entity1": {
+        "uri": "minimal_risk_ai_system",
+        "label": "Minimal-risk AI system",
+        "definition": "An AI system that is not subject to specific obligations under the Act beyond general legal requirements.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; referenceArticle: Recitals and general structure of the Act.",
+        "alignment": "<map>\n  <Cell>\n    <entity1 rdf:resource=\"minimal_risk_ai_system\"/>\n    <entity2 rdf:resource=\"https://w3id.org/vair#Minimal_Risk_AI_System\"/>\n    <relation>=</relation>\n    <measure rdf:datatype=\"xsd:float\">0.95</measure>\n  </Cell>\n</map>"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#Minimal_Risk_AI_System",
+        "label": "Minimal-risk AI system",
+        "definition": "An AI system not subject to specific obligations under the Act beyond general legal requirements.",
+        "comments": "Ontology reference/source: VAIR ontology."
+      }
+    },
+    {
+      "entity1": {
+        "uri": "general_purpose_ai_model",
+        "label": "General-purpose AI model",
+        "definition": "An AI model, including where such a model is trained with a large amount of data using self-supervision at scale, that displays significant generality and is capable of competently performing a wide range of distinct tasks.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; referenceArticle: Article 3(63).",
+        "alignment": "<map>\n  <Cell>\n    <entity1 rdf:resource=\"general_purpose_ai_model\"/>\n    <entity2 rdf:resource=\"https://w3id.org/vair#General_Purpose_AI_Model\"/>\n    <relation>=</relation>\n    <measure rdf:datatype=\"xsd:float\">0.99</measure>\n  </Cell>\n</map>"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#General_Purpose_AI_Model",
+        "label": "General-purpose AI model",
+        "definition": "An AI model intended to perform generally across a wide range of distinct tasks.",
+        "comments": "Ontology reference/source: VAIR ontology."
+      }
+    },
+    {
+      "entity1": {
+        "uri": "general_purpose_ai_model_with_systemic_risk",
+        "label": "General-purpose AI model with systemic risk",
+        "definition": "A general-purpose AI model that, due to its capabilities or impact, is considered to present systemic risks.",
+        "comments": "Ontology reference/source: Generated EU AI Act ontology; referenceArticle: Article 51.",
+        "alignment": "<map>\n  <Cell>\n    <entity1 rdf:resource=\"general_purpose_ai_model_with_systemic_risk\"/>\n    <entity2 rdf:resource=\"https://w3id.org/vair#General_Purpose_AI_Model_With_Systemic_Risk\"/>\n    <relation>=</relation>\n    <measure rdf:datatype=\"xsd:float\">0.99</measure>\n  </Cell>\n</map>"
+      },
+      "entity2": {
+        "uri": "https://w3id.org/vair#General_Purpose_AI_Model_With_Systemic_Risk",
+        "label": "General-purpose AI model with systemic risk",
+        "definition": "A general-purpose AI model identified as presenting systemic risk due to its capabilities, impact, or scale of deployment.",
+        "comments": "Ontology reference/source: VAIR ontology."
+      }
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/isProhibitedUnder",
+        "label": "is prohibited under",
+        "definition": "Indicates that an AI system or practice is prohibited by a specific legal provision.",
+        "comments": "Ontology reference/source: EU AI Act generated ontology; aligns with existing property https://w3id.org/airo#isProhibitedUnder."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/airo#isProhibitedUnder",
+        "label": "is prohibited under",
+        "definition": "Indicates that an AI system or practice falls under a legal prohibition.",
+        "comments": "Ontology reference/source: AIRO."
+      },
+      "relation": "=",
+      "measure": 0.98
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/hasRiskLevel",
+        "label": "has risk level",
+        "definition": "Links an AI system to its risk classification, such as prohibited, high-risk, limited-risk, or minimal-risk.",
+        "comments": "Ontology reference/source: EU AI Act generated ontology; aligns with existing property https://w3id.org/airo#hasRiskLevel and https://w3id.org/dpv/owl#hasRiskLevel."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/airo#hasRiskLevel",
+        "label": "has risk level",
+        "definition": "Links an AI system to its risk classification.",
+        "comments": "Ontology reference/source: AIRO."
+      },
+      "relation": "=",
+      "measure": 0.95
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/hasIntendedPurpose",
+        "label": "has intended purpose",
+        "definition": "Connects an AI system to the purpose for which it is designed or deployed.",
+        "comments": "Ontology reference/source: EU AI Act generated ontology; aligns with existing property https://w3id.org/airo#hasPurpose and closely with https://w3id.org/dpv/owl#hasPurpose."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/airo#hasPurpose",
+        "label": "has purpose",
+        "definition": "Indicates the purpose of the risk management system.",
+        "comments": "Ontology reference/source: AIRO."
+      },
+      "relation": "=",
+      "measure": 0.84
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/fallsWithinAnnexIII",
+        "label": "falls within Annex III",
+        "definition": "Indicates that an AI system is used in a listed high-risk area.",
+        "comments": "Ontology reference/source: EU AI Act generated ontology; aligns with existing property https://w3id.org/airo#isListedIn and closely with https://w3id.org/airo#hasUseCase."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/airo#isListedIn",
+        "label": "is listed in",
+        "definition": "Indicates that a use case appears in Annex III.",
+        "comments": "Ontology reference/source: AIRO."
+      },
+      "relation": "=",
+      "measure": 0.9
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/hasRole",
+        "label": "has role",
+        "definition": "Links an actor to its governance role in relation to AI systems.",
+        "comments": "Ontology reference/source: EU AI Act generated ontology; aligns with existing property https://w3id.org/airo#hasAISubject and https://w3id.org/dpv/owl#hasRole-like actor role patterns."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/airo#hasAISubject",
+        "label": "has AI subject",
+        "definition": "Links an AI system to the actor that is the subject of the relation.",
+        "comments": "Ontology reference/source: AIRO."
+      },
+      "relation": "=",
+      "measure": 0.72
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/placesOnMarket",
+        "label": "places on market",
+        "definition": "Indicates that an actor places an AI system on the market.",
+        "comments": "Ontology reference/source: EU AI Act generated ontology; aligns with existing property https://w3id.org/airo#placesOnMarket and https://w3id.org/dpv/owl#hasProcessing/market-placement related patterns."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/airo#placesOnMarket",
+        "label": "places on market",
+        "definition": "Indicates that an entity makes an AI system or model available on the market.",
+        "comments": "Ontology reference/source: AIRO."
+      },
+      "relation": "=",
+      "measure": 0.99
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/putsIntoService",
+        "label": "puts into service",
+        "definition": "Indicates that an actor puts an AI system into service.",
+        "comments": "Ontology reference/source: EU AI Act generated ontology; aligns with existing property https://w3id.org/airo#putsIntoService."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/airo#putsIntoService",
+        "label": "puts into service",
+        "definition": "Indicates that an entity first uses an AI system or model for its intended purpose.",
+        "comments": "Ontology reference/source: AIRO."
+      },
+      "relation": "=",
+      "measure": 0.98
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/usesUnderAuthority",
+        "label": "uses under authority",
+        "definition": "Indicates that a deployer uses an AI system under its authority.",
+        "comments": "Ontology reference/source: EU AI Act generated ontology; aligns with existing property https://w3id.org/airo#usesUnderAuthority and https://w3id.org/dpv/owl#hasAuthority/hasActiveEntity patterns."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/airo#usesUnderAuthority",
+        "label": "uses under authority",
+        "definition": "Indicates that an entity uses an AI system under its authority.",
+        "comments": "Ontology reference/source: AIRO."
+      },
+      "relation": "=",
+      "measure": 0.99
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/hasProviderObligation",
+        "label": "has provider obligation",
+        "definition": "Links a provider to a legal duty applicable to high-risk AI systems.",
+        "comments": "Ontology reference/source: EU AI Act generated ontology; aligns with existing property https://w3id.org/airo#hasProviderObligation."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/airo#hasProviderObligation",
+        "label": "has provider obligation",
+        "definition": "Links a provider to a legal obligation applicable to high-risk AI systems.",
+        "comments": "Ontology reference/source: AIRO."
+      },
+      "relation": "=",
+      "measure": 0.99
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/hasDeployerObligation",
+        "label": "has deployer obligation",
+        "definition": "Links a deployer to a legal duty applicable when using a high-risk AI system.",
+        "comments": "Ontology reference/source: EU AI Act generated ontology; aligns with existing property https://w3id.org/airo#hasDeployerObligation."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/airo#hasDeployerObligation",
+        "label": "has deployer obligation",
+        "definition": "Links a deployer to a legal obligation concerning a high-risk AI system.",
+        "comments": "Ontology reference/source: AIRO."
+      },
+      "relation": "=",
+      "measure": 0.99
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/performsConformityAssessment",
+        "label": "performs conformity assessment",
+        "definition": "Indicates that a notified body carries out conformity assessment activities.",
+        "comments": "Ontology reference/source: EU AI Act generated ontology; aligns with existing property https://w3id.org/airo#performsConformityAssessment and https://w3id.org/dpv/owl#hasAssessment."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/airo#performsConformityAssessment",
+        "label": "performs conformity assessment",
+        "definition": "Indicates that a notified body performs a conformity assessment.",
+        "comments": "Ontology reference/source: AIRO."
+      },
+      "relation": "=",
+      "measure": 0.98
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/monitorsOperation",
+        "label": "monitors operation",
+        "definition": "Indicates that the deployer monitors the operation of the high-risk AI system.",
+        "comments": "Ontology reference/source: EU AI Act generated ontology; aligns with existing property https://w3id.org/airo#hasMonitoring and https://w3id.org/airo#monitorsOperation."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/airo#monitorsOperation",
+        "label": "monitors operation",
+        "definition": "Indicates that a log is used to monitor system operation.",
+        "comments": "Ontology reference/source: AIRO."
+      },
+      "relation": "=",
+      "measure": 0.8
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/keepsLogs",
+        "label": "keeps logs",
+        "definition": "Indicates that the deployer keeps logs generated by the system.",
+        "comments": "Ontology reference/source: EU AI Act generated ontology; aligns with existing property https://w3id.org/airo#hasDocumentation and https://w3id.org/dpv/owl#hasRecordOfActivity patterns; closest direct match is https://w3id.org/airo#hasDocumentation/retainsLogs."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/airo#hasDocumentation",
+        "label": "has documentation",
+        "definition": "Links a provider to the documentation it must prepare or maintain.",
+        "comments": "Ontology reference/source: AIRO."
+      },
+      "relation": "=",
+      "measure": 0.68
+    },
+    {
+      "entity1": {
+        "uri": "http://example.org/eu-ai-act/hasRisk",
+        "label": "has risk",
+        "definition": "Links an AI system or use-case to an identified risk.",
+        "comments": "Ontology reference/source: EU AI Act generated ontology; aligns with existing property https://w3id.org/airo#hasRisk and https://w3id.org/dpv/owl#hasRisk."
+      },
+      "entity2": {
+        "uri": "https://w3id.org/airo#hasRisk",
+        "label": "has risk",
+        "definition": "Links an AI system to a risk.",
+        "comments": "Ontology reference/source: AIRO."
+      },
+      "relation": "=",
+      "measure": 0.97
     }
   ]
 }
