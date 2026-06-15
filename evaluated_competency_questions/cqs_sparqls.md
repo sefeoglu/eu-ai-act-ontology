@@ -1,4 +1,4 @@
-# SPARQL Queries for the EU AI Act Knowledge Graph
+# SPARQL Queries
 
 ## a) Which AI systems are classified as high-risk under the EU AI Act?
 
