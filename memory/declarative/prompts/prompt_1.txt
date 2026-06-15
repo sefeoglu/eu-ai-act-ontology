@@ -2,4 +2,4 @@ Based on the following context, Please prepare competency questions which will h
 The competency should include the main elements of the Act like AI system categories, prohibited
 practices, highrisk systems, core actors (providers, deployers, authorities),
 and major obligations.
-Do not include any text other than questions.
+Do not include any text other than content and questions.
