@@ -60,14 +60,10 @@ This memory guides the ontology generation process using regulatory knowledge em
 5. Validate generated structures against stored ontology rules.
 6. Refine and extend the ontology iteratively.
 
-## Key Features
-
-* Automated ontology generation
-* Memory-driven knowledge reuse
-* Regulatory knowledge integration
-* Consistency validation through ontology rules
-* Support for ontology refinement and evolution
-* Reduced manual ontology engineering effort
+## Basic Metrics
+```bash
+python metrics/ontology_metrics.py your_ontology.ttl -f turtle -o metrics.csv
+```
 
 ## Use Case
 
