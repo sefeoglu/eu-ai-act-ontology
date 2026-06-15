@@ -1,0 +1,2365 @@
+@prefix : <http://example.org/eu-ai-act#> .
+@prefix eu_ai_act: <http://example.org/eu-ai-act#> .
+@prefix airo: <https://w3id.org/airo#> .
+@prefix dpv: <https://w3id.org/dpv/owl#> .
+@prefix vair: <https://w3id.org/vair#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/eu-ai-act> a owl:Ontology ;
+    rdfs:label "EU AI Act Ontology" ;
+    rdfs:comment "Ontology generated from the provided EU AI Act concepts, triples, and mappings. Source: https://artificialintelligenceact.eu/ai-act-explorer/ ; Citation: Regulation (EU) 2024/1689." .
+
+### Classes
+
+eu_ai_act:ai_system a owl:Class ;
+    rdfs:label "AI system" ;
+    rdfs:comment "A machine-based system designed to operate with varying levels of autonomy and that may infer from inputs how to generate outputs such as predictions, content, recommendations, or decisions. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass airo:AISystem, vair:AISystem .
+
+eu_ai_act:general_purpose_ai_model a owl:Class ;
+    rdfs:label "General-purpose AI model" ;
+    rdfs:comment "An AI model with significant generality capable of performing a wide range of distinct tasks. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:ai_system ;
+    owl:equivalentClass vair:GeneralAI .
+
+eu_ai_act:high_risk_ai_system a owl:Class ;
+    rdfs:label "High-risk AI system" ;
+    rdfs:comment "An AI system classified as high-risk because it is a safety component of a product or falls within listed high-risk use cases. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:ai_system ;
+    owl:equivalentClass vair:HighAutomation .
+
+eu_ai_act:prohibited_ai_practice a owl:Class ;
+    rdfs:label "Prohibited AI practice" ;
+    rdfs:comment "An AI practice that is banned under the Regulation because it presents unacceptable risk. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:provider a owl:Class ;
+    rdfs:label "Provider" ;
+    rdfs:comment "A natural or legal person, public authority, agency, or other body that develops an AI system or has it developed and places it on the market or puts it into service under its own name or trademark. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:operator ;
+    owl:equivalentClass airo:AIProvider, airo:AIOperator, dpv:ServiceProvider .
+
+eu_ai_act:deployer a owl:Class ;
+    rdfs:label "Deployer" ;
+    rdfs:comment "A natural or legal person, public authority, agency, or other body using an AI system under its authority. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:operator ;
+    owl:equivalentClass airo:AIOperator, airo:AIDeployer, dpv:User .
+
+eu_ai_act:importer a owl:Class ;
+    rdfs:label "Importer" ;
+    rdfs:comment "A natural or legal person established in the Union that places on the market an AI system or general-purpose AI model bearing the name or trademark of a person established outside the Union. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:operator .
+
+eu_ai_act:distributor a owl:Class ;
+    rdfs:label "Distributor" ;
+    rdfs:comment "A natural or legal person in the supply chain, other than the provider or importer, that makes an AI system or general-purpose AI model available on the market. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:operator .
+
+eu_ai_act:authorized_representative a owl:Class ;
+    rdfs:label "Authorized representative" ;
+    rdfs:comment "A natural or legal person established in the Union mandated by a provider to act on its behalf. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:operator .
+
+eu_ai_act:operator a owl:Class ;
+    rdfs:label "Operator" ;
+    rdfs:comment "A provider, deployer, importer, distributor, product manufacturer, or authorized representative involved in the lifecycle of an AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass airo:AIOperator .
+
+eu_ai_act:competent_authority a owl:Class ;
+    rdfs:label "Competent authority" ;
+    rdfs:comment "A public authority designated by a Member State to carry out tasks under the Regulation. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass dpv:CompetentAuthority .
+
+eu_ai_act:market_surveillance_authority a owl:Class ;
+    rdfs:label "Market surveillance authority" ;
+    rdfs:comment "A national authority responsible for monitoring compliance of AI systems placed on the market or put into service. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:competent_authority, eu_ai_act:authority ;
+    owl:equivalentClass dpv:NationalAuthority .
+
+eu_ai_act:notifying_authority a owl:Class ;
+    rdfs:label "Notifying authority" ;
+    rdfs:comment "A national authority responsible for setting up and carrying out the procedures for assessment, designation, and monitoring of notified bodies. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:competent_authority .
+
+eu_ai_act:ai_office a owl:Class ;
+    rdfs:label "AI Office" ;
+    rdfs:comment "The Union-level body supporting implementation, supervision, and enforcement of the Regulation. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:authority .
+
+eu_ai_act:european_ai_board a owl:Class ;
+    rdfs:label "European AI Board" ;
+    rdfs:comment "A body composed of representatives of Member States and the Commission to facilitate consistent application of the Regulation. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:authority .
+
+eu_ai_act:advisory_forum a owl:Class ;
+    rdfs:label "Advisory forum" ;
+    rdfs:comment "A forum providing technical expertise and stakeholder input on the implementation of the Regulation. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:authority .
+
+eu_ai_act:notified_body a owl:Class ;
+    rdfs:label "Notified body" ;
+    rdfs:comment "A conformity assessment body designated to perform third-party assessment tasks. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:obligation a owl:Class ;
+    rdfs:label "Obligation" ;
+    rdfs:comment "A legal duty imposed on an actor by the Act. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass dpv:Obligation .
+
+eu_ai_act:major_obligation a owl:Class ;
+    rdfs:label "Major obligation" ;
+    rdfs:comment "A principal legal duty imposed on providers, deployers, or authorities in relation to AI systems. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:obligation .
+
+eu_ai_act:conformity_assessment a owl:Class ;
+    rdfs:label "Conformity assessment" ;
+    rdfs:comment "The process used to demonstrate that an AI system complies with applicable requirements. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass dpv:ConformanceAssessment .
+
+eu_ai_act:risk_management_system a owl:Class ;
+    rdfs:label "Risk management system" ;
+    rdfs:comment "A continuous iterative process for identifying, analyzing, estimating, and evaluating risks and adopting mitigation measures. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass dpv:OrganisationRiskManagement .
+
+eu_ai_act:data_governance a owl:Class ;
+    rdfs:label "Data governance" ;
+    rdfs:comment "Practices ensuring training, validation, and testing data are relevant, representative, free of errors, and complete as appropriate. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass dpv:DataGovernance .
+
+eu_ai_act:technical_documentation a owl:Class ;
+    rdfs:label "Technical documentation" ;
+    rdfs:comment "Documentation demonstrating compliance with the requirements applicable to high-risk AI systems. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass vair:TechnicalDocumentation .
+
+eu_ai_act:record_keeping a owl:Class ;
+    rdfs:label "Record keeping" ;
+    rdfs:comment "Logging capabilities enabling traceability of the AI system's operation. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass dpv:RecordManagement .
+
+eu_ai_act:transparency_and_information a owl:Class ;
+    rdfs:label "Transparency and information" ;
+    rdfs:comment "Information and instructions provided to deployers to enable proper use of the system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass dpv:AINotice .
+
+eu_ai_act:human_oversight a owl:Class ;
+    rdfs:label "Human oversight" ;
+    rdfs:comment "Measures enabling effective human oversight of the AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass dpv:HumanOversight .
+
+eu_ai_act:accuracy_robustness_cybersecurity a owl:Class ;
+    rdfs:label "Accuracy, robustness and cybersecurity" ;
+    rdfs:comment "Requirements ensuring the AI system performs consistently and is resilient against errors and attacks. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:market_placement a owl:Class ;
+    rdfs:label "Market placement" ;
+    rdfs:comment "The first making available of an AI system on the Union market. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:putting_into_service a owl:Class ;
+    rdfs:label "Putting into service" ;
+    rdfs:comment "The supply of an AI system for first use directly to the deployer or for own use in the Union. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:use_of_ai_system a owl:Class ;
+    rdfs:label "Use of AI system" ;
+    rdfs:comment "The operation or deployment of an AI system by a user or deployer in the Union. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:ai_literacy a owl:Class ;
+    rdfs:label "AI literacy" ;
+    rdfs:comment "Skills, knowledge, and understanding enabling persons to make informed decisions regarding AI systems and to be aware of opportunities, risks, and possible harm. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:subliminal_manipulation a owl:Class ;
+    rdfs:label "Subliminal manipulation" ;
+    rdfs:comment "Use of AI techniques that materially distort a person's behavior in a manner that causes or is likely to cause harm. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:prohibited_ai_practice .
+
+eu_ai_act:social_scoring a owl:Class ;
+    rdfs:label "Social scoring" ;
+    rdfs:comment "Evaluation or classification of persons over time based on social behavior or personal characteristics leading to detrimental treatment. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:prohibited_ai_practice .
+
+eu_ai_act:vulnerability a owl:Class ;
+    rdfs:label "Vulnerability" ;
+    rdfs:comment "A condition such as age, disability, or socio-economic dependence that can be exploited by AI. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:annex_iii_use_case a owl:Class ;
+    rdfs:label "Annex III use case" ;
+    rdfs:comment "A use case explicitly listed in the Regulation as high-risk. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:risk a owl:Class ;
+    rdfs:label "Risk" ;
+    rdfs:comment "The combination of the probability of an occurrence of harm and the severity of that harm. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass dpv:Risk, airo:Risk .
+
+eu_ai_act:harm a owl:Class ;
+    rdfs:label "Harm" ;
+    rdfs:comment "Adverse impact on health, safety, or fundamental rights caused or likely to be caused by an AI practice. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:ai_system_category a owl:Class ;
+    rdfs:label "AI system category" ;
+    rdfs:comment "A classification of AI systems used to organize systems according to their regulatory status or functional characteristics. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass vair:Concept .
+
+eu_ai_act:risk_level a owl:Class ;
+    rdfs:label "Risk level" ;
+    rdfs:comment "The degree of risk associated with an AI system, such as minimal, limited, or high-risk. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:traceability a owl:Class ;
+    rdfs:label "Traceability" ;
+    rdfs:comment "The ability to follow and reconstruct the functioning and decisions of a high-risk AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass dpv:Traceability .
+
+eu_ai_act:post_market_monitoring a owl:Class ;
+    rdfs:label "Post-market monitoring" ;
+    rdfs:comment "Ongoing monitoring by providers of the performance of AI systems after they are placed on the market. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass vair:Monitoring .
+
+eu_ai_act:instructions_for_use a owl:Class ;
+    rdfs:label "Instructions for use" ;
+    rdfs:comment "Information provided to deployers to enable proper use of the system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass vair:InstructionForUse .
+
+eu_ai_act:human_overseer a owl:Class ;
+    rdfs:label "Human overseer" ;
+    rdfs:comment "A natural person responsible for supervising a high-risk AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:human_oversight_measure a owl:Class ;
+    rdfs:label "Human oversight measure" ;
+    rdfs:comment "A measure intended to enable natural persons to oversee the AI system effectively. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:safeguard, owl:Thing ;
+    owl:equivalentClass vair:HumanOversightMeasure .
+
+eu_ai_act:accuracy_requirement a owl:Class ;
+    rdfs:label "Accuracy requirement" ;
+    rdfs:comment "The required level of accuracy for a high-risk AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:robustness_requirement a owl:Class ;
+    rdfs:label "Robustness requirement" ;
+    rdfs:comment "The required level of robustness for a high-risk AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:cybersecurity_requirement a owl:Class ;
+    rdfs:label "Cybersecurity requirement" ;
+    rdfs:comment "A requirement ensuring protection against unauthorized access, attacks, and vulnerabilities. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:measure_to_ensure_sufficient_ai_literacy a owl:Class ;
+    rdfs:label "Measure to ensure sufficient AI literacy" ;
+    rdfs:comment "An action or policy adopted by providers or deployers to ensure that relevant persons have sufficient AI literacy. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:staff a owl:Class ;
+    rdfs:label "Staff" ;
+    rdfs:comment "Persons employed by or working for a provider, deployer, or authority who may be involved in the operation or use of AI systems. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:other_person_dealing_with_operation_and_use_of_ai_system_on_behalf_of_provider_or_deployer a owl:Class ;
+    rdfs:label "Other person dealing with the operation and use of AI systems on behalf of providers or deployers" ;
+    rdfs:comment "A person who operates or uses AI systems on behalf of a provider or deployer. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:role a owl:Class ;
+    rdfs:label "Role" ;
+    rdfs:comment "The function or capacity in which a person or organization acts in relation to an AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:article a owl:Class ;
+    rdfs:label "Article" ;
+    rdfs:comment "A legal article in the EU AI Act. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:regulation a owl:Class ;
+    rdfs:label "Regulation" ;
+    rdfs:comment "A legal regulation used as the source context for the ontology. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass airo:Regulation .
+
+eu_ai_act:conformity_assessment_documentation a owl:Class ;
+    rdfs:label "Conformity assessment documentation" ;
+    rdfs:comment "Documentation used to demonstrate conformity with applicable requirements. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:quality_management_system a owl:Class ;
+    rdfs:label "Quality management system" ;
+    rdfs:comment "A system of policies and procedures ensuring consistent compliance and quality. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass dpv:ManagementStandard .
+
+eu_ai_act:log a owl:Class ;
+    rdfs:label "Log" ;
+    rdfs:comment "A record of events, actions, or system outputs generated over the lifetime of an AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass dpv:Record .
+
+eu_ai_act:event a owl:Class ;
+    rdfs:label "Event" ;
+    rdfs:comment "An occurrence or action relevant to the operation, monitoring, or traceability of an AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:benchmark a owl:Class ;
+    rdfs:label "Benchmark" ;
+    rdfs:comment "A reference standard or dataset used to evaluate an AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass vair:Benchmark .
+
+eu_ai_act:measurement_methodology a owl:Class ;
+    rdfs:label "Measurement methodology" ;
+    rdfs:comment "A method used to evaluate the performance of an AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:accuracy_metric a owl:Class ;
+    rdfs:label "Accuracy metric" ;
+    rdfs:comment "A quantitative measure used to assess the accuracy of an AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:performance_metric a owl:Class ;
+    rdfs:label "Performance metric" ;
+    rdfs:comment "A metric describing system performance, including accuracy and robustness. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:system_limitations a owl:Class ;
+    rdfs:label "System limitations" ;
+    rdfs:comment "Known limitations, conditions, or constraints of the AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:training_validation_testing_data_set a owl:Class ;
+    rdfs:label "Training, validation and testing data set" ;
+    rdfs:comment "A data set used for training, validation, or testing of a high-risk AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:data_quality_requirement a owl:Class ;
+    rdfs:label "Data quality requirement" ;
+    rdfs:comment "A requirement ensuring that data sets are relevant, representative, free of errors, complete, and statistically suitable for the intended purpose. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:data_governance_practice a owl:Class ;
+    rdfs:label "Data governance practice" ;
+    rdfs:comment "A practice for managing data quality, provenance, preparation, and suitability in the lifecycle of a high-risk AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:data_management_practice a owl:Class ;
+    rdfs:label "Data management practice" ;
+    rdfs:comment "An operational practice for organizing, documenting, and controlling data used in high-risk AI systems. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:data_design_choice a owl:Class ;
+    rdfs:label "Data design choice" ;
+    rdfs:comment "A documented decision concerning how data is selected, structured, processed, or prepared for use in a high-risk AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:data_collection_process a owl:Class ;
+    rdfs:label "Data collection process" ;
+    rdfs:comment "The process by which data is gathered, acquired, or generated. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:data_origin a owl:Class ;
+    rdfs:label "Data origin" ;
+    rdfs:comment "The source or provenance of data, including where it comes from and how it was obtained. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:original_purpose_of_collection a owl:Class ;
+    rdfs:label "Original purpose of collection" ;
+    rdfs:comment "The initial purpose for which personal data was collected. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:data_preparation_operation a owl:Class ;
+    rdfs:label "Data preparation operation" ;
+    rdfs:comment "An operation performed to prepare data for use in a high-risk AI system, such as cleaning, labeling, normalization, or transformation. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:data_assumption a owl:Class ;
+    rdfs:label "Data assumption" ;
+    rdfs:comment "A stated assumption about the characteristics, quality, or suitability of a data set. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:data_availability a owl:Class ;
+    rdfs:label "Data availability" ;
+    rdfs:comment "The extent to which data is accessible and obtainable for the intended use. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:data_quantity a owl:Class ;
+    rdfs:label "Data quantity" ;
+    rdfs:comment "The amount of data available for training, validation, or testing. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:data_suitability a owl:Class ;
+    rdfs:label "Data suitability" ;
+    rdfs:comment "The degree to which data is appropriate for the intended purpose of the AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:bias_examination a owl:Class ;
+    rdfs:label "Bias examination" ;
+    rdfs:comment "An examination of a data set to identify, evaluate, or monitor bias. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:bias_detection_measure a owl:Class ;
+    rdfs:label "Bias detection measure" ;
+    rdfs:comment "A measure intended to identify bias in data or system behavior. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass vair:BiasDetection .
+
+eu_ai_act:bias_prevention_measure a owl:Class ;
+    rdfs:label "Bias prevention measure" ;
+    rdfs:comment "A measure intended to avoid the introduction of bias. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:bias_mitigation_measure a owl:Class ;
+    rdfs:label "Bias mitigation measure" ;
+    rdfs:comment "A measure intended to reduce or correct bias. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass airo:RiskControl .
+
+eu_ai_act:data_gap a owl:Class ;
+    rdfs:label "Data gap" ;
+    rdfs:comment "A missing element or deficiency in a data set that affects compliance or suitability. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:data_shortcoming a owl:Class ;
+    rdfs:label "Data shortcoming" ;
+    rdfs:comment "A weakness or inadequacy in a data set that affects compliance or suitability. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:data_gap_remediation a owl:Class ;
+    rdfs:label "Data gap remediation" ;
+    rdfs:comment "An action taken to correct or compensate for a data gap. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:data_shortcoming_remediation a owl:Class ;
+    rdfs:label "Data shortcoming remediation" ;
+    rdfs:comment "An action taken to correct or compensate for a data shortcoming. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:data_set_relevance a owl:Class ;
+    rdfs:label "Data set relevance" ;
+    rdfs:comment "The degree to which a data set contains information appropriate for the intended purpose of the high-risk AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:data_set_representativeness a owl:Class ;
+    rdfs:label "Data set representativeness" ;
+    rdfs:comment "The extent to which a data set reflects the population, persons, or groups affected by the high-risk AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:data_set_error_free_status a owl:Class ;
+    rdfs:label "Data set error-free status" ;
+    rdfs:comment "A quality status indicating that a data set is free of errors to the best extent possible. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:data_set_completeness a owl:Class ;
+    rdfs:label "Data set completeness" ;
+    rdfs:comment "The extent to which a data set contains all necessary information to the best extent possible. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:statistical_property a owl:Class ;
+    rdfs:label "Statistical property" ;
+    rdfs:comment "A measurable statistical characteristic of a data set relevant to its suitability for a high-risk AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:affected_person_group a owl:Class ;
+    rdfs:label "Affected person group" ;
+    rdfs:comment "A person or group of persons affected by the operation or output of the AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:special_category_personal_data a owl:Class ;
+    rdfs:label "Special category personal data" ;
+    rdfs:comment "Personal data revealing racial or ethnic origin, political opinions, religious or philosophical beliefs, trade union membership, genetic data, biometric data, health data, or data concerning sex life or sexual orientation. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:exceptional_permission a owl:Class ;
+    rdfs:label "Exceptional permission" ;
+    rdfs:comment "A legally permitted exception allowing processing that would otherwise be restricted. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:compliance_condition a owl:Class ;
+    rdfs:label "Compliance condition" ;
+    rdfs:comment "A condition that must be satisfied for a data set or processing activity to comply with the Act. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:data_processing_activity a owl:Class ;
+    rdfs:label "Data processing activity" ;
+    rdfs:comment "An activity involving the collection, preparation, use, access, transfer, retention, or deletion of data. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:data_lifecycle_stage a owl:Class ;
+    rdfs:label "Data lifecycle stage" ;
+    rdfs:comment "A stage in the lifecycle of data processing, such as collection, preparation, use, storage, access, transfer, or deletion. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:transparency_obligation a owl:Class ;
+    rdfs:label "Transparency obligation" ;
+    rdfs:comment "A duty to inform persons that they are interacting with an AI system or that content has been artificially generated or manipulated. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:ai_system_interacting_with_humans a owl:Class ;
+    rdfs:label "AI system interacting with humans" ;
+    rdfs:comment "An AI system designed to interact directly with natural persons. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:ai_system .
+
+eu_ai_act:chatbot a owl:Class ;
+    rdfs:label "Chatbot" ;
+    rdfs:comment "An AI system that interacts with natural persons in a conversational manner. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:ai_system_interacting_with_humans ;
+    owl:equivalentClass vair:Chatbot .
+
+eu_ai_act:emotion_recognition_system a owl:Class ;
+    rdfs:label "Emotion recognition system" ;
+    rdfs:comment "An AI system intended to identify or infer emotions or intentions of natural persons. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:ai_system .
+
+eu_ai_act:biometric_categorization_system a owl:Class ;
+    rdfs:label "Biometric categorization system" ;
+    rdfs:comment "An AI system that assigns natural persons to specific categories based on biometric data. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:ai_system .
+
+eu_ai_act:deep_fake a owl:Class ;
+    rdfs:label "Deep fake" ;
+    rdfs:comment "AI-generated or manipulated image, audio, or video content that resembles existing persons, objects, places, or events and would falsely appear authentic. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:prohibited_practice a owl:Class ;
+    rdfs:label "Prohibited practice" ;
+    rdfs:comment "An AI system practice or use that is not allowed under the applicable legal framework. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:prohibited_ai_practice .
+
+eu_ai_act:limited_risk_ai_system a owl:Class ;
+    rdfs:label "Limited-risk AI system" ;
+    rdfs:comment "An AI system subject to transparency obligations rather than the full set of high-risk requirements. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:ai_system .
+
+eu_ai_act:minimal_risk_ai_system a owl:Class ;
+    rdfs:label "Minimal-risk AI system" ;
+    rdfs:comment "An AI system that is not subject to specific obligations under the Act beyond general legal requirements. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:ai_system .
+
+eu_ai_act:product_ai_system a owl:Class ;
+    rdfs:label "Product AI system" ;
+    rdfs:comment "An AI system that is a safety component of a product or itself is a product covered by Union harmonisation legislation. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:ai_system .
+
+eu_ai_act:annex_iii_ai_system a owl:Class ;
+    rdfs:label "Annex III AI system" ;
+    rdfs:comment "An AI system used in one of the high-risk areas listed in Annex III. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:ai_system .
+
+eu_ai_act:product_safety_component a owl:Class ;
+    rdfs:label "Product safety component" ;
+    rdfs:comment "An AI system used as a safety component of a product subject to Union harmonisation legislation. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:safety_component .
+
+eu_ai_act:regulated_product a owl:Class ;
+    rdfs:label "Regulated product" ;
+    rdfs:comment "A product covered by Union harmonisation legislation. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:product_compliance a owl:Class ;
+    rdfs:label "Product compliance" ;
+    rdfs:comment "The state in which a product containing an AI system satisfies all applicable legal requirements. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:product_compliance_procedure a owl:Class ;
+    rdfs:label "Product compliance procedure" ;
+    rdfs:comment "An existing procedure used to assess compliance of a regulated product. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:testing_process a owl:Class ;
+    rdfs:label "Testing process" ;
+    rdfs:comment "A process used to verify that an AI system meets applicable requirements. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:reporting_process a owl:Class ;
+    rdfs:label "Reporting process" ;
+    rdfs:comment "A process used to report compliance-related information, incidents, or results. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:compliance_activity a owl:Class ;
+    rdfs:label "Compliance activity" ;
+    rdfs:comment "An action taken to satisfy legal obligations under the AI Act or other legislation. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:compliance_burden a owl:Class ;
+    rdfs:label "Compliance burden" ;
+    rdfs:comment "The administrative and operational burden associated with compliance activities. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:conformity_assessment_procedure a owl:Class ;
+    rdfs:label "Conformity assessment procedure" ;
+    rdfs:comment "A specific assessment route used to evaluate compliance. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:eu_declaration_of_conformity a owl:Class ;
+    rdfs:label "EU declaration of conformity" ;
+    rdfs:comment "A formal declaration stating that a high-risk AI system complies with applicable requirements. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:packaging a owl:Class ;
+    rdfs:label "Packaging" ;
+    rdfs:comment "The external packaging of an AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:accompanying_documentation a owl:Class ;
+    rdfs:label "Accompanying documentation" ;
+    rdfs:comment "Documentation supplied with the AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass airo:Documentation .
+
+eu_ai_act:identification_marking a owl:Class ;
+    rdfs:label "Identification marking" ;
+    rdfs:comment "Information identifying the provider, such as name, trade name, or trade mark. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:log_retention_period a owl:Class ;
+    rdfs:label "Log retention period" ;
+    rdfs:comment "The time span during which logs must be kept and available. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:system_lifetime a owl:Class ;
+    rdfs:label "System lifetime" ;
+    rdfs:comment "The full operational lifespan of the AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:logging_mechanism a owl:Class ;
+    rdfs:label "Logging mechanism" ;
+    rdfs:comment "A mechanism enabling collection and storage of logs. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:human_machine_interface_tool a owl:Class ;
+    rdfs:label "Human-machine interface tool" ;
+    rdfs:comment "A tool or interface enabling a natural person to monitor, understand, and intervene in an AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:ai_output a owl:Class ;
+    rdfs:label "AI output" ;
+    rdfs:comment "The result generated by a high-risk AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass airo:Output .
+
+eu_ai_act:human_judgment a owl:Class ;
+    rdfs:label "Human judgment" ;
+    rdfs:comment "The human evaluation required before relying on AI output. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:intervention_mechanism a owl:Class ;
+    rdfs:label "Intervention mechanism" ;
+    rdfs:comment "A mechanism enabling human intervention in the operation of an AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:stop_mechanism a owl:Class ;
+    rdfs:label "Stop mechanism" ;
+    rdfs:comment "A mechanism enabling safe stopping or shutdown of an AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:law_enforcement_authority a owl:Class ;
+    rdfs:label "Law enforcement authority" ;
+    rdfs:comment "A public authority competent to prevent, investigate, detect, or prosecute criminal offences. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:competent_authority .
+
+eu_ai_act:law_enforcement_objective a owl:Class ;
+    rdfs:label "Law enforcement objective" ;
+    rdfs:comment "A legitimate objective pursued by law enforcement authorities. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:search_for_victims a owl:Class ;
+    rdfs:label "Search for victims" ;
+    rdfs:comment "A law enforcement objective involving locating victims of crime. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:law_enforcement_objective .
+
+eu_ai_act:prevention_of_specific_threat a owl:Class ;
+    rdfs:label "Prevention of specific threat" ;
+    rdfs:comment "A law enforcement objective involving prevention of a specific, substantial and imminent threat. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:law_enforcement_objective .
+
+eu_ai_act:locate_suspect a owl:Class ;
+    rdfs:label "Locate suspect" ;
+    rdfs:comment "A law enforcement objective involving locating a person suspected of committing a serious offence. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:law_enforcement_objective .
+
+eu_ai_act:lawful_use_condition a owl:Class ;
+    rdfs:label "Lawful use condition" ;
+    rdfs:comment "A condition that must be satisfied for lawful deployment of real-time remote biometric identification. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:necessity a owl:Class ;
+    rdfs:label "Necessity" ;
+    rdfs:comment "A requirement that the use of the system is necessary for the intended objective. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:proportionality a owl:Class ;
+    rdfs:label "Proportionality" ;
+    rdfs:comment "A requirement that the use of the system is proportionate to the objective pursued. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:strict_necessity a owl:Class ;
+    rdfs:label "Strict necessity" ;
+    rdfs:comment "A high threshold meaning that the use of the system is indispensable for achieving the objective and no less intrusive alternative is available. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:less_intrusive_alternative a owl:Class ;
+    rdfs:label "Less intrusive alternative" ;
+    rdfs:comment "An alternative measure that achieves the objective with a lower impact on rights and freedoms. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:safeguard a owl:Class ;
+    rdfs:label "Safeguard" ;
+    rdfs:comment "A protective measure intended to reduce risks and protect rights. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:limitation a owl:Class ;
+    rdfs:label "Limitation" ;
+    rdfs:comment "A restriction on the use, scope, duration, or location of the system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:authorisation a owl:Class ;
+    rdfs:label "Authorisation" ;
+    rdfs:comment "Formal approval required before certain AI uses. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass dpv:AuthorisationProcedure .
+
+eu_ai_act:notification a owl:Class ;
+    rdfs:label "Notification" ;
+    rdfs:comment "Formal notice given to competent authorities about a regulated AI use. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass dpv:Notification .
+
+eu_ai_act:registration a owl:Class ;
+    rdfs:label "Registration" ;
+    rdfs:comment "Entry of an AI system or its use into an official database. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:reporting a owl:Class ;
+    rdfs:label "Reporting" ;
+    rdfs:comment "Submission of information to authorities on the use or oversight of an AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass dpv:Reporting .
+
+eu_ai_act:assessment a owl:Class ;
+    rdfs:label "Assessment" ;
+    rdfs:comment "An evaluation carried out to determine whether the use of an AI system is lawful. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass dpv:Assessment .
+
+eu_ai_act:use_case a owl:Class ;
+    rdfs:label "Use case" ;
+    rdfs:comment "A specific application context of an AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass vair:UseCase .
+
+eu_ai_act:sector a owl:Class ;
+    rdfs:label "Sector" ;
+    rdfs:comment "A domain or area of application in which an AI system is used, as reflected in Annex III. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:commission a owl:Class ;
+    rdfs:label "Commission" ;
+    rdfs:comment "The European Commission, which has regulatory and amendment powers under the Act. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:delegated_act a owl:Class ;
+    rdfs:label "Delegated act" ;
+    rdfs:comment "A non-legislative act adopted by the Commission to amend or supplement non-essential elements of the Act. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:non_high_risk_classification_condition a owl:Class ;
+    rdfs:label "Conditions for non-high-risk classification" ;
+    rdfs:comment "Conditions under which an Annex III AI system may be considered not high-risk because it does not pose a significant risk of harm to health, safety, or fundamental rights. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:evidence a owl:Class ;
+    rdfs:label "Evidence" ;
+    rdfs:comment "Information demonstrating that an amendment to the Annex III conditions is justified. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:covered_ai_system a owl:Class ;
+    rdfs:label "Covered AI system" ;
+    rdfs:comment "An AI system that falls within the scope of the Act, including systems subject to the Act's obligations and prohibitions. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:ai_system .
+
+eu_ai_act:union_harmonisation_legislation a owl:Class ;
+    rdfs:label "Union harmonisation legislation" ;
+    rdfs:comment "EU product legislation establishing essential requirements for certain products. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:high_risk_requirement a owl:Class ;
+    rdfs:label "High-risk requirement" ;
+    rdfs:comment "A mandatory requirement applicable to high-risk AI systems. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:ai_system_requirement a owl:Class ;
+    rdfs:label "AI system requirement" ;
+    rdfs:comment "A legal requirement applicable to an AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:product_safety_requirement a owl:Class ;
+    rdfs:label "Product safety requirement" ;
+    rdfs:comment "A legal requirement applicable to a regulated product under Union harmonisation legislation. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:ai_system_obligation a owl:Class ;
+    rdfs:label "AI system obligation" ;
+    rdfs:comment "An obligation that applies directly to an AI system or its provider/deployer under the AI Act. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:obligation .
+
+eu_ai_act:product_level_obligation a owl:Class ;
+    rdfs:label "Product-level obligation" ;
+    rdfs:comment "An obligation that applies to the product containing the AI system under Union harmonisation legislation. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:obligation .
+
+eu_ai_act:logging_requirement a owl:Class ;
+    rdfs:label "Logging requirement" ;
+    rdfs:comment "A legal or technical obligation specifying what must be recorded by an AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass dpv:LoggingPolicy .
+
+eu_ai_act:risk_situation a owl:Class ;
+    rdfs:label "Risk situation" ;
+    rdfs:comment "A situation that may result in the high-risk AI system presenting a risk. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:substantial_modification a owl:Class ;
+    rdfs:label "Substantial modification" ;
+    rdfs:comment "A significant change to the AI system that may affect its compliance, performance, or risk profile. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:system_operation a owl:Class ;
+    rdfs:label "System operation" ;
+    rdfs:comment "The functioning or execution of a high-risk AI system during use. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:testing a owl:Class ;
+    rdfs:label "Testing" ;
+    rdfs:comment "A verification activity used to assess performance, compliance, and risk controls. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass vair:Testing, vair:Validation .
+
+eu_ai_act:continuous_iterative_process a owl:Class ;
+    rdfs:label "Continuous iterative process" ;
+    rdfs:comment "A process that is repeated and updated throughout the lifecycle based on new information and changing conditions. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:hazard a owl:Class ;
+    rdfs:label "Hazard" ;
+    rdfs:comment "A potential source of harm associated with the AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:reasonably_foreseeable_risk a owl:Class ;
+    rdfs:label "Reasonably foreseeable risk" ;
+    rdfs:comment "A risk that can be anticipated on the basis of the intended purpose, context, and available evidence. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:risk .
+
+eu_ai_act:speculative_risk a owl:Class ;
+    rdfs:label "Speculative risk" ;
+    rdfs:comment "A risk that is uncertain, hypothetical, or not reasonably predictable. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:risk .
+
+eu_ai_act:health_risk a owl:Class ;
+    rdfs:label "Health risk" ;
+    rdfs:comment "A risk of harm to physical or mental health. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:risk .
+
+eu_ai_act:safety_risk a owl:Class ;
+    rdfs:label "Safety risk" ;
+    rdfs:comment "A risk of harm to safety. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:risk .
+
+eu_ai_act:fundamental_rights_risk a owl:Class ;
+    rdfs:label "Fundamental rights risk" ;
+    rdfs:comment "A risk of adverse impact on fundamental rights. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:risk .
+
+eu_ai_act:post_market_monitoring_data a owl:Class ;
+    rdfs:label "Post-market monitoring data" ;
+    rdfs:comment "Information collected after the AI system is placed on the market or put into service. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:risk_assessment a owl:Class ;
+    rdfs:label "Risk assessment" ;
+    rdfs:comment "The process of evaluating risk based on evidence and monitoring data. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass dpv:RiskAssessment .
+
+eu_ai_act:risk_mitigation_measure a owl:Class ;
+    rdfs:label "Risk mitigation measure" ;
+    rdfs:comment "A measure intended to reduce, eliminate, or control risk. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass dpv:RiskMitigationMeasure .
+
+eu_ai_act:design_measure a owl:Class ;
+    rdfs:label "Design measure" ;
+    rdfs:comment "A mitigation measure implemented through system design. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:risk_mitigation_measure .
+
+eu_ai_act:technical_measure a owl:Class ;
+    rdfs:label "Technical measure" ;
+    rdfs:comment "A mitigation measure implemented through technical means. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:risk_mitigation_measure .
+
+eu_ai_act:identified_risk a owl:Class ;
+    rdfs:label "Identified risk" ;
+    rdfs:comment "A risk that has been detected and analyzed. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:risk .
+
+eu_ai_act:risk_management_measure a owl:Class ;
+    rdfs:label "Risk management measure" ;
+    rdfs:comment "A measure selected to address an identified risk. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass airo:RiskControl .
+
+eu_ai_act:unmitigable_risk a owl:Class ;
+    rdfs:label "Unmitigable risk" ;
+    rdfs:comment "A risk that cannot be reasonably eliminated or reduced through design or technical information. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:risk .
+
+eu_ai_act:residual_risk a owl:Class ;
+    rdfs:label "Residual risk" ;
+    rdfs:comment "The remaining risk after mitigation measures have been applied. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:risk .
+
+eu_ai_act:overall_residual_risk a owl:Class ;
+    rdfs:label "Overall residual risk" ;
+    rdfs:comment "The aggregate remaining risk for the AI system after mitigation. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:residual_risk .
+
+eu_ai_act:acceptable_residual_risk a owl:Class ;
+    rdfs:label "Acceptable residual risk" ;
+    rdfs:comment "Residual risk that remains within the level permitted by the Act. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:residual_risk ;
+    owl:equivalentClass dpv:ResidualRisk .
+
+eu_ai_act:technical_feasibility a owl:Class ;
+    rdfs:label "Technical feasibility" ;
+    rdfs:comment "The extent to which a mitigation measure can be implemented using available technical means. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:design_and_development_stage a owl:Class ;
+    rdfs:label "Design and development stage" ;
+    rdfs:comment "The phase in which risk reduction should be integrated into the system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:mitigation_measure a owl:Class ;
+    rdfs:label "Mitigation measure" ;
+    rdfs:comment "A measure used when elimination of risk is not possible. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:control_measure a owl:Class ;
+    rdfs:label "Control measure" ;
+    rdfs:comment "A measure used to control risk when elimination is not feasible. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:deployer_information a owl:Class ;
+    rdfs:label "Deployer information" ;
+    rdfs:comment "Information supplied to deployers to enable safe and compliant use. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:risk_reduction_information a owl:Class ;
+    rdfs:label "Risk reduction information" ;
+    rdfs:comment "Information intended to reduce risks during use. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:deployer_training a owl:Class ;
+    rdfs:label "Deployer training" ;
+    rdfs:comment "Training provided to deployers to ensure proper use of the AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:deployer_technical_knowledge a owl:Class ;
+    rdfs:label "Deployer technical knowledge" ;
+    rdfs:comment "The deployer's technical understanding relevant to system use. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:deployer_experience a owl:Class ;
+    rdfs:label "Deployer experience" ;
+    rdfs:comment "The deployer's practical experience with similar systems. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:deployer_education a owl:Class ;
+    rdfs:label "Deployer education" ;
+    rdfs:comment "The deployer's educational background relevant to system use. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:deployer_training_expectation a owl:Class ;
+    rdfs:label "Deployer training expectation" ;
+    rdfs:comment "The expected level of training needed by the deployer. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:intended_context_of_use a owl:Class ;
+    rdfs:label "Intended context of use" ;
+    rdfs:comment "The environment and conditions in which the AI system is intended to be used. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:risk_management_decision a owl:Class ;
+    rdfs:label "Risk management decision" ;
+    rdfs:comment "A decision made in light of the intended context of use. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:testing_result a owl:Class ;
+    rdfs:label "Testing result" ;
+    rdfs:comment "The outcome of testing used to inform risk management. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:testing_metric a owl:Class ;
+    rdfs:label "Testing metric" ;
+    rdfs:comment "A quantitative or qualitative measure used in testing. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:probabilistic_threshold a owl:Class ;
+    rdfs:label "Probabilistic threshold" ;
+    rdfs:comment "A threshold expressed in probabilistic terms used to evaluate system performance or risk. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:person_under_18 a owl:Class ;
+    rdfs:label "Person under 18" ;
+    rdfs:comment "A natural person below the age of 18. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:adverse_impact a owl:Class ;
+    rdfs:label "Adverse impact" ;
+    rdfs:comment "A negative effect on a person or group. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:vulnerable_group a owl:Class ;
+    rdfs:label "Vulnerable group" ;
+    rdfs:comment "A group of persons who may be particularly affected by AI system use. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:internal_risk_management_process a owl:Class ;
+    rdfs:label "Internal risk management process" ;
+    rdfs:comment "Another internal risk management process established under Union law. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:legal_risk_management_procedure a owl:Class ;
+    rdfs:label "Legal risk management procedure" ;
+    rdfs:comment "A risk management procedure required by other legal acts. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:risk_management_obligation a owl:Class ;
+    rdfs:label "Risk management obligation" ;
+    rdfs:comment "A duty to manage risk under the Act. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:obligation .
+
+eu_ai_act:risk_management_documentation a owl:Class ;
+    rdfs:label "Risk management documentation" ;
+    rdfs:comment "Documentation describing the risk management system, measures, and evidence. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:maintenance_activity a owl:Class ;
+    rdfs:label "Maintenance activity" ;
+    rdfs:comment "An activity performed to keep the AI system functioning properly over time. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:new_risk a owl:Class ;
+    rdfs:label "New risk" ;
+    rdfs:comment "A risk identified after initial assessment. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:risk .
+
+eu_ai_act:changed_intended_purpose a owl:Class ;
+    rdfs:label "Changed intended purpose" ;
+    rdfs:comment "A modification in the intended purpose of the AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:intended_purpose .
+
+eu_ai_act:misuse_pattern a owl:Class ;
+    rdfs:label "Misuse pattern" ;
+    rdfs:comment "A recurring or emerging pattern of misuse. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:post_market_monitoring_finding a owl:Class ;
+    rdfs:label "Post-market monitoring finding" ;
+    rdfs:comment "A finding derived from post-market monitoring activities. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:implementation_evidence a owl:Class ;
+    rdfs:label "Implementation evidence" ;
+    rdfs:comment "Evidence showing that risk management measures were implemented and effective. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:compliance_process a owl:Class ;
+    rdfs:label "Compliance process" ;
+    rdfs:comment "A process involving obligations, verification, monitoring, and enforcement. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:ai_system_lifecycle_stage a owl:Class ;
+    rdfs:label "AI system lifecycle stage" ;
+    rdfs:comment "A stage in the lifecycle of an AI system, such as design, development, testing, deployment, and post-market monitoring. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:ai_lifecycle a owl:Class ;
+    rdfs:label "AI lifecycle" ;
+    rdfs:comment "The sequence of phases from development to deployment, operation, monitoring, and retirement. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass airo:AILifecyclePhase .
+
+eu_ai_act:ai_lifecycle_event a owl:Class ;
+    rdfs:label "AI lifecycle event" ;
+    rdfs:comment "An event occurring during the lifecycle of an AI system, such as development, placement on the market, putting into service, monitoring, or withdrawal. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:event .
+
+eu_ai_act:pre_deployment_phase a owl:Class ;
+    rdfs:label "Pre-deployment phase" ;
+    rdfs:comment "The phase before an AI system is placed on the market or put into service. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:post_deployment_phase a owl:Class ;
+    rdfs:label "Post-deployment phase" ;
+    rdfs:comment "The phase after an AI system has been placed on the market or put into service. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:compliance_property a owl:Class ;
+    rdfs:label "Compliance property" ;
+    rdfs:comment "A property of an AI system that demonstrates compliance with a requirement. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:authority_obligation a owl:Class ;
+    rdfs:label "Authority obligation" ;
+    rdfs:comment "A duty imposed on authorities for oversight, supervision, or enforcement. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:obligation .
+
+eu_ai_act:supervisory_authority a owl:Class ;
+    rdfs:label "Supervisory authority" ;
+    rdfs:comment "An authority responsible for monitoring compliance with the Act. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:competent_authority .
+
+eu_ai_act:enforcement_function a owl:Class ;
+    rdfs:label "Enforcement function" ;
+    rdfs:comment "A function involving investigation, corrective action, or sanctioning. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:oversight_function a owl:Class ;
+    rdfs:label "Oversight function" ;
+    rdfs:comment "A function involving monitoring, supervision, or coordination of compliance. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:classification_criterion a owl:Class ;
+    rdfs:label "Classification criterion" ;
+    rdfs:comment "A rule or condition used to determine whether an AI system is high-risk. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:risk_criterion a owl:Class ;
+    rdfs:label "Risk criterion" ;
+    rdfs:comment "A factor used to assess whether an AI system should be classified as high-risk. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:classification_change a owl:Class ;
+    rdfs:label "Classification change" ;
+    rdfs:comment "A change in the legal classification of an AI system over time, such as addition to or removal from Annex III. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:time_period a owl:Class ;
+    rdfs:label "Time period" ;
+    rdfs:comment "A temporal interval used to represent when a classification applies. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:level_of_protection a owl:Class ;
+    rdfs:label "Level of protection" ;
+    rdfs:comment "The overall degree of legal protection afforded by Union law. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:health_and_safety a owl:Class ;
+    rdfs:label "Health and safety" ;
+    rdfs:comment "The protected interests relating to physical and mental well-being and safe conditions. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:fundamental_rights a owl:Class ;
+    rdfs:label "Fundamental rights" ;
+    rdfs:comment "Rights protected by the Charter of Fundamental Rights of the European Union and related Union law. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:health_and_safety_harm a owl:Class ;
+    rdfs:label "Health and safety harm" ;
+    rdfs:comment "Harm affecting physical or mental health or safety. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:harm .
+
+eu_ai_act:fundamental_rights_harm a owl:Class ;
+    rdfs:label "Fundamental rights harm" ;
+    rdfs:comment "Adverse impact on rights protected under Union law. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:harm .
+
+eu_ai_act:expected_benefit a owl:Class ;
+    rdfs:label "Expected benefit" ;
+    rdfs:comment "The anticipated positive effects of deploying an AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:adverse_outcome a owl:Class ;
+    rdfs:label "Adverse outcome" ;
+    rdfs:comment "A harmful or negative result caused or influenced by an AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:corrigible_outcome a owl:Class ;
+    rdfs:label "Corrigible outcome" ;
+    rdfs:comment "An AI system outcome that can be corrected or reversed without significant difficulty or residual harm. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:redress_measure a owl:Class ;
+    rdfs:label "Redress measure" ;
+    rdfs:comment "A legal remedy or complaint mechanism available under Union law. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:risk_assessment_criterion a owl:Class ;
+    rdfs:label "Risk assessment criterion" ;
+    rdfs:comment "A factor or rule used to evaluate whether an AI system should be classified as high-risk. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:fundamental_rights_impact a owl:Class ;
+    rdfs:label "Fundamental rights impact" ;
+    rdfs:comment "The potential effect of an AI system on rights protected under Union law. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:legal_classification a owl:Class ;
+    rdfs:label "Legal classification" ;
+    rdfs:comment "The legal category assigned to an AI system under the Act, such as prohibited or high-risk. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:risk_classification a owl:Class ;
+    rdfs:label "Risk classification" ;
+    rdfs:comment "The regulatory classification assigned to an AI system, such as high-risk or not high-risk. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:high_risk_obligation a owl:Class ;
+    rdfs:label "High-risk obligation" ;
+    rdfs:comment "An obligation that applies to an AI system once it is classified as high-risk. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:obligation .
+
+eu_ai_act:provider_obligation a owl:Class ;
+    rdfs:label "Provider obligation" ;
+    rdfs:comment "A duty imposed on providers regarding design, development, conformity, documentation, and post-market monitoring. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:obligation .
+
+eu_ai_act:deployer_obligation a owl:Class ;
+    rdfs:label "Deployer obligation" ;
+    rdfs:comment "A duty imposed on deployers when using AI systems, including use according to instructions, monitoring, and transparency. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:obligation .
+
+eu_ai_act:authority a owl:Class ;
+    rdfs:label "Authority" ;
+    rdfs:comment "A public authority or other body with governance, supervisory, or enforcement responsibilities related to AI systems. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass dpv:Authority .
+
+eu_ai_act:non_compliance a owl:Class ;
+    rdfs:label "Non-compliance" ;
+    rdfs:comment "A breach or suspected breach of the Regulation. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:infringement a owl:Class ;
+    rdfs:label "Infringement" ;
+    rdfs:comment "A violation of the Regulation or related Union law. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:supervision_activity a owl:Class ;
+    rdfs:label "Supervision activity" ;
+    rdfs:comment "An oversight action performed by a competent authority. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:authorisation_activity a owl:Class ;
+    rdfs:label "Authorisation activity" ;
+    rdfs:comment "A decision-making process granting or refusing permission for a regulated AI use. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:reporting_activity a owl:Class ;
+    rdfs:label "Reporting activity" ;
+    rdfs:comment "The collection, transmission, or publication of information about AI system use. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:market_surveillance_activity a owl:Class ;
+    rdfs:label "Market surveillance activity" ;
+    rdfs:comment "Activities aimed at ensuring AI systems comply with the Act. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:corrective_action a owl:Class ;
+    rdfs:label "Corrective action" ;
+    rdfs:comment "Measures taken to remedy non-compliance or reduce risk. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:data_protection_supervision a owl:Class ;
+    rdfs:label "Data protection supervision" ;
+    rdfs:comment "Oversight of AI system use for compliance with data protection law. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:personal_data_processing a owl:Class ;
+    rdfs:label "Personal data processing" ;
+    rdfs:comment "Any operation performed on personal data in the context of AI use. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:authorisation_decision a owl:Class ;
+    rdfs:label "Authorisation decision" ;
+    rdfs:comment "A formal decision granting or refusing permission for a regulated AI use. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:law_enforcement_use a owl:Class ;
+    rdfs:label "Law enforcement use" ;
+    rdfs:comment "Use of an AI system by or for law enforcement purposes. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:public_space_use a owl:Class ;
+    rdfs:label "Public space use" ;
+    rdfs:comment "Use of an AI system in a publicly accessible space. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:fundamental_right_impact a owl:Class ;
+    rdfs:label "Fundamental right impact" ;
+    rdfs:comment "An effect of AI system use on a protected fundamental right. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:national_law_authorisation a owl:Class ;
+    rdfs:label "National law authorisation" ;
+    rdfs:comment "A legal basis in national law permitting the use of an AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:eu_database_registration a owl:Class ;
+    rdfs:label "EU database registration" ;
+    rdfs:comment "The registration of an AI system in the Union database. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:union_law a owl:Class ;
+    rdfs:label "Union law" ;
+    rdfs:comment "The body of law of the European Union applicable alongside the Act. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:legal_compliance_relationship a owl:Class ;
+    rdfs:label "Legal compliance relationship" ;
+    rdfs:comment "The relationship between compliance with the Act and compliance with other applicable Union law. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:unlawful_ai_practice a owl:Class ;
+    rdfs:label "Unlawful AI practice" ;
+    rdfs:comment "An AI practice that is prohibited because it infringes other applicable Union law. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf eu_ai_act:prohibited_ai_practice .
+
+eu_ai_act:ai_practice a owl:Class ;
+    rdfs:label "AI practice" ;
+    rdfs:comment "A use or operation of an AI system that may have a specific objective and effect. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:objective a owl:Class ;
+    rdfs:label "Objective" ;
+    rdfs:comment "The intended purpose pursued by an AI practice. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:effect a owl:Class ;
+    rdfs:label "Effect" ;
+    rdfs:comment "The outcome produced by an AI practice. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:exception a owl:Class ;
+    rdfs:label "Exception" ;
+    rdfs:comment "A circumstance in which a general prohibition does not apply. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:derogation a owl:Class ;
+    rdfs:label "Derogation" ;
+    rdfs:comment "A lawful deviation from a general rule under specified conditions. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:lawful_use a owl:Class ;
+    rdfs:label "Lawful use" ;
+    rdfs:comment "A use of an AI system that is permitted because legal conditions are satisfied. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:temporal_scope a owl:Class ;
+    rdfs:label "Temporal scope" ;
+    rdfs:comment "The time period during which a regulated AI use is permitted. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:geographic_scope a owl:Class ;
+    rdfs:label "Geographic scope" ;
+    rdfs:comment "The spatial area in which a regulated AI use is permitted. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:personal_scope a owl:Class ;
+    rdfs:label "Personal scope" ;
+    rdfs:comment "The category of persons to whom a regulated AI use may apply. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:legal_provision a owl:Class ;
+    rdfs:label "Legal provision" ;
+    rdfs:comment "A legal rule or provision referenced by the ontology. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:annex_iii a owl:Class ;
+    rdfs:label "Annex III" ;
+    rdfs:comment "The annex listing high-risk AI system use-cases. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:high_risk_classification_condition a owl:Class ;
+    rdfs:label "High-risk classification criterion" ;
+    rdfs:comment "A legal or factual condition used to determine whether an AI system is high-risk. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:risk_level_value a owl:Class ;
+    rdfs:label "Risk level value" ;
+    rdfs:comment "A literal-valued risk level indicator used for datatype assertions. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:authority_function a owl:Class ;
+    rdfs:label "Authority function" ;
+    rdfs:comment "A governance or enforcement function associated with an authority. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:subClassOf owl:Thing .
+
+eu_ai_act:article_5 a eu_ai_act:article ;
+    rdfs:label "Article 5" ;
+    rdfs:comment "Legal provision for prohibited AI practices. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    eu_ai_act:has_article_number 5 .
+
+### Object properties
+
+eu_ai_act:has_category a owl:ObjectProperty ;
+    rdfs:label "has category" ;
+    rdfs:comment "Relates an AI system to its regulatory category. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:ai_system ;
+    rdfs:range eu_ai_act:ai_system_category ;
+    owl:equivalentProperty skos:inScheme .
+
+eu_ai_act:is_category_of a owl:ObjectProperty ;
+    rdfs:label "is category of" ;
+    rdfs:comment "Inverse of has category. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    owl:inverseOf eu_ai_act:has_category ;
+    rdfs:domain eu_ai_act:ai_system_category ;
+    rdfs:range eu_ai_act:ai_system .
+
+eu_ai_act:has_risk_category a owl:ObjectProperty ;
+    rdfs:label "has risk category" ;
+    rdfs:comment "Links an AI system to its risk classification category. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:ai_system ;
+    rdfs:range eu_ai_act:risk_level ;
+    rdfs:subPropertyOf eu_ai_act:has_category .
+
+eu_ai_act:is_risk_category_of a owl:ObjectProperty ;
+    rdfs:label "is risk category of" ;
+    rdfs:comment "Inverse of has risk category. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    owl:inverseOf eu_ai_act:has_risk_category ;
+    rdfs:domain eu_ai_act:risk_level ;
+    rdfs:range eu_ai_act:ai_system .
+
+eu_ai_act:has_risk_classification a owl:ObjectProperty ;
+    rdfs:label "has risk classification" ;
+    rdfs:comment "Links an AI system to its classification outcome. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:ai_system ;
+    rdfs:range eu_ai_act:risk_classification ;
+    rdfs:subPropertyOf eu_ai_act:has_category .
+
+eu_ai_act:is_risk_classification_of a owl:ObjectProperty ;
+    rdfs:label "is risk classification of" ;
+    rdfs:comment "Inverse of has risk classification. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    owl:inverseOf eu_ai_act:has_risk_classification ;
+    rdfs:domain eu_ai_act:risk_classification ;
+    rdfs:range eu_ai_act:ai_system .
+
+eu_ai_act:classified_as a owl:ObjectProperty ;
+    rdfs:label "classified as" ;
+    rdfs:comment "Indicates the specific classification assigned to the AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:ai_system ;
+    rdfs:range eu_ai_act:ai_system_category ;
+    rdfs:subPropertyOf eu_ai_act:has_category ;
+    owl:equivalentProperty eu_ai_act:classifies .
+
+eu_ai_act:classifies a owl:ObjectProperty ;
+    rdfs:label "classifies" ;
+    rdfs:comment "Inverse of classified as. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    owl:inverseOf eu_ai_act:classified_as ;
+    rdfs:domain eu_ai_act:ai_system_category ;
+    rdfs:range eu_ai_act:ai_system .
+
+eu_ai_act:is_high_risk_because a owl:ObjectProperty ;
+    rdfs:label "is high-risk because" ;
+    rdfs:comment "Links a high-risk AI system to the reason for its classification. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:high_risk_ai_system ;
+    rdfs:range owl:Thing .
+
+eu_ai_act:is_reason_for_high_risk_of a owl:ObjectProperty ;
+    rdfs:label "is reason for high-risk of" ;
+    rdfs:comment "Inverse of is high-risk because. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    owl:inverseOf eu_ai_act:is_high_risk_because ;
+    rdfs:domain owl:Thing ;
+    rdfs:range eu_ai_act:high_risk_ai_system .
+
+eu_ai_act:falls_within_annex_iii a owl:ObjectProperty ;
+    rdfs:label "falls within Annex III" ;
+    rdfs:comment "Indicates that an AI system is used in a listed high-risk area. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:ai_system ;
+    rdfs:range eu_ai_act:annex_iii_use_case ;
+    owl:equivalentProperty eu_ai_act:is_listed_in .
+
+eu_ai_act:is_listed_in a owl:ObjectProperty ;
+    rdfs:label "is listed in" ;
+    rdfs:comment "Indicates that a use case appears in Annex III. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:annex_iii_use_case ;
+    rdfs:range eu_ai_act:annex_iii .
+
+eu_ai_act:lists a owl:ObjectProperty ;
+    rdfs:label "lists" ;
+    rdfs:comment "Inverse of is listed in. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    owl:inverseOf eu_ai_act:is_listed_in ;
+    rdfs:domain eu_ai_act:annex_iii ;
+    rdfs:range eu_ai_act:annex_iii_use_case .
+
+eu_ai_act:belongs_to_sector a owl:ObjectProperty ;
+    rdfs:label "belongs to sector" ;
+    rdfs:comment "Links an Annex III use case to the sector in which it applies. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:annex_iii_use_case ;
+    rdfs:range eu_ai_act:sector ;
+    owl:equivalentProperty dpv:hasSector .
+
+eu_ai_act:has_annex_iii_use_case a owl:ObjectProperty ;
+    rdfs:label "has Annex III use case" ;
+    rdfs:comment "Inverse of belongs to sector. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    owl:inverseOf eu_ai_act:belongs_to_sector ;
+    rdfs:domain eu_ai_act:sector ;
+    rdfs:range eu_ai_act:annex_iii_use_case .
+
+eu_ai_act:has_requirement a owl:ObjectProperty ;
+    rdfs:label "has requirement" ;
+    rdfs:comment "Links a high-risk AI system to a mandatory compliance requirement. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:high_risk_ai_system ;
+    rdfs:range owl:Thing ;
+    owl:equivalentProperty dpv:hasRequirement .
+
+eu_ai_act:has_obligation a owl:ObjectProperty ;
+    rdfs:label "has obligation" ;
+    rdfs:comment "Links an actor to a legal obligation applicable to high-risk AI systems. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain owl:Thing ;
+    rdfs:range eu_ai_act:obligation ;
+    owl:equivalentProperty dpv:hasObligation .
+
+eu_ai_act:develops a owl:ObjectProperty ;
+    rdfs:label "develops" ;
+    rdfs:comment "Indicates that a provider creates or commissions the development of an AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:provider ;
+    rdfs:range eu_ai_act:ai_system .
+
+eu_ai_act:uses_under_authority a owl:ObjectProperty ;
+    rdfs:label "uses under authority" ;
+    rdfs:comment "Indicates that a deployer operates an AI system under its control or authority. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:deployer ;
+    rdfs:range eu_ai_act:ai_system .
+
+eu_ai_act:performs_market_surveillance a owl:ObjectProperty ;
+    rdfs:label "performs market surveillance" ;
+    rdfs:comment "Indicates that an authority monitors AI systems for compliance. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:market_surveillance_authority ;
+    rdfs:range eu_ai_act:ai_system .
+
+eu_ai_act:designates_notified_bodies a owl:ObjectProperty ;
+    rdfs:label "designates notified bodies" ;
+    rdfs:comment "Indicates that an authority appoints and supervises notified bodies. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:notifying_authority ;
+    rdfs:range eu_ai_act:notified_body .
+
+eu_ai_act:investigates_non_compliance a owl:ObjectProperty ;
+    rdfs:label "investigates non-compliance" ;
+    rdfs:comment "Indicates that an authority investigates suspected breaches of the Regulation. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:market_surveillance_authority ;
+    rdfs:range eu_ai_act:non_compliance .
+
+eu_ai_act:is_prohibited_under a owl:ObjectProperty ;
+    rdfs:label "is prohibited under" ;
+    rdfs:comment "Indicates that an AI practice is prohibited by a specific legal provision. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:prohibited_ai_practice ;
+    rdfs:range eu_ai_act:article_5 .
+
+eu_ai_act:causes_or_likely_causes_harm a owl:ObjectProperty ;
+    rdfs:label "causes or likely causes harm" ;
+    rdfs:comment "Indicates that an AI practice results in or is likely to result in harm. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:ai_practice ;
+    rdfs:range eu_ai_act:harm ;
+    owl:equivalentProperty dpv:hasConsequence .
+
+eu_ai_act:exploits_vulnerability_of a owl:ObjectProperty ;
+    rdfs:label "exploits vulnerability of" ;
+    rdfs:comment "Indicates that an AI practice takes advantage of a person's or group's vulnerability. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:ai_practice ;
+    rdfs:range eu_ai_act:vulnerability ;
+    owl:equivalentProperty dpv:hasVulnerability .
+
+eu_ai_act:leads_to_detrimental_treatment a owl:ObjectProperty ;
+    rdfs:label "leads to detrimental treatment" ;
+    rdfs:comment "Indicates that social scoring results in harmful treatment. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:social_scoring ;
+    rdfs:range owl:Thing .
+
+eu_ai_act:applies_data_governance_practice a owl:ObjectProperty ;
+    rdfs:label "applies data governance practice" ;
+    rdfs:comment "Indicates that a practice is applied to a data set or AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:data_governance ;
+    rdfs:range eu_ai_act:data_governance_practice ;
+    owl:equivalentProperty dpv:hasTechnicalOrganisationalMeasure .
+
+eu_ai_act:performs_bias_examination a owl:ObjectProperty ;
+    rdfs:label "performs bias examination" ;
+    rdfs:comment "Indicates that a bias examination is carried out on a data set. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:data_governance ;
+    rdfs:range eu_ai_act:training_validation_testing_data_set .
+
+eu_ai_act:applies_bias_mitigation_measure a owl:ObjectProperty ;
+    rdfs:label "applies bias mitigation measure" ;
+    rdfs:comment "Indicates that a bias mitigation measure is applied. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:data_governance ;
+    rdfs:range eu_ai_act:bias_mitigation_measure ;
+    owl:equivalentProperty dpv:isMitigatedByMeasure .
+
+eu_ai_act:documents_risk_management_system a owl:ObjectProperty ;
+    rdfs:label "documents risk management system" ;
+    rdfs:comment "Indicates that documentation covers the risk management system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:technical_documentation ;
+    rdfs:range eu_ai_act:risk_management_system ;
+    owl:equivalentProperty dpv:hasRiskManagementSystem .
+
+eu_ai_act:supports_traceability a owl:ObjectProperty ;
+    rdfs:label "supports traceability" ;
+    rdfs:comment "Indicates that logging capabilities enable traceability of the system's functioning. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:record_keeping ;
+    rdfs:range eu_ai_act:traceability ;
+    owl:equivalentProperty dpv:Traceability .
+
+eu_ai_act:supports_post_market_monitoring a owl:ObjectProperty ;
+    rdfs:label "supports post-market monitoring" ;
+    rdfs:comment "Indicates that logs are used to facilitate post-market monitoring. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:record_keeping ;
+    rdfs:range eu_ai_act:post_market_monitoring ;
+    owl:equivalentProperty dpv:hasMonitoring .
+
+eu_ai_act:provides_information_to a owl:ObjectProperty ;
+    rdfs:label "provides information to" ;
+    rdfs:comment "Indicates that the provider supplies information to users or stakeholders. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:provider ;
+    rdfs:range owl:Thing ;
+    owl:equivalentProperty dpv:hasRecipient .
+
+eu_ai_act:includes_instructions_for_use a owl:ObjectProperty ;
+    rdfs:label "includes instructions for use" ;
+    rdfs:comment "Indicates that the information includes instructions for use. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:transparency_and_information ;
+    rdfs:range eu_ai_act:instructions_for_use .
+
+eu_ai_act:includes_transparency_information a owl:ObjectProperty ;
+    rdfs:label "includes transparency information" ;
+    rdfs:comment "Indicates that the information includes transparency-related content. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:instructions_for_use ;
+    rdfs:range eu_ai_act:transparency_obligation .
+
+eu_ai_act:allows_human_intervention a owl:ObjectProperty ;
+    rdfs:label "allows human intervention" ;
+    rdfs:comment "Indicates that the system permits human intervention where necessary. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:high_risk_ai_system ;
+    rdfs:range eu_ai_act:human_oversight_measure ;
+    owl:equivalentProperty dpv:hasHumanInvolvement .
+
+eu_ai_act:prevents_or_minimises a owl:ObjectProperty ;
+    rdfs:label "prevents or minimises" ;
+    rdfs:comment "Indicates that oversight aims to prevent or minimise a risk. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:human_oversight ;
+    rdfs:range eu_ai_act:risk .
+
+eu_ai_act:has_accuracy_requirement a owl:ObjectProperty ;
+    rdfs:label "has accuracy requirement" ;
+    rdfs:comment "Links a high-risk AI system to its required accuracy level. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:accuracy_robustness_cybersecurity ;
+    rdfs:range eu_ai_act:accuracy_requirement .
+
+eu_ai_act:has_robustness_requirement a owl:ObjectProperty ;
+    rdfs:label "has robustness requirement" ;
+    rdfs:comment "Links a high-risk AI system to its required robustness level. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:accuracy_robustness_cybersecurity ;
+    rdfs:range eu_ai_act:robustness_requirement .
+
+eu_ai_act:has_cybersecurity_requirement a owl:ObjectProperty ;
+    rdfs:label "has cybersecurity requirement" ;
+    rdfs:comment "Links a high-risk AI system to its cybersecurity requirement. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:accuracy_robustness_cybersecurity ;
+    rdfs:range eu_ai_act:cybersecurity_requirement .
+
+eu_ai_act:takes_measure_for_ai_literacy a owl:ObjectProperty ;
+    rdfs:label "takes measure for AI literacy" ;
+    rdfs:comment "Links a provider or deployer to a measure adopted to ensure sufficient AI literacy. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain owl:Thing ;
+    rdfs:range eu_ai_act:measure_to_ensure_sufficient_ai_literacy .
+
+eu_ai_act:has_determining_factor a owl:ObjectProperty ;
+    rdfs:label "has determining factor" ;
+    rdfs:comment "Links AI literacy requirements to the factors that determine the needed level of literacy. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:ai_literacy ;
+    rdfs:range owl:Thing .
+
+eu_ai_act:is_relevant_to a owl:ObjectProperty ;
+    rdfs:label "is relevant to" ;
+    rdfs:comment "Indicates that market placement is a triggering event for obligations linked to high-risk classification. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:market_placement ;
+    rdfs:range eu_ai_act:high_risk_ai_system .
+
+eu_ai_act:places_model_on_market a owl:ObjectProperty ;
+    rdfs:label "places model on market" ;
+    rdfs:comment "Indicates that a general-purpose AI model is made available on the Union market. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:general_purpose_ai_model ;
+    rdfs:range eu_ai_act:provider .
+
+eu_ai_act:provides_model_information a owl:ObjectProperty ;
+    rdfs:label "provides model information" ;
+    rdfs:comment "Indicates that the provider supplies required information about the model. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:provider ;
+    rdfs:range owl:Thing .
+
+eu_ai_act:has_role a owl:ObjectProperty ;
+    rdfs:label "has role" ;
+    rdfs:comment "Links an actor to its governance role in relation to AI systems. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain owl:Thing ;
+    rdfs:range eu_ai_act:role ;
+    owl:equivalentProperty dpv:hasRole .
+
+eu_ai_act:supports_implementation a owl:ObjectProperty ;
+    rdfs:label "supports implementation" ;
+    rdfs:comment "Indicates that a governance body assists in applying the Regulation. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain owl:Thing ;
+    rdfs:range owl:Thing .
+
+eu_ai_act:coordinates_enforcement a owl:ObjectProperty ;
+    rdfs:label "coordinates enforcement" ;
+    rdfs:comment "Indicates that a governance body helps coordinate enforcement across Member States. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain owl:Thing ;
+    rdfs:range owl:Thing .
+
+eu_ai_act:has_risk_level a owl:ObjectProperty ;
+    rdfs:label "has risk level" ;
+    rdfs:comment "Links an AI system to its risk classification category. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:ai_system ;
+    rdfs:range eu_ai_act:risk_level ;
+    owl:equivalentProperty dpv:hasRiskLevel .
+
+eu_ai_act:is_based_on_model a owl:ObjectProperty ;
+    rdfs:label "is based on model" ;
+    rdfs:comment "Indicates that an AI system is built on a particular AI model. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:ai_system ;
+    rdfs:range eu_ai_act:general_purpose_ai_model ;
+    owl:equivalentProperty airo:hasModel .
+
+eu_ai_act:has_autonomy_level a owl:ObjectProperty ;
+    rdfs:label "has autonomy level" ;
+    rdfs:comment "Relates an AI system to its level of autonomy. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:ai_system ;
+    rdfs:range owl:Thing ;
+    owl:equivalentProperty dpv:hasAutomationLevel .
+
+eu_ai_act:has_adaptiveness a owl:ObjectProperty ;
+    rdfs:label "has adaptiveness" ;
+    rdfs:comment "Relates an AI system to whether it exhibits adaptiveness after deployment. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:ai_system ;
+    rdfs:range owl:Thing ;
+    owl:equivalentProperty dpv:hasAutomationLevel .
+
+eu_ai_act:takes_input a owl:ObjectProperty ;
+    rdfs:label "takes input" ;
+    rdfs:comment "Relates an AI system to the inputs it processes. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:ai_system ;
+    rdfs:range owl:Thing ;
+    owl:equivalentProperty airo:hasInput .
+
+eu_ai_act:generates_output a owl:ObjectProperty ;
+    rdfs:label "generates output" ;
+    rdfs:comment "Relates an AI system to the outputs it produces. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:ai_system ;
+    rdfs:range eu_ai_act:ai_output ;
+    owl:equivalentProperty airo:hasOutput, dpv:hasOutcome .
+
+eu_ai_act:influences_environment a owl:ObjectProperty ;
+    rdfs:label "influences environment" ;
+    rdfs:comment "Relates an AI system to the physical or virtual environments it can influence. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:ai_system ;
+    rdfs:range owl:Thing .
+
+eu_ai_act:has_specific_obligation a owl:ObjectProperty ;
+    rdfs:label "has specific obligation" ;
+    rdfs:comment "Links a high-risk AI system or prohibited practice to the obligations that apply specifically to it. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain owl:Thing ;
+    rdfs:range eu_ai_act:obligation .
+
+eu_ai_act:ensures_compliance a owl:ObjectProperty ;
+    rdfs:label "ensures compliance" ;
+    rdfs:comment "Indicates that a provider must ensure the AI system complies with applicable legal requirements. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:provider ;
+    rdfs:range eu_ai_act:high_risk_ai_system ;
+    owl:equivalentProperty dpv:supportsComplianceWith .
+
+eu_ai_act:conducts_conformity_assessment a owl:ObjectProperty ;
+    rdfs:label "conducts conformity assessment" ;
+    rdfs:comment "Indicates that a provider performs or arranges the required conformity assessment. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:provider ;
+    rdfs:range eu_ai_act:conformity_assessment ;
+    owl:equivalentProperty dpv:hasAssessment .
+
+eu_ai_act:draws_up_technical_documentation a owl:ObjectProperty ;
+    rdfs:label "draws up technical documentation" ;
+    rdfs:comment "Indicates that a provider prepares the documentation required to demonstrate compliance. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:provider ;
+    rdfs:range eu_ai_act:technical_documentation ;
+    owl:equivalentProperty dpv:hasDocumentation .
+
+eu_ai_act:uses_according_to_instructions a owl:ObjectProperty ;
+    rdfs:label "uses according to instructions" ;
+    rdfs:comment "Indicates that a deployer must use the AI system in accordance with the provider's instructions. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:deployer ;
+    rdfs:range eu_ai_act:ai_system .
+
+eu_ai_act:monitors_operation a owl:ObjectProperty ;
+    rdfs:label "monitors operation" ;
+    rdfs:comment "Indicates that a deployer monitors the AI system during use. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:deployer ;
+    rdfs:range eu_ai_act:ai_system ;
+    owl:equivalentProperty airo:hasMonitoring .
+
+eu_ai_act:keeps_logs a owl:ObjectProperty ;
+    rdfs:label "keeps logs" ;
+    rdfs:comment "Indicates that a deployer retains logs where required. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:deployer ;
+    rdfs:range eu_ai_act:record_keeping ;
+    owl:equivalentProperty airo:hasDocumentation .
+
+eu_ai_act:has_risk_level_value a owl:ObjectProperty ;
+    rdfs:label "has risk level value" ;
+    rdfs:comment "Links a risk to a literal risk level value. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:risk ;
+    rdfs:range xsd:string .
+
+eu_ai_act:has_autonomy_level_value a owl:ObjectProperty ;
+    rdfs:label "has autonomy level value" ;
+    rdfs:comment "Links an AI system to a literal autonomy level value. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:ai_system ;
+    rdfs:range xsd:integer .
+
+eu_ai_act:has_adaptiveness_value a owl:ObjectProperty ;
+    rdfs:label "has adaptiveness value" ;
+    rdfs:comment "Links an AI system to a literal adaptiveness value. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:ai_system ;
+    rdfs:range xsd:boolean .
+
+eu_ai_act:has_accuracy_score a owl:ObjectProperty ;
+    rdfs:label "has accuracy score" ;
+    rdfs:comment "Links an accuracy, robustness and cybersecurity concept to a literal accuracy score. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:accuracy_robustness_cybersecurity ;
+    rdfs:range xsd:decimal .
+
+eu_ai_act:has_robustness_score a owl:ObjectProperty ;
+    rdfs:label "has robustness score" ;
+    rdfs:comment "Links an accuracy, robustness and cybersecurity concept to a literal robustness score. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:accuracy_robustness_cybersecurity ;
+    rdfs:range xsd:decimal .
+
+eu_ai_act:has_cybersecurity_score a owl:ObjectProperty ;
+    rdfs:label "has cybersecurity score" ;
+    rdfs:comment "Links an accuracy, robustness and cybersecurity concept to a literal cybersecurity score. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:accuracy_robustness_cybersecurity ;
+    rdfs:range xsd:decimal .
+
+eu_ai_act:has_model_version a owl:ObjectProperty ;
+    rdfs:label "has model version" ;
+    rdfs:comment "Links a general-purpose AI model to a literal version string. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:general_purpose_ai_model ;
+    rdfs:range xsd:string .
+
+eu_ai_act:has_model_release_date a owl:ObjectProperty ;
+    rdfs:label "has model release date" ;
+    rdfs:comment "Links a general-purpose AI model to a literal release date. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:general_purpose_ai_model ;
+    rdfs:range xsd:date .
+
+eu_ai_act:has_market_placement_date a owl:ObjectProperty ;
+    rdfs:label "has market placement date" ;
+    rdfs:comment "Links a market placement event to a literal date. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:market_placement ;
+    rdfs:range xsd:date .
+
+eu_ai_act:has_service_start_date a owl:ObjectProperty ;
+    rdfs:label "has service start date" ;
+    rdfs:comment "Links a putting-into-service event to a literal date. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:putting_into_service ;
+    rdfs:range xsd:date .
+
+eu_ai_act:has_use_start_date a owl:ObjectProperty ;
+    rdfs:label "has use start date" ;
+    rdfs:comment "Links a use-of-AI-system event to a literal date. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:use_of_ai_system ;
+    rdfs:range xsd:date .
+
+eu_ai_act:has_risk_probability a owl:ObjectProperty ;
+    rdfs:label "has risk probability" ;
+    rdfs:comment "Links a risk to a literal probability value. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:risk ;
+    rdfs:range xsd:decimal ;
+    owl:equivalentProperty airo:hasLikelihood .
+
+eu_ai_act:has_harm_severity a owl:ObjectProperty ;
+    rdfs:label "has harm severity" ;
+    rdfs:comment "Links a harm to a literal severity value. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:harm ;
+    rdfs:range xsd:decimal ;
+    owl:equivalentProperty airo:hasSeverity .
+
+eu_ai_act:has_article_number a owl:ObjectProperty ;
+    rdfs:label "has article number" ;
+    rdfs:comment "Links an article to a literal article number. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:article ;
+    rdfs:range xsd:integer ;
+    owl:equivalentProperty dcterms:identifier .
+
+eu_ai_act:has_citation a owl:ObjectProperty ;
+    rdfs:label "has citation" ;
+    rdfs:comment "Links a regulation to its formal citation. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:regulation ;
+    rdfs:range xsd:string ;
+    owl:equivalentProperty dcterms:bibliographicCitation .
+
+eu_ai_act:has_source_url a owl:ObjectProperty ;
+    rdfs:label "has source URL" ;
+    rdfs:comment "Links a regulation to the source URL used for extraction. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:regulation ;
+    rdfs:range xsd:anyURI ;
+    owl:equivalentProperty dcterms:source .
+
+### Datatype properties
+
+eu_ai_act:has_compliance_deadline a owl:DatatypeProperty ;
+    rdfs:label "has compliance deadline" ;
+    rdfs:comment "A deadline by which a major obligation must be met. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:major_obligation ;
+    rdfs:range xsd:date .
+
+eu_ai_act:requires_human_oversight a owl:DatatypeProperty ;
+    rdfs:label "requires human oversight" ;
+    rdfs:comment "Indicates whether a high-risk AI system requires human oversight. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:high_risk_ai_system ;
+    rdfs:range xsd:boolean .
+
+eu_ai_act:has_risk_level_value a owl:DatatypeProperty ;
+    rdfs:label "has risk level value" ;
+    rdfs:comment "Literal risk level value. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:risk ;
+    rdfs:range xsd:string .
+
+eu_ai_act:has_autonomy_level_value a owl:DatatypeProperty ;
+    rdfs:label "has autonomy level value" ;
+    rdfs:comment "Literal autonomy level value. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:ai_system ;
+    rdfs:range xsd:integer .
+
+eu_ai_act:has_adaptiveness_value a owl:DatatypeProperty ;
+    rdfs:label "has adaptiveness value" ;
+    rdfs:comment "Literal adaptiveness value. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:ai_system ;
+    rdfs:range xsd:boolean .
+
+eu_ai_act:has_accuracy_score a owl:DatatypeProperty ;
+    rdfs:label "has accuracy score" ;
+    rdfs:comment "Literal accuracy score. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:accuracy_robustness_cybersecurity ;
+    rdfs:range xsd:decimal .
+
+eu_ai_act:has_robustness_score a owl:DatatypeProperty ;
+    rdfs:label "has robustness score" ;
+    rdfs:comment "Literal robustness score. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:accuracy_robustness_cybersecurity ;
+    rdfs:range xsd:decimal .
+
+eu_ai_act:has_cybersecurity_score a owl:DatatypeProperty ;
+    rdfs:label "has cybersecurity score" ;
+    rdfs:comment "Literal cybersecurity score. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:accuracy_robustness_cybersecurity ;
+    rdfs:range xsd:decimal .
+
+eu_ai_act:has_model_version a owl:DatatypeProperty ;
+    rdfs:label "has model version" ;
+    rdfs:comment "Literal version string for a general-purpose AI model. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:general_purpose_ai_model ;
+    rdfs:range xsd:string .
+
+eu_ai_act:has_model_release_date a owl:DatatypeProperty ;
+    rdfs:label "has model release date" ;
+    rdfs:comment "Literal release date for a general-purpose AI model. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:general_purpose_ai_model ;
+    rdfs:range xsd:date .
+
+eu_ai_act:has_market_placement_date a owl:DatatypeProperty ;
+    rdfs:label "has market placement date" ;
+    rdfs:comment "Literal date for market placement. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:market_placement ;
+    rdfs:range xsd:date .
+
+eu_ai_act:has_service_start_date a owl:DatatypeProperty ;
+    rdfs:label "has service start date" ;
+    rdfs:comment "Literal date for putting into service. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:putting_into_service ;
+    rdfs:range xsd:date .
+
+eu_ai_act:has_use_start_date a owl:DatatypeProperty ;
+    rdfs:label "has use start date" ;
+    rdfs:comment "Literal date for use of AI system. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:use_of_ai_system ;
+    rdfs:range xsd:date .
+
+eu_ai_act:has_risk_probability a owl:DatatypeProperty ;
+    rdfs:label "has risk probability" ;
+    rdfs:comment "Literal probability value for a risk. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:risk ;
+    rdfs:range xsd:decimal .
+
+eu_ai_act:has_harm_severity a owl:DatatypeProperty ;
+    rdfs:label "has harm severity" ;
+    rdfs:comment "Literal severity value for harm. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:harm ;
+    rdfs:range xsd:decimal .
+
+eu_ai_act:has_article_number a owl:DatatypeProperty ;
+    rdfs:label "has article number" ;
+    rdfs:comment "Literal article number. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:article ;
+    rdfs:range xsd:integer .
+
+eu_ai_act:has_citation a owl:DatatypeProperty ;
+    rdfs:label "has citation" ;
+    rdfs:comment "Formal citation of the regulation. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:regulation ;
+    rdfs:range xsd:string .
+
+eu_ai_act:has_source_url a owl:DatatypeProperty ;
+    rdfs:label "has source URL" ;
+    rdfs:comment "Source URL of the regulation or extracted concept. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    rdfs:domain eu_ai_act:regulation ;
+    rdfs:range xsd:anyURI .
+
+### Individuals
+
+eu_ai_act:eu_ai_act a eu_ai_act:regulation ;
+    rdfs:label "EU AI Act" ;
+    rdfs:comment "Regulation (EU) 2024/1689 governing artificial intelligence in the European Union. Source: https://artificialintelligenceact.eu/ai-act-explorer/." ;
+    eu_ai_act:has_citation "Regulation (EU) 2024/1689" ;
+    eu_ai_act:has_source_url "https://artificialintelligenceact.eu/ai-act-explorer/"^^xsd:anyURI .
+
+eu_ai_act:article_1_subject_matter a eu_ai_act:article ;
+    rdfs:label "Article 1: Subject Matter" ;
+    rdfs:comment "Defines the subject matter and scope of the Regulation. Source: https://artificialintelligenceact.eu/article/1/." ;
+    eu_ai_act:has_article_number 1 .
+
+eu_ai_act:article_3_definitions a eu_ai_act:article ;
+    rdfs:label "Article 3: Definitions" ;
+    rdfs:comment "Provides core definitions used throughout the Regulation. Source: https://artificialintelligenceact.eu/article/3/." ;
+    eu_ai_act:has_article_number 3 .
+
+eu_ai_act:article_5_prohibited_ai_practices a eu_ai_act:article ;
+    rdfs:label "Article 5: Prohibited AI Practices" ;
+    rdfs:comment "Lists AI practices that are prohibited due to unacceptable risk. Source: https://artificialintelligenceact.eu/article/5/." ;
+    eu_ai_act:has_article_number 5 .
+
+eu_ai_act:article_6_classification_rules_for_high_risk_ai_systems a eu_ai_act:article ;
+    rdfs:label "Article 6: Classification Rules for High-Risk AI Systems" ;
+    rdfs:comment "Sets out the legal rules for classifying AI systems as high-risk. Source: https://artificialintelligenceact.eu/article/6/." ;
+    eu_ai_act:has_article_number 6 .
+
+eu_ai_act:article_9_risk_management_system a eu_ai_act:article ;
+    rdfs:label "Article 9: Risk Management System" ;
+    rdfs:comment "Defines the risk management obligations for high-risk AI systems. Source: https://artificialintelligenceact.eu/article/9/." ;
+    eu_ai_act:has_article_number 9 .
+
+eu_ai_act:article_10_data_and_data_governance a eu_ai_act:article ;
+    rdfs:label "Article 10: Data and Data Governance" ;
+    rdfs:comment "Sets requirements for data quality, governance, and special category data processing. Source: https://artificialintelligenceact.eu/article/10/." ;
+    eu_ai_act:has_article_number 10 .
+
+eu_ai_act:article_13_transparency_and_provision_of_information_to_deployers a eu_ai_act:article ;
+    rdfs:label "Article 13: Transparency and Provision of Information to Deployers" ;
+    rdfs:comment "Requires providers to supply information enabling proper use and oversight. Source: https://artificialintelligenceact.eu/article/13/." ;
+    eu_ai_act:has_article_number 13 .
+
+eu_ai_act:article_14_human_oversight a eu_ai_act:article ;
+    rdfs:label "Article 14: Human Oversight" ;
+    rdfs:comment "Requires effective human oversight measures for high-risk AI systems. Source: https://artificialintelligenceact.eu/article/14/." ;
+    eu_ai_act:has_article_number 14 .
+
+eu_ai_act:article_15_accuracy_robustness_and_cybersecurity a eu_ai_act:article ;
+    rdfs:label "Article 15: Accuracy, Robustness and Cybersecurity" ;
+    rdfs:comment "Requires high-risk AI systems to meet accuracy, robustness, and cybersecurity requirements. Source: https://artificialintelligenceact.eu/article/15/." ;
+    eu_ai_act:has_article_number 15 .
+
+eu_ai_act:high_risk_category a eu_ai_act:ai_system_category ;
+    rdfs:label "High-risk category" ;
+    rdfs:comment "Category for high-risk AI systems. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." .
+
+eu_ai_act:prohibited_category a eu_ai_act:ai_system_category ;
+    rdfs:label "Prohibited category" ;
+    rdfs:comment "Category for prohibited AI practices or systems. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." .
+
+eu_ai_act:limited_risk_category a eu_ai_act:ai_system_category ;
+    rdfs:label "Limited-risk category" ;
+    rdfs:comment "Category for limited-risk AI systems. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." .
+
+eu_ai_act:minimal_risk_category a eu_ai_act:ai_system_category ;
+    rdfs:label "Minimal-risk category" ;
+    rdfs:comment "Category for minimal-risk AI systems. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." .
+
+eu_ai_act:high_risk a eu_ai_act:risk_level ;
+    rdfs:label "High risk" ;
+    rdfs:comment "High risk level. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." .
+
+eu_ai_act:article_5 a eu_ai_act:article_5 ;
+    rdfs:label "Article 5" ;
+    rdfs:comment "Legal provision for prohibited AI practices. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." .
+
+eu_ai_act:provider_alpha a eu_ai_act:provider ;
+    rdfs:label "Provider Alpha" ;
+    rdfs:comment "Representative provider individual. Source: Generated from provided individuals." .
+
+eu_ai_act:deployer_beta a eu_ai_act:deployer ;
+    rdfs:label "Deployer Beta" ;
+    rdfs:comment "Representative deployer individual. Source: Generated from provided individuals." .
+
+eu_ai_act:importer_gamma a eu_ai_act:importer ;
+    rdfs:label "Importer Gamma" ;
+    rdfs:comment "Representative importer individual. Source: Generated from provided individuals." .
+
+eu_ai_act:distributor_delta a eu_ai_act:distributor ;
+    rdfs:label "Distributor Delta" ;
+    rdfs:comment "Representative distributor individual. Source: Generated from provided individuals." .
+
+eu_ai_act:authorised_representative_epsilon a eu_ai_act:authorized_representative ;
+    rdfs:label "Authorised Representative Epsilon" ;
+    rdfs:comment "Representative authorized representative individual. Source: Generated from provided individuals." .
+
+eu_ai_act:recruitment_screening_ai a eu_ai_act:high_risk_ai_system ;
+    rdfs:label "Recruitment Screening AI" ;
+    rdfs:comment "Representative high-risk AI system used for recruitment screening. Source: Generated from provided triples." ;
+    eu_ai_act:has_category eu_ai_act:high_risk_category ;
+    eu_ai_act:is_high_risk_because eu_ai_act:annex_iii_use_case ;
+    eu_ai_act:has_risk_level eu_ai_act:high_risk ;
+    eu_ai_act:is_used_by eu_ai_act:deployer_beta .
+
+eu_ai_act:chat_assistant_ai a eu_ai_act:limited_risk_ai_system ;
+    rdfs:label "Chat Assistant AI" ;
+    rdfs:comment "Representative limited-risk AI system. Source: Generated from provided triples." ;
+    eu_ai_act:has_category eu_ai_act:limited_risk_category ;
+    eu_ai_act:requires_human_oversight false ;
+    eu_ai_act:is_used_by eu_ai_act:deployer_beta .
+
+eu_ai_act:facial_recognition_database_builder a eu_ai_act:prohibited_ai_practice ;
+    rdfs:label "Facial Recognition Database Builder" ;
+    rdfs:comment "Representative prohibited AI practice involving facial image scraping. Source: Generated from provided triples." ;
+    eu_ai_act:is_prohibited_under eu_ai_act:article_5 .
+
+eu_ai_act:general_purpose_model_x a eu_ai_act:general_purpose_ai_model ;
+    rdfs:label "General Purpose Model X" ;
+    rdfs:comment "Representative general-purpose AI model. Source: Generated from provided triples." ;
+    eu_ai_act:has_model_version "1.0" ;
+    eu_ai_act:has_model_release_date "2026-01-01"^^xsd:date .
+
+eu_ai_act:untargeted_scraping_of_facial_images a eu_ai_act:prohibited_ai_practice ;
+    rdfs:label "Untargeted scraping of facial images" ;
+    rdfs:comment "Representative prohibited practice involving untargeted scraping of facial images. Source: Generated from provided triples." ;
+    eu_ai_act:causes_or_likely_causes_harm eu_ai_act:harm ;
+    eu_ai_act:exploits_vulnerability_of eu_ai_act:vulnerability ;
+    eu_ai_act:is_prohibited_under eu_ai_act:article_5 .
+
+eu_ai_act:social_scoring_practice a eu_ai_act:prohibited_ai_practice ;
+    rdfs:label "Social scoring practice" ;
+    rdfs:comment "Representative prohibited social scoring practice. Source: Generated from provided triples." ;
+    eu_ai_act:causes_or_likely_causes_harm eu_ai_act:harm ;
+    eu_ai_act:leads_to_detrimental_treatment eu_ai_act:adverse_outcome ;
+    eu_ai_act:is_prohibited_under eu_ai_act:article_5 .
+
+eu_ai_act:annex_iii_use_case_employment_recruitment a eu_ai_act:annex_iii_use_case ;
+    rdfs:label "Annex III use case: Employment recruitment" ;
+    rdfs:comment "Representative Annex III use case for employment recruitment. Source: Generated from provided triples." ;
+    eu_ai_act:is_listed_in eu_ai_act:annex_iii ;
+    eu_ai_act:belongs_to_sector eu_ai_act:sector .
+
+eu_ai_act:recruitment_risk_management_system a eu_ai_act:risk_management_system ;
+    rdfs:label "Recruitment risk management system" ;
+    rdfs:comment "Representative risk management system for recruitment screening AI. Source: Generated from provided triples." ;
+    eu_ai_act:identifies_risks_of eu_ai_act:recruitment_screening_ai ;
+    eu_ai_act:mitigates_risks_of eu_ai_act:recruitment_screening_ai ;
+    eu_ai_act:is_part_of_compliance_for eu_ai_act:recruitment_screening_ai .
+
+eu_ai_act:recruitment_system_log a eu_ai_act:log ;
+    rdfs:label "Recruitment system log" ;
+    rdfs:comment "Representative log for recruitment screening AI. Source: Generated from provided triples." ;
+    eu_ai_act:supports_traceability eu_ai_act:traceability ;
+    eu_ai_act:supports_post_market_monitoring eu_ai_act:post_market_monitoring .
+
+eu_ai_act:recruitment_decision_event a eu_ai_act:event ;
+    rdfs:label "Recruitment decision event" ;
+    rdfs:comment "Representative event captured in logs. Source: Generated from provided triples." .
+
+eu_ai_act:human_review_gate a eu_ai_act:human_oversight_measure ;
+    rdfs:label "Human review gate" ;
+    rdfs:comment "Representative human oversight measure. Source: Generated from provided triples." ;
+    eu_ai_act:allows_human_intervention eu_ai_act:human_overseer ;
+    eu_ai_act:prevents_or_minimises eu_ai_act:fundamental_rights_risk .
+
+eu_ai_act:selection_accuracy_metric a eu_ai_act:accuracy_metric ;
+    rdfs:label "Selection accuracy metric" ;
+    rdfs:comment "Representative accuracy metric. Source: Generated from provided triples." ;
+    eu_ai_act:usesBenchmark eu_ai_act:benchmark_set_1 ;
+    eu_ai_act:usesMeasurementMethodology eu_ai_act:methodology_a .
+
+eu_ai_act:benchmark_set_1 a eu_ai_act:benchmark ;
+    rdfs:label "Benchmark Set 1" ;
+    rdfs:comment "Representative benchmark set. Source: Generated from provided triples." .
+
+eu_ai_act:methodology_a a eu_ai_act:measurement_methodology ;
+    rdfs:label "Methodology A" ;
+    rdfs:comment "Representative measurement methodology. Source: Generated from provided triples." .
+
+eu_ai_act:training_data_set_1 a eu_ai_act:training_validation_testing_data_set ;
+    rdfs:label "Training Data Set 1" ;
+    rdfs:comment "Representative training data set. Source: Generated from provided triples." ;
+    eu_ai_act:is_relevant_for eu_ai_act:recruitment_screening_ai ;
+    eu_ai_act:is_representative_of eu_ai_act:affected_applicant_population ;
+    eu_ai_act:is_error_free_to_best_extent true ;
+    eu_ai_act:is_complete_to_best_extent true ;
+    eu_ai_act:has_data_quality_requirement eu_ai_act:data_quality_requirement_1 .
+
+eu_ai_act:data_quality_requirement_1 a eu_ai_act:data_quality_requirement ;
+    rdfs:label "Data Quality Requirement 1" ;
+    rdfs:comment "Representative data quality requirement. Source: Generated from provided triples." .
+
+eu_ai_act:affected_applicant_population a eu_ai_act:affected_person_group ;
+    rdfs:label "Affected applicant population" ;
+    rdfs:comment "Representative affected person group. Source: Generated from provided triples." .
+
+eu_ai_act:bias_detection_measure_1 a eu_ai_act:bias_detection_measure ;
+    rdfs:label "Bias Detection Measure 1" ;
+    rdfs:comment "Representative bias detection measure. Source: Generated from provided triples." ;
+    eu_ai_act:applies_bias_detection_measure true ;
+    eu_ai_act:applies_bias_mitigation_measure true .
+
+eu_ai_act:recruitment_instructions_for_use a eu_ai_act:instructions_for_use ;
+    rdfs:label "Recruitment instructions for use" ;
+    rdfs:comment "Representative instructions for use. Source: Generated from provided triples." ;
+    eu_ai_act:include_intended_purpose true ;
+    eu_ai_act:include_human_oversight_measures true ;
+    eu_ai_act:include_accuracy_robustness_and_cybersecurity_information true ;
+    eu_ai_act:include_known_and_foreseeable_circumstances true .
+
+eu_ai_act:chat_assistant_disclosure a eu_ai_act:transparency_obligation ;
+    rdfs:label "Chat assistant disclosure" ;
+    rdfs:comment "Representative transparency obligation. Source: Generated from provided triples." ;
+    eu_ai_act:requires_disclosure true .
+
+eu_ai_act:ai_office_instance a eu_ai_act:ai_office ;
+    rdfs:label "AI Office" ;
+    rdfs:comment "Representative AI Office individual. Source: Generated from provided triples." ;
+    eu_ai_act:supports_implementation true ;
+    eu_ai_act:coordinates_enforcement true .
+
+eu_ai_act:european_ai_board_instance a eu_ai_act:european_ai_board ;
+    rdfs:label "European AI Board" ;
+    rdfs:comment "Representative European AI Board individual. Source: Generated from provided triples." ;
+    eu_ai_act:supports_implementation true ;
+    eu_ai_act:coordinates_enforcement true .
+
+eu_ai_act:national_competent_authority_de a eu_ai_act:competent_authority ;
+    rdfs:label "National competent authority DE" ;
+    rdfs:comment "Representative national competent authority. Source: Generated from provided triples." ;
+    eu_ai_act:may_request_assessment_documentation true ;
+    eu_ai_act:may_review_assessment true ;
+    eu_ai_act:investigates_non_compliance eu_ai_act:non_compliance .
+
+eu_ai_act:market_surveillance_authority_de a eu_ai_act:market_surveillance_authority ;
+    rdfs:label "Market surveillance authority DE" ;
+    rdfs:comment "Representative market surveillance authority. Source: Generated from provided triples." ;
+    eu_ai_act:performs_market_surveillance eu_ai_act:recruitment_screening_ai ;
+    eu_ai_act:monitors_compliance_after_placement true .
+
+eu_ai_act:model_provider_omega a eu_ai_act:provider ;
+    rdfs:label "Model Provider Omega" ;
+    rdfs:comment "Representative provider of a general-purpose AI model. Source: Generated from provided triples." ;
+    eu_ai_act:draws_up_technical_documentation eu_ai_act:technical_documentation ;
+    eu_ai_act:provides_model_information eu_ai_act:model_information .
+
+eu_ai_act:model_information a eu_ai_act:owlThing ;
+    rdfs:label "Model information" ;
+    rdfs:comment "Information about the model, including its capabilities, limitations, and intended purpose. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." .
+
+eu_ai_act:market_placement_event_1 a eu_ai_act:market_placement ;
+    rdfs:label "Market placement event 1" ;
+    rdfs:comment "Representative market placement event. Source: Generated from provided triples." ;
+    eu_ai_act:has_market_placement_date "2026-01-15"^^xsd:date .
+
+eu_ai_act:service_activation_event_1 a eu_ai_act:putting_into_service ;
+    rdfs:label "Service activation event 1" ;
+    rdfs:comment "Representative putting-into-service event. Source: Generated from provided triples." ;
+    eu_ai_act:has_service_start_date "2026-02-01"^^xsd:date .
+
+eu_ai_act:use_in_union_event_1 a eu_ai_act:use_of_ai_system ;
+    rdfs:label "Use in Union event 1" ;
+    rdfs:comment "Representative use-of-AI-system event. Source: Generated from provided triples." ;
+    eu_ai_act:has_use_start_date "2026-02-10"^^xsd:date .
+
+eu_ai_act:recruitment_screening_ai eu_ai_act:is_placed_on_market eu_ai_act:market_placement_event_1 ;
+    eu_ai_act:is_put_into_service eu_ai_act:service_activation_event_1 ;
+    eu_ai_act:is_used_by eu_ai_act:deployer_beta .
+
+### Additional class/property assertions and hierarchy
+
+eu_ai_act:provider rdfs:subClassOf eu_ai_act:operator .
+eu_ai_act:deployer rdfs:subClassOf eu_ai_act:operator .
+eu_ai_act:importer rdfs:subClassOf eu_ai_act:operator .
+eu_ai_act:distributor rdfs:subClassOf eu_ai_act:operator .
+eu_ai_act:authorized_representative rdfs:subClassOf eu_ai_act:operator .
+eu_ai_act:market_surveillance_authority rdfs:subClassOf eu_ai_act:authority .
+eu_ai_act:notifying_authority rdfs:subClassOf eu_ai_act:authority .
+eu_ai_act:ai_office rdfs:subClassOf eu_ai_act:authority .
+eu_ai_act:european_ai_board rdfs:subClassOf eu_ai_act:authority .
+eu_ai_act:advisory_forum rdfs:subClassOf eu_ai_act:authority .
+eu_ai_act:human_oversight_measure rdfs:subClassOf eu_ai_act:safeguard .
+eu_ai_act:design_measure rdfs:subClassOf eu_ai_act:risk_mitigation_measure .
+eu_ai_act:technical_measure rdfs:subClassOf eu_ai_act:risk_mitigation_measure .
+eu_ai_act:product_safety_component rdfs:subClassOf eu_ai_act:safety_component .
+eu_ai_act:product_ai_system rdfs:subClassOf eu_ai_act:ai_system .
+eu_ai_act:annex_iii_ai_system rdfs:subClassOf eu_ai_act:ai_system .
+eu_ai_act:chatbot rdfs:subClassOf eu_ai_act:ai_system_interacting_with_humans .
+eu_ai_act:emotion_recognition_system rdfs:subClassOf eu_ai_act:ai_system .
+eu_ai_act:biometric_categorization_system rdfs:subClassOf eu_ai_act:ai_system .
+eu_ai_act:deep_fake rdfs:subClassOf owl:Thing .
+eu_ai_act:high_risk_ai_system rdfs:subClassOf eu_ai_act:ai_system .
+eu_ai_act:limited_risk_ai_system rdfs:subClassOf eu_ai_act:ai_system .
+eu_ai_act:minimal_risk_ai_system rdfs:subClassOf eu_ai_act:ai_system .
+eu_ai_act:prohibited_ai_practice rdfs:subClassOf owl:Thing .
+eu_ai_act:prohibited_practice rdfs:subClassOf eu_ai_act:prohibited_ai_practice .
+eu_ai_act:unlawful_ai_practice rdfs:subClassOf eu_ai_act:prohibited_ai_practice .
+eu_ai_act:ai_system rdfs:subClassOf owl:Thing .
+eu_ai_act:general_purpose_ai_model rdfs:subClassOf eu_ai_act:ai_system .
+eu_ai_act:ai_system_interacting_with_humans rdfs:subClassOf eu_ai_act:ai_system .
+eu_ai_act:human_oversight_measure rdfs:subClassOf owl:Thing .
+eu_ai_act:record_keeping rdfs:subClassOf owl:Thing .
+eu_ai_act:technical_documentation rdfs:subClassOf owl:Thing .
+eu_ai_act:data_governance rdfs:subClassOf owl:Thing .
+eu_ai_act:risk_management_system rdfs:subClassOf owl:Thing .
+eu_ai_act:transparency_and_information rdfs:subClassOf owl:Thing .
+eu_ai_act:accuracy_robustness_cybersecurity rdfs:subClassOf owl:Thing .
+eu_ai_act:ai_literacy rdfs:subClassOf owl:Thing .
+eu_ai_act:article rdfs:subClassOf owl:Thing .
+eu_ai_act:regulation rdfs:subClassOf owl:Thing .
+
+### Notes
+eu_ai_act:deep_fake rdfs:comment "Ambiguous concept retained as a class because the source alternates between content and system interpretations. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." .
+eu_ai_act:model_information rdfs:comment "Modeled as a class because the source treats it as a structured information object. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." .
+eu_ai_act:article_5 rdfs:comment "Modeled as an article individual and class-like legal provision reference for prohibited practice assertions. Source: Regulation (EU) 2024/1689; https://artificialintelligenceact.eu/ai-act-explorer/." .
