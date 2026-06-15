@@ -1,5 +1,7 @@
-For each Competency Question extract entities and properties that have to be introduced in the ontology. 
+For each Competency Question extract classess and properties that have to be introduced in the ontology. 
 Provide in a json format.
-- Entities should be written in a format like super_class
+- classess should be written in a format like super_class
 - Properties in a camel format
-- 
+- their definitions
+- their reference Article
+- their labels

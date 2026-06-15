@@ -1,1 +1,1 @@
-Now populate the ontology with meaningful individuals.
+Now populate the ontology with meaningful individuals from concepts.

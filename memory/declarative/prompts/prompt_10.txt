@@ -1,14 +1,33 @@
-Please list corresspoding:
-1. Find the corresspoding classess betweeen entities and existing properties
-2. Find the corresspoding properties betweeen properties and the existing properties
-3. Include URI, label, definition, comments. The reference about the ontology will be in comments
-4.  mappring format: <map>
-    <Cell>
-      <entity1 rdf:resource='{}'/>
-      <entity2 rdf:resource='{}'/>
-      <relation>=</relation>
-      <measure rdf:datatype="xsd:float">{}</measure>
-    </Cell>
-  </map>
-Output the following json format: {"corresspoding_classess":{corresspoding_classess}, "corresspoding_properties":{properties}}
+Identify ontology mappings between the generated EU AI Act ontology and the existing reference ontologies.
 
+Tasks:
+1. Find corresponding classes between the extracted/generated classes and the classes in the existing ontologies.
+2. Find corresponding properties between the extracted/generated properties and the properties in the existing ontologies.
+5. Do not map property with class or vice versa
+3. For each matched class or property, include:
+   - URI
+   - label
+   - definition
+   - comments
+   - ontology reference/source in the comments field
+4. Represent each mapping using the following alignment format:
+
+<map>
+  <Cell>
+    <entity1 rdf:resource="{}"/>
+    <entity2 rdf:resource="{}"/>
+    <relation>=</relation>
+    <measure rdf:datatype="xsd:float">{}</measure>
+  </Cell>
+</map>
+
+Use `relation = "="` only when the two entities are semantically equivalent or sufficiently close.
+
+Output only the following JSON format:
+
+{
+  "corresponding_classes": [],
+  "corresponding_properties": []
+}
+
+Only return JSON Output with out any additional content.

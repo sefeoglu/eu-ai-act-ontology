@@ -1,0 +1,8 @@
+Given that EU AI Act Ontology, and mappings with other ontologes
+MAKE SURE
+- Include basic annotations (labels, definition, comments) of classes and properties in EU AI Act Ontology.
+- Include basic annotations (labels, definition, comments) of classes and properties in existing ontologies.
+- Iclude all individuals from the EU AI Act Ontology.
+- Please borrow them from existing ontologies in mappings.
+- Do not remove any classess or properties or Individuals from the EU AI Act Ontology
+

@@ -1,9 +1,7 @@
-For all the classes introduce some axiomatisation in the ontology when meaningful and relevant, like these: 
+For the classes defined in the ontology, introduce meaningful OWL class axioms where appropriate, including rdfs:subClassOf, owl:equivalentClass, existential restrictions (owl:someValuesFrom), universal restrictions (owl:allValuesFrom), cardinality constraints, and disjointness axioms when justified by the domain.
 
-:GrapeVariety EquivalentTo usedToProduce some Wine 
-:Wine EquivalentTo hasVintage some Vintage 
-:Wine SubClassOf hasRating some Rating 
+Add axioms only when they are semantically meaningful and supported by the ontology domain. Ensure that the resulting ontology remains logically consistent.
 
-Make sure that the ontology is consistent.
-Do it for all the classes for which it makes sense having an axiomatisation.
-Print only the new triples.
+Apply axiomatisation to all classes for which it is appropriate.
+
+Print only the newly created RDF/Turtle triples. Do not include explanations or repeat existing ontology content.

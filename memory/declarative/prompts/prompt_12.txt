@@ -1,0 +1,3 @@
+Fix Turtle syntax. Return only Turtle content. 
+Fix inconsisteny issues.
+Use valid URIs.

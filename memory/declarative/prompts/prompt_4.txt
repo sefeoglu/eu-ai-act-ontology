@@ -2,17 +2,21 @@ Given a list of RDF-style triples and a set of defined individuals, generate a c
 
 The ontology must include the following:
 - Use existing concepts if exist from mappings
-- OWL classes for each unique conceptual entity.
-- OWL object properties for relationships where the object is another entity (i.e., a resource).
-- OWL datatype properties for relationships where the object is a literal (e.g., a string, number, or date).
+- OWL classes for each unique conceptual entity in camel_cases. In singular format
+- OWL object properties for relationships where the object is another entity (i.e., a resource) in camel_cases.
+- OWL datatype properties for relationships where the object is a literal (e.g., a string, number, or date) (camel_cases).
 - Individuals (instances) with explicitly declared types and their corresponding property assertions
 - Roles and Events should be included into ontology as either property or classes.
 - Include URI and label for new concepts
-- use URI and label of existing classess and properties.
-- Include citation in the comments for existing classes or properties
+- hiearchy of classes and properties
 - Stict to provided content.
-
-
+- Only singular naming and do not duplicate them.
+- Individual will not have a same name with classess or properties
+- Dedublicate individuals
+- Do not include entire ontology of existing classes and properties
+- Do not include owl:Nothing
+- Do not make X subClassOf X. 
+- Make it consistent for reasoner.
 
 Ensure the following:
 
@@ -20,15 +24,29 @@ Ensure the following:
 - Inclusion of all required namespace declarations (e.g., rdf, rdfs, owl, xsd, and the base ontology prefix).
 - All triples are syntactically valid and semantically coherent in OWL syntax.
 
-Output Requirements:
 
+Output Requirements:
+- Non Thing subClassOf Thing
 - A cleaned, corrected, and well-structured OWL ontology serialized in OWL
 - Proper separation between:
   - Class declarations
   - Object property definitions
   - Datatype property definitions
   - Individual assertions
-- provide URI, 
+  - use equivelant classes from mappings
+  - class hiearchy like subClassOf
+  - property hiearchy like subPropertyOf
+  - do not miss any major elements
+- For each matched class or property, include:
+   - URI
+   - label
+   - definition
+   - comments
+   - ontology reference/source in the comments field
+- Use classes and properties from mappings if classes or properties exist in mappings
+- Include annotation, short declarations and reference for borrowed classes and properties
+- Make sure it is logically consistent
+
 Please generate RDF formated ontology using followings.
-Obey sytax rules
+Obey sytax rules.
 Optional: If any entities or relationships are ambiguous, make reasonable assumptions and annotate them with rdfs:comment.

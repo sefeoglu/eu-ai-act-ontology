@@ -1,1 +1,3 @@
 Considering followings, generate a conceptual model expressing in form of triples, (subject, datatypeproperty or object type property, object), and individuals in json format.
+Include basic annotations (labels, short descriptions, article references).
+Use snake_case
