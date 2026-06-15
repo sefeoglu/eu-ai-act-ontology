@@ -119,22 +119,23 @@ def main():
     )
 
     parser.add_argument(
-        "input_file",
+        "--input_file",
+        default="/Users/sefika/projects/eu-ai-act-ontology/ontology/proof_of_concept_ontology_new_no_map.ttl",
         help="Path to the ontology file, e.g. ontology.owl"
     )
 
     parser.add_argument(
         "-o",
         "--output",
-        default="ontology_structural_metrics.csv",
-        help="Output CSV file name. Default: ontology_structural_metrics.csv"
+        default="domain_ontology_structural_metrics_after_mapping.csv",
+        help="Output CSV file name. Default: domain_ontology_structural_metrics_after_mapping.csv"
     )
 
     parser.add_argument(
         "-f",
         "--format",
-        default=None,
-        help="RDF format, e.g. xml, turtle, n3, nt. Default: auto-detect"
+        default="turtle",
+        help="RDF format, e.g. xml, turtle, n3, nt. Default: turtle"
     )
 
     args = parser.parse_args()
