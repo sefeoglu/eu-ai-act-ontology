@@ -38,7 +38,11 @@ eu-ai-act-ontology/
 
 ## What the pipeline does
 
-The prototype is organized around these goals (see [details](https://github.com/sefeoglu/eu-ai-act-ontology/blob/master/doc/document.md)):
+The accompanying documentation in [`doc/document.md`](doc/document.md) and
+[`doc/proof_of_concept_eu-ai_act_ontology_documentation.pdf`](doc/proof_of_concept_eu-ai_act_ontology_documentation.pdf)
+describes the broader seven-step ontology-development process that this
+prototype supports. Within the repository, the automated workflow focuses on
+these execution goals:
 
 1. Generate competency questions from EU AI Act content
 2. Extract ontology concepts from the generated questions
@@ -78,6 +82,7 @@ The repository already includes example outputs from the workflow:
 - `concept_mappings/mappings.json`
 - `ontology/proof_of_concept_ontology_v0.1.ttl`
 - `ontology/proof_of_concept_ontology_v0.2.ttl`
+- `ontology/proof_of_concept_ontology_v0.3.ttl`
 - `metrics/domain_ontology_structural_metrics_before_mapping.csv`
 - `metrics/domain_ontology_structural_metrics_after_mapping.csv`
 
@@ -105,8 +110,8 @@ python metrics/basic_metrics.py --input_file ontology/proof_of_concept_ontology_
 
 - The repository is a prototype and includes generated outputs alongside source code.
 - The top-level test script is an executable validation helper rather than a `unittest.TestCase` suite.
-- Supporting documentation is available in `doc/proof_of_concept_eu-ai_act_ontology_documentation.pdf`.
-- Refined ontology: [ontology/proof_of_concept_ontology_v0.3.ttl](https://github.com/sefeoglu/eu-ai-act-ontology/blob/master/ontology/proof_of_concept_ontology_v0.3.ttl)
+- Supporting documentation is available in both Markdown and PDF form under `doc/`.
+- The refined ontology is available at `ontology/proof_of_concept_ontology_v0.3.ttl`.
 
 ## License
 
