@@ -59,6 +59,8 @@ The Memory Generator combines procedural and declarative memory into a unified p
 
 The proposed approach was used to generate an initial draft ontology containing candidate classes, hierarchies, and relationships. The resulting ontology was subsequently refined, validated, and completed through manual ontology engineering to improve conceptual consistency, align the ontology with the EU AI Act, and incorporate annotations and ontology design decisions.
 
+Refined ontology: `ontology/proof_of_concept_ontology_v0.3.ttl`
+
 ## 3. Evaluation
 
 ### 3.1 Data and Settings
@@ -137,7 +139,8 @@ The ontology was loaded using `rdflib`. In addition, reasoning was performed wit
 
 #### Structural Metrics
 
-**Before Mapping**
+**Before Mapping** 
+-Ontology: `ontology/proof_of_concept_ontology_v0.1.ttl`
 
 | Metric | Value |
 |----------|--------|
@@ -152,6 +155,7 @@ The ontology was loaded using `rdflib`. In addition, reasoning was performed wit
 | Relationship Density | 0.28 |
 
 **After Mapping**
+- Ontology: `ontology/proof_of_concept_ontology_v0.2.ttl`
 
 | Metric | Value |
 |----------|--------|
