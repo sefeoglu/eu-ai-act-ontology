@@ -6,6 +6,7 @@ from memory.declarative_memory import DeclarativeMemory
 from memory.procedural_memory import ProceduralMemory
 from host.agents import domain_expert_agent
 import json
+from utils import json_formatted_mappings
 
 CONCEPT_LIMIT = 500
 CHAPTER_LIMIT = 7
@@ -28,7 +29,11 @@ class OntologyGenerator:
                 "source": str(self.declarative_memory.source_path),
                 "triple_count": self.declarative_memory.triple_count(),
             },
-            "procedural": self.procedural_memory.get_metadata(),
+            "procedural":
+             { "metadata": self.procedural_memory.get_metadata(),
+              "document_content_retriever": self.procedural_memory.content_retriever(config=self._run_config_path)
+              
+            }
         }
     def extract_concepts(self) -> List[Dict[str, str]]:
 
@@ -198,7 +203,11 @@ class OntologyGenerator:
             json.dump(mappings, f, ensure_ascii=False, indent=4)
 
         print(f"Mappings saved to {self.procedural_memory.mapping_output_path}")
+
+        # clean the mappings for later use
+        mappings = json_formatted_mappings(mappings)
         self.mappings = mappings
+
         return mappings
 
 

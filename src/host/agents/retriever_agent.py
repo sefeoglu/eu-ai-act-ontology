@@ -12,23 +12,7 @@ from bs4 import BeautifulSoup
 CONTENT_SELECTOR = ".et_pb_module.et_pb_post_content.et_pb_post_content_0_tb_body"
 
 
-def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Scrape and save EU AI Act full article content.")
-    parser.add_argument(
-        "--output", "-o",
-        type=Path,
-        default=Path("/Users/sefika/projects/eu-ai-act-ontology/memory/procedural/ai_act_full_content.json"),
-    )
-    parser.add_argument(
-        "--url", "-u",
-        default="https://artificialintelligenceact.eu/ai-act-explorer/",
-    )
-    parser.add_argument("--timeout", "-t", type=int, default=30)
-    parser.add_argument(
-        "--user-agent",
-        default="Mozilla/5.0 (compatible; AIActContentRetriever/1.0)",
-    )
-    return parser
+
 
 
 def clean_text(text: str) -> str:
@@ -330,19 +314,18 @@ def print_summary(data: dict, output_file: Path) -> None:
     print(f"Annexes    : {len(data.get('annexes', []))}")
     print(f"Output     : {output_file}")
 
-
-if __name__ == "__main__":
-    args = build_parser().parse_args()
+def retrieve_content(url: str, output: str, timeout: int, user_agent: str) -> argparse.ArgumentParser:
 
     headers = {
-        "User-Agent": args.user_agent,
+        "User-Agent": user_agent,
     }
 
     full_content = save_all_content(
-        output_file=args.output,
-        base_url=args.url,
+        output_file=Path(output),
+        base_url=url,
         headers=headers,
-        timeout=args.timeout,
+        timeout=timeout,
     )
 
-    print_summary(full_content, output_file=args.output)
+    print_summary(full_content, output_file=Path(output))
+  

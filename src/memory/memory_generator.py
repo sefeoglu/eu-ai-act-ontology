@@ -1,9 +1,7 @@
 """Build declarative and procedural memory objects from configuration."""
 
-import code
-from email.mime import text
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Dict, Optional
 
 from memory.declarative_memory import DeclarativeMemory
 from memory.procedural_memory import ProceduralMemory
@@ -37,6 +35,7 @@ class MemoryGenerator:
         self, document_path: Optional[Path] = None
     ) -> ProceduralMemory:
         """Load procedural memory from a path or repository defaults."""
+
         path = document_path or self.config.get("procedural_pdf")
         output_competency_questions_path = self.config.get("competency_questions_path")
         output_concept_extraction_path = self.config.get("concept_extraction_output_path")
