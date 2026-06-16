@@ -1,80 +1,111 @@
 # Automated Ontology Development Using a Memory-Based MCP Approach
 
-A memory-based MCP architecture for end-to-end ontology development, where LLM agents use declarative memory, procedural memory, and task-specific intermediate artefacts to support the full ontology engineering workflow: competency question generation, concept extraction, ontology reuse/mapping, and proof-of-concept ontology construction.
+This repository contains a proof-of-concept pipeline for building an ontology from the EU AI Act with a memory-based MCP architecture. The project combines:
 
+- **declarative memory** from reusable ontologies and prompt templates
+- **procedural memory** from EU AI Act source material
+- **LLM-driven orchestration** for competency question generation, concept extraction, ontology generation, and ontology reuse
 
-## Repository Structure
+The repository also includes generated artifacts, evaluation material, and simple validation scripts for the resulting ontology.
 
-```xml
+## Repository layout
+
+```text
 eu-ai-act-ontology/
-├── config/                  # Configuration files
-├── doc/                     # Project documentation
-├── memory/                  # Bundled memory assets
-│   ├── declarative/         # Modelling rules in prompts and reusable ontologies
-│   │   ├── existing_ontologies/
-│   │   └── prompts/
-│   └── procedural/          # Domain-specific regulatory memory
-│       └── eu_ai_act_2024/
-├── ontology/                # Generated ontology files
-├── tests/                   # Unit and integration tests
+├── competency_questions/             # Generated competency questions as JSON
+├── concept_extraction/               # Extracted concepts as JSON
+├── concept_mappings/                 # Mappings to reused ontologies
+├── config/                           # Model and crawler configuration
+├── doc/                              # Supporting project documentation
+├── evaluated_competency_questions/   # Example SPARQL evaluation material
+├── figures/                          # Figures used by the project
+├── memory/
+│   ├── declarative/
+│   │   ├── existing_ontologies/      # Reused ontologies (DPV, VAIR, AIRO, AIO)
+│   │   └── prompts/                  # Prompt templates for each pipeline stage
+│   └── procedural/                   # Extracted EU AI Act source content (ai_act_full_content.json)
+├── metrics/                          # Ontology structural metrics script and CSV outputs
+├── ontology/                         # Generated proof-of-concept ontologies
 ├── src/
-│   ├── client/              # User-facing pipeline entry points
-│   ├── host/                # Planning, validation, and agent orchestration
-│   ├── memory/              # Memory loading and generation logic
-│   ├── server/              # Ontology generation services
-│   ├── main.py              # Main application entry point
-│   └── utils.py             # Shared utilities
-├── requirements.txt         # Python dependencies
-└── README.md                # Project overview
+│   ├── client/                       # Pipeline entry client
+│   ├── host/                         # Planning, dispatch, and validation components
+│   ├── memory/                       # Declarative/procedural memory loaders
+│   ├── server/                       # Ontology generation logic
+│   ├── main.py                       # Prototype pipeline entry module
+│   └── utils.py                      # Shared helpers
+└── test/                             # SPARQL-based validation script
 ```
 
-## Architecture
+## What the pipeline does
 
-The system utilizes two complementary memory types:
+The prototype is organized around these goals:
 
-### 1. Declarative Memory
+1. Generate competency questions from EU AI Act content
+2. Extract ontology concepts from the generated questions
+3. Generate an ontology in Turtle
+4. Map generated classes and properties to existing ontologies
+5. Borrow aligned concepts back into the generated ontology
 
-Declarative memory stores ontology engineering knowledge derived from previously developed ontologies, including:
+The main orchestration code lives in:
 
-* Class and property modeling rules
-* Domain and range constraints
-* Reusable ontology structures
+- `src/main.py`
+- `src/client/client_access.py`
+- `src/server/onto_generator_server.py`
 
-This memory enables the system to reuse established ontology modeling practices and maintain consistency across generated ontologies.
+## Key inputs
 
-### 2. Procedural Memory
+- Declarative ontologies in `memory/declarative/existing_ontologies/`
+- Prompt templates in `memory/declarative/prompts/`
+- Procedural source content in `memory/procedural/ai_act_full_content.json`
+- Runtime configuration in `config/api_configs.json`
 
-Procedural memory captures domain-specific knowledge and regulatory procedures extracted from the EU AI Act, including:
+`config/api_configs.json` contains placeholder API credentials and model settings. Replace the placeholder key values before running any LLM-backed steps.
 
-* Regulatory concepts and definitions
-* Compliance requirements
+## Installation
 
-This memory guides the ontology generation process using regulatory knowledge embedded in the source documents.
+Install the Python dependencies from the repository root:
 
-## Workflow
-
-1. Extract knowledge from the EU AI Act.
-2. Retrieve relevant ontology patterns from declarative memory.
-3. Retrieve domain-specific procedures from procedural memory.
-4. Generate ontology classes, properties, and relationships.
-5. Validate generated structures against stored ontology rules.
-6. Refine and extend the ontology iteratively.
-
-## Basic Metrics
 ```bash
-python metrics/ontology_metrics.py your_ontology.ttl -f turtle -o metrics.csv
+python -m pip install -r requirements.txt
 ```
 
-## Use Case
+## Generated artifacts
 
-The framework is designed for regulatory and compliance-oriented ontology development, with an initial focus on the EU AI Act. The approach can be extended to other legal, policy, and domain-specific documents.
+The repository already includes example outputs from the workflow:
 
-## Future Work
+- `competency_questions/competency_questions.json`
+- `concept_extraction/concepts.json`
+- `concept_mappings/mappings.json`
+- `ontology/proof_of_concept_ontology_v0.1.ttl`
+- `ontology/proof_of_concept_ontology_v0.2.ttl`
+- `metrics/domain_ontology_structural_metrics_before_mapping.csv`
+- `metrics/domain_ontology_structural_metrics_after_mapping.csv`
 
-* Integration of additional memory types (e.g., episodic memory)
-* Multi-document regulatory ontology generation
-* Automated ontology alignment and merging
-* Support for continuous ontology updates from evolving regulations
+## Validation and evaluation
+
+### Run the SPARQL validation script
+
+```bash
+python test/test_sparql.py
+```
+
+This script loads `ontology/proof_of_concept_ontology_v0.2.ttl` and executes example SPARQL queries for:
+
+- high-risk AI systems
+- provider compliance, documentation, and risk relations
+- transparency obligations
+
+### Compute structural metrics
+
+```bash
+python metrics/basic_metrics.py --input_file ontology/proof_of_concept_ontology_v0.2.ttl -f turtle -o metrics/domain_ontology_structural_metrics_after_mapping.csv
+```
+
+## Notes
+
+- The repository is a prototype and includes generated outputs alongside source code.
+- The top-level test script is an executable validation helper rather than a `unittest.TestCase` suite.
+- Supporting documentation is available in `doc/proof_of_concept_eu-ai_act_ontology_documentation.pdf`.
 
 ## License
 
