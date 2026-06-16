@@ -38,9 +38,11 @@ class PrototypeClient:
         procedural_pdf_path: Optional[Path] = None,
         config: Optional[Dict] = None,
         ontology_output_path: Optional[Path] = None,
+        run_config_path: Optional[Path] = None
     ) -> None:
         self._config = config or {}
         self._ontology_output_path = ontology_output_path
+        self._run_config_path = run_config_path
         # 1. Build memory objects from the supplied (or default) file paths.
         generator = MemoryGenerator(self._config)
         self.declarative_memory = generator.generate_declarative_memory(
@@ -68,8 +70,7 @@ class PrototypeClient:
         -----
         1. Plan: map the goals to a concrete action.
         2. Execute: dispatch the action via the MCP client.
-        3. Validate: verify the result is non-empty.
-        4. Return: assemble the full pipeline report.
+        3. Return: assemble the full pipeline report.
         """
         # Step 1 – plan
         reports = []
@@ -81,11 +82,6 @@ class PrototypeClient:
             # Step 2 – execute
             result = self.client.execute(plan["action"])
 
-            # # Step 3 – validate
-            # if goals == "validate_ontology":
-            #     validation = self.validator.validate_result(result)
-
-            # Step 4 – report
             goal_report = {
             "goal": goal,
                 "plan": plan,
@@ -94,23 +90,10 @@ class PrototypeClient:
                     "declarative_triples": self.declarative_memory.triple_count(),
                     "procedural_source": self.procedural_memory.get_metadata(),
                 },
-                # "validation": validation,
+       
                 "result": result,
             }
             reports.append(goal_report)
 
         return reports
-        # return {"reports": reports}
-
-        
-        # return {
-        #     "goals": goals,
-        #     "plan": plan,
-        #     "memory": {
-        #         "declarative_source": str(self.declarative_memory.source_path),
-        #         "declarative_triples": self.declarative_memory.triple_count(),
-        #         "procedural_source": self.procedural_memory.get_metadata(),
-        #     },
-        #     "validation": validation,
-        #     "result": result,
-        # }
+    

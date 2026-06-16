@@ -120,7 +120,7 @@ def main():
 
     parser.add_argument(
         "--input_file",
-        default="/Users/sefika/projects/eu-ai-act-ontology/ontology/proof_of_concept_ontology_new_no_map.ttl",
+        default="eu-ai-act-ontology/ontology/proof_of_concept_ontology_v0.2.ttl",
         help="Path to the ontology file, e.g. ontology.owl"
     )
 

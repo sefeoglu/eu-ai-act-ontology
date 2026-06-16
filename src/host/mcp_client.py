@@ -9,7 +9,8 @@ ALLOWED_ACTIONS = frozenset({
     "generate_competency_questions",
     "extract_concepts",
     "map_to_existing_ontologies",
-    "generate_ontology"
+    "generate_ontology",
+    "borrow_concept_extraction"
 })
 
 

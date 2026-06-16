@@ -1,10 +1,14 @@
 
 
+from asyncio import run
+
 from tqdm import tqdm
 import logging
 import json
 import openai
 import logging
+import re
+
 
 def run_gpt_chat(config):
   
@@ -26,7 +30,6 @@ def run_gpt_chat(config):
         temperature=0,          # Makes output deterministic
         seed=SEED               # Ensures repeatability across runs
     )
-
     return response['choices'][0]['message']['content'].split('\n')
 
 def get_gpt_information(gpt_info):
@@ -87,7 +90,7 @@ def run_gpt_based_cq_generation(input_context, gpt_information):
 
 
 
-def cq_generation(input_context, config="/Users/sefika/projects/eu-ai-act-ontology/config/api_configs.json"):
+def cq_generation(input_context, config):
     """
     Main function to run the GPT-based contextual question generation.
     
@@ -109,76 +112,133 @@ def cq_generation(input_context, config="/Users/sefika/projects/eu-ai-act-ontolo
         logging.error(f"Error occurred during GPT-based contextual question generation: {e}")
         return None
   
-def run_full_ttl_ontology(concepts, mappings, config="/Users/sefika/projects/eu-ai-act-ontology/config/api_configs.json"):
-    """Run full pipleline from question to concept extraction."""
-    """
-    Args:
-        concepts (list): The list of extracted concepts.
-        mappings (dict): The dictionary containing mappings to existing ontologies.
-        config (str): Path to the file containing GPT role and model information.
-    
-    Returns:
-        str: The generated ontology in TTL format."""
-    """
-        1. prompt 3
-        2. prompt 4
-        3. prompt 5
-        4. prompt 6
-        5. prompt 7
-        6. prompt 8
-        7. prompt 9
-    """
-    try:
-        gpt_information = json.load(open(config, 'r'))['gpt']
-        triple_generation_prompt = open(gpt_information['triple_generation_prompt'], 'r').read()
-        ontology_generation_prompt = open(gpt_information['ontology_generation_prompt'], 'r').read()
-        domain_range_prompt = open(gpt_information['domain_range_prompt'], 'r').read()
-        data_type_prompt = open(gpt_information['data_type_prompt'], 'r').read()
-        axioms_prompt = open(gpt_information['axioms_prompt'], 'r').read()
-        rdf_comments_prompt = open(gpt_information['rdf_comments'], 'r').read()
-        individuals_prompt = open(gpt_information['individuals_prompt'], 'r').read()
-        print("Generating ontology with GPT...")
-        # Step 1: Generate triples from concepts
-        gpt_information['user_query'] = f"{triple_generation_prompt} Concepts: {concepts}"
-        triples = run_gpt_chat(gpt_information)
-        print(f"Generated triples: {triples}")
-        # Step 2: Generate domain and range for properties
-        gpt_information['user_query'] = f"{domain_range_prompt} Triples: {triples}"
-        domain_range_info = run_gpt_chat(gpt_information)
-        print(f"Generated domain and range info: {domain_range_info}")
-        # Step 3: Generate data types for properties
-        gpt_information['user_query'] = f"{data_type_prompt} Triples: {triples}"
-        data_type_info = run_gpt_chat(gpt_information)
-        print(f"Generated data type info: {data_type_info}")
-        # Step 4: Generate axioms
-        gpt_information['user_query'] = f"{axioms_prompt} Triples: {triples}"
-        axioms = run_gpt_chat(gpt_information)
-        print(f"Generated axioms: {axioms}")
-        # Step 5: Generate RDF comments
-        gpt_information['user_query'] = f"{rdf_comments_prompt} Triples: {triples}"
-        rdf_comments = run_gpt_chat(gpt_information)
-        print(f"Generated RDF comments: {rdf_comments}")
-        # Step 6: Generate individuals
-        gpt_information['user_query'] = f"{individuals_prompt} Triples: {triples}"
-        individuals = run_gpt_chat(gpt_information)
-        print(f"Generated individuals: {individuals}")
-        # Step 7: Generate final ontology in TTL format
-        gpt_information['user_query'] = f"{ontology_generation_prompt} Triples: {triples} Domain and Range Info: {domain_range_info} Data Type Info: {data_type_info} Axioms: {axioms} RDF Comments: {rdf_comments} Individuals: {individuals} Mappings: {mappings}"
-        ontology_content = run_gpt_chat(gpt_information)
-        print(f"Generated ontology content: {ontology_content}")    
-        ontology_content_str = "\n".join(ontology_content)
-        print(f"Final ontology content: {ontology_content_str}")
-        return ontology_content_str
 
+MAX_CHARS = 35000  # safe for 16k context models; reduce to 25000 if needed
+
+
+def safe_to_string(value):
+    if value is None:
+        return ""
+    if isinstance(value, str):
+        return value
+    if isinstance(value, list):
+        return "\n".join(map(str, value))
+    return str(value)
+
+
+def truncate_text(text, max_chars=MAX_CHARS):
+    text = safe_to_string(text)
+    if len(text) <= max_chars:
+        return text
+    return text[:max_chars] + "\n\n[TRUNCATED: input was too long]"
+
+
+def chunk_text(text, max_chars=MAX_CHARS):
+    text = safe_to_string(text)
+    return [text[i:i + max_chars] for i in range(0, len(text), max_chars)]
+
+
+def read_file(path):
+    with open(path, "r", encoding="utf-8") as f:
+        return f.read()
+
+
+
+def chunks(items, size=500):
+    for i in range(0, len(items), size):
+        yield items[i:i + size]
+def run_full_ttl_ontology(
+    concepts,
+    config,
+):
+    try:
+        print("Loading GPT information...")
+
+        with open(config, "r", encoding="utf-8") as f:
+            gpt_information = json.load(f)["gpt"]
+
+        triple_generation_prompt = read_file(gpt_information["triple_generation_prompt"])
+        ontology_generation_prompt = read_file(gpt_information["ontology_generation_prompt"])
+        domain_range_prompt = read_file(gpt_information["domain_range_prompt"])
+        data_type_prompt = read_file(gpt_information["data_type_prompt"])
+        axioms_prompt = read_file(gpt_information["axioms_prompt"])
+        rdf_comments_prompt = read_file(gpt_information["rdf_comments"])
+        individuals_prompt = read_file(gpt_information["individuals_prompt"])
+        
+
+        print("Generating triples in chunks...")
+        gpt_information["user_query"] = f"{triple_generation_prompt}\n\nConcepts:{concepts}"
+        all_triples = run_gpt_chat(gpt_information)
+
+
+        triples_text = "\n".join(all_triples)
+
+        print("Generating domain and range info...")
+        gpt_information['user_query'] = f"{domain_range_prompt}\n\nConcepts:\n{concepts}"
+        domain_range_text = run_gpt_chat(gpt_information)
+
+
+        print("Generating data type info...")
+        gpt_information['user_query'] = f"{data_type_prompt}\n\nTriples:\n{triples_text}"
+        data_type_text = run_gpt_chat(gpt_information)
+        print("Generating axioms...")
+        gpt_information['user_query'] = f"{axioms_prompt}\n\nConcepts:\n{concepts}"
+        axioms_text = run_gpt_chat(gpt_information)
+        print("Generating RDF comments...")
+        gpt_information['user_query'] = f"{rdf_comments_prompt}\n\nConcepts:\n{concepts}"
+        rdf_comments_text = run_gpt_chat(gpt_information)
+
+        print("Generating individuals...")
+        gpt_information['user_query'] = f"{individuals_prompt}\n\nConcepts:\n{concepts}"
+        individuals_text = run_gpt_chat(gpt_information)
+        print("Generating final TTL in chunks...")
+
+        gpt_information['user_query'] = f"""
+                "Follow this: {ontology_generation_prompt}\n
+                Concepts: {concepts}\n
+                Triples: {triples_text}\n
+                Domain and Range Info: {domain_range_text}\n
+                Properties: {data_type_text}\n
+                Axioms: {axioms_text}\n
+                RDF Comments: {rdf_comments_text}\n
+                Individuals: {individuals_text}\n
+                Do not include another text, only return the turtle content of the ontology.
+                """
+        turtle = run_gpt_chat(gpt_information)
+        turtle = "\n".join(turtle)
+
+        return turtle
 
     except Exception as e:
-        logging.error(f"Error occurred while loading GPT information: {e}")
+        logging.exception(f"Error occurred while generating ontology: {e}")
         return None
 
+def get_borrows_from_mappings(turtle, mappings, config):
+    try:
+        print("Loading GPT information...")
+
+        with open(config, "r", encoding="utf-8") as f:
+            gpt_information = json.load(f)["gpt"]
+
+        borrows_from_mappings_prompt = read_file(gpt_information["borrows_from_prompt"])
+
+        gpt_information['user_query'] = f"""
+                                        Following this: {borrows_from_mappings_prompt}\n\n
+                                        Ontology: {turtle}\n\n
+                                        Mappings: {mappings}.\n\n
+                                        Do not include another text, only return the turtle content of the ontology.
+                                        """
+        new_turtle = run_gpt_chat(gpt_information)
+        new_turtle = "\n".join(new_turtle)
 
 
+        return new_turtle
 
-def run_gpt_based_concept_extraction(questions, config="/Users/sefika/projects/eu-ai-act-ontology/config/api_configs.json"):
+    except Exception as e:
+        logging.exception(f"Error occurred while generating borrows from mappings: {e}")
+        return None
+
+def run_gpt_based_concept_extraction(questions, config):
     """
     Runs the GPT-based concept extraction.
     
@@ -205,70 +265,83 @@ def run_gpt_based_concept_extraction(questions, config="/Users/sefika/projects/e
 
 
 
-def chunk_list(items, size):
-    for i in range(0, len(items), size):
-        yield items[i:i + size]
-
-
-def compact_items(items, max_items=50, max_chars_each=300):
-    compacted = []
-    for item in items[:max_items]:
-        text = str(item)
-        compacted.append(text[:max_chars_each])
-    return compacted
 
 def run_gpt_based_mapping_to_existing_ontologies(
-    concepts,
-    classes,
-    properties,
-    config="/Users/sefika/projects/eu-ai-act-ontology/config/api_configs.json",
+    domain_entities,
+    domain_properties,
+    existing_classes,
+    existing_properties,
+    config
 ):
     try:
         with open(config, "r") as f:
             gpt_config = json.load(f)["gpt"]
 
         with open(gpt_config["mapping_to_existing_ontologies_prompt"], "r") as f:
-            base_prompt = f.read()[:3000]   # prevent huge prompt file
+            base_prompt = f.read()
 
-        all_mappings = []
+        gpt_config["user_query"] = f"""{base_prompt}. existing_properties: {existing_properties}, Domain properties: {domain_properties}. Do not include any thing other than the mapping results in your response. Return the mapping results in a JSON format."""
+        property_mappings = run_gpt_chat(gpt_config)
+        gpt_config["user_query"] = f"""{base_prompt}. existing_classes: {existing_classes}, Domain classes: {domain_entities}. Do not include any thing other than the mapping results in your response. Return the mapping results in a JSON format."""
+        class_mappings = run_gpt_chat(gpt_config)
+        
 
-        for concept in concepts:
-            
-            candidate_classes = compact_items(classes, max_items=30)
-            candidate_properties = compact_items(properties, max_items=30)
-
-            user_query = f"""
-{base_prompt}
-
-Map this concept to existing ontology terms.
-
-Concept:
-{str(concept)[:500]}
-
-Candidate classes:
-{json.dumps(candidate_classes, ensure_ascii=False)}
-
-Candidate properties:
-{json.dumps(candidate_properties, ensure_ascii=False)}
-
-Return JSON only.
-"""
-
-            batch_config = {
-                **gpt_config,
-                "user_query": user_query,
-            }
-
-            result = run_gpt_chat(batch_config)
-            if result:
-                result_str = "\n".join(result)
-                result = json.loads(result_str)
-                all_mappings.append(result)
-
-        return all_mappings
+        return {
+            "corresponding_classes": class_mappings,
+            "corresponding_properties": property_mappings
+        }
 
     except Exception as e:
         logging.error(
             f"Error occurred during GPT-based mapping to existing ontologies: {e}"
         )
         return None
+    
+
+
+def fix_mapping_output(data):
+    fixed = {
+        "corresponding_classes": [],
+        "corresponding_properties": []
+    }
+
+    for block in data:
+       
+        if isinstance(block, list):
+            block = "\n".join(block)
+
+        block = block.strip()
+        block = re.sub(r"^```json\s*", "", block)
+        block = re.sub(r"^```\s*", "", block)
+        block = re.sub(r"\s*```$", "", block)
+
+        parsed = json.loads(block)
+
+        for item in parsed.get("corresponding_classes", []):
+            if "alignment" in item:
+                item["relation"] = item["alignment"].get("relation")
+                item["measure"] = item["alignment"].get("measure")
+                del item["alignment"]
+
+            fixed["corresponding_classes"].append(item)
+
+        for item in parsed.get("corresponding_properties", []):
+            if "alignment" in item:
+                item["relation"] = item["alignment"].get("relation")
+                item["measure"] = item["alignment"].get("measure")
+                del item["alignment"]
+
+            fixed["corresponding_properties"].append(item)
+
+    return fixed
+
+def  fix_syntax_errors_in_turtle(data, config):
+    try:
+        gpt_information = json.load(open(config, 'r'))['gpt']
+        prompt = open(gpt_information['turtle_syntax_fix_prompt'], 'r').read()
+        gpt_information['user_query'] = f"{prompt} Turtle content: {data}"
+        fixed_turtle = run_gpt_chat(gpt_information)
+        return "\n".join(fixed_turtle)
+    except Exception as e:
+        logging.error(f"Error occurred during fixing syntax errors in turtle: {e}")
+        return data
