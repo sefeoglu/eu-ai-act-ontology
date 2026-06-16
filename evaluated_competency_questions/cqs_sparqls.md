@@ -54,16 +54,6 @@ http://example.org/eu-ai-act#model_provider_omega http://www.w3.org/2000/01/rdf-
 http://example.org/eu-ai-act#provider_alpha http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://example.org/eu-ai-act#provider
 http://example.org/eu-ai-act#provider_alpha http://www.w3.org/2000/01/rdf-schema#comment Representative provider individual. Source: Generated from provided individuals.
 http://example.org/eu-ai-act#provider_alpha http://www.w3.org/2000/01/rdf-schema#label Provider Alpha
-(base) sefika@sefikas-MacBook-Pro test % python test_sparql.py
-Triples: 1841
-http://example.org/eu-ai-act#model_provider_omega http://example.org/eu-ai-act#draws_up_technical_documentation http://example.org/eu-ai-act#technical_documentation
-http://example.org/eu-ai-act#model_provider_omega http://example.org/eu-ai-act#provides_model_information http://example.org/eu-ai-act#model_information
-http://example.org/eu-ai-act#model_provider_omega http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://example.org/eu-ai-act#provider
-http://example.org/eu-ai-act#model_provider_omega http://www.w3.org/2000/01/rdf-schema#comment Representative provider of a general-purpose AI model. Source: Generated from provided triples.
-http://example.org/eu-ai-act#model_provider_omega http://www.w3.org/2000/01/rdf-schema#label Model Provider Omega
-http://example.org/eu-ai-act#provider_alpha http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://example.org/eu-ai-act#provider
-http://example.org/eu-ai-act#provider_alpha http://www.w3.org/2000/01/rdf-schema#comment Representative provider individual. Source: Generated from provided individuals.
-http://example.org/eu-ai-act#provider_alpha http://www.w3.org/2000/01/rdf-schema#label Provider Alpha
 ```
 
 
