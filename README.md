@@ -6,7 +6,7 @@ This repository contains a proof-of-concept pipeline for building an ontology fr
 - **procedural memory** from EU AI Act source material
 - **LLM-driven orchestration** for competency question generation, concept extraction, ontology generation, and ontology reuse
 
-The repository also includes generated artefacts, evaluation material, and simple validation scripts for the resulting ontology.
+The repository also includes generated artifacts, evaluation material, and simple validation scripts for the resulting ontology.
 
 ## Repository layout
 
@@ -23,7 +23,7 @@ eu-ai-act-ontology/
 │   ├── declarative/
 │   │   ├── existing_ontologies/      # Reused ontologies (DPV, VAIR, AIRO, AIO)
 │   │   └── prompts/                  # Prompt templates for each pipeline stage
-│   └── procedural/                   # Extracted EU AI Act source content
+│   └── procedural/                   # Extracted EU AI Act source content (ai_act_full_content.json)
 ├── metrics/                          # Ontology structural metrics script and CSV outputs
 ├── ontology/                         # Generated proof-of-concept ontologies
 ├── src/
@@ -69,7 +69,7 @@ Install the Python dependencies from the repository root:
 python -m pip install -r requirements.txt
 ```
 
-## Generated artefacts
+## Generated artifacts
 
 The repository already includes example outputs from the workflow:
 
