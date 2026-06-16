@@ -119,14 +119,15 @@ ORDER BY ?s ?p
 #### c) Which transparency obligations are represented in the ontology, and do they require disclosure?
 
 ```sparql
-SELECT DISTINCT ?actor ?label
+PREFIX euai: <http://example.org/eu-ai-act#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?obligation ?label ?requiresDisclosure
 WHERE {
-  ?actor a euai:Actor .
-  ?obligation a euai:TransparencyObligation ;
-              euai:appliesToActor ?actor .
-  OPTIONAL {
-    ?actor rdfs:label ?label .
-  }
+  ?obligation a euai:transparency_obligation .
+
+  OPTIONAL { ?obligation rdfs:label ?label . }
+  OPTIONAL { ?obligation euai:requires_disclosure ?requiresDisclosure . }
 }
 ORDER BY ?label
 ```
