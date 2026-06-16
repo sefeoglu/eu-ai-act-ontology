@@ -92,6 +92,10 @@ The repository already includes example outputs from the workflow:
 
 ## Validation and evaluation
 
+Final ontology for assessment: `ontology/proof_of_concept_ontology_v0.2.ttl`
+
+Refined variant: `ontology/proof_of_concept_ontology_v0.3.ttl`
+
 ### Run the SPARQL validation script
 
 ```bash
