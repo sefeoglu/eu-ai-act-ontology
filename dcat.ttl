@@ -1,0 +1,48 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+:freie_universitaet_berlin
+    a org:Organization ;
+    foaf:name "Freie Universität Berlin" .
+
+:sefika_efeoglu
+    a foaf:Person ;
+    foaf:name "Sefika Efeoglu" ;
+    org:memberOf :freie_universitaet_berlin .
+
+:proof_of_concept_ontology
+    a dcat:Dataset ;
+    dcterms:title "Proof of Concept Ontology" ;
+    dcterms:creator :sefika_efeoglu ;
+    dcterms:publisher :freie_universitaet_berlin ;
+    dcterms:description "Proof-of-concept ontology for semantic data integration." ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcat:keyword  "EU AI Act", "ontology", "knowledge graph" ;
+    dcat:distribution
+        :v0_1_ttl,
+        :v0_2_ttl,
+        :v0_3_ttl .
+
+:v0_1_ttl
+    a dcat:Distribution ;
+    dcterms:title "proof_of_concept_ontology_v0.1.ttl" ;
+    dcat:downloadURL <https://github.com/sefeoglu/eu-ai-act-ontology/blob/master/proof_of_concept_ontology_v0.1.ttl> ;
+    dcterms:format "text/turtle" ;
+    owl:versionInfo "0.1" .
+
+:v0_2_ttl
+    a dcat:Distribution ;
+    dcterms:title "proof_of_concept_ontology_v0.2.ttl" ;
+    dcat:downloadURL <https://github.com/sefeoglu/eu-ai-act-ontology/blob/master/proof_of_concept_ontology_v0.2.ttl> ;
+    dcterms:format "text/turtle" ;
+    owl:versionInfo "0.2" .
+
+:v0_3_ttl
+    a dcat:Distribution ;
+    dcterms:title "proof_of_concept_ontology_v0.3.ttl" ;
+    dcat:downloadURL <https://github.com/sefeoglu/eu-ai-act-ontology/blob/master/proof_of_concept_ontology_v0.3.ttl> ;
+    dcterms:format "text/turtle" ;
+    owl:versionInfo "0.3" .
