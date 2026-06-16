@@ -1,5 +1,10 @@
 # Automated Ontology Development Using a Memory-Based MCP Approach
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+![Python](https://img.shields.io/badge/Python-3.12+-blue)
+![Status](https://img.shields.io/badge/status-proof--of--concept-orange)
+![Last Commit](https://img.shields.io/github/last-commit/sefeoglu/eu-ai-act-ontology)
+
 This repository contains a proof-of-concept pipeline for building an ontology from the EU AI Act with a memory-based MCP architecture. The project combines:
 
 - **declarative memory** from reusable ontologies and prompt templates
