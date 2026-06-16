@@ -82,7 +82,6 @@ The repository already includes example outputs from the workflow:
 - `concept_mappings/mappings.json`
 - `ontology/proof_of_concept_ontology_v0.1.ttl`
 - `ontology/proof_of_concept_ontology_v0.2.ttl`
-- `ontology/proof_of_concept_ontology_v0.3.ttl`
 - `metrics/domain_ontology_structural_metrics_before_mapping.csv`
 - `metrics/domain_ontology_structural_metrics_after_mapping.csv`
 
