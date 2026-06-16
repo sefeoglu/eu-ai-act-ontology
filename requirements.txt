@@ -1,7 +1,4 @@
-rdflib==7.0.0
-chromadb
-bs4
-openai
-transformers
-sentence_transformers
-anthropic
+rdflib==7.1.4
+openai==1.95.1
+transformers==4.57.0
+sentence-transformers==5.0.0
