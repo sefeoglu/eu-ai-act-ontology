@@ -1,8 +1,7 @@
 # SPARQL Queries
 
-## a) Which AI systems are classified as high-risk under the EU AI Act?
+## a) Which high-risk AI systems are represented in the ontology?
 
-This query retrieves all entities classified as `HighRiskAISystem` together with their labels (if available).
 
 ```sparql
 PREFIX euai: <http://example.org/eu-ai-act#>
@@ -10,50 +9,67 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 SELECT ?system ?label
 WHERE {
-  ?system a euai:HighRiskAISystem .
+  ?system a euai:high_risk_ai_system .
   OPTIONAL {
     ?system rdfs:label ?label .
   }
 }
 ORDER BY ?label
 ```
+### Results
 
-### Purpose
-
-The query identifies AI systems that fall within the high-risk category under the EU AI Act. Such systems are subject to stricter regulatory requirements due to their potential impact on health, safety, or fundamental rights.
-
----
-
-## b) What obligations apply to providers of high-risk AI systems?
-
-This query returns obligations that apply specifically to providers of high-risk AI systems.
-
-```sparql
-PREFIX euai: <http://example.org/eu-ai-act#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-SELECT ?obligation ?label
-WHERE {
-  ?obligation a euai:Obligation .
-  ?obligation euai:appliesToActor euai:Provider .
-  ?obligation euai:appliesToSystemType euai:HighRiskAISystem .
-
-  OPTIONAL {
-    ?obligation rdfs:label ?label .
-  }
-}
-ORDER BY ?label
+```bash
+http://example.org/eu-ai-act#recruitment_screening_ai Recruitment Screening AI
 ```
 
-### Purpose
+---
 
-The query retrieves regulatory obligations imposed on providers of high-risk AI systems, such as requirements relating to risk management, data governance, technical documentation, transparency, human oversight, accuracy, robustness, and cybersecurity.
+## b) Which compliance-related activities, documentation requirements, and risk-management measures are associated with AI providers?
+
+
+```sparql
+
+PREFIX euai: <http://example.org/eu-ai-act#>
+
+SELECT ?s ?p ?o
+WHERE {
+  ?s ?p ?o .
+  FILTER(
+    CONTAINS(STR(?p), "compliance") ||
+    CONTAINS(STR(?p), "documentation") ||
+    CONTAINS(STR(?p), "risk") ||
+    CONTAINS(STR(?p), "oversight")
+  )
+}
+ORDER BY ?s ?p
+```
+
+### Results
+```bash
+http://example.org/eu-ai-act#model_provider_omega http://example.org/eu-ai-act#draws_up_technical_documentation http://example.org/eu-ai-act#technical_documentation
+http://example.org/eu-ai-act#model_provider_omega http://example.org/eu-ai-act#provides_model_information http://example.org/eu-ai-act#model_information
+http://example.org/eu-ai-act#model_provider_omega http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://example.org/eu-ai-act#provider
+http://example.org/eu-ai-act#model_provider_omega http://www.w3.org/2000/01/rdf-schema#comment Representative provider of a general-purpose AI model. Source: Generated from provided triples.
+http://example.org/eu-ai-act#model_provider_omega http://www.w3.org/2000/01/rdf-schema#label Model Provider Omega
+http://example.org/eu-ai-act#provider_alpha http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://example.org/eu-ai-act#provider
+http://example.org/eu-ai-act#provider_alpha http://www.w3.org/2000/01/rdf-schema#comment Representative provider individual. Source: Generated from provided individuals.
+http://example.org/eu-ai-act#provider_alpha http://www.w3.org/2000/01/rdf-schema#label Provider Alpha
+(base) sefika@sefikas-MacBook-Pro test % python test_sparql.py
+Triples: 1841
+http://example.org/eu-ai-act#model_provider_omega http://example.org/eu-ai-act#draws_up_technical_documentation http://example.org/eu-ai-act#technical_documentation
+http://example.org/eu-ai-act#model_provider_omega http://example.org/eu-ai-act#provides_model_information http://example.org/eu-ai-act#model_information
+http://example.org/eu-ai-act#model_provider_omega http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://example.org/eu-ai-act#provider
+http://example.org/eu-ai-act#model_provider_omega http://www.w3.org/2000/01/rdf-schema#comment Representative provider of a general-purpose AI model. Source: Generated from provided triples.
+http://example.org/eu-ai-act#model_provider_omega http://www.w3.org/2000/01/rdf-schema#label Model Provider Omega
+http://example.org/eu-ai-act#provider_alpha http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://example.org/eu-ai-act#provider
+http://example.org/eu-ai-act#provider_alpha http://www.w3.org/2000/01/rdf-schema#comment Representative provider individual. Source: Generated from provided individuals.
+http://example.org/eu-ai-act#provider_alpha http://www.w3.org/2000/01/rdf-schema#label Provider Alpha
+```
+
 
 ---
 
-## c) Which actors are subject to transparency obligations?
-
-This query identifies actors that are linked to at least one transparency obligation.
+## c) Which transparency obligations are represented in the ontology, and do they require disclosure?
 
 ```sparql
 PREFIX euai: <http://example.org/eu-ai-act#>
@@ -72,7 +88,8 @@ WHERE {
 }
 ORDER BY ?label
 ```
+### Results
+``` bash
+http://example.org/eu-ai-act#chat_assistant_disclosure Chat assistant disclosure true
+```
 
-### Purpose
-
-The query determines which categories of actors (e.g., providers, deployers, importers, distributors, or other entities defined in the ontology) are required to comply with transparency-related obligations under the EU AI Act.
