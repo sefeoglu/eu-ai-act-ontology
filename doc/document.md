@@ -133,7 +133,7 @@ ORDER BY ?label
 
 #### Validation
 
-The ontology was loaded using `rdflib`, and the HermiT reasoner was executed. In addition, reasoning was performed within Protégé using the HermiT reasoner. Screenshots showing inferred individuals are available in the repository.
+The ontology was loaded using `rdflib`. In addition, reasoning was performed within Protégé using the HermiT reasoner. Screenshots showing inferred individuals are available in the repository.
 
 #### Structural Metrics
 
