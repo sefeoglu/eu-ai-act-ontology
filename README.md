@@ -106,6 +106,7 @@ python metrics/basic_metrics.py --input_file ontology/proof_of_concept_ontology_
 - The repository is a prototype and includes generated outputs alongside source code.
 - The top-level test script is an executable validation helper rather than a `unittest.TestCase` suite.
 - Supporting documentation is available in `doc/proof_of_concept_eu-ai_act_ontology_documentation.pdf`.
+- Refined ontology: [ontology/proof_of_concept_ontology_v0.3.ttl](https://github.com/sefeoglu/eu-ai-act-ontology/blob/master/ontology/proof_of_concept_ontology_v0.3.ttl)
 
 ## License
 
