@@ -7,25 +7,31 @@ A memory-based MCP architecture for end-to-end ontology development, where LLM a
 
 ```xml
 eu-ai-act-ontology/
-├── config/                  # Configuration files
-├── doc/                     # Project documentation
-├── memory/                  # Bundled memory assets
-│   ├── declarative/         # Modelling rules in prompts and reusable ontologies
+├── competency_questions/       # Generated competency question artefacts
+├── concept_extraction/         # Extracted concept outputs
+├── concept_mappings/           # Ontology mapping outputs
+├── config/                     # Runtime configuration files
+├── doc/                        # Project documentation
+├── evaluated_competency_questions/ # Evaluated CQ and SPARQL notes
+├── figures/                    # Images used in documentation
+├── memory/                     # Bundled memory assets
+│   ├── declarative/            # Reusable ontologies and prompt assets
 │   │   ├── existing_ontologies/
 │   │   └── prompts/
-│   └── procedural/          # Domain-specific regulatory memory
-│       └── eu_ai_act_2024/
-├── ontology/                # Generated ontology files
-├── tests/                   # Unit and integration tests
+│   └── procedural/             # Regulatory source memory
+├── metrics/                    # Analysis scripts and exported metrics
+├── ontology/                   # Generated ontology versions
 ├── src/
-│   ├── client/              # User-facing pipeline entry points
-│   ├── host/                # Planning, validation, and agent orchestration
-│   ├── memory/              # Memory loading and generation logic
-│   ├── server/              # Ontology generation services
-│   ├── main.py              # Main application entry point
-│   └── utils.py             # Shared utilities
-├── requirements.txt         # Python dependencies
-└── README.md                # Project overview
+│   ├── client/                 # Client entry points for the pipeline
+│   ├── host/                   # Planning, validation, and agent orchestration
+│   │   └── agents/             # Agent implementations used by the host
+│   ├── memory/                 # Memory loading and generation logic
+│   ├── server/                 # Ontology generation services
+│   ├── main.py                 # Main application entry point
+│   └── utils.py                # Shared utilities
+├── test/                       # Unit tests
+├── requirements.txt            # Python dependencies
+└── README.md                   # Project overview
 ```
 
 ## Architecture
@@ -62,7 +68,7 @@ This memory guides the ontology generation process using regulatory knowledge em
 
 ## Basic Metrics
 ```bash
-python metrics/ontology_metrics.py your_ontology.ttl -f turtle -o metrics.csv
+python metrics/basic_metrics.py your_ontology.ttl -f turtle -o metrics.csv
 ```
 
 ## Use Case
