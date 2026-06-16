@@ -65,16 +65,12 @@ http://example.org/eu-ai-act#provider_alpha http://www.w3.org/2000/01/rdf-schema
 PREFIX euai: <http://example.org/eu-ai-act#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-SELECT DISTINCT ?actor ?label
+SELECT DISTINCT ?obligation ?label ?requiresDisclosure
 WHERE {
-  ?actor a euai:Actor .
+  ?obligation a euai:transparency_obligation .
 
-  ?obligation a euai:TransparencyObligation ;
-              euai:appliesToActor ?actor .
-
-  OPTIONAL {
-    ?actor rdfs:label ?label .
-  }
+  OPTIONAL { ?obligation rdfs:label ?label . }
+  OPTIONAL { ?obligation euai:requires_disclosure ?requiresDisclosure . }
 }
 ORDER BY ?label
 ```
