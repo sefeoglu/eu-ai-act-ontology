@@ -1,4 +1,4 @@
-Based on the following context, Please prepare 10 competency questions which will help to develop ontology?
+Based on the following context, Please prepare competency questions which will help to develop ontology?
 The competency questions should include the main elements of the Act like AI system categories, prohibited
 practices, highrisk systems, core actors (providers, deployers, authorities),
 and major obligations.
