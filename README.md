@@ -68,7 +68,7 @@ This memory guides the ontology generation process using regulatory knowledge em
 
 ## Basic Metrics
 ```bash
-python metrics/basic_metrics.py your_ontology.ttl -f turtle -o metrics.csv
+python metrics/basic_metrics.py ontology/proof_of_concept_ontology_v0.2.ttl -f turtle -o metrics.csv
 ```
 
 ## Use Case
