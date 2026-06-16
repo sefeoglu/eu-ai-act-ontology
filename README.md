@@ -1,4 +1,8 @@
 # Automated Ontology Development Using a Memory-Based MCP Approach
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+![Python](https://img.shields.io/badge/Python-3.12+-blue)
+![Status](https://img.shields.io/badge/status-proof--of--concept-orange)
+![Ontology](https://img.shields.io/badge/ontology-Turtle-7E57C2)
 
 This repository contains a proof-of-concept pipeline for building an ontology from the EU AI Act with a memory-based MCP architecture. The project combines:
 
@@ -8,6 +12,7 @@ This repository contains a proof-of-concept pipeline for building an ontology fr
 
 The repository also includes generated artifacts, evaluation material, and simple validation scripts for the resulting ontology.
 
+**Note**: Copilot was used to refine README.md. It is not part of pair coding.
 ## Repository layout
 
 ```text
