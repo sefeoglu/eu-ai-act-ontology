@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 ![Python](https://img.shields.io/badge/Python-3.12+-blue)
 ![Status](https://img.shields.io/badge/status-proof--of--concept-orange)
-![Last Commit](https://img.shields.io/github/last-commit/sefeoglu/eu-ai-act-ontology)
+![Ontology](https://img.shields.io/badge/ontology-Turtle-7E57C2)
 
 This repository contains a proof-of-concept pipeline for building an ontology from the EU AI Act with a memory-based MCP architecture. The project combines:
 
