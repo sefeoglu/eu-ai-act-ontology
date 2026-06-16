@@ -12,7 +12,7 @@ This repository contains a proof-of-concept pipeline for building an ontology fr
 
 The repository also includes generated artifacts, evaluation material, and simple validation scripts for the resulting ontology.
 
-**Note**: Copilot was used to refine README.md. It is not used for [coding](https://github.com/sefeoglu/eu-ai-act-ontology/pulse#).
+**Note**: Copilot was used to refine README.md. It is not used for coding.
 ## Repository layout
 
 ```text
