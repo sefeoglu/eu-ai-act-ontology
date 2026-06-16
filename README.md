@@ -38,7 +38,7 @@ eu-ai-act-ontology/
 
 ## What the pipeline does
 
-The prototype is organized around these goals:
+The prototype is organized around these goals (see [details](https://github.com/sefeoglu/eu-ai-act-ontology/blob/master/doc/document.md)):
 
 1. Generate competency questions from EU AI Act content
 2. Extract ontology concepts from the generated questions
