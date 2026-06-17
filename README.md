@@ -4,6 +4,13 @@
 ![Status](https://img.shields.io/badge/status-proof--of--concept-orange)
 ![Ontology](https://img.shields.io/badge/ontology-Turtle-7E57C2)
 
+
+## TODOs for v0.2
+- Distributed ontology generation based on chapters.
+- Merge local ontologies and generate a global ontology.
+- This distributed arch. will resolve the context window limitation of LLMs as well.
+
+
 This repository contains a proof-of-concept pipeline for building an ontology from the EU AI Act with a memory-based MCP architecture. The project combines:
 
 - **declarative memory** from reusable ontologies and prompt templates
