@@ -1,4 +1,4 @@
-# Memory-Assisted Ontology Engineering for Regulatory Knowledge: A Case Study on the EU AI Act
+# Memory-Assisted Ontology Engineering Architecture for Regulatory Knowledge
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 ![Python](https://img.shields.io/badge/Python-3.12+-blue)
 ![Status](https://img.shields.io/badge/status-proof--of--concept-orange)
