@@ -3,6 +3,7 @@
 ![Python](https://img.shields.io/badge/Python-3.12+-blue)
 ![Ontology](https://img.shields.io/badge/ontology-Turtle-7E57C2)
 ![Architecture](https://img.shields.io/badge/Architecture-Memory--assisted%20MCP-0F766E)
+![Agents](https://img.shields.io/badge/Agents-Domain%20expert%20%26%20retriever-7C3AED)
 ![Domain](https://img.shields.io/badge/Domain-EU%20AI%20Act-9A3412)
 ![Validation](https://img.shields.io/badge/Validation-SPARQL-1D4ED8)
 ![Artifacts](https://img.shields.io/badge/Artifacts-Included-4D7C0F)
