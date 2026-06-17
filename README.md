@@ -4,7 +4,11 @@
 ![Status](https://img.shields.io/badge/status-proof--of--concept-orange)
 ![Ontology](https://img.shields.io/badge/ontology-Turtle-7E57C2)
 
+## Project architecture
 
+![Project architecture](figures/project_architecture.svg)
+
+Source diagram: [figures/project_architecture.md](figures/project_architecture.md)
 ## TODOs for v0.2
 - 1. Distributed ontology generation based on chapters.
 - 2. Merge local ontologies and generate a global ontology.
@@ -116,11 +120,6 @@ This script loads `ontology/proof_of_concept_ontology_v0.2.ttl` and executes exa
 - transparency obligations
 
 
-## Project architecture
-
-![Project architecture](figures/project_architecture.svg)
-
-Source diagram: [figures/project_architecture.md](figures/project_architecture.md)
 ### Compute structural metrics
 
 ```bash
