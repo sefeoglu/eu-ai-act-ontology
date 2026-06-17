@@ -8,11 +8,6 @@
 ![Project architecture](figures/project_architecture.svg)
 
 Source diagram: [figures/project_architecture.md](figures/project_architecture.md)
-## TODOs for v0.2
-- 1. Distributed ontology generation based on chapters.
-- 2. Merge local ontologies and generate a global ontology.
-- 3. This distributed architecture will resolve the context window limitation of LLMs as well.
-
 
 This repository contains a proof-of-concept pipeline for building an ontology from the EU AI Act with a memory-based MCP architecture. The project combines:
 
