@@ -1,4 +1,4 @@
 rdflib==7.1.4
 openai==1.95.1
-transformers==4.57.0
-sentence-transformers==5.0.0
+requests==2.32.5
+beautifulsoup4==4.15.0
