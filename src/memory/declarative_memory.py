@@ -17,11 +17,6 @@ class DeclarativeMemory(OntologyMemory):
         "vair.owl",
     )
 
-    def load_default(self) -> "DeclarativeMemory":
-        """Load the default ontology shipped in the repository."""
-        self.load(ensure_file_exists(self.DEFAULT_PATH))
-        return self
-
     def load_from_path(self, path: Optional[Path]) -> "DeclarativeMemory":
         """Load from a user-supplied path, or fall back to the default."""
         ontology_path = ensure_file_exists(Path(path)) if path is not None else self.DEFAULT_PATH

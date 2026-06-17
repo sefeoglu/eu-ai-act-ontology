@@ -36,20 +36,6 @@ class OntologyMemory:
         self.source_path = path
         return self
 
-    def run_query(self, query: str) -> List[Dict[str, str]]:
-        """Execute a SPARQL SELECT and return stringified bindings."""
-        results = self.graph.query(query)
-
-        rows: List[Dict[str, str]] = []
-        for row in results:
-            rows.append({
-                str(var): str(row[i])
-                for i, var in enumerate(results.vars)
-                if row[i] is not None
-            })
-
-        return rows
-
     def triple_count(self) -> int:
         """Return the total triple count of the loaded graph."""
         return len(self.graph)
@@ -63,15 +49,6 @@ class OntologyMemory:
 
         text = str(node)
         return text.rsplit("#", 1)[-1].rsplit("/", 1)[-1]
-
-    def get_classes(self) -> List[str]:
-        """Return ontology class URIs."""
-        classes = set()
-
-        classes.update(self.graph.subjects(RDF.type, OWL.Class))
-        classes.update(self.graph.subjects(RDF.type, RDFS.Class))
-
-        return sorted(str(cls) for cls in classes)
 
     def get_classes_with_labels(self) -> List[Dict[str, str]]:
         """Return ontology classes with labels."""
@@ -87,26 +64,6 @@ class OntologyMemory:
             }
             for cls in sorted(classes, key=str)
         ]
-
-    def get_properties(self) -> List[str]:
-        """Return ontology property URIs."""
-        property_types = [
-            RDF.Property,
-            OWL.ObjectProperty,
-            OWL.DatatypeProperty,
-            OWL.AnnotationProperty,
-            OWL.FunctionalProperty,
-            OWL.InverseFunctionalProperty,
-            OWL.TransitiveProperty,
-            OWL.SymmetricProperty,
-        ]
-
-        properties = set()
-
-        for property_type in property_types:
-            properties.update(self.graph.subjects(RDF.type, property_type))
-
-        return sorted(str(prop) for prop in properties)
 
     def get_properties_with_labels(self) -> List[Dict[str, str]]:
         """Return ontology properties with labels."""

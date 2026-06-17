@@ -23,7 +23,7 @@ def clean_text(text: str) -> str:
     return text.strip()
 
 
-def get_soup(url: str, headers: dict, timeout: int) -> BeautifulSoup:
+def fetch_html_soup(url: str, headers: dict, timeout: int) -> BeautifulSoup:
     response = requests.get(url, headers=headers, timeout=timeout)
     response.raise_for_status()
     return BeautifulSoup(response.text, "html.parser")
@@ -56,42 +56,6 @@ def extract_title_from_page(soup: BeautifulSoup, fallback: str) -> str:
     return fallback
 
 
-
-
-def extract_content_from_target_row(soup: BeautifulSoup) -> str:
-
-    for tag in soup(["script", "style", "noscript", "svg", "nav", "footer"]):
-        tag.decompose()
-
-    content = soup.select_one(CONTENT_SELECTOR)
-
-    if not content:
-        return ""
-
-    for bad in content.select(
-        ".et_pb_sidebar, .widget, .toc, .table-of-contents, nav, aside"
-    ):
-        bad.decompose()
-
-    text = clean_text(content.get_text("\n", strip=True))
-
-    stop_markers = [
-        "\nSuitable Recitals",
-        "\nCopy URL",
-        "\nPrevious",
-        "\nNext",
-        "\n← Previous",
-        "\nNext →",
-    ]
-
-    for marker in stop_markers:
-        index = text.find(marker)
-        if index != -1:
-            text = text[:index]
-
-    return clean_text(text)
-
-
 def unique_items(items: list[dict], key: str = "url") -> list[dict]:
     seen = set()
     output = []
@@ -112,7 +76,7 @@ def scrape_index_structure(
     headers: dict,
     timeout: int,
 ) -> tuple[list[dict], list[dict]]:
-    soup = get_soup(base_url, headers, timeout)
+    soup = fetch_html_soup(base_url, headers, timeout)
     print("Scraping index structure for chapters and annexes...")
     print(f"Base URL: {base_url}")
     main = soup.select_one(
@@ -238,7 +202,7 @@ def enrich_articles(chapters: list[dict], headers: dict, timeout: int) -> list[d
 
             print(f"Scraping article: {article['title']}")
             print(f"Article URL: {url}")
-            soup = get_soup(url, headers, timeout)
+            soup = fetch_html_soup(url, headers, timeout)
             article["page_title"] = extract_title_from_page(soup, article["title"])
             article["text"] = extract_content_from_target_row(soup)
 
@@ -255,7 +219,7 @@ def enrich_annexes(annexes: list[dict], headers: dict, timeout: int) -> list[dic
 
         print(f"Scraping annex: {annex['title']}")
 
-        soup = get_soup(url, headers, timeout)
+        soup = fetch_html_soup(url, headers, timeout)
         annex["page_title"] = extract_title_from_page(soup, annex["title"])
         annex["text"] = extract_content_from_target_row(soup)
 
@@ -284,7 +248,7 @@ def scrape_all_ai_act_content(base_url: str, headers: dict, timeout: int) -> dic
     }
 
 
-def save_all_content(output_file: Path, base_url: str, headers: dict, timeout: int) -> dict:
+def save_scraped_ai_act_content(output_file: Path, base_url: str, headers: dict, timeout: int) -> dict:
     print("Starting full content retrieval for EU AI Act...")
 
     data = scrape_all_ai_act_content(
@@ -314,13 +278,13 @@ def print_summary(data: dict, output_file: Path) -> None:
     print(f"Annexes    : {len(data.get('annexes', []))}")
     print(f"Output     : {output_file}")
 
-def retrieve_content(url: str, output: str, timeout: int, user_agent: str) -> argparse.ArgumentParser:
+def retrieve_and_save_ai_act_content(url: str, output: str, timeout: int, user_agent: str) -> dict:
 
     headers = {
         "User-Agent": user_agent,
     }
 
-    full_content = save_all_content(
+    full_content = save_scraped_ai_act_content(
         output_file=Path(output),
         base_url=url,
         headers=headers,

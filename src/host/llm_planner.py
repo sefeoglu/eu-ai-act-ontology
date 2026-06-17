@@ -3,18 +3,20 @@
 from typing import Dict
 
 
+PIPELINE_ACTIONS = {
+    "memory_generation": "memory_generation",
+    "generate_competency_questions": "generate_competency_questions",
+    "extract_concepts": "extract_concepts",
+    "map_to_existing_ontologies": "map_to_existing_ontologies",
+    "generate_ontology": "generate_ontology",
+    "borrow_concept_extraction": "borrow_concept_extraction",
+}
+
+
 class LLMPlanner:
     """Deterministic planner for the prototype (LLM integration placeholder)."""
 
-    ACTIONS = {
-        "memory_generation": "memory_generation",
-        "generate_competency_questions": "generate_competency_questions",
-        "extract_concepts": "extract_concepts",
-        "validate_ontology": "validate_ontology",
-        "map_to_existing_ontologies": "map_to_existing_ontologies",
-        "generate_ontology": "generate_ontology",
-        "borrow_concept_extraction": "borrow_concept_extraction"
-    }
+    ACTIONS = PIPELINE_ACTIONS
 
     def create_plan(self, user_goal: str) -> Dict[str, str]:
         """Map a user goal to a named pipeline action."""

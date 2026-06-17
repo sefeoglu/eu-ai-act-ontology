@@ -14,7 +14,7 @@ SCRIPT_DIR = os.path.dirname(os.path.realpath(os.path.join(os.getcwd(), os.path.
 sys.path.append(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
 
 PREFIX = "/".join(os.path.dirname(os.path.abspath(__file__)).split("/")[:-2]) + "/"
-def build_parser() -> argparse.ArgumentParser:
+def build_cli_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="EU AI Act ontology prototype pipeline"
     )
@@ -76,7 +76,7 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def run_pipeline(
+def run_prototype_pipeline(
     goals: str,
     declarative_path: Optional[Path] = None,
     procedural_path: Optional[Path] = None,
@@ -88,8 +88,8 @@ def run_pipeline(
     run_config_path: Optional[Path] = None
 
 ) -> Dict[str, Any]:
-    """Instantiate the UI with the given memory files and run the pipeline."""
-    ui = PrototypeClient(
+    """Create the prototype client with the given inputs and run the pipeline."""
+    prototype_client = PrototypeClient(
         declarative_ontology_path=declarative_path,
         procedural_pdf_path=procedural_path,
         config={
@@ -102,12 +102,12 @@ def run_pipeline(
         run_config_path=run_config_path,
         ontology_output_path=ontology_output_path
     )
-    return ui.run_pipeline(goals)
+    return prototype_client.run_pipeline(goals)
 
 
 def main(argv: Optional[List[str]] = None) -> None:
-    args = build_parser().parse_args(argv)
-    report = run_pipeline(
+    args = build_cli_parser().parse_args(argv)
+    report = run_prototype_pipeline(
         goals=args.goals,
         declarative_path= PREFIX +str(args.declarative),
         procedural_path= PREFIX + str(args.procedural),
