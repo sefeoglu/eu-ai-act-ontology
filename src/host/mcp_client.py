@@ -13,7 +13,8 @@ ALLOWED_ACTIONS = frozenset({
     "borrow_concept_extraction"
 })
 
-
+""" This module defines the MCPClient class, which serves as a local dispatcher for executing planned actions related to ontology generation. The MCPClient routes specific action requests to the corresponding methods of the OntologyGenerator, allowing for a modular and extensible architecture. Each action corresponds to a distinct step in the ontology generation pipeline, such as memory generation, competency question generation, concept extraction, mapping to existing ontologies, and the final ontology generation. By centralizing the execution logic within the MCPClient, we can maintain a clear separation of concerns between planning and execution, facilitating easier maintenance and potential future enhancements to the pipeline.
+"""
 class MCPClient:
     """Routes planned actions to the OntologyGenerator."""
 
@@ -22,6 +23,17 @@ class MCPClient:
 
     def execute(self, action: str) -> Any:
         """Dispatch *action* to the underlying generator."""
+        """Args:
+        action: str
+            The name of the action to execute, which should correspond to a method in the OntologyGenerator (e.g., 'memory_generation', 'generate_competency_questions').
+        Returns:
+        Any
+            The result of the executed action.
+        Raises:
+        ValueError
+            If the action is not supported.
+        """
+
         print(f"Executing action: {action}")
         if action not in ALLOWED_ACTIONS:
             raise ValueError(

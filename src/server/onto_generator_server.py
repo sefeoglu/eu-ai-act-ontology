@@ -12,9 +12,21 @@ CONCEPT_LIMIT = 500
 CHAPTER_LIMIT = 7
 
 
+
+
+
 class OntologyGenerator:
     """Performs ontology operations over a preloaded DeclarativeMemory graph."""
-
+    """Args:
+    declarative_memory: DeclarativeMemory
+        A preloaded DeclarativeMemory instance containing the ontology graph.
+    procedural_memory: ProceduralMemory
+        A preloaded ProceduralMemory instance containing the procedural context and related metadata.
+    output_path: Optional[str]
+        Path to save the generated ontology. If None, a default path will be used.
+    run_config_path: Optional[str]
+        Path to the run configuration file (e.g., API configs). If None, a default path will be used.
+    """
     def __init__(self, declarative_memory: DeclarativeMemory, procedural_memory: ProceduralMemory, output_path = None, run_config_path = None) -> None:
         self.declarative_memory = declarative_memory
         self.procedural_memory = procedural_memory
@@ -24,6 +36,7 @@ class OntologyGenerator:
 
     def memory_generation(self) -> Dict[str, object]:
         """Return a structured representation of the loaded memory content."""
+
         return {
             "declarative": {
                 "source": str(self.declarative_memory.source_path),
@@ -180,6 +193,8 @@ class OntologyGenerator:
 
     def map_to_existing_ontologies(self) -> Dict[str, int]:
         """Return the top namespace occurrence counts in the loaded graph."""
+
+        
         ontology_paths = self.procedural_memory.existing_ontologies
         mappings = []
         self.generated_onto = self.declarative_memory.load_from_path(self._ontology_output_path)

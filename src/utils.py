@@ -7,17 +7,42 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 def data_path(*parts: str) -> Path:
     """Return an absolute path under the repository memory directory."""
+
+    """Args:
+    *parts: str
+        A variable number of string arguments representing subdirectories or file names under the memory directory.
+    Returns:
+    Path
+        An absolute Path object pointing to the specified location under the memory directory.
+    """
     return PROJECT_ROOT / Path(*parts)
 
 
 def ensure_file_exists(path: Path) -> Path:
     """Validate that a path exists and return it."""
+    """Args:
+    path: Path
+        The path to validate.
+    Returns:
+    Path
+        The validated path if it exists.
+    Raises:
+    FileNotFoundError
+        If the path does not exist.
+    """
     if not path.exists():
         raise FileNotFoundError(f"Missing file: {path}")
     return path
 
 def parse_deep(value):
     """Recursively convert stringified JSON and JSON-line arrays into real objects."""
+    """Args:
+    value: Any  
+        The input value to parse, which can be a string, list, dict, or primitive type.
+    Returns:
+    Any
+        The parsed value, where any stringified JSON structures have been converted into their corresponding Python objects (e.g., dicts, lists).
+    """
     if isinstance(value, str):
         s = value.strip()
         try:
@@ -51,7 +76,16 @@ def uri_or_label(entity):
         return entity.get("uri") or entity.get("label")
     return None
 
+
 def collect_blocks(value):
+    """Recursively collect all dict blocks that contain 'corresponding_classes' or 'corresponding_properties'."""
+    
+    """Args:
+    value: Any
+        The input value to search through, which can be a dict, list, or primitive type
+    Returns:
+        A list of dict blocks that contain 'corresponding_classes' or 'corresponding_properties'.
+    """
     blocks = []
     if isinstance(value, dict):
         if "corresponding_classes" in value or "corresponding_properties" in value:
@@ -64,7 +98,16 @@ def collect_blocks(value):
     return blocks
 
 
-def json_formatted_mappings(src_text, json_text):
+def json_formatted_mappings(src_text):
+    """Parse the raw output from the mapping LLM and extract cleanly formatted mappings."""
+
+    """The LLM output may contain nested JSON, JSON-lines, or other stringified structures. This function recursively parses and extracts the relevant mapping information into a clean JSON format.
+    Args:    src_text: str
+        The raw string output from the mapping LLM, which may contain nested JSON structures or JSON-lines.
+    Returns:
+     str
+        A JSON-formatted string containing the extracted mappings with a consistent structure.
+    """
 
     parsed = parse_deep(json.loads(src_text))
     blocks = collect_blocks(parsed)

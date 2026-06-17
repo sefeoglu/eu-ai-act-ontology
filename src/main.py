@@ -60,8 +60,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--mapping_output",
         metavar="PATH",
-        default="eu-ai-act-ontology/concept_mappings/mappings_3.json",
-        help="Path to save mapping results (default: eu-ai-act-ontology/concept_mappings/mappings_3.json)",
+        default="eu-ai-act-ontology/concept_mappings/mappings.json",
+        help="Path to save mapping results (default: eu-ai-act-ontology/concept_mappings/mappings.json)",
     )
     parser.add_argument(
         "--ontology_output",

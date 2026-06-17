@@ -11,25 +11,19 @@ from server.onto_generator_server import OntologyGenerator
 
 
 class PrototypeClient:
-    """Orchestrates memory loading, planning, execution, and validation.
-
-    Memory files are loaded here so that the caller (main.py or a test)
-    can supply custom paths; the pipeline is fully initialised before any
-    action is dispatched.
-
-    Parameters
+    """Loads memory files, instantiates the pipeline components, and runs the full pipeline for given goals."""
+    """Parameters
     ----------
-    declarative_ontology_path:
-        Path to an OWL/RDF ontology file.  Defaults to the bundled
-        ``vair.owl`` when *None*.
-    procedural_pdf_path:
-        Path to the regulatory PDF document.  Defaults to the bundled
-        EU AI Act PDF when *None*.
-    config:
-        Optional extra configuration forwarded to MemoryGenerator.
-    ontology_output_path:
-        Path to save the generated ontology. Defaults to the bundled
-        proof_of_concept_ontology.owl when *None*.
+    declarative_ontology_path: Optional[Path]
+        Path to the declarative memory ontology file (e.g., TTL or RDF). If None, a default path will be used.
+    procedural_pdf_path: Optional[Path]
+        Path to the procedural memory PDF document. If None, a default path will be used.
+    config: Optional[Dict]
+        Configuration dictionary for the pipeline components (e.g., paths for intermediate outputs). If None, default values will be used.
+    ontology_output_path: Optional[Path]
+        Path to save the generated ontology. If None, a default path will be used.
+    run_config_path: Optional[Path]
+        Path to the run configuration file (e.g., API configs). If None, a default path will be used.
     """
 
     def __init__(
@@ -40,9 +34,25 @@ class PrototypeClient:
         ontology_output_path: Optional[Path] = None,
         run_config_path: Optional[Path] = None
     ) -> None:
+        
+        """
+        Args:
+        declarative_ontology_path: Optional[Path]
+            Path to the declarative memory ontology file (e.g., TTL or RDF). If None, a default path will be used.
+        procedural_pdf_path: Optional[Path]
+            Path to the procedural memory PDF document. If None, a default path will be used.
+        config: Optional[Dict]
+            Configuration dictionary for the pipeline components (e.g., paths for intermediate outputs). If None, default values will be used.
+        ontology_output_path: Optional[Path]
+            Path to save the generated ontology. If None, a default path will be used.
+        run_config_path: Optional[Path]
+            Path to the run configuration file (e.g., API configs). If None, a default path will be used.
+        """
+
         self._config = config or {}
         self._ontology_output_path = ontology_output_path
         self._run_config_path = run_config_path
+
         # 1. Build memory objects from the supplied (or default) file paths.
         generator = MemoryGenerator(self._config)
         self.declarative_memory = generator.generate_declarative_memory(
@@ -72,14 +82,26 @@ class PrototypeClient:
         2. Execute: dispatch the action via the MCP client.
         3. Return: assemble the full pipeline report.
         """
+        """Parameters
+        ----------
+        goals: str
+            A natural language description of the goals to achieve (e.g., "Generate an ontology that captures the concepts and relationships in the procedural document, and maps them to the declarative ontology.").      
+            
+            Returns -------
+            Dict[str, Any]
+            A structured report containing the original goals, the generated plan, details about the memory sources, and the execution results.
+        """
+        # ------------------------------------------------------------------
         # Step 1 – plan
+        # ------------------------------------------------------------------
         reports = []
 
         for goal in goals:
             print(f"Processing goal: {goal}")
             plan = self.planner.create_plan(goal)
-
-            # Step 2 – execute
+        # ------------------------------------------------------------------
+        # Step 2 – execute
+        # ------------------------------------------------------------------
             result = self.client.execute(plan["action"])
 
             goal_report = {
