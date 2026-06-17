@@ -31,7 +31,9 @@ class PrototypeClient:
         procedural_pdf_path: Optional[Path] = None,
         config: Optional[Dict] = None,
         ontology_output_path: Optional[Path] = None,
-        run_config_path: Optional[Path] = None
+        run_config_path: Optional[Path] = None,
+        concept_limit: int = None,
+        chapter_limit: int = None,
     ) -> None:
         
         """
@@ -51,6 +53,10 @@ class PrototypeClient:
         self._config = config or {}
         self._ontology_output_path = ontology_output_path
         self._run_config_path = run_config_path
+        if concept_limit is None or chapter_limit is None:
+            raise ValueError("concept_limit and chapter_limit must be provided from the caller")
+        self._concept_limit = concept_limit
+        self._chapter_limit = chapter_limit
 
         memory_generator = MemoryGenerator(self._config)
         self.declarative_memory = memory_generator.generate_declarative_memory(
@@ -65,6 +71,8 @@ class PrototypeClient:
             procedural_memory=self.procedural_memory,
             output_path=self._ontology_output_path,
             run_config_path=self._run_config_path,
+            concept_limit=self._concept_limit,
+            chapter_limit=self._chapter_limit,
         )
         self.planner = LLMPlanner()
         self.client = MCPClient(generator=ontology_generator)

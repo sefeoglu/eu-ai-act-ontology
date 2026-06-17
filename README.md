@@ -1,5 +1,5 @@
 # Memory-Assisted Ontology Engineering Architecture for Regulatory Knowledge
-![Python](https://img.shields.io/badge/Python-3.12+-blue)
+![Python](https://img.shields.io/badge/Python-3.10+-blue)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 ![Ontology](https://img.shields.io/badge/ontology-Turtle-7E57C2)
 ![Architecture](https://img.shields.io/badge/Architecture-Memory--assisted%20MCP-0F766E)
@@ -82,10 +82,91 @@ The main orchestration code lives in:
 
 ## Installation
 
-Install the Python dependencies from the repository root:
+The package requires Python 3.10 or newer.
+
+Create and activate a virtual environment from the repository root:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+```
+
+Install the project in editable mode:
+
+```bash
+python -m pip install -e .
+```
+
+If you only want the raw dependencies without installing the package entry point, use:
 
 ```bash
 python -m pip install -r requirements.txt
+```
+
+Before running any LLM-backed step, update the placeholder values in `config/api_configs.json`.
+
+## Run as a package
+
+After installation, you can run the pipeline through the console script:
+
+```bash
+eu-ai-act-ontology
+```
+
+The default run executes:
+
+- `memory_generation`
+- `generate_chapter_based_ontology`
+
+To run specific pipeline goals explicitly:
+
+```bash
+eu-ai-act-ontology generate_competency_questions extract_concepts generate_ontology
+```
+
+You can also override the ontology-generation limits from the CLI:
+
+```bash
+eu-ai-act-ontology --concept_limit 250 --chapter_limit 5
+```
+
+To see all available options:
+
+```bash
+eu-ai-act-ontology --help
+```
+
+You can also call the package programmatically. The `params` dictionary mirrors the full CLI argument set:
+
+```python
+from pathlib import Path
+
+from main import main
+
+root = Path.cwd()
+
+report = main(
+    params={
+        "goals": ["memory_generation"],
+        "declarative": root / "memory/declarative/existing_ontologies/aio-full.owl",
+        "procedural": root / "memory/procedural/ai_act_full_content.json",
+        "competency_questions": root / "competency_questions/competency_questions.json",
+        "concept_extraction_output": root / "concept_extraction/concepts.json",
+        "existing_ontologies": [
+            root / "memory/declarative/existing_ontologies/dpv-owl.rdf",
+            root / "memory/declarative/existing_ontologies/vair.owl",
+            root / "memory/declarative/existing_ontologies/aio-full.owl",
+            root / "memory/declarative/existing_ontologies/airo.owl",
+        ],
+        "mapping_output": root / "concept_mappings/mappings.json",
+        "ontology_output": root / "ontology/proof_of_concept_ontology_new_no_map.ttl",
+        "config": root / "config/api_configs.json",
+        "concept_limit": 1,
+        "chapter_limit": 1,
+    },
+    print_report=False,
+)
 ```
 
 ## Generated artifacts

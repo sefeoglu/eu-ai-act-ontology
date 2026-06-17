@@ -8,9 +8,6 @@ from memory.procedural_memory import ProceduralMemory
 from host.agents import domain_expert_agent
 from utils import format_mapping_output_as_json
 
-CONCEPT_LIMIT = 500
-CHAPTER_LIMIT = 7
-
 class OntologyGenerator:
     """Performs ontology operations over a preloaded DeclarativeMemory graph."""
     """Args:
@@ -23,11 +20,23 @@ class OntologyGenerator:
     run_config_path: Optional[str]
         Path to the run configuration file (e.g., API configs). If None, a default path will be used.
     """
-    def __init__(self, declarative_memory: DeclarativeMemory, procedural_memory: ProceduralMemory, output_path = None, run_config_path = None) -> None:
+    def __init__(
+        self,
+        declarative_memory: DeclarativeMemory,
+        procedural_memory: ProceduralMemory,
+        output_path=None,
+        run_config_path=None,
+        concept_limit: int = None,
+        chapter_limit: int = None,
+    ) -> None:
+        if concept_limit is None or chapter_limit is None:
+            raise ValueError("concept_limit and chapter_limit must be provided from outside OntologyGenerator")
         self.declarative_memory = declarative_memory
         self.procedural_memory = procedural_memory
         self._ontology_output_path = output_path
         self._run_config_path = run_config_path
+        self._concept_limit = concept_limit
+        self._chapter_limit = chapter_limit
 
     def _write_ontology_output(self, ontology_content: str) -> None:
         with open(self._ontology_output_path, "w", encoding="utf-8") as output_file:
@@ -123,7 +132,7 @@ class OntologyGenerator:
                 }
         
                 all_concepts.append(concept_record)
-            if chapter_index >= CHAPTER_LIMIT - 1:  # Limit to first 7 articles for testing
+            if chapter_index >= self._chapter_limit - 1:
                 break
         print(f"path to save extracted concepts: {self.procedural_memory.concept_extraction_output_path}")
 
@@ -256,7 +265,10 @@ class OntologyGenerator:
 
     def generate_ontology(self) -> str:
         self.all_concept_cleaned, _, _ = self.load_concept_extraction_output()
-        ontology_content = domain_expert_agent.generate_full_turtle_ontology(self.all_concept_cleaned[:CONCEPT_LIMIT], self._run_config_path)
+        ontology_content = domain_expert_agent.generate_full_turtle_ontology(
+            self.all_concept_cleaned[:self._concept_limit],
+            self._run_config_path,
+        )
 
         if ontology_content is None:
             raise ValueError(
@@ -283,7 +295,7 @@ class OntologyGenerator:
         for chapter_title, chapter_records in chapter_concepts.items():
             chapter_ontology = domain_expert_agent.generate_local_chapter_ontology(
                 chapter_title,
-                chapter_records[:CONCEPT_LIMIT],
+                chapter_records[:self._concept_limit],
                 self._run_config_path,
             )
 

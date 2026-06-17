@@ -14,6 +14,22 @@ SCRIPT_DIR = os.path.dirname(os.path.realpath(os.path.join(os.getcwd(), os.path.
 sys.path.append(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
 
 PREFIX = "/".join(os.path.dirname(os.path.abspath(__file__)).split("/")[:-2]) + "/"
+
+
+def _resolve_path(value: Optional[Any]) -> Optional[str]:
+    if value is None:
+        return None
+
+    path_str = str(value)
+    if os.path.isabs(path_str):
+        return path_str
+    return PREFIX + path_str
+
+
+def _default_main_params() -> Dict[str, Any]:
+    return vars(build_cli_parser().parse_args([])).copy()
+
+
 def build_cli_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="EU AI Act ontology prototype pipeline"
@@ -71,7 +87,19 @@ def build_cli_parser() -> argparse.ArgumentParser:
         metavar="PATH",
         default="eu-ai-act-ontology/config/api_configs.json",
         help="Path to the API configuration file (default: eu-ai-act-ontology/config/api_configs.json)"
-     )  
+     )
+    parser.add_argument(
+        "--concept_limit",
+        type=int,
+        default=500,
+        help="Maximum number of extracted concept records to use for ontology generation (default: 500)",
+    )
+    parser.add_argument(
+        "--chapter_limit",
+        type=int,
+        default=7,
+        help="Maximum number of chapters to process during concept extraction (default: 7)",
+    )
     
     return parser
 
@@ -85,7 +113,9 @@ def run_prototype_pipeline(
     existing_ontologies: Optional[List[Path]] = None,
     mapping_output_path: Optional[Path] = None,
     ontology_output_path: Optional[Path] = None,
-    run_config_path: Optional[Path] = None
+    run_config_path: Optional[Path] = None,
+    concept_limit: int = 500,
+    chapter_limit: int = 7,
 
 ) -> Dict[str, Any]:
     """Create the prototype client with the given inputs and run the pipeline."""
@@ -100,26 +130,45 @@ def run_prototype_pipeline(
             "run_config_path": run_config_path,
         },
         run_config_path=run_config_path,
-        ontology_output_path=ontology_output_path
+        ontology_output_path=ontology_output_path,
+        concept_limit=concept_limit,
+        chapter_limit=chapter_limit,
     )
     return prototype_client.run_pipeline(goals)
 
 
-def main(argv: Optional[List[str]] = None) -> None:
-    args = build_cli_parser().parse_args(argv)
+def main(
+    argv: Optional[List[str]] = None,
+    params: Optional[Dict[str, Any]] = None,
+    print_report: bool = True,
+) -> List[Dict[str, Any]]:
+    if argv is not None and params is not None:
+        raise ValueError("Pass either argv or params to main(), not both.")
+
+    if params is None:
+        args = build_cli_parser().parse_args(argv)
+        resolved_params: Dict[str, Any] = vars(args)
+    else:
+        resolved_params = _default_main_params()
+        resolved_params.update(params)
+
     report = run_prototype_pipeline(
-        goals=args.goals,
-        declarative_path= PREFIX +str(args.declarative),
-        procedural_path= PREFIX + str(args.procedural),
-        competency_questions_path=PREFIX + str(args.competency_questions),
-        concept_extraction_output_path=PREFIX + str(args.concept_extraction_output),
-        existing_ontologies=[PREFIX + str(ont) for ont in args.existing_ontologies],
-        mapping_output_path=PREFIX + str(args.mapping_output),
-        ontology_output_path=PREFIX + str(args.ontology_output),
-        run_config_path=PREFIX + str(args.config)
+        goals=resolved_params["goals"],
+        declarative_path=_resolve_path(resolved_params["declarative"]),
+        procedural_path=_resolve_path(resolved_params["procedural"]),
+        competency_questions_path=_resolve_path(resolved_params["competency_questions"]),
+        concept_extraction_output_path=_resolve_path(resolved_params["concept_extraction_output"]),
+        existing_ontologies=[_resolve_path(ont) for ont in resolved_params["existing_ontologies"]],
+        mapping_output_path=_resolve_path(resolved_params["mapping_output"]),
+        ontology_output_path=_resolve_path(resolved_params["ontology_output"]),
+        run_config_path=_resolve_path(resolved_params["config"]),
+        concept_limit=resolved_params["concept_limit"],
+        chapter_limit=resolved_params["chapter_limit"],
     )
-    print("Pipeline execution report:")
-    print(json.dumps(report, indent=2))
+    if print_report:
+        print("Pipeline execution report:")
+        print(json.dumps(report, indent=2))
+    return report
 
 
 if __name__ == "__main__":
