@@ -1,6 +1,6 @@
 # Memory-Assisted Ontology Engineering Architecture for Regulatory Knowledge
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 ![Python](https://img.shields.io/badge/Python-3.12+-blue)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 ![Ontology](https://img.shields.io/badge/ontology-Turtle-7E57C2)
 ![Architecture](https://img.shields.io/badge/Architecture-Memory--assisted%20MCP-0F766E)
 ![Agents](https://img.shields.io/badge/Agents-Domain%20expert%20%26%20retriever-7C3AED)
