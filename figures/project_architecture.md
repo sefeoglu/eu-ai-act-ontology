@@ -1,4 +1,4 @@
-# Project Architecture Figure
+# Memory-Assisted Ontology Engineering Architecture for Regulatory Knowledge
 
 This diagram summarizes the main runtime components of the memory-based MCP prototype and the artifacts produced by the pipeline.
 

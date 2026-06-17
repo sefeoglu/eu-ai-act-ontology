@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1040" viewBox="0 0 1200 1040" role="img" aria-labelledby="title desc">
-	<title id="title">EU AI Act Ontology Project Architecture</title>
+	<title id="title">Memory-Assisted Ontology Engineering Architecture for Regulatory Knowledge</title>
 	<desc id="desc">Architecture diagram showing the client, host, memory, server, and generated artifacts in the ontology generation pipeline.</desc>
 	<defs>
 		<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
@@ -21,7 +21,7 @@
 	</defs>
 
 	<rect width="1200" height="1040" fill="#fffdf8"/>
-	<text x="70" y="64" class="title">Memory-Based MCP Architecture for EU AI Act Ontology Generation</text>
+	<text x="70" y="64" class="title">Memory-Assisted Ontology Engineering Architecture for Regulatory Knowledge</text>
 	<text x="70" y="92" class="subtitle">Client goals are planned in the host, executed by the server, and grounded in declarative and procedural memory to produce ontology artifacts.</text>
 
 	<rect x="70" y="140" width="1060" height="120" fill="#f5efe3" stroke="#bb8a3b" class="group"/>
