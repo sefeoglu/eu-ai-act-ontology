@@ -1,7 +1,6 @@
 # Memory-Assisted Ontology Engineering Architecture for Regulatory Knowledge
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 ![Python](https://img.shields.io/badge/Python-3.12+-blue)
-![Status](https://img.shields.io/badge/status-proof--of--concept-orange)
 ![Ontology](https://img.shields.io/badge/ontology-Turtle-7E57C2)
 
 ## Project architecture
