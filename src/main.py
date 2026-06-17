@@ -21,9 +21,9 @@ def build_cli_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "goals",
         nargs="*",
-        default=['memory_generation', 'borrow_concept_extraction'],
+        default=['memory_generation', 'generate_chapter_based_ontology'],
         help=(
-             "Pipeline goal: 'memory_generation' | 'generate_competency_questions' | 'extract_concepts'  | 'generate_ontology'  | 'map_to_existing_ontologies' | 'borrow_concept_extraction'"
+               "Pipeline goal: 'memory_generation' | 'generate_competency_questions' | 'extract_concepts' | 'generate_ontology' | 'generate_chapter_based_ontology' | 'map_to_existing_ontologies' | 'borrow_concept_extraction'"
         ),
     )
     parser.add_argument(

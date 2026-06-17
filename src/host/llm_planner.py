@@ -9,6 +9,7 @@ PIPELINE_ACTIONS = {
     "extract_concepts": "extract_concepts",
     "map_to_existing_ontologies": "map_to_existing_ontologies",
     "generate_ontology": "generate_ontology",
+    "generate_chapter_based_ontology": "generate_chapter_based_ontology",
     "borrow_concept_extraction": "borrow_concept_extraction",
 }
 

@@ -40,7 +40,7 @@ def build_competency_question_prompt(contextual_text, gpt_information):
     
     Args:
         contextual_text (str): The contextual text to base the question on.
-        
+        gpt_information (dict): Dictionary containing GPT role and model information.
     Returns:
         str: The generated competency question.
     """
@@ -199,6 +199,44 @@ def generate_full_turtle_ontology(
 
     except Exception as e:
         logging.exception(f"Error occurred while generating ontology: {e}")
+        return None
+
+
+def generate_local_chapter_ontology(chapter_title, chapter_concepts, config):
+    chapter_concept_payload = {
+        "chapter": chapter_title,
+        "concepts": chapter_concepts,
+    }
+    return generate_full_turtle_ontology(chapter_concept_payload, config)
+
+
+def generate_global_chapter_ontology(chapter_ontologies, config):
+    try:
+        print("Loading GPT information...")
+
+        gpt_information, ontology_generation_prompt = load_gpt_prompt(
+            config,
+            "ontology_generation_prompt",
+        )
+        serialized_chapter_ontologies = json.dumps(
+            chapter_ontologies,
+            indent=2,
+            ensure_ascii=False,
+        )
+        gpt_information["user_query"] = f"""
+                Follow this: {ontology_generation_prompt}
+
+                Merge the following chapter-level ontologies into one coherent ontology for the full regulation.
+                Reconcile duplicate classes and properties across chapters, preserve consistent prefixes,
+                and return only valid turtle content.
+
+                Chapter ontologies: {serialized_chapter_ontologies}
+                """
+        merged_ontology_lines = run_openai_chat_completion(gpt_information)
+        return "\n".join(merged_ontology_lines)
+
+    except Exception as e:
+        logging.exception(f"Error occurred while merging chapter ontologies: {e}")
         return None
 
 def apply_mapping_borrows(turtle, mappings, config):

@@ -55,6 +55,15 @@ class OntologyGenerator:
         print(f"Generated ontology saved to {self._ontology_output_path}")
         self._validate_saved_ontology(ontology_content)
 
+    def _group_concepts_by_chapter(self, concept_records: List[Dict[str, str]]) -> Dict[str, List[Dict[str, str]]]:
+        chapter_concepts: Dict[str, List[Dict[str, str]]] = {}
+
+        for concept_record in concept_records:
+            chapter_title = concept_record.get("chapter", "Ungrouped")
+            chapter_concepts.setdefault(chapter_title, []).append(concept_record)
+
+        return chapter_concepts
+
 
     def memory_generation(self) -> Dict[str, object]:
         """Return a structured representation of the loaded memory content."""
@@ -86,6 +95,7 @@ class OntologyGenerator:
         all_concepts = []
 
         for chapter_index, chapter_entry in enumerate(chapter_competency_questions):
+            chapter_title = chapter_entry['chapter']
             article_competency_questions = chapter_entry['list_article_cqs']
 
             for article_question_entry in article_competency_questions:
@@ -101,6 +111,7 @@ class OntologyGenerator:
                 extracted_concepts_text = extracted_concepts_text.replace("json\n", '').replace("`", "")
                 extracted_concepts = json.loads(extracted_concepts_text)
                 concept_record = {
+                    "chapter": chapter_title,
                     "article": article_title,
                     "url": article_url,
                     "concepts": extracted_concepts,
@@ -197,6 +208,7 @@ class OntologyGenerator:
                 extracted_properties.extend(property_names)
                
                 self.all_concept_cleaned.append({
+                    "chapter": concept_record.get('chapter', 'Ungrouped'),
                     "article": concept_record['article'],
                     "url": concept_record['url'],
                     "entities": entity_names,
@@ -261,6 +273,52 @@ class OntologyGenerator:
         return (
             f"Generated ontology with {self.declarative_memory.triple_count()} triples "
             f"and procedural context from {self.procedural_memory.get_metadata()}"
+        )
+
+    def generate_chapter_based_ontology(self) -> str:
+        self.all_concept_cleaned, _, _ = self.load_concept_extraction_output()
+        chapter_concepts = self._group_concepts_by_chapter(self.all_concept_cleaned)
+        chapter_ontologies = []
+
+        for chapter_title, chapter_records in chapter_concepts.items():
+            chapter_ontology = domain_expert_agent.generate_local_chapter_ontology(
+                chapter_title,
+                chapter_records[:CONCEPT_LIMIT],
+                self._run_config_path,
+            )
+
+            if chapter_ontology is None:
+                raise ValueError(
+                    f"Chapter ontology generation failed for {chapter_title}."
+                )
+
+            chapter_ontologies.append(
+                {
+                    "chapter": chapter_title,
+                    "ontology": chapter_ontology,
+                }
+            )
+
+        ontology_content = domain_expert_agent.generate_global_chapter_ontology(
+            chapter_ontologies,
+            self._run_config_path,
+        )
+
+        if ontology_content is None:
+            raise ValueError(
+                "Global chapter ontology generation failed."
+            )
+
+        if not isinstance(ontology_content, str):
+            raise TypeError(
+                f"Expected ontology_content to be str, got {type(ontology_content)}"
+            )
+
+        self._persist_and_validate_ontology(ontology_content)
+
+        return (
+            f"Generated chapter-based ontology across {len(chapter_ontologies)} chapters "
+            f"with procedural context from {self.procedural_memory.get_metadata()}"
         )
     
     def generate_competency_questions_by_article(self, articles: str) -> List[str]:
