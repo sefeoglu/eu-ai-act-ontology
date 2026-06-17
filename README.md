@@ -115,6 +115,12 @@ This script loads `ontology/proof_of_concept_ontology_v0.2.ttl` and executes exa
 - provider compliance, documentation, and risk relations
 - transparency obligations
 
+
+## Project architecture
+
+![Project architecture](figures/project_architecture.svg)
+
+Source diagram: [figures/project_architecture.md](figures/project_architecture.md)
 ### Compute structural metrics
 
 ```bash

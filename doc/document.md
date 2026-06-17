@@ -18,6 +18,10 @@ We designed a memory-based MCP that automatically constructs a draft ontology an
 
 The memory-based MCP consists of four main components: **Client**, **Host**, **Server**, and **Memory**.
 
+![Project architecture](../figures/project_architecture.svg)
+
+Figure 1. Architecture of the memory-based MCP prototype, showing how user goals move from the client through the host and server, while declarative and procedural memory provide the context used to generate ontology artifacts and evaluation outputs.
+
 ### 2.1 Client
 
 The Client serves as the interface between the user and the host system, enabling the execution of goals defined within the ontology development process. The client submits these goals to the LLM Planner located in the Host, which orchestrates the tasks required to accomplish them. Upon completion, the system generates a report describing the results and outcomes of the executed goals.
