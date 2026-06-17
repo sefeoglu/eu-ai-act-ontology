@@ -160,7 +160,7 @@ report = main(
             root / "memory/declarative/existing_ontologies/airo.owl",
         ],
         "mapping_output": root / "concept_mappings/mappings.json",
-        "ontology_output": root / "ontology/proof_of_concept_ontology_new_no_map.ttl",
+        "ontology_output": root / "ontology/proof_of_concept_ontology.ttl",
         "config": root / "config/api_configs.json",
         "concept_limit": 1,
         "chapter_limit": 1,

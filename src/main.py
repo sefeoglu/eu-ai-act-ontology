@@ -79,7 +79,7 @@ def build_cli_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--ontology_output",
         metavar="PATH",
-        default="eu-ai-act-ontology/ontology/proof_of_concept_ontology_new_no_map.ttl",
+        default="eu-ai-act-ontology/ontology/proof_of_concept_ontology.ttl",
         help="Path to save the generated ontology"
     )
     parser.add_argument(
