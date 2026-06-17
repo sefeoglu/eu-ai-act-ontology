@@ -1,4 +1,5 @@
 """Prototype ontology generator backed by a loaded DeclarativeMemory."""
+from pathlib import Path
 import re
 from typing import Dict, List
 
@@ -43,8 +44,8 @@ class OntologyGenerator:
                 "triple_count": self.declarative_memory.triple_count(),
             },
             "procedural":
-             { "metadata": self.procedural_memory.get_metadata(),
-              "document_content_retriever": self.procedural_memory.content_retriever(config=self._run_config_path)
+                         { "metadata": self.procedural_memory.get_metadata(),
+                            "document_content_retriever": self.procedural_memory.content_retriever(config_path=self._run_config_path)
               
             }
         }
@@ -104,7 +105,15 @@ class OntologyGenerator:
     
     def borrow_concept_extraction(self) -> List[Dict[str, str]]:
         """Return the extracted concepts from the procedural memory."""
-       
+        ontology_output_path = Path(self._ontology_output_path)
+        mapping_output_path = Path(self.procedural_memory.mapping_output_path)
+
+        if not ontology_output_path.exists():
+            self.generate_ontology()
+
+        if not mapping_output_path.exists():
+            self.map_to_existing_ontologies()
+
         self.generated_onto = open(self._ontology_output_path, 'r', encoding='utf-8').read()
         self.mappings = json.load(open(self.procedural_memory.mapping_output_path, 'r', encoding='utf-8'))
         
@@ -194,7 +203,7 @@ class OntologyGenerator:
     def map_to_existing_ontologies(self) -> Dict[str, int]:
         """Return the top namespace occurrence counts in the loaded graph."""
 
-        
+
         ontology_paths = self.procedural_memory.existing_ontologies
         mappings = []
         self.generated_onto = self.declarative_memory.load_from_path(self._ontology_output_path)
@@ -229,7 +238,7 @@ class OntologyGenerator:
 
     def generate_ontology(self) -> str:
         self.all_concept_cleaned , _, _ = self.get_concept_extraction_output()
-        ontology_content = domain_expert_agent.run_full_ttl_ontology(self.all_concept_cleaned[:CONCEPT_LIMIT])
+        ontology_content = domain_expert_agent.run_full_ttl_ontology(self.all_concept_cleaned[:CONCEPT_LIMIT], self._run_config_path)
 
         if ontology_content is None:
             raise ValueError(

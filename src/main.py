@@ -21,28 +21,25 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "goals",
         nargs="*",
-        default=['memory_generation','generate_competency_questions', 'extract_concepts', 'generate_ontology', 'map_to_existing_ontologies',  'borrow_concept_extraction'],
+        default=['memory_generation', 'borrow_concept_extraction'],
         help=(
              "Pipeline goal: 'memory_generation' | 'generate_competency_questions' | 'extract_concepts'  | 'generate_ontology'  | 'map_to_existing_ontologies' | 'borrow_concept_extraction'"
         ),
     )
     parser.add_argument(
         "--declarative",
-        metavar="PATH",
-        type=Path,
-        default=None,
-        help="Path to a declarative-memory OWL/RDF ontology file (optional).",
+        default="eu-ai-act-ontology/memory/declarative/existing_ontologies/aio-full.owl",
+        help="Path to a declarative-memory OWL/RDF ontology file.",
     )
     parser.add_argument(
         "--procedural",
-        metavar="PATH",
-        type=Path,
-        default=None,
-        help="Path to the procedural-memory regulatory PDF (optional).",
+        default="eu-ai-act-ontology/memory/procedural/ai_act_full_content.json",
+        help="Path to the procedural-memory regulatory JSON file.",
     )
     parser.add_argument(
         "--competency_questions",
          metavar="PATH",
+         type=Path,
          default="eu-ai-act-ontology/competency_questions/competency_questions.json",
          help="Path to save generated competency questions (default: eu-ai-act-ontology/competency_questions/competency_questions.json)",
     )
@@ -100,7 +97,7 @@ def run_pipeline(
             "concept_extraction_output_path": concept_extraction_output_path,
             "existing_ontologies": existing_ontologies,
             "mapping_output_path": mapping_output_path,
-
+            "run_config_path": run_config_path,
         },
         run_config_path=run_config_path,
         ontology_output_path=ontology_output_path
@@ -112,14 +109,14 @@ def main(argv: Optional[List[str]] = None) -> None:
     args = build_parser().parse_args(argv)
     report = run_pipeline(
         goals=args.goals,
-        declarative_path=PREFIX+args.declarative,
-        procedural_path=PREFIX+args.procedural,
-        competency_questions_path=PREFIX+args.competency_questions,
-        concept_extraction_output_path=PREFIX+args.concept_extraction_output,
-        existing_ontologies=[PREFIX+str(ont) for ont in args.existing_ontologies],
-        mapping_output_path=PREFIX+args.mapping_output,
-        ontology_output_path=PREFIX+args.ontology_output,
-        run_config_path=PREFIX+args.config
+        declarative_path= PREFIX +str(args.declarative),
+        procedural_path= PREFIX + str(args.procedural),
+        competency_questions_path=PREFIX + str(args.competency_questions),
+        concept_extraction_output_path=PREFIX + str(args.concept_extraction_output),
+        existing_ontologies=[PREFIX + str(ont) for ont in args.existing_ontologies],
+        mapping_output_path=PREFIX + str(args.mapping_output),
+        ontology_output_path=PREFIX + str(args.ontology_output),
+        run_config_path=PREFIX + str(args.config)
     )
     print("Pipeline execution report:")
     print(json.dumps(report, indent=2))
@@ -128,4 +125,4 @@ def main(argv: Optional[List[str]] = None) -> None:
 if __name__ == "__main__":
     print("Starting EU AI Act ontology prototype pipeline...")
     print(PREFIX)
-    # main()
+    main()

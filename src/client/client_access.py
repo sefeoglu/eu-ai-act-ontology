@@ -64,7 +64,7 @@ class PrototypeClient:
         )
 
         # 2. Construct the pipeline components using the loaded memory.
-        ontology_generator = OntologyGenerator(declarative_memory=self.declarative_memory, procedural_memory=self.procedural_memory, output_path=self._ontology_output_path)
+        ontology_generator = OntologyGenerator(declarative_memory=self.declarative_memory, procedural_memory=self.procedural_memory, output_path=self._ontology_output_path, run_config_path=self._run_config_path)
         self.planner = LLMPlanner()
         self.client = MCPClient(generator=ontology_generator)
         self.validator = ValidationController()

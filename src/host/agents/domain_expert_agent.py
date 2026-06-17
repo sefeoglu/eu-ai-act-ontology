@@ -3,8 +3,17 @@ import json
 import openai
 import logging
 import re
+import os
+import sys
 
+from pathlib import Path
 
+PACKAGE_PARENT = '..'
+
+SCRIPT_DIR = os.path.dirname(os.path.realpath(os.path.join(os.getcwd(), os.path.expanduser(__file__))))
+sys.path.append(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
+
+PREFIX = "/".join(os.path.dirname(os.path.abspath(__file__)).split("/")[:-4]) + "/"
 def run_gpt_chat(config):
   
     user_query = config['user_query']
@@ -56,7 +65,7 @@ def compentency_question_base(contextual_text, gpt_information):
     Returns:
         str: The generated competency question.
     """
-    compentency_question_text_base_path = gpt_information['competency_question_prompt']
+    compentency_question_text_base_path = PREFIX + gpt_information['competency_question_prompt']
     compentency_question_text_base = open(compentency_question_text_base_path, 'r').read()
 
     print(f"Generating competency question with base prompt: {compentency_question_text_base}")
@@ -138,6 +147,34 @@ def read_file(path):
         return f.read()
 
 
+def resolve_config_resource_path(config_path, resource_path):
+    resource = Path(resource_path)
+    if resource.is_absolute() or resource.exists():
+        return resource
+
+    config_dir = Path(config_path).resolve().parent
+    repo_root = config_dir.parent
+    resource_parts = resource.parts
+
+    if resource_parts and resource_parts[0] == repo_root.name:
+        candidate = repo_root.joinpath(*resource_parts[1:])
+        if candidate.exists():
+            return candidate
+
+    candidate = repo_root / resource
+    if candidate.exists():
+        return candidate
+
+    return config_dir / resource
+
+
+def load_gpt_config(config_path):
+    resolved_config_path = Path(config_path).resolve()
+    with open(resolved_config_path, "r", encoding="utf-8") as f:
+        gpt_information = json.load(f)["gpt"]
+    return gpt_information, resolved_config_path
+
+
 
 def chunks(items, size=500):
     for i in range(0, len(items), size):
@@ -149,16 +186,14 @@ def run_full_ttl_ontology(
     try:
         print("Loading GPT information...")
 
-        with open(config, "r", encoding="utf-8") as f:
-            gpt_information = json.load(f)["gpt"]
-
-        triple_generation_prompt = read_file(gpt_information["triple_generation_prompt"])
-        ontology_generation_prompt = read_file(gpt_information["ontology_generation_prompt"])
-        domain_range_prompt = read_file(gpt_information["domain_range_prompt"])
-        data_type_prompt = read_file(gpt_information["data_type_prompt"])
-        axioms_prompt = read_file(gpt_information["axioms_prompt"])
-        rdf_comments_prompt = read_file(gpt_information["rdf_comments"])
-        individuals_prompt = read_file(gpt_information["individuals_prompt"])
+        gpt_information, resolved_config_path = load_gpt_config(config)
+        triple_generation_prompt = read_file(resolve_config_resource_path(resolved_config_path, PREFIX + gpt_information["triple_generation_prompt"]))
+        ontology_generation_prompt = read_file(resolve_config_resource_path(resolved_config_path, PREFIX + gpt_information["ontology_generation_prompt"]))
+        domain_range_prompt = read_file(resolve_config_resource_path(resolved_config_path, PREFIX + gpt_information["domain_range_prompt"]))
+        data_type_prompt = read_file(resolve_config_resource_path(resolved_config_path, PREFIX + gpt_information["data_type_prompt"]))
+        axioms_prompt = read_file(resolve_config_resource_path(resolved_config_path, PREFIX + gpt_information["axioms_prompt"]))
+        rdf_comments_prompt = read_file(resolve_config_resource_path(resolved_config_path, PREFIX + gpt_information["rdf_comments"]))
+        individuals_prompt = read_file(resolve_config_resource_path(resolved_config_path, PREFIX + gpt_information["individuals_prompt"]))
         
 
         print("Generating triples in chunks...")
@@ -215,7 +250,7 @@ def get_borrows_from_mappings(turtle, mappings, config):
         with open(config, "r", encoding="utf-8") as f:
             gpt_information = json.load(f)["gpt"]
 
-        borrows_from_mappings_prompt = read_file(gpt_information["borrows_from_prompt"])
+        borrows_from_mappings_prompt = read_file(PREFIX + gpt_information["borrows_from_prompt"])
 
         gpt_information['user_query'] = f"""
                                         Following this: {borrows_from_mappings_prompt}\n\n
@@ -247,7 +282,7 @@ def run_gpt_based_concept_extraction(questions, config):
 
         print("Loading GPT information...")
         
-        prompt = open(gpt_information['concept_extraction_prompt'], 'r').read()
+        prompt = open(PREFIX + gpt_information['concept_extraction_prompt'], 'r').read()
         
         print(f"Generating concepts with base prompt: {prompt}")
         gpt_information['user_query'] = f"{prompt} Competency Questions: {questions}"
@@ -272,7 +307,7 @@ def run_gpt_based_mapping_to_existing_ontologies(
         with open(config, "r") as f:
             gpt_config = json.load(f)["gpt"]
 
-        with open(gpt_config["mapping_to_existing_ontologies_prompt"], "r") as f:
+        with open(PREFIX + gpt_config["mapping_to_existing_ontologies_prompt"], "r") as f:
             base_prompt = f.read()
 
         gpt_config["user_query"] = f"""{base_prompt}. existing_properties: {existing_properties}, Domain properties: {domain_properties}. Do not include any thing other than the mapping results in your response. Return the mapping results in a JSON format."""
@@ -333,7 +368,7 @@ def fix_mapping_output(data):
 def  fix_syntax_errors_in_turtle(data, config):
     try:
         gpt_information = json.load(open(config, 'r'))['gpt']
-        prompt = open(gpt_information['turtle_syntax_fix_prompt'], 'r').read()
+        prompt = open(PREFIX + gpt_information['turtle_syntax_fix_prompt'], 'r').read()
         gpt_information['user_query'] = f"{prompt} Turtle content: {data}"
         fixed_turtle = run_gpt_chat(gpt_information)
         return "\n".join(fixed_turtle)

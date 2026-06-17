@@ -20,6 +20,7 @@ class ProceduralMemory:
         self.concept_extraction_output_path: Optional[Path] = Path(concept_extraction_output_path)
         self.existing_ontologies: Optional[list] = existing_ontologies
         self.mapping_output_path: Optional[Path] = Path(mapping_output_path)
+
         self.content_retriever(config)
 
     def get_metadata(self) -> Dict[str, Any]:
@@ -39,14 +40,18 @@ class ProceduralMemory:
         """Return the full content of the procedural memory document."""
 
 
-        config = json.loads(config_path.read_text(encoding="utf-8")) if config_path else {}
+        resolved_config_path = Path(config_path) if config_path else None
+        config = json.loads(resolved_config_path.read_text(encoding="utf-8")) if resolved_config_path else {}
         url =  config['crawler']['base_url'] if 'crawler' in config and 'base_url' in config['crawler'] else None
         output = self.document_path
         timeout = config['crawler']['request_timeout'] if 'crawler' in config and 'request_timeout' in config['crawler'] else None
         user_agent = config['crawler']['headers']['User-Agent'] if 'crawler' in config and 'headers' in config['crawler'] and 'User-Agent' in config['crawler']['headers'] else None    
         if not all([url, output, timeout, user_agent]):
             raise ValueError("Missing crawler configuration parameters in config file.")
-
-        retrieve_content(url=url, output=output, timeout=timeout, user_agent=user_agent)
+        if not self.document_path.exists():
+            print(f"Document path {self.document_path} does not exist. Attempting to retrieve content from {url}...")
+            retrieve_content(url=url, output=output, timeout=timeout, user_agent=user_agent)
+        else:
+            print(f"Document path {self.document_path} already exists. Skipping content retrieval.")
 
 
