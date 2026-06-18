@@ -143,6 +143,8 @@ eu-ai-act-ontology --concept_limit 250 --chapter_limit 5
 
 ## Run Web UI
 
+
+![Web UI](figures/ui.png)
 If you want a browser-based control surface instead of passing every option on the command line, launch the built-in local UI:
 
 ```bash
