@@ -46,6 +46,7 @@ eu-ai-act-ontology/
 │   ├── client/                       # Pipeline entry client
 │   ├── host/                         # Planning, dispatch, and validation components
 │   ├── memory/                       # Declarative/procedural memory loaders
+│   ├── presentation/                 # Local web UI for configuring and monitoring runs
 │   ├── server/                       # Ontology generation logic
 │   ├── main.py                       # Prototype pipeline entry module
 │   └── utils.py                      # Shared helpers
@@ -71,6 +72,10 @@ The main orchestration code lives in:
 - `src/main.py`
 - `src/client/client_access.py`
 - `src/server/onto_generator_server.py`
+
+The local browser UI lives in:
+
+- `src/presentation/web_ui.py`
 
 ## Key inputs
 
@@ -131,6 +136,34 @@ You can also override the ontology-generation limits from the CLI:
 ```bash
 eu-ai-act-ontology --concept_limit 250 --chapter_limit 5
 ```
+
+## Run the local UI
+
+If you want a browser-based control surface instead of passing every option on the command line, launch the built-in local UI:
+
+```bash
+eu-ai-act-ontology --ui
+```
+
+You can launch the same interface directly from the source tree if you prefer:
+
+```bash
+python src/main.py --ui
+```
+
+What the UI provides:
+
+- goal selection for each pipeline stage
+- editable repository-relative input and output paths
+- configurable concept and chapter limits
+- live progress updates, activity log entries, and the final structured report
+- a stop control for ending the current background run
+
+Operational notes:
+
+- The UI binds to `127.0.0.1` on an ephemeral local port and opens in your default browser automatically.
+- Keep the terminal process running while the UI is open.
+- LLM-backed stages still require valid credentials in `config/api_configs.json`.
 
 To see all available options:
 

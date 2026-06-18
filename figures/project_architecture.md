@@ -1,13 +1,24 @@
 # Memory-Assisted Ontology Engineering Architecture for Regulatory Knowledge
 
-This diagram summarizes the main runtime components of the memory-based MCP prototype and the artifacts produced by the pipeline.
+This diagram summarizes the main runtime components of the memory-based MCP prototype, including both user entry surfaces and the artifacts produced by the pipeline.
 
 Rendered asset: ![Project architecture](project_architecture.svg)
 
 ```mermaid
 flowchart TB
-    user[Researcher or developer] --> cli[CLI\nsrc/main.py]
-    cli --> client[PrototypeClient]
+    user[Researcher or developer]
+
+    subgraph entry[User entry]
+        cli[CLI run\nsrc/main.py]
+        ui[Local web UI\nsrc/presentation/web_ui.py]
+        main[Prototype entry\nsrc/main.py]
+    end
+
+    user --> cli
+    user --> ui
+    cli --> main
+    ui --> main
+    main --> client[PrototypeClient\nload memory and orchestrate goals]
 
     subgraph host[Host]
         planner[LLMPlanner\nmap goal to action]
@@ -16,21 +27,21 @@ flowchart TB
     end
 
     subgraph memory[Memory]
-        sources[Source knowledge\nEU AI Act content\nprompt templates\nreused ontologies] --> generator[MemoryGenerator]
-        generator --> decl[DeclarativeMemory]
-        generator --> proc[ProceduralMemory]
+        sources[Source knowledge\nEU AI Act JSON content\nprompt templates\nreused ontologies] --> generator[MemoryGenerator]
+        generator --> decl[DeclarativeMemory\nontology graph and reuse context]
+        generator --> proc[ProceduralMemory\npaths and source metadata]
     end
 
     subgraph server[Server]
-        onto[OntologyGenerator\nexecute ontology tasks]
+        onto[OntologyGenerator\nexecute generation, extraction,\nmapping, borrowing, and validation]
     end
 
-    subgraph outputs[Generated artifacts]
+    subgraph outputs[Generated artifacts and evaluation]
         cqs[Competency questions JSON]
         concepts[Concept extraction JSON]
         mappings[Ontology mappings JSON]
         ontology[Generated ontology TTL]
-        validation[SPARQL validation and metrics]
+        validation[SPARQL validation and metrics CSV]
     end
 
     client --> planner --> dispatcher --> onto

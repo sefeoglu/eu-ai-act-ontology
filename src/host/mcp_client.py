@@ -1,6 +1,6 @@
 """Local MCP-style dispatcher that executes pipeline actions."""
 
-from typing import Any
+from typing import Any, Callable, Dict, Optional
 
 from host.llm_planner import PIPELINE_ACTIONS
 from server.onto_generator_server import OntologyGenerator
@@ -15,7 +15,12 @@ class MCPClient:
     def __init__(self, generator: OntologyGenerator) -> None:
         self.generator = generator
 
-    def execute(self, action: str) -> Any:
+    def execute(
+        self,
+        action: str,
+        progress_callback: Optional[Callable[[Dict[str, Any]], None]] = None,
+        should_cancel: Optional[Callable[[], bool]] = None,
+    ) -> Any:
         """Dispatch *action* to the underlying generator."""
         """Args:
         action: str
@@ -29,9 +34,18 @@ class MCPClient:
         """
 
         print(f"Executing action: {action}")
+        if should_cancel is not None and should_cancel():
+            raise RuntimeError("Pipeline run stopped by user.")
+        if progress_callback is not None:
+            progress_callback({"stage": "action_started", "action": action})
         if action not in ALLOWED_ACTIONS:
             raise ValueError(
                 f"Unsupported action '{action}'. "
                 f"Allowed: {sorted(ALLOWED_ACTIONS)}"
             )
-        return getattr(self.generator, action)()
+        result = getattr(self.generator, action)()
+        if should_cancel is not None and should_cancel():
+            raise RuntimeError("Pipeline run stopped by user.")
+        if progress_callback is not None:
+            progress_callback({"stage": "action_completed", "action": action})
+        return result

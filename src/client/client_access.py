@@ -1,7 +1,7 @@
 """Prototype UI: loads memory files and drives the full pipeline."""
 
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Callable, Dict, List, Optional
 
 from host.llm_planner import LLMPlanner
 from host.mcp_client import MCPClient
@@ -81,7 +81,12 @@ class PrototypeClient:
     # Pipeline entry point
     # ------------------------------------------------------------------
 
-    def run_pipeline(self, goals: List[str]) -> List[Dict[str, Any]]:
+    def run_pipeline(
+        self,
+        goals: List[str],
+        progress_callback: Optional[Callable[[Dict[str, Any]], None]] = None,
+        should_cancel: Optional[Callable[[], bool]] = None,
+    ) -> List[Dict[str, Any]]:
         """Run the full pipeline for *goals* and return a structured report.
 
         Steps
@@ -103,10 +108,43 @@ class PrototypeClient:
         """
         reports = []
 
-        for goal in goals:
+        total_goals = len(goals)
+
+        def _raise_if_cancelled() -> None:
+            if should_cancel is not None and should_cancel():
+                raise RuntimeError("Pipeline run stopped by user.")
+
+        for index, goal in enumerate(goals, start=1):
+            _raise_if_cancelled()
             print(f"Processing goal: {goal}")
+            if progress_callback is not None:
+                progress_callback(
+                    {
+                        "stage": "goal_started",
+                        "goal": goal,
+                        "current": index,
+                        "total": total_goals,
+                    }
+                )
+            _raise_if_cancelled()
             plan = self.planner.create_plan(goal)
-            result = self.client.execute(plan["action"])
+            if progress_callback is not None:
+                progress_callback(
+                    {
+                        "stage": "plan_created",
+                        "goal": goal,
+                        "action": plan["action"],
+                        "current": index,
+                        "total": total_goals,
+                    }
+                )
+            _raise_if_cancelled()
+            result = self.client.execute(
+                plan["action"],
+                progress_callback=progress_callback,
+                should_cancel=should_cancel,
+            )
+            _raise_if_cancelled()
 
             goal_report = {
                 "goal": goal,
@@ -119,5 +157,16 @@ class PrototypeClient:
                 "result": result,
             }
             reports.append(goal_report)
+            if progress_callback is not None:
+                progress_callback(
+                    {
+                        "stage": "goal_completed",
+                        "goal": goal,
+                        "action": plan["action"],
+                        "current": index,
+                        "total": total_goals,
+                        "report": goal_report,
+                    }
+                )
 
         return reports

@@ -17,7 +17,7 @@ def run_openai_chat_completion(config):
     user_query = config['user_query']
    
     api_key = config['api_key']
-    print(f"Using OpenAI API key: {api_key}")
+    print("Using configured OpenAI API credentials")
     model = config['model']
     print(f"Using GPT model: {model}")
     seed_value = config.get('seed', 42)  # Default seed value if not provided

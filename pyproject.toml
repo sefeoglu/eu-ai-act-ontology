@@ -28,4 +28,4 @@ py-modules = ["main", "utils"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
-include = ["client", "client.*", "host", "host.*", "memory", "memory.*", "server", "server.*"]
+include = ["client", "client.*", "host", "host.*", "memory", "memory.*", "presentation", "presentation.*", "server", "server.*"]

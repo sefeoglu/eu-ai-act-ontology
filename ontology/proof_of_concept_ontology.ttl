@@ -1,0 +1,485 @@
+@prefix : <http://example.org/eu-ai-act#> .
+@prefix euai: <http://example.org/eu-ai-act#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/eu-ai-act> a owl:Ontology ;
+    rdfs:label "EU AI Act conceptual model" ;
+    rdfs:comment "Cleaned OWL ontology for selected EU AI Act concepts, expressed as classes, properties, individuals, and annotations. Source: EU AI Act Explorer; citation: Regulation (EU) 2024/1689." .
+
+### Classes
+
+:ai_system a owl:Class ;
+    rdfs:label "AI system" ;
+    rdfs:comment "A machine-based system designed to operate with varying levels of autonomy and that may exhibit adaptiveness after deployment, inferring from inputs how to generate outputs such as predictions, content, recommendations, or decisions. Source: EU AI Act Explorer; Article 3." ;
+    rdfs:subClassOf owl:Thing .
+
+:general_purpose_ai_model a owl:Class ;
+    rdfs:label "General-purpose AI model" ;
+    rdfs:comment "An AI model that displays significant generality and is capable of competently performing a wide range of distinct tasks. Source: EU AI Act Explorer; Article 3." ;
+    rdfs:subClassOf owl:Thing .
+
+:ai_system_category a owl:Class ;
+    rdfs:label "AI system category" ;
+    rdfs:comment "A regulatory category used to classify an AI system. Source: EU AI Act Explorer; Articles 3, 5, and 6." ;
+    rdfs:subClassOf owl:Thing .
+
+:high_risk_reason a owl:Class ;
+    rdfs:label "High-risk reason" ;
+    rdfs:comment "A reason for classifying an AI system as high-risk, such as being a safety component or falling within a listed high-risk use case. Source: EU AI Act Explorer; Article 6." ;
+    rdfs:subClassOf owl:Thing .
+
+:high_risk_ai_system a owl:Class ;
+    rdfs:label "High-risk AI system" ;
+    rdfs:comment "An AI system classified as high-risk because it is either a safety component of a product or falls within listed high-risk use cases. Source: EU AI Act Explorer; Article 6." ;
+    rdfs:subClassOf :ai_system ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            :ai_system
+            [ a owl:Restriction ;
+              owl:onProperty :isHighRiskBecause ;
+              owl:someValuesFrom :high_risk_reason
+            ]
+        )
+    ] .
+
+:product_ai_system a owl:Class ;
+    rdfs:label "Product AI system" ;
+    rdfs:comment "An AI system that is a safety component of a product or itself is a product covered by Union harmonisation legislation. Source: EU AI Act Explorer; Article 6." ;
+    rdfs:subClassOf :high_risk_ai_system .
+
+:annex_iii_ai_system a owl:Class ;
+    rdfs:label "Annex III AI system" ;
+    rdfs:comment "An AI system used in one of the high-risk areas listed in Annex III. Source: EU AI Act Explorer; Annex III and Article 6." ;
+    rdfs:subClassOf :ai_system .
+
+:prohibited_ai_practice a owl:Class ;
+    rdfs:label "Prohibited AI practice" ;
+    rdfs:comment "An AI practice that is prohibited because it is considered to create unacceptable risk. Source: EU AI Act Explorer; Article 5." ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            [ a owl:Restriction ;
+              owl:onProperty :isProhibitedUnder ;
+              owl:someValuesFrom :legal_provision
+            ]
+            [ a owl:Restriction ;
+              owl:onProperty :causesOrLikelyCausesHarm ;
+              owl:someValuesFrom :harm
+            ]
+        )
+    ] .
+
+:subliminal_manipulation a owl:Class ;
+    rdfs:label "Subliminal manipulation" ;
+    rdfs:comment "Use of AI techniques that materially distort a person's behavior in a manner that causes or is likely to cause harm. Source: EU AI Act Explorer; Article 5." ;
+    rdfs:subClassOf :prohibited_ai_practice .
+
+:exploitation_of_vulnerabilities a owl:Class ;
+    rdfs:label "Exploitation of vulnerabilities" ;
+    rdfs:comment "Use of AI to exploit vulnerabilities of a person or group due to age, disability, or social/economic situation. Source: EU AI Act Explorer; Article 5." ;
+    rdfs:subClassOf :prohibited_ai_practice .
+
+:social_scoring a owl:Class ;
+    rdfs:label "Social scoring" ;
+    rdfs:comment "Evaluation or classification of persons over time based on social behavior or personal characteristics leading to detrimental treatment. Source: EU AI Act Explorer; Article 5." ;
+    rdfs:subClassOf :prohibited_ai_practice .
+
+:unacceptable_risk a owl:Class ;
+    rdfs:label "Unacceptable risk" ;
+    rdfs:comment "A level of risk that justifies prohibition of an AI practice under the Regulation. Source: EU AI Act Explorer; Article 5." ;
+    rdfs:subClassOf owl:Thing .
+
+:harm a owl:Class ;
+    rdfs:label "Harm" ;
+    rdfs:comment "Adverse impact on health, safety, or fundamental rights caused or likely to be caused by an AI practice. Source: EU AI Act Explorer; Article 5." ;
+    rdfs:subClassOf owl:Thing .
+
+:vulnerability a owl:Class ;
+    rdfs:label "Vulnerability" ;
+    rdfs:comment "A condition such as age, disability, or socio-economic dependence that can be exploited by AI. Source: EU AI Act Explorer; Article 5." ;
+    rdfs:subClassOf owl:Thing .
+
+:market_placement a owl:Class ;
+    rdfs:label "Market placement" ;
+    rdfs:comment "The first making available of an AI system on the Union market. Source: EU AI Act Explorer; Article 3." ;
+    rdfs:subClassOf owl:Thing .
+
+:putting_into_service a owl:Class ;
+    rdfs:label "Putting into service" ;
+    rdfs:comment "The supply of an AI system for first use directly to the deployer or for own use in the Union. Source: EU AI Act Explorer; Article 3." ;
+    rdfs:subClassOf owl:Thing .
+
+:use_of_ai_system a owl:Class ;
+    rdfs:label "Use of AI system" ;
+    rdfs:comment "The operation or deployment of an AI system by a user or deployer in the Union. Source: EU AI Act Explorer; Article 3." ;
+    rdfs:subClassOf owl:Thing .
+
+:operator a owl:Class ;
+    rdfs:label "Operator" ;
+    rdfs:comment "A provider, deployer, importer, distributor, product manufacturer, or authorized representative involved in the lifecycle of an AI system. Source: EU AI Act Explorer; Article 3." ;
+    rdfs:subClassOf owl:Thing .
+
+:provider a owl:Class ;
+    rdfs:label "Provider" ;
+    rdfs:comment "A natural or legal person, public authority, agency, or other body that develops an AI system or has it developed and places it on the market or puts it into service under its own name or trademark. Source: EU AI Act Explorer; Article 3." ;
+    rdfs:subClassOf :operator ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            :operator
+            [ a owl:Restriction ;
+              owl:onProperty :develops ;
+              owl:someValuesFrom :ai_system
+            ]
+        )
+    ] .
+
+:deployer a owl:Class ;
+    rdfs:label "Deployer" ;
+    rdfs:comment "A natural or legal person, public authority, agency, or other body using an AI system under its authority, except for personal non-professional activity. Source: EU AI Act Explorer; Article 3." ;
+    rdfs:subClassOf :operator .
+
+:importer a owl:Class ;
+    rdfs:label "Importer" ;
+    rdfs:comment "A person or body established in the Union that places on the market an AI system bearing the name or trademark of a person established outside the Union. Source: EU AI Act Explorer; Article 3." ;
+    rdfs:subClassOf :operator .
+
+:distributor a owl:Class ;
+    rdfs:label "Distributor" ;
+    rdfs:comment "A person or body in the supply chain, other than the provider or importer, that makes an AI system available on the market. Source: EU AI Act Explorer; Article 3." ;
+    rdfs:subClassOf :operator .
+
+:authorized_representative a owl:Class ;
+    rdfs:label "Authorized representative" ;
+    rdfs:comment "A person or body established in the Union mandated by a provider to act on its behalf. Source: EU AI Act Explorer; Article 3." ;
+    rdfs:subClassOf :operator .
+
+:legal_provision a owl:Class ;
+    rdfs:label "Legal provision" ;
+    rdfs:comment "A legal provision used here as the target of prohibition relations. This is an abstract placeholder for the provided content only. Source: EU AI Act Explorer; Article 5." ;
+    rdfs:subClassOf owl:Thing .
+
+:requirement a owl:Class ;
+    rdfs:label "Requirement" ;
+    rdfs:comment "A mandatory compliance requirement applicable to high-risk AI systems. Source: EU AI Act Explorer; Articles 9-15." ;
+    rdfs:subClassOf owl:Thing .
+
+:obligation a owl:Class ;
+    rdfs:label "Obligation" ;
+    rdfs:comment "A legal obligation applicable to operators. Source: EU AI Act Explorer; Articles 16-29." ;
+    rdfs:subClassOf owl:Thing .
+
+:core_actor_status a owl:Class ;
+    rdfs:label "Core actor status" ;
+    rdfs:comment "A status indicating that an entity is one of the main regulated actors under the Act. Source: EU AI Act Explorer; Article 3." ;
+    rdfs:subClassOf owl:Thing .
+
+:data_governance a owl:Class ;
+    rdfs:label "Data governance" ;
+    rdfs:comment "Practices ensuring training, validation, and testing data are relevant, representative, free of errors, and complete as appropriate. Source: EU AI Act Explorer; Article 10." ;
+    rdfs:subClassOf owl:Thing .
+
+:technical_documentation a owl:Class ;
+    rdfs:label "Technical documentation" ;
+    rdfs:comment "Documentation demonstrating compliance with the requirements applicable to high-risk AI systems. Source: EU AI Act Explorer; Article 11." ;
+    rdfs:subClassOf owl:Thing .
+
+:record_keeping a owl:Class ;
+    rdfs:label "Record keeping" ;
+    rdfs:comment "Logging capabilities enabling traceability of the AI system's operation. Source: EU AI Act Explorer; Article 12." ;
+    rdfs:subClassOf owl:Thing .
+
+:transparency_and_information a owl:Class ;
+    rdfs:label "Transparency and information" ;
+    rdfs:comment "Information and instructions provided to deployers to enable proper use of the system. Source: EU AI Act Explorer; Article 13." ;
+    rdfs:subClassOf owl:Thing .
+
+:human_oversight a owl:Class ;
+    rdfs:label "Human oversight" ;
+    rdfs:comment "Measures enabling effective human oversight of the AI system. Source: EU AI Act Explorer; Article 14." ;
+    rdfs:subClassOf owl:Thing .
+
+:accuracy_robustness_cybersecurity a owl:Class ;
+    rdfs:label "Accuracy, robustness and cybersecurity" ;
+    rdfs:comment "Requirements ensuring the AI system performs consistently and is resilient against errors and attacks. Source: EU AI Act Explorer; Article 15." ;
+    rdfs:subClassOf owl:Thing .
+
+:listed_high_risk_use_case a owl:Class ;
+    rdfs:label "Listed high-risk use case" ;
+    rdfs:comment "A use case listed in Annex III that may qualify an AI system as high-risk. Source: EU AI Act Explorer; Annex III." ;
+    rdfs:subClassOf owl:Thing .
+
+### Object properties
+
+:hasCategory a owl:ObjectProperty ;
+    rdfs:label "has category" ;
+    rdfs:comment "Relates an AI system to its regulatory category. Source: EU AI Act Explorer; Articles 3, 5, and 6." ;
+    rdfs:domain :ai_system ;
+    rdfs:range :ai_system_category .
+
+:isCategoryOf a owl:ObjectProperty ;
+    rdfs:label "is category of" ;
+    rdfs:comment "Relates a regulatory category to the AI system it classifies. Source: EU AI Act Explorer; Articles 3, 5, and 6." ;
+    owl:inverseOf :hasCategory ;
+    rdfs:domain :ai_system_category ;
+    rdfs:range :ai_system .
+
+:isPlacedOnMarket a owl:ObjectProperty ;
+    rdfs:label "is placed on market" ;
+    rdfs:comment "Indicates that an AI system is made available on the Union market. Source: EU AI Act Explorer; Article 3." ;
+    rdfs:domain :ai_system ;
+    rdfs:range :market_placement .
+
+:placesOnMarket a owl:ObjectProperty ;
+    rdfs:label "places on market" ;
+    rdfs:comment "Indicates that a market placement concerns a specific AI system. Source: EU AI Act Explorer; Article 3." ;
+    owl:inverseOf :isPlacedOnMarket ;
+    rdfs:domain :market_placement ;
+    rdfs:range :ai_system .
+
+:isPutIntoService a owl:ObjectProperty ;
+    rdfs:label "is put into service" ;
+    rdfs:comment "Indicates that an AI system is supplied for first use in the Union. Source: EU AI Act Explorer; Article 3." ;
+    rdfs:domain :ai_system ;
+    rdfs:range :putting_into_service .
+
+:putsIntoService a owl:ObjectProperty ;
+    rdfs:label "puts into service" ;
+    rdfs:comment "Indicates that a putting into service event concerns a specific AI system. Source: EU AI Act Explorer; Article 3." ;
+    owl:inverseOf :isPutIntoService ;
+    rdfs:domain :putting_into_service ;
+    rdfs:range :ai_system .
+
+:isUsedBy a owl:ObjectProperty ;
+    rdfs:label "is used by" ;
+    rdfs:comment "Links an AI system to the actor that uses or deploys it. Source: EU AI Act Explorer; Article 3." ;
+    rdfs:domain :ai_system ;
+    rdfs:range :operator .
+
+:uses a owl:ObjectProperty ;
+    rdfs:label "uses" ;
+    rdfs:comment "Links an operator to an AI system that it uses or deploys. Source: EU AI Act Explorer; Article 3." ;
+    owl:inverseOf :isUsedBy ;
+    rdfs:domain :operator ;
+    rdfs:range :ai_system .
+
+:isProhibitedUnder a owl:ObjectProperty ;
+    rdfs:label "is prohibited under" ;
+    rdfs:comment "Indicates that an AI practice is prohibited by a specific legal provision. Source: EU AI Act Explorer; Article 5." ;
+    rdfs:domain :prohibited_ai_practice ;
+    rdfs:range :legal_provision .
+
+:prohibits a owl:ObjectProperty ;
+    rdfs:label "prohibits" ;
+    rdfs:comment "Indicates that a legal provision prohibits a specific AI practice. Source: EU AI Act Explorer; Article 5." ;
+    owl:inverseOf :isProhibitedUnder ;
+    rdfs:domain :legal_provision ;
+    rdfs:range :prohibited_ai_practice .
+
+:causesOrLikelyCausesHarm a owl:ObjectProperty ;
+    rdfs:label "causes or likely causes harm" ;
+    rdfs:comment "Indicates that an AI practice results in or is likely to result in harm. Source: EU AI Act Explorer; Article 5." ;
+    rdfs:domain :prohibited_ai_practice ;
+    rdfs:range :harm .
+
+:isCausedOrLikelyCausedBy a owl:ObjectProperty ;
+    rdfs:label "is caused or likely caused by" ;
+    rdfs:comment "Indicates that harm results from or is likely to result from an AI practice. Source: EU AI Act Explorer; Article 5." ;
+    owl:inverseOf :causesOrLikelyCausesHarm ;
+    rdfs:domain :harm ;
+    rdfs:range :prohibited_ai_practice .
+
+:exploitsVulnerabilityOf a owl:ObjectProperty ;
+    rdfs:label "exploits vulnerability of" ;
+    rdfs:comment "Indicates that an AI practice takes advantage of a person's or group's vulnerability. Source: EU AI Act Explorer; Article 5." ;
+    rdfs:domain :prohibited_ai_practice ;
+    rdfs:range :vulnerability .
+
+:isVulnerabilityOf a owl:ObjectProperty ;
+    rdfs:label "is vulnerability of" ;
+    rdfs:comment "Indicates that a vulnerability is exploited by an AI practice. Source: EU AI Act Explorer; Article 5." ;
+    owl:inverseOf :exploitsVulnerabilityOf ;
+    rdfs:domain :vulnerability ;
+    rdfs:range :prohibited_ai_practice .
+
+:isHighRiskBecause a owl:ObjectProperty ;
+    rdfs:label "is high-risk because" ;
+    rdfs:comment "Links a high-risk AI system to the reason for its classification. Source: EU AI Act Explorer; Article 6." ;
+    rdfs:domain :high_risk_ai_system ;
+    rdfs:range :high_risk_reason .
+
+:isReasonFor a owl:ObjectProperty ;
+    rdfs:label "is reason for" ;
+    rdfs:comment "Links a reason for high-risk classification to the AI system classified as high-risk. Source: EU AI Act Explorer; Article 6." ;
+    owl:inverseOf :isHighRiskBecause ;
+    rdfs:domain :high_risk_reason ;
+    rdfs:range :high_risk_ai_system .
+
+:fallsWithinAnnexIII a owl:ObjectProperty ;
+    rdfs:label "falls within Annex III" ;
+    rdfs:comment "Indicates that an AI system is used in a listed high-risk area. Source: EU AI Act Explorer; Annex III." ;
+    rdfs:domain :ai_system ;
+    rdfs:range :listed_high_risk_use_case .
+
+:includesAiSystem a owl:ObjectProperty ;
+    rdfs:label "includes AI system" ;
+    rdfs:comment "Indicates that a listed Annex III use case includes a specific AI system. Source: EU AI Act Explorer; Annex III." ;
+    owl:inverseOf :fallsWithinAnnexIII ;
+    rdfs:domain :listed_high_risk_use_case ;
+    rdfs:range :ai_system .
+
+:isSafetyComponentOf a owl:ObjectProperty ;
+    rdfs:label "is safety component of" ;
+    rdfs:comment "Indicates that an AI system is a safety component of a regulated product. Source: EU AI Act Explorer; Article 6." ;
+    rdfs:domain :ai_system ;
+    rdfs:range owl:Thing .
+
+:hasSafetyComponent a owl:ObjectProperty ;
+    rdfs:label "has safety component" ;
+    rdfs:comment "Indicates that a regulated product has an AI system as a safety component. Source: EU AI Act Explorer; Article 6." ;
+    owl:inverseOf :isSafetyComponentOf ;
+    rdfs:domain owl:Thing ;
+    rdfs:range :ai_system .
+
+:hasRequirement a owl:ObjectProperty ;
+    rdfs:label "has requirement" ;
+    rdfs:comment "Links a high-risk AI system to a mandatory compliance requirement. Source: EU AI Act Explorer; Articles 9-15." ;
+    rdfs:domain :high_risk_ai_system ;
+    rdfs:range :requirement .
+
+:isRequirementOf a owl:ObjectProperty ;
+    rdfs:label "is requirement of" ;
+    rdfs:comment "Links a compliance requirement to the high-risk AI system it applies to. Source: EU AI Act Explorer; Articles 9-15." ;
+    owl:inverseOf :hasRequirement ;
+    rdfs:domain :requirement ;
+    rdfs:range :high_risk_ai_system .
+
+:hasObligation a owl:ObjectProperty ;
+    rdfs:label "has obligation" ;
+    rdfs:comment "Links an operator to a legal obligation applicable to high-risk AI systems. Source: EU AI Act Explorer; Articles 16-29." ;
+    rdfs:domain :operator ;
+    rdfs:range :obligation .
+
+:isObligationOf a owl:ObjectProperty ;
+    rdfs:label "is obligation of" ;
+    rdfs:comment "Links a legal obligation to the operator to whom it applies. Source: EU AI Act Explorer; Articles 16-29." ;
+    owl:inverseOf :hasObligation ;
+    rdfs:domain :obligation ;
+    rdfs:range :operator .
+
+:develops a owl:ObjectProperty ;
+    rdfs:label "develops" ;
+    rdfs:comment "Indicates that a provider creates or commissions the development of an AI system. Source: EU AI Act Explorer; Article 3." ;
+    rdfs:domain :provider ;
+    rdfs:range :ai_system .
+
+:isDevelopedBy a owl:ObjectProperty ;
+    rdfs:label "is developed by" ;
+    rdfs:comment "Indicates that an AI system is developed by a provider. Source: EU AI Act Explorer; Article 3." ;
+    owl:inverseOf :develops ;
+    rdfs:domain :ai_system ;
+    rdfs:range :provider .
+
+:placesOnMarketUnderOwnName a owl:ObjectProperty ;
+    rdfs:label "places on market under own name" ;
+    rdfs:comment "Indicates that the provider markets the AI system under its own name or trademark. Source: EU AI Act Explorer; Article 3." ;
+    rdfs:domain :provider ;
+    rdfs:range :ai_system .
+
+:isPlacedOnMarketUnderOwnNameBy a owl:ObjectProperty ;
+    rdfs:label "is placed on market under own name by" ;
+    rdfs:comment "Indicates that an AI system is marketed under the provider's own name or trademark. Source: EU AI Act Explorer; Article 3." ;
+    owl:inverseOf :placesOnMarketUnderOwnName ;
+    rdfs:domain :ai_system ;
+    rdfs:range :provider .
+
+:putsIntoServiceUnderOwnName a owl:ObjectProperty ;
+    rdfs:label "puts into service under own name" ;
+    rdfs:comment "Indicates that the provider first uses the AI system under its own name or trademark. Source: EU AI Act Explorer; Article 3." ;
+    rdfs:domain :provider ;
+    rdfs:range :ai_system .
+
+:isPutIntoServiceUnderOwnNameBy a owl:ObjectProperty ;
+    rdfs:label "is put into service under own name by" ;
+    rdfs:comment "Indicates that an AI system is first used under the provider's own name or trademark. Source: EU AI Act Explorer; Article 3." ;
+    owl:inverseOf :putsIntoServiceUnderOwnName ;
+    rdfs:domain :ai_system ;
+    rdfs:range :provider .
+
+:isCoreActor a owl:ObjectProperty ;
+    rdfs:label "is core actor" ;
+    rdfs:comment "Indicates that an entity is one of the main regulated actors under the Act. Source: EU AI Act Explorer; Article 3." ;
+    rdfs:domain :operator ;
+    rdfs:range :core_actor_status .
+
+:hasCoreActor a owl:ObjectProperty ;
+    rdfs:label "has core actor" ;
+    rdfs:comment "Indicates that a core actor status applies to an operator. Source: EU AI Act Explorer; Article 3." ;
+    owl:inverseOf :isCoreActor ;
+    rdfs:domain :core_actor_status ;
+    rdfs:range :operator .
+
+### Datatype properties
+
+:hasLabel a owl:DatatypeProperty ;
+    rdfs:label "label" ;
+    rdfs:comment "Human-readable name of the concept. Source: EU AI Act Explorer." ;
+    rdfs:domain owl:Thing ;
+    rdfs:range xsd:string .
+
+:hasDescription a owl:DatatypeProperty ;
+    rdfs:label "description" ;
+    rdfs:comment "Short textual description of the concept. Source: EU AI Act Explorer." ;
+    rdfs:domain owl:Thing ;
+    rdfs:range xsd:string .
+
+:hasReferenceArticle a owl:DatatypeProperty ;
+    rdfs:label "reference article" ;
+    rdfs:comment "Article reference associated with the concept or property. Source: EU AI Act Explorer." ;
+    rdfs:domain owl:Thing ;
+    rdfs:range xsd:string .
+
+:hasCitation a owl:DatatypeProperty ;
+    rdfs:label "citation" ;
+    rdfs:comment "Legal citation for the source regulation. Source: EU AI Act Explorer." ;
+    rdfs:domain :legal_provision ;
+    rdfs:range xsd:string .
+
+:hasSourceUrl a owl:DatatypeProperty ;
+    rdfs:label "source url" ;
+    rdfs:comment "URL of the source page. Source: EU AI Act Explorer." ;
+    rdfs:domain owl:Thing ;
+    rdfs:range xsd:anyURI .
+
+### Individuals
+
+:eu_ai_act a owl:NamedIndividual, :legal_provision ;
+    rdfs:label "EU AI Act" ;
+    rdfs:comment "The European Union regulation on artificial intelligence. Source: EU AI Act Explorer; Regulation (EU) 2024/1689." ;
+    :hasCitation "Regulation (EU) 2024/1689" ;
+    :hasSourceUrl "https://artificialintelligenceact.eu/ai-act-explorer/"^^xsd:anyURI ;
+    :hasDescription "The European Union regulation on artificial intelligence." ;
+    :hasReferenceArticle "Regulation (EU) 2024/1689" .
+
+:article_1 a owl:NamedIndividual, :legal_provision ;
+    rdfs:label "Article 1" ;
+    rdfs:comment "Subject matter article used as the source context for the extracted concepts. Source: EU AI Act Explorer; Article 1." ;
+    :hasSourceUrl "https://artificialintelligenceact.eu/article/1/"^^xsd:anyURI ;
+    :hasDescription "Subject matter article used as the source context for the extracted concepts." .
+
+### Class assertions for named individuals
+
+:eu_ai_act rdf:type :legal_provision .
+:article_1 rdf:type :legal_provision .
+
+### Additional axioms
+
+:high_risk_ai_system owl:disjointWith :prohibited_ai_practice .
+:provider owl:disjointWith :deployer, :importer, :distributor, :authorized_representative .
+:importer owl:disjointWith :distributor, :authorized_representative .
+:distributor owl:disjointWith :authorized_representative .
