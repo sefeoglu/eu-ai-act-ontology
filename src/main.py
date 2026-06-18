@@ -2,32 +2,40 @@
 """
 
 import argparse
+import copy
 import os
 import sys
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 import json
-from client.client_access import PrototypeClient
 PACKAGE_PARENT = '..'
 
 SCRIPT_DIR = os.path.dirname(os.path.realpath(os.path.join(os.getcwd(), os.path.expanduser(__file__))))
 sys.path.append(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
 
-PREFIX = "/".join(os.path.dirname(os.path.abspath(__file__)).split("/")[:-2]) + "/"
+REPO_ROOT = Path(__file__).resolve().parents[1]
 
 
 def _resolve_path(value: Optional[Any]) -> Optional[str]:
     if value is None:
         return None
 
-    path_str = str(value)
+    path_str = str(value).strip()
+    if not path_str:
+        return None
     if os.path.isabs(path_str):
         return path_str
-    return PREFIX + path_str
+
+    path = Path(path_str)
+    if path.parts and path.parts[0] == REPO_ROOT.name:
+        path = Path(*path.parts[1:])
+    return str(REPO_ROOT / path)
 
 
 def _default_main_params() -> Dict[str, Any]:
-    return vars(build_cli_parser().parse_args([])).copy()
+    defaults = vars(build_cli_parser().parse_args([])).copy()
+    defaults.pop("ui", None)
+    return defaults
 
 
 def build_cli_parser() -> argparse.ArgumentParser:
@@ -100,6 +108,11 @@ def build_cli_parser() -> argparse.ArgumentParser:
         default=7,
         help="Maximum number of chapters to process during concept extraction (default: 7)",
     )
+    parser.add_argument(
+        "--ui",
+        action="store_true",
+        help="Launch a local web UI for configuring and running the pipeline.",
+    )
     
     return parser
 
@@ -119,6 +132,8 @@ def run_prototype_pipeline(
 
 ) -> Dict[str, Any]:
     """Create the prototype client with the given inputs and run the pipeline."""
+    from client.client_access import PrototypeClient
+
     prototype_client = PrototypeClient(
         declarative_ontology_path=declarative_path,
         procedural_pdf_path=procedural_path,
@@ -147,10 +162,17 @@ def main(
 
     if params is None:
         args = build_cli_parser().parse_args(argv)
+        if args.ui:
+            from presentation.web_ui import launch_web_ui
+
+            ui_defaults = _default_main_params()
+            ui_defaults.update({"goals": list(args.goals)})
+            launch_web_ui(ui_defaults)
+            return []
         resolved_params: Dict[str, Any] = vars(args)
     else:
         resolved_params = _default_main_params()
-        resolved_params.update(params)
+        resolved_params.update(copy.deepcopy(params))
 
     report = run_prototype_pipeline(
         goals=resolved_params["goals"],
@@ -173,5 +195,5 @@ def main(
 
 if __name__ == "__main__":
     print("Starting EU AI Act ontology prototype pipeline...")
-    print(PREFIX)
+    print(str(REPO_ROOT.parent) + "/")
     main()
