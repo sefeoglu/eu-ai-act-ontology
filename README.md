@@ -141,7 +141,7 @@ You can also override the ontology-generation limits from the CLI:
 eu-ai-act-ontology --concept_limit 250 --chapter_limit 5
 ```
 
-## Run the local UI
+## Run Web UI
 
 If you want a browser-based control surface instead of passing every option on the command line, launch the built-in local UI:
 
