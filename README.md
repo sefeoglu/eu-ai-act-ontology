@@ -20,10 +20,12 @@ This repository contains a proof-of-concept pipeline for building an ontology fr
 - **declarative memory** from reusable ontologies and prompt templates
 - **procedural memory** from EU AI Act source material
 - **LLM-driven orchestration** for competency question generation, concept extraction, ontology generation, and ontology reuse
+- **dual entry surfaces** through the CLI and a local browser UI for configuring and monitoring runs
 
-The repository also includes generated artifacts, evaluation material, and simple validation scripts for the resulting ontology.
+The repository also includes generated artifacts, evaluation material, simple validation scripts for the resulting ontology, and an architecture diagram that mirrors the current runtime flow.
 
 **Note**: Copilot was used to refine README.md. It is not used for coding.
+
 ## Repository layout
 
 ```text
@@ -31,7 +33,7 @@ eu-ai-act-ontology/
 ├── competency_questions/             # Generated competency questions as JSON
 ├── concept_extraction/               # Extracted concepts as JSON
 ├── concept_mappings/                 # Mappings to reused ontologies
-├── config/                           # Model and crawler configuration
+├── config/                           # Model and runtime configuration
 ├── doc/                              # Supporting project documentation
 ├── evaluated_competency_questions/   # Example SPARQL evaluation material
 ├── figures/                          # Figures used by the project
@@ -76,6 +78,8 @@ The main orchestration code lives in:
 The local browser UI lives in:
 
 - `src/presentation/web_ui.py`
+
+At runtime, both the CLI and the local UI enter through `src/main.py`, which constructs the `PrototypeClient`. The client loads declarative and procedural memory, uses the `LLMPlanner` to map goals to actions, dispatches those actions through the `MCPClient`, and executes ontology tasks through the `OntologyGenerator`.
 
 ## Key inputs
 
@@ -158,6 +162,8 @@ What the UI provides:
 - configurable concept and chapter limits
 - live progress updates, activity log entries, and the final structured report
 - a stop control for ending the current background run
+
+The UI is rendered directly by `src/presentation/web_ui.py` and does not require a separate frontend build step.
 
 Operational notes:
 
@@ -246,6 +252,7 @@ python metrics/basic_metrics.py --input_file ontology/proof_of_concept_ontology_
 - The top-level test script is an executable validation helper rather than a `unittest.TestCase` suite.
 - Supporting documentation is available in both Markdown and PDF form under `doc/`.
 - The refined ontology is available at `ontology/proof_of_concept_ontology_v0.3.ttl`.
+- The architecture sources live in `figures/project_architecture.md` and `figures/project_architecture.mmd`, with the rendered asset committed as `figures/project_architecture.svg`.
 
 ## License
 
