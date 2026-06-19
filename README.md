@@ -7,6 +7,7 @@
 ![Domain](https://img.shields.io/badge/Domain-EU%20AI%20Act-9A3412)
 ![Validation](https://img.shields.io/badge/Validation-SPARQL-1D4ED8)
 ![Artifacts](https://img.shields.io/badge/Artifacts-Included-4D7C0F)
+![Web UI](https://img.shields.io/badge/Web_UI-Interactive-D97706)
 
 *This branch contains ongoing research extensions and improvements beyond the original task submission. The submitted version remains preserved in the release and master branch for reproducibility and evaluation purposes.*
 ## Project architecture
