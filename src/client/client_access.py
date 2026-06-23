@@ -1,35 +1,28 @@
 """Prototype UI: loads memory files and drives the full pipeline."""
 
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any, Callable, Dict, List, Optional
 
 from host.llm_planner import LLMPlanner
 from host.mcp_client import MCPClient
-from host.validation_controller import ValidationController
 from memory.memory_generator import MemoryGenerator
 from server.onto_generator_server import OntologyGenerator
 
 
 class PrototypeClient:
-    """Orchestrates memory loading, planning, execution, and validation.
-
-    Memory files are loaded here so that the caller (main.py or a test)
-    can supply custom paths; the pipeline is fully initialised before any
-    action is dispatched.
-
-    Parameters
+    """Loads memory files, instantiates the pipeline components, and runs the full pipeline for given goals."""
+    """Parameters
     ----------
-    declarative_ontology_path:
-        Path to an OWL/RDF ontology file.  Defaults to the bundled
-        ``vair.owl`` when *None*.
-    procedural_pdf_path:
-        Path to the regulatory PDF document.  Defaults to the bundled
-        EU AI Act PDF when *None*.
-    config:
-        Optional extra configuration forwarded to MemoryGenerator.
-    ontology_output_path:
-        Path to save the generated ontology. Defaults to the bundled
-        proof_of_concept_ontology.owl when *None*.
+    declarative_ontology_path: Optional[Path]
+        Path to the declarative memory ontology file (e.g., TTL or RDF). If None, a default path will be used.
+    procedural_pdf_path: Optional[Path]
+        Path to the procedural memory PDF document. If None, a default path will be used.
+    config: Optional[Dict]
+        Configuration dictionary for the pipeline components (e.g., paths for intermediate outputs). If None, default values will be used.
+    ontology_output_path: Optional[Path]
+        Path to save the generated ontology. If None, a default path will be used.
+    run_config_path: Optional[Path]
+        Path to the run configuration file (e.g., API configs). If None, a default path will be used.
     """
 
     def __init__(
@@ -38,32 +31,62 @@ class PrototypeClient:
         procedural_pdf_path: Optional[Path] = None,
         config: Optional[Dict] = None,
         ontology_output_path: Optional[Path] = None,
-        run_config_path: Optional[Path] = None
+        run_config_path: Optional[Path] = None,
+        concept_limit: int = None,
+        chapter_limit: int = None,
     ) -> None:
+        
+        """
+        Args:
+        declarative_ontology_path: Optional[Path]
+            Path to the declarative memory ontology file (e.g., TTL or RDF). If None, a default path will be used.
+        procedural_pdf_path: Optional[Path]
+            Path to the procedural memory PDF document. If None, a default path will be used.
+        config: Optional[Dict]
+            Configuration dictionary for the pipeline components (e.g., paths for intermediate outputs). If None, default values will be used.
+        ontology_output_path: Optional[Path]
+            Path to save the generated ontology. If None, a default path will be used.
+        run_config_path: Optional[Path]
+            Path to the run configuration file (e.g., API configs). If None, a default path will be used.
+        """
+
         self._config = config or {}
         self._ontology_output_path = ontology_output_path
         self._run_config_path = run_config_path
-        # 1. Build memory objects from the supplied (or default) file paths.
-        generator = MemoryGenerator(self._config)
-        self.declarative_memory = generator.generate_declarative_memory(
+        if concept_limit is None or chapter_limit is None:
+            raise ValueError("concept_limit and chapter_limit must be provided from the caller")
+        self._concept_limit = concept_limit
+        self._chapter_limit = chapter_limit
+
+        memory_generator = MemoryGenerator(self._config)
+        self.declarative_memory = memory_generator.generate_declarative_memory(
             ontology_path=declarative_ontology_path
         )
-        self.procedural_memory = generator.generate_procedural_memory(
+        self.procedural_memory = memory_generator.generate_procedural_memory(
             document_path=procedural_pdf_path
-            
         )
 
-        # 2. Construct the pipeline components using the loaded memory.
-        ontology_generator = OntologyGenerator(declarative_memory=self.declarative_memory, procedural_memory=self.procedural_memory, output_path=self._ontology_output_path)
+        ontology_generator = OntologyGenerator(
+            declarative_memory=self.declarative_memory,
+            procedural_memory=self.procedural_memory,
+            output_path=self._ontology_output_path,
+            run_config_path=self._run_config_path,
+            concept_limit=self._concept_limit,
+            chapter_limit=self._chapter_limit,
+        )
         self.planner = LLMPlanner()
         self.client = MCPClient(generator=ontology_generator)
-        self.validator = ValidationController()
 
     # ------------------------------------------------------------------
     # Pipeline entry point
     # ------------------------------------------------------------------
 
-    def run_pipeline(self, goals: str) -> Dict[str, Any]:
+    def run_pipeline(
+        self,
+        goals: List[str],
+        progress_callback: Optional[Callable[[Dict[str, Any]], None]] = None,
+        should_cancel: Optional[Callable[[], bool]] = None,
+    ) -> List[Dict[str, Any]]:
         """Run the full pipeline for *goals* and return a structured report.
 
         Steps
@@ -72,28 +95,78 @@ class PrototypeClient:
         2. Execute: dispatch the action via the MCP client.
         3. Return: assemble the full pipeline report.
         """
-        # Step 1 – plan
+        """Parameters
+        ----------
+        goals: List[str]
+            A list of pipeline goals to execute.
+
+        Returns
+        -------
+        List[Dict[str, Any]]
+            A structured report per goal containing the plan, memory context,
+            and execution result.
+        """
         reports = []
 
-        for goal in goals:
-            print(f"Processing goal: {goal}")
-            plan = self.planner.create_plan(goal)
+        total_goals = len(goals)
 
-            # Step 2 – execute
-            result = self.client.execute(plan["action"])
+        def _raise_if_cancelled() -> None:
+            if should_cancel is not None and should_cancel():
+                raise RuntimeError("Pipeline run stopped by user.")
+
+        for index, goal in enumerate(goals, start=1):
+            _raise_if_cancelled()
+            print(f"Processing goal: {goal}")
+            if progress_callback is not None:
+                progress_callback(
+                    {
+                        "stage": "goal_started",
+                        "goal": goal,
+                        "current": index,
+                        "total": total_goals,
+                    }
+                )
+            _raise_if_cancelled()
+            plan = self.planner.create_plan(goal)
+            if progress_callback is not None:
+                progress_callback(
+                    {
+                        "stage": "plan_created",
+                        "goal": goal,
+                        "action": plan["action"],
+                        "current": index,
+                        "total": total_goals,
+                    }
+                )
+            _raise_if_cancelled()
+            result = self.client.execute(
+                plan["action"],
+                progress_callback=progress_callback,
+                should_cancel=should_cancel,
+            )
+            _raise_if_cancelled()
 
             goal_report = {
-            "goal": goal,
+                "goal": goal,
                 "plan": plan,
                 "memory": {
                     "declarative_source": str(self.declarative_memory.source_path),
                     "declarative_triples": self.declarative_memory.triple_count(),
                     "procedural_source": self.procedural_memory.get_metadata(),
                 },
-       
                 "result": result,
             }
             reports.append(goal_report)
+            if progress_callback is not None:
+                progress_callback(
+                    {
+                        "stage": "goal_completed",
+                        "goal": goal,
+                        "action": plan["action"],
+                        "current": index,
+                        "total": total_goals,
+                        "report": goal_report,
+                    }
+                )
 
         return reports
-    

@@ -16,11 +16,20 @@ We designed a memory-based MCP that automatically constructs a draft ontology an
 
 ## 2. Memory-Based Model Context Protocol
 
-The memory-based MCP consists of four main components: **Client**, **Host**, **Server**, and **Memory**.
+The memory-based MCP consists of four main runtime components: **Client**, **Host**, **Server**, and **Memory**. In the current prototype, users can reach the client either through the command-line entry point or through the local browser UI.
+
+![Project architecture](../figures/project_architecture.svg)
+
+Figure 1. Architecture of the memory-based MCP prototype, showing how CLI or local UI requests move through the prototype entry point into the client, host, and server, while declarative and procedural memory provide the context used to generate ontology artifacts and evaluation outputs.
 
 ### 2.1 Client
 
-The Client serves as the interface between the user and the host system, enabling the execution of goals defined within the ontology development process. The client submits these goals to the LLM Planner located in the Host, which orchestrates the tasks required to accomplish them. Upon completion, the system generates a report describing the results and outcomes of the executed goals.
+The Client serves as the runtime boundary between the user-facing entry surface and the host system. The repository currently exposes two entry surfaces:
+
+- a command-line interface in `src/main.py`
+- a local web UI in `src/presentation/web_ui.py`
+
+Both routes ultimately construct the `PrototypeClient`, which loads declarative and procedural memory, forwards goals to the planner, dispatches the resulting action, and returns a structured execution report.
 
 The supported goals include:
 
@@ -31,29 +40,29 @@ The supported goals include:
 - Borrowing existing classes from mapped ontologies.
 - Validation and consistency checking.
 
-Memory generation is a prerequisite for all ontology development tasks because it provides access to both procedural knowledge (EU AI Act articles) and declarative knowledge (ontology engineering prompts and reused ontologies). These goals are converted into an execution plan by the LLM Planner and subsequently executed by the MCP client.
+Memory generation is a prerequisite for all ontology development tasks because it provides access to both procedural knowledge from the EU AI Act source material and declarative knowledge from ontology engineering prompts and reused ontologies. These goals are converted into an execution plan by the LLM Planner and subsequently executed by the MCP client.
 
 ### 2.2 Host
 
-The Host converts goals into actions, creates execution plans through the LLM Planner, and returns these actions to the Client. The MCP Client triggers the Server to execute the actions.
+The Host converts goals into actions, creates execution plans through the `LLMPlanner`, and hands the selected action to the `MCPClient` for execution against the server. In the current implementation, the planner is deterministic: it maps each supported goal string to a named pipeline action.
 
-The Host also contains two agents:
+The Host also contains two supporting agents:
 
-- **Document Crawler Agent**
-- **GPT-based Domain Expert Agent**
+- **Retriever Agent**, which is responsible for gathering and structuring EU AI Act source material when procedural content needs to be refreshed or re-derived
+- **GPT-based Domain Expert Agent**, which performs LLM-backed ontology tasks such as competency-question generation, concept extraction, ontology drafting, mapping, and syntax repair
 
 ### 2.3 Server
 
-The Server executes all ontology-generation actions. It communicates with the agents in the Host and invokes the Domain Expert Agent whenever ontology-development tasks require domain-specific reasoning.
+The Server executes all ontology-generation actions through the `OntologyGenerator`. Its responsibilities include memory inspection, competency-question generation, concept extraction, ontology generation, concept mapping, borrowing mapped concepts back into the ontology, and validation of the saved Turtle output. It communicates with the host-side agents whenever ontology-development tasks require retrieval or domain-specific reasoning.
 
 ### 2.4 Memory
 
 The Memory component contains two types of memory:
 
-- **Procedural Memory**: Contains articles from the EU AI Act 2024 collected by the Document Crawler Agent.
-- **Declarative Memory**: Contains ontology development prompts, rules, and reusable ontologies.
+- **Procedural Memory**: Contains the EU AI Act source content, run-time paths for generated artifacts, reuse targets, and metadata used during execution.
+- **Declarative Memory**: Contains ontology development prompts, reusable ontologies, and the ontology graph context loaded for reuse.
 
-The Memory Generator combines procedural and declarative memory into a unified pipeline that can be accessed by the Server. The Ontology Memory component parses existing ontologies and retrieves classes and properties for reuse during ontology construction.
+The `MemoryGenerator` assembles these declarative and procedural resources into the memory objects consumed by the server. This gives the `OntologyGenerator` access to both the reusable ontology context and the procedural source material needed for downstream ontology construction tasks.
 
 ### 2.5 Human-in-the-Loop Refinement
 
@@ -81,7 +90,7 @@ Refined ontology: `ontology/proof_of_concept_ontology_v0.3.ttl`
 - GPT-3.5-Pro (testing)
 - GPT-5.4-mini (production)
 
-Additional implementation settings are available in the source code repository.
+Additional implementation settings, including the local UI entry point and run configuration behavior, are available in the source code repository.
 
 ### 3.2 Competency Questions and SPARQL Queries
 

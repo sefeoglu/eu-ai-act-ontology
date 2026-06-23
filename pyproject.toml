@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "eu-ai-act-ontology"
+version = "0.1.0"
+description = "Memory-assisted ontology engineering pipeline for regulatory knowledge from the EU AI Act"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "Sefika Efeoglu" }
+]
+dependencies = [
+  "beautifulsoup4==4.15.0",
+  "openai==0.28.0",
+  "rdflib==7.1.4",
+  "requests==2.32.5",
+]
+
+[project.scripts]
+eu-ai-act-ontology = "main:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+py-modules = ["main", "utils"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["client", "client.*", "host", "host.*", "memory", "memory.*", "presentation", "presentation.*", "server", "server.*"]

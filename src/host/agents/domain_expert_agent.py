@@ -1,75 +1,58 @@
-
-
-from asyncio import run
-
-from tqdm import tqdm
 import logging
 import json
 import openai
-import logging
-import re
+import os
+import sys
 
+from pathlib import Path
 
-def run_gpt_chat(config):
+PACKAGE_PARENT = '..'
+
+SCRIPT_DIR = os.path.dirname(os.path.realpath(os.path.join(os.getcwd(), os.path.expanduser(__file__))))
+sys.path.append(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
+
+PREFIX = "/".join(os.path.dirname(os.path.abspath(__file__)).split("/")[:-4]) + "/"
+def run_openai_chat_completion(config):
   
     user_query = config['user_query']
    
-    API_KEY = config['api_key']
-    print(f"Using OpenAI API key: {API_KEY}")
+    api_key = config['api_key']
+    print("Using configured OpenAI API credentials")
     model = config['model']
     print(f"Using GPT model: {model}")
-    SEED = config.get('seed', 42)  # Default seed value if not provided
+    seed_value = config.get('seed', 42)  # Default seed value if not provided
 
-    openai.api_key = API_KEY
+    openai.api_key = api_key
 
-    response = openai.ChatCompletion.create(
+    completion_response = openai.ChatCompletion.create(
         model=model,
         messages=[
             {"role": "user", "content": user_query}
         ],
         temperature=0,          # Makes output deterministic
-        seed=SEED               # Ensures repeatability across runs
+        seed=seed_value         # Ensures repeatability across runs
     )
-    return response['choices'][0]['message']['content'].split('\n')
+    return completion_response['choices'][0]['message']['content'].split('\n')
 
-def get_gpt_information(gpt_info):
-    logging.info(f"Reading GPT information from {gpt_info}...")
-    gpt = gpt_info['gpt']
-    try:
-
-        openai_api_key = gpt["api_key"]
-
-        if not openai_api_key:
-            raise ValueError(f"The file {gpt_info} does not contain a valid 'api_key' field.")
-        gpt_role = gpt['competency_question_prompt']
-
-        model = gpt['model']
-
-
-    except FileNotFoundError:
-        raise FileNotFoundError(f"The file {gpt_info} does not exist.")
-
-    return openai_api_key, gpt_role, model
-
-def compentency_question_base(contextual_text, gpt_information):
+def build_competency_question_prompt(contextual_text, gpt_information):
     """
     Generates a competency question based on the provided contextual text.
     
     Args:
         contextual_text (str): The contextual text to base the question on.
-        
+        gpt_information (dict): Dictionary containing GPT role and model information.
     Returns:
         str: The generated competency question.
     """
-    compentency_question_text_base_path = gpt_information['competency_question_prompt']
-    compentency_question_text_base = open(compentency_question_text_base_path, 'r').read()
+    competency_question_prompt_path = PREFIX + gpt_information['competency_question_prompt']
+    competency_question_prompt = read_text_file(competency_question_prompt_path)
 
-    print(f"Generating competency question with base prompt: {compentency_question_text_base}")
-    return f"{compentency_question_text_base} Context: {contextual_text}"
+    print(f"Generating competency question with base prompt: {competency_question_prompt}")
+    return f"{competency_question_prompt} Context: {contextual_text}"
 
 
 
-def run_gpt_based_cq_generation(input_context, gpt_information):
+def generate_competency_questions_with_gpt(input_context, gpt_information):
     """
     Runs the GPT-based contextual question generation.
     
@@ -79,18 +62,18 @@ def run_gpt_based_cq_generation(input_context, gpt_information):
     """
 
     contextual_text = input_context
-    user_query = compentency_question_base(contextual_text, gpt_information)
-    gpt_information['user_query'] = user_query
+    prompt_text = build_competency_question_prompt(contextual_text, gpt_information)
+    gpt_information['user_query'] = prompt_text
     print(f"User query for GPT")
-    questions = run_gpt_chat(gpt_information)
-    print(f"Generated competency questions: {questions}")
+    generated_questions = run_openai_chat_completion(gpt_information)
+    print(f"Generated competency questions: {generated_questions}")
 
-    return questions
-
-
+    return generated_questions
 
 
-def cq_generation(input_context, config):
+
+
+def generate_competency_questions(input_context, config):
     """
     Main function to run the GPT-based contextual question generation.
     
@@ -99,98 +82,103 @@ def cq_generation(input_context, config):
         gpt_information_file (str): Path to the file containing GPT role and model information.
     """
     try:
-
-        gpt_information = json.load(open(config, 'r'))['gpt']
+        gpt_information, _ = load_gpt_config(config)
 
         print("Loading GPT information...")
-        compentency_questions = run_gpt_based_cq_generation(input_context, gpt_information)
+        competency_questions = generate_competency_questions_with_gpt(input_context, gpt_information)
         logging.info("GPT-based contextual question generation completed.")
 
-        return compentency_questions
+        return competency_questions
     
     except Exception as e:
         logging.error(f"Error occurred during GPT-based contextual question generation: {e}")
         return None
-  
-
-MAX_CHARS = 35000  # safe for 16k context models; reduce to 25000 if needed
 
 
-def safe_to_string(value):
-    if value is None:
-        return ""
-    if isinstance(value, str):
-        return value
-    if isinstance(value, list):
-        return "\n".join(map(str, value))
-    return str(value)
-
-
-def truncate_text(text, max_chars=MAX_CHARS):
-    text = safe_to_string(text)
-    if len(text) <= max_chars:
-        return text
-    return text[:max_chars] + "\n\n[TRUNCATED: input was too long]"
-
-
-def chunk_text(text, max_chars=MAX_CHARS):
-    text = safe_to_string(text)
-    return [text[i:i + max_chars] for i in range(0, len(text), max_chars)]
-
-
-def read_file(path):
+def read_text_file(path):
     with open(path, "r", encoding="utf-8") as f:
         return f.read()
 
 
+def resolve_config_resource_path(config_path, resource_path):
+    resource_candidate = Path(resource_path)
+    if resource_candidate.is_absolute() or resource_candidate.exists():
+        return resource_candidate
 
-def chunks(items, size=500):
-    for i in range(0, len(items), size):
-        yield items[i:i + size]
-def run_full_ttl_ontology(
+    config_dir = Path(config_path).resolve().parent
+    repo_root = config_dir.parent
+    resource_parts = resource_candidate.parts
+
+    if resource_parts and resource_parts[0] == repo_root.name:
+        repo_relative_candidate = repo_root.joinpath(*resource_parts[1:])
+        if repo_relative_candidate.exists():
+            return repo_relative_candidate
+
+    repo_root_candidate = repo_root / resource_candidate
+    if repo_root_candidate.exists():
+        return repo_root_candidate
+
+    return config_dir / resource_candidate
+
+
+def load_gpt_config(config_path):
+    resolved_config_path = Path(config_path).resolve()
+    with open(resolved_config_path, "r", encoding="utf-8") as f:
+        gpt_information = json.load(f)["gpt"]
+    return gpt_information, resolved_config_path
+
+
+def load_gpt_prompt(config_path, prompt_key):
+    gpt_information, resolved_config_path = load_gpt_config(config_path)
+    prompt_path = resolve_config_resource_path(
+        resolved_config_path,
+        PREFIX + gpt_information[prompt_key],
+    )
+    return gpt_information, read_text_file(prompt_path)
+
+
+def generate_full_turtle_ontology(
     concepts,
     config,
 ):
     try:
         print("Loading GPT information...")
 
-        with open(config, "r", encoding="utf-8") as f:
-            gpt_information = json.load(f)["gpt"]
-
-        triple_generation_prompt = read_file(gpt_information["triple_generation_prompt"])
-        ontology_generation_prompt = read_file(gpt_information["ontology_generation_prompt"])
-        domain_range_prompt = read_file(gpt_information["domain_range_prompt"])
-        data_type_prompt = read_file(gpt_information["data_type_prompt"])
-        axioms_prompt = read_file(gpt_information["axioms_prompt"])
-        rdf_comments_prompt = read_file(gpt_information["rdf_comments"])
-        individuals_prompt = read_file(gpt_information["individuals_prompt"])
+        gpt_information, resolved_config_path = load_gpt_config(config)
+        triple_generation_prompt = read_text_file(resolve_config_resource_path(resolved_config_path, PREFIX + gpt_information["triple_generation_prompt"]))
+        ontology_generation_prompt = read_text_file(resolve_config_resource_path(resolved_config_path, PREFIX + gpt_information["ontology_generation_prompt"]))
+        domain_range_prompt = read_text_file(resolve_config_resource_path(resolved_config_path, PREFIX + gpt_information["domain_range_prompt"]))
+        data_type_prompt = read_text_file(resolve_config_resource_path(resolved_config_path, PREFIX + gpt_information["data_type_prompt"]))
+        axioms_prompt = read_text_file(resolve_config_resource_path(resolved_config_path, PREFIX + gpt_information["axioms_prompt"]))
+        rdf_comments_prompt = read_text_file(resolve_config_resource_path(resolved_config_path, PREFIX + gpt_information["rdf_comments"]))
+        individuals_prompt = read_text_file(resolve_config_resource_path(resolved_config_path, PREFIX + gpt_information["individuals_prompt"]))
         
 
         print("Generating triples in chunks...")
         gpt_information["user_query"] = f"{triple_generation_prompt}\n\nConcepts:{concepts}"
-        all_triples = run_gpt_chat(gpt_information)
+        all_triples = run_openai_chat_completion(gpt_information)
 
 
         triples_text = "\n".join(all_triples)
 
         print("Generating domain and range info...")
         gpt_information['user_query'] = f"{domain_range_prompt}\n\nConcepts:\n{concepts}"
-        domain_range_text = run_gpt_chat(gpt_information)
+        domain_range_text = run_openai_chat_completion(gpt_information)
 
 
         print("Generating data type info...")
         gpt_information['user_query'] = f"{data_type_prompt}\n\nTriples:\n{triples_text}"
-        data_type_text = run_gpt_chat(gpt_information)
+        data_type_text = run_openai_chat_completion(gpt_information)
         print("Generating axioms...")
         gpt_information['user_query'] = f"{axioms_prompt}\n\nConcepts:\n{concepts}"
-        axioms_text = run_gpt_chat(gpt_information)
+        axioms_text = run_openai_chat_completion(gpt_information)
         print("Generating RDF comments...")
         gpt_information['user_query'] = f"{rdf_comments_prompt}\n\nConcepts:\n{concepts}"
-        rdf_comments_text = run_gpt_chat(gpt_information)
+        rdf_comments_text = run_openai_chat_completion(gpt_information)
 
         print("Generating individuals...")
         gpt_information['user_query'] = f"{individuals_prompt}\n\nConcepts:\n{concepts}"
-        individuals_text = run_gpt_chat(gpt_information)
+        individuals_text = run_openai_chat_completion(gpt_information)
         print("Generating final TTL in chunks...")
 
         gpt_information['user_query'] = f"""
@@ -204,23 +192,61 @@ def run_full_ttl_ontology(
                 Individuals: {individuals_text}\n
                 Do not include another text, only return the turtle content of the ontology.
                 """
-        turtle = run_gpt_chat(gpt_information)
-        turtle = "\n".join(turtle)
+        turtle_lines = run_openai_chat_completion(gpt_information)
+        ontology_turtle = "\n".join(turtle_lines)
 
-        return turtle
+        return ontology_turtle
 
     except Exception as e:
         logging.exception(f"Error occurred while generating ontology: {e}")
         return None
 
-def get_borrows_from_mappings(turtle, mappings, config):
+
+def generate_local_chapter_ontology(chapter_title, chapter_concepts, config):
+    chapter_concept_payload = {
+        "chapter": chapter_title,
+        "concepts": chapter_concepts,
+    }
+    return generate_full_turtle_ontology(chapter_concept_payload, config)
+
+
+def generate_global_chapter_ontology(chapter_ontologies, config):
     try:
         print("Loading GPT information...")
 
-        with open(config, "r", encoding="utf-8") as f:
-            gpt_information = json.load(f)["gpt"]
+        gpt_information, ontology_generation_prompt = load_gpt_prompt(
+            config,
+            "ontology_generation_prompt",
+        )
+        serialized_chapter_ontologies = json.dumps(
+            chapter_ontologies,
+            indent=2,
+            ensure_ascii=False,
+        )
+        gpt_information["user_query"] = f"""
+                Follow this: {ontology_generation_prompt}
 
-        borrows_from_mappings_prompt = read_file(gpt_information["borrows_from_prompt"])
+                Merge the following chapter-level ontologies into one coherent ontology for the full regulation.
+                Reconcile duplicate classes and properties across chapters, preserve consistent prefixes,
+                and return only valid turtle content.
+
+                Chapter ontologies: {serialized_chapter_ontologies}
+                """
+        merged_ontology_lines = run_openai_chat_completion(gpt_information)
+        return "\n".join(merged_ontology_lines)
+
+    except Exception as e:
+        logging.exception(f"Error occurred while merging chapter ontologies: {e}")
+        return None
+
+def apply_mapping_borrows(turtle, mappings, config):
+    try:
+        print("Loading GPT information...")
+
+        gpt_information, borrows_from_mappings_prompt = load_gpt_prompt(
+            config,
+            "borrows_from_prompt",
+        )
 
         gpt_information['user_query'] = f"""
                                         Following this: {borrows_from_mappings_prompt}\n\n
@@ -228,17 +254,17 @@ def get_borrows_from_mappings(turtle, mappings, config):
                                         Mappings: {mappings}.\n\n
                                         Do not include another text, only return the turtle content of the ontology.
                                         """
-        new_turtle = run_gpt_chat(gpt_information)
-        new_turtle = "\n".join(new_turtle)
+        borrowed_turtle_lines = run_openai_chat_completion(gpt_information)
+        borrowed_turtle = "\n".join(borrowed_turtle_lines)
 
 
-        return new_turtle
+        return borrowed_turtle
 
     except Exception as e:
         logging.exception(f"Error occurred while generating borrows from mappings: {e}")
         return None
 
-def run_gpt_based_concept_extraction(questions, config):
+def extract_concepts_with_gpt(questions, config):
     """
     Runs the GPT-based concept extraction.
     
@@ -248,17 +274,18 @@ def run_gpt_based_concept_extraction(questions, config):
         gpt_information (dict): Dictionary containing GPT role and model information.
     """
     try:
-        gpt_information = json.load(open(config, 'r'))['gpt']
+        gpt_information, concept_extraction_prompt = load_gpt_prompt(
+            config,
+            "concept_extraction_prompt",
+        )
 
         print("Loading GPT information...")
-        
-        prompt = open(gpt_information['concept_extraction_prompt'], 'r').read()
-        
-        print(f"Generating concepts with base prompt: {prompt}")
-        gpt_information['user_query'] = f"{prompt} Competency Questions: {questions}"
-        concepts = run_gpt_chat(gpt_information)
+
+        print(f"Generating concepts with base prompt: {concept_extraction_prompt}")
+        gpt_information['user_query'] = f"{concept_extraction_prompt} Competency Questions: {questions}"
+        extracted_concepts = run_openai_chat_completion(gpt_information)
         logging.info("GPT-based concept extraction completed.")
-        return concepts
+        return extracted_concepts
     except Exception as e:
         logging.error(f"Error occurred during GPT-based concept extraction: {e}")
         return None
@@ -266,7 +293,7 @@ def run_gpt_based_concept_extraction(questions, config):
 
 
 
-def run_gpt_based_mapping_to_existing_ontologies(
+def map_to_existing_ontologies_with_gpt(
     domain_entities,
     domain_properties,
     existing_classes,
@@ -274,16 +301,15 @@ def run_gpt_based_mapping_to_existing_ontologies(
     config
 ):
     try:
-        with open(config, "r") as f:
-            gpt_config = json.load(f)["gpt"]
-
-        with open(gpt_config["mapping_to_existing_ontologies_prompt"], "r") as f:
-            base_prompt = f.read()
+        gpt_config, base_prompt = load_gpt_prompt(
+            config,
+            "mapping_to_existing_ontologies_prompt",
+        )
 
         gpt_config["user_query"] = f"""{base_prompt}. existing_properties: {existing_properties}, Domain properties: {domain_properties}. Do not include any thing other than the mapping results in your response. Return the mapping results in a JSON format."""
-        property_mappings = run_gpt_chat(gpt_config)
+        property_mappings = run_openai_chat_completion(gpt_config)
         gpt_config["user_query"] = f"""{base_prompt}. existing_classes: {existing_classes}, Domain classes: {domain_entities}. Do not include any thing other than the mapping results in your response. Return the mapping results in a JSON format."""
-        class_mappings = run_gpt_chat(gpt_config)
+        class_mappings = run_openai_chat_completion(gpt_config)
         
 
         return {
@@ -296,52 +322,17 @@ def run_gpt_based_mapping_to_existing_ontologies(
             f"Error occurred during GPT-based mapping to existing ontologies: {e}"
         )
         return None
-    
 
 
-def fix_mapping_output(data):
-    fixed = {
-        "corresponding_classes": [],
-        "corresponding_properties": []
-    }
-
-    for block in data:
-       
-        if isinstance(block, list):
-            block = "\n".join(block)
-
-        block = block.strip()
-        block = re.sub(r"^```json\s*", "", block)
-        block = re.sub(r"^```\s*", "", block)
-        block = re.sub(r"\s*```$", "", block)
-
-        parsed = json.loads(block)
-
-        for item in parsed.get("corresponding_classes", []):
-            if "alignment" in item:
-                item["relation"] = item["alignment"].get("relation")
-                item["measure"] = item["alignment"].get("measure")
-                del item["alignment"]
-
-            fixed["corresponding_classes"].append(item)
-
-        for item in parsed.get("corresponding_properties", []):
-            if "alignment" in item:
-                item["relation"] = item["alignment"].get("relation")
-                item["measure"] = item["alignment"].get("measure")
-                del item["alignment"]
-
-            fixed["corresponding_properties"].append(item)
-
-    return fixed
-
-def  fix_syntax_errors_in_turtle(data, config):
+def repair_turtle_syntax_with_gpt(data, config):
     try:
-        gpt_information = json.load(open(config, 'r'))['gpt']
-        prompt = open(gpt_information['turtle_syntax_fix_prompt'], 'r').read()
-        gpt_information['user_query'] = f"{prompt} Turtle content: {data}"
-        fixed_turtle = run_gpt_chat(gpt_information)
-        return "\n".join(fixed_turtle)
+        gpt_information, turtle_syntax_fix_prompt = load_gpt_prompt(
+            config,
+            "turtle_syntax_fix_prompt",
+        )
+        gpt_information['user_query'] = f"{turtle_syntax_fix_prompt} Turtle content: {data}"
+        repaired_turtle_lines = run_openai_chat_completion(gpt_information)
+        return "\n".join(repaired_turtle_lines)
     except Exception as e:
         logging.error(f"Error occurred during fixing syntax errors in turtle: {e}")
         return data

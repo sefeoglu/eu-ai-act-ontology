@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1040" viewBox="0 0 1200 1040" role="img" aria-labelledby="title desc">
+	<title id="title">Memory-Assisted Ontology Engineering Architecture for Regulatory Knowledge</title>
+	<desc id="desc">Architecture diagram showing the CLI and local web UI entry points, the client, host, memory, server, and generated artifacts in the ontology generation pipeline.</desc>
+	<defs>
+		<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+			<path d="M 0 0 L 10 5 L 0 10 z" fill="#4b5563"/>
+		</marker>
+		<style>
+			text { font-family: Helvetica, Arial, sans-serif; fill: #1f2937; }
+			.title { font-size: 28px; font-weight: 700; }
+			.subtitle { font-size: 14px; fill: #4b5563; }
+			.group-label { font-size: 20px; font-weight: 700; }
+			.node-title { font-size: 18px; font-weight: 700; }
+			.node-body { font-size: 14px; fill: #374151; }
+			.center { text-anchor: middle; }
+			.group { stroke-width: 2; rx: 20; ry: 20; }
+			.node { stroke-width: 1.6; rx: 16; ry: 16; }
+			.edge { stroke: #4b5563; stroke-width: 2.4; fill: none; marker-end: url(#arrow); }
+			.edge-bidir { stroke: #4b5563; stroke-width: 2.4; fill: none; marker-start: url(#arrow); marker-end: url(#arrow); }
+		</style>
+	</defs>
+
+	<rect width="1200" height="1040" fill="#fffdf8"/>
+	<text x="70" y="64" class="title">Memory-Assisted Ontology Engineering Architecture for Regulatory Knowledge</text>
+	<text x="70" y="92" class="subtitle">CLI and web UI requests flow through the prototype entry point, then into host planning, server execution, and memory-backed ontology artifact generation.</text>
+
+	<rect x="70" y="140" width="1060" height="150" fill="#f5efe3" stroke="#bb8a3b" class="group"/>
+	<text x="92" y="172" class="group-label">User Entry</text>
+	<rect x="100" y="198" width="220" height="48" fill="#fffaf0" stroke="#bb8a3b" class="node"/>
+	<text x="210" y="228" class="node-title center">Researcher / Developer</text>
+	<rect x="360" y="172" width="220" height="48" fill="#fffaf0" stroke="#bb8a3b" class="node"/>
+	<text x="470" y="194" class="node-title center">CLI Run</text>
+	<text x="470" y="212" class="node-body center">src/main.py</text>
+	<rect x="360" y="230" width="220" height="48" fill="#fffaf0" stroke="#bb8a3b" class="node"/>
+	<text x="470" y="252" class="node-title center">Local Web UI</text>
+	<text x="470" y="270" class="node-body center">src/presentation/web_ui.py</text>
+	<rect x="660" y="198" width="200" height="48" fill="#fffaf0" stroke="#bb8a3b" class="node"/>
+	<text x="760" y="220" class="node-title center">Prototype Entry</text>
+	<text x="760" y="238" class="node-body center">src/main.py</text>
+	<rect x="910" y="198" width="180" height="48" fill="#fffaf0" stroke="#bb8a3b" class="node"/>
+	<text x="1000" y="220" class="node-title center">PrototypeClient</text>
+	<text x="1000" y="238" class="node-body center">loads memory and goals</text>
+
+	<rect x="70" y="320" width="500" height="300" fill="#eef5fb" stroke="#4f81bd" class="group"/>
+	<text x="92" y="332" class="group-label">Host</text>
+	<rect x="110" y="380" width="180" height="100" fill="#ffffff" stroke="#4f81bd" class="node"/>
+	<text x="200" y="412" class="node-title center">LLMPlanner</text>
+	<text x="200" y="438" class="node-body center">maps user goals</text>
+	<text x="200" y="456" class="node-body center">to pipeline actions</text>
+	<rect x="340" y="380" width="180" height="100" fill="#ffffff" stroke="#4f81bd" class="node"/>
+	<text x="430" y="412" class="node-title center">MCPClient</text>
+	<text x="430" y="438" class="node-body center">dispatches the planned</text>
+	<text x="430" y="456" class="node-body center">action to the server</text>
+	<rect x="110" y="510" width="410" height="80" fill="#ffffff" stroke="#4f81bd" class="node"/>
+	<text x="315" y="540" class="node-title center">Agents</text>
+	<text x="315" y="562" class="node-body center">Domain expert and retriever agents</text>
+	<text x="315" y="578" class="node-body center">support ontology tasks</text>
+
+	<rect x="630" y="320" width="500" height="300" fill="#edf7ef" stroke="#5b8a62" class="group"/>
+	<text x="652" y="332" class="group-label">Memory</text>
+	<rect x="670" y="380" width="420" height="100" fill="#ffffff" stroke="#5b8a62" class="node"/>
+	<text x="880" y="412" class="node-title center">Source Knowledge</text>
+	<text x="880" y="438" class="node-body center">EU AI Act JSON content, prompt templates,</text>
+	<text x="880" y="456" class="node-body center">and reused ontologies</text>
+	<rect x="670" y="510" width="170" height="80" fill="#ffffff" stroke="#5b8a62" class="node"/>
+	<text x="755" y="550" class="node-title center">MemoryGenerator</text>
+	<rect x="860" y="510" width="110" height="80" fill="#ffffff" stroke="#5b8a62" class="node"/>
+	<text x="915" y="546" class="node-title center">Declarative</text>
+	<text x="915" y="566" class="node-body center">memory</text>
+	<rect x="980" y="510" width="110" height="80" fill="#ffffff" stroke="#5b8a62" class="node"/>
+	<text x="1035" y="546" class="node-title center">Procedural</text>
+	<text x="1035" y="566" class="node-body center">memory</text>
+
+	<rect x="70" y="660" width="1060" height="150" fill="#eef4ff" stroke="#4267a6" class="group"/>
+	<text x="92" y="692" class="group-label">Server</text>
+	<rect x="250" y="710" width="700" height="74" fill="#ffffff" stroke="#4267a6" class="node"/>
+	<text x="600" y="738" class="node-title center">OntologyGenerator</text>
+	<text x="600" y="758" class="node-body center">executes generation, extraction, mapping, borrowing,</text>
+	<text x="600" y="774" class="node-body center">and validation tasks</text>
+
+	<rect x="70" y="830" width="1060" height="170" fill="#fff6e5" stroke="#c3912e" class="group"/>
+	<text x="92" y="862" class="group-label">Generated Artifacts and Evaluation</text>
+	<rect x="100" y="905" width="200" height="68" fill="#ffffff" stroke="#c3912e" class="node"/>
+	<text x="200" y="934" class="node-title center">Competency Questions</text>
+	<text x="200" y="956" class="node-body center">competency_questions.json</text>
+	<rect x="315" y="905" width="170" height="68" fill="#ffffff" stroke="#c3912e" class="node"/>
+	<text x="400" y="934" class="node-title center">Concepts</text>
+	<text x="400" y="956" class="node-body center">concepts.json</text>
+	<rect x="500" y="905" width="170" height="68" fill="#ffffff" stroke="#c3912e" class="node"/>
+	<text x="585" y="934" class="node-title center">Mappings</text>
+	<text x="585" y="956" class="node-body center">mappings.json</text>
+	<rect x="685" y="905" width="170" height="68" fill="#ffffff" stroke="#c3912e" class="node"/>
+	<text x="770" y="934" class="node-title center">Ontology</text>
+	<text x="770" y="956" class="node-body center">ontology/*.ttl</text>
+	<rect x="870" y="905" width="230" height="68" fill="#ffffff" stroke="#c3912e" class="node"/>
+	<text x="985" y="934" class="node-title center">Evaluation</text>
+	<text x="985" y="956" class="node-body center">SPARQL validation and metrics CSV</text>
+
+	<path d="M 320 222 L 360 196" class="edge"/>
+	<path d="M 320 228 L 360 254" class="edge"/>
+	<path d="M 580 196 L 660 222" class="edge"/>
+	<path d="M 580 254 L 660 222" class="edge"/>
+	<path d="M 860 222 L 910 222" class="edge"/>
+	<path d="M 1000 246 L 1000 300 L 200 300 L 200 380" class="edge"/>
+	<path d="M 290 425 L 340 425" class="edge"/>
+	<path d="M 520 430 L 560 430 L 560 690 L 600 690 L 600 710" class="edge"/>
+	<path d="M 880 480 L 880 495 L 755 495 L 755 510" class="edge"/>
+	<path d="M 840 550 L 860 550" class="edge"/>
+	<path d="M 755 590 L 755 610 L 1035 610 L 1035 590" class="edge"/>
+	<path d="M 915 590 L 915 640 L 680 640 L 680 710" class="edge"/>
+	<path d="M 1035 590 L 1035 640 L 760 640 L 760 710" class="edge"/>
+	<path d="M 315 590 L 315 640 L 430 640 L 430 710" class="edge-bidir"/>
+	<path d="M 600 784 L 600 880" class="edge"/>
+	<path d="M 600 880 L 200 880 L 200 905" class="edge"/>
+	<path d="M 600 880 L 400 880 L 400 905" class="edge"/>
+	<path d="M 600 880 L 585 880 L 585 905" class="edge"/>
+	<path d="M 600 880 L 770 880 L 770 905" class="edge"/>
+	<path d="M 600 880 L 985 880 L 985 905" class="edge"/>
+	<path d="M 770 973 L 770 988 L 985 988 L 985 973" class="edge"/>
+</svg>

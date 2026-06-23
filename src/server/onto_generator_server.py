@@ -1,72 +1,129 @@
 """Prototype ontology generator backed by a loaded DeclarativeMemory."""
-import re
-from typing import Dict, List
+import json
+from pathlib import Path
+from typing import Dict, List, Tuple
 
 from memory.declarative_memory import DeclarativeMemory
 from memory.procedural_memory import ProceduralMemory
 from host.agents import domain_expert_agent
-import json
-from utils import json_formatted_mappings
-
-CONCEPT_LIMIT = 500
-CHAPTER_LIMIT = 7
-
+from utils import format_mapping_output_as_json
 
 class OntologyGenerator:
     """Performs ontology operations over a preloaded DeclarativeMemory graph."""
-
-    def __init__(self, declarative_memory: DeclarativeMemory, procedural_memory: ProceduralMemory, output_path = None, run_config_path = None) -> None:
+    """Args:
+    declarative_memory: DeclarativeMemory
+        A preloaded DeclarativeMemory instance containing the ontology graph.
+    procedural_memory: ProceduralMemory
+        A preloaded ProceduralMemory instance containing the procedural context and related metadata.
+    output_path: Optional[str]
+        Path to save the generated ontology. If None, a default path will be used.
+    run_config_path: Optional[str]
+        Path to the run configuration file (e.g., API configs). If None, a default path will be used.
+    """
+    def __init__(
+        self,
+        declarative_memory: DeclarativeMemory,
+        procedural_memory: ProceduralMemory,
+        output_path=None,
+        run_config_path=None,
+        concept_limit: int = None,
+        chapter_limit: int = None,
+    ) -> None:
+        if concept_limit is None or chapter_limit is None:
+            raise ValueError("concept_limit and chapter_limit must be provided from outside OntologyGenerator")
         self.declarative_memory = declarative_memory
         self.procedural_memory = procedural_memory
         self._ontology_output_path = output_path
         self._run_config_path = run_config_path
+        self._concept_limit = concept_limit
+        self._chapter_limit = chapter_limit
+
+    def _write_ontology_output(self, ontology_content: str) -> None:
+        with open(self._ontology_output_path, "w", encoding="utf-8") as output_file:
+            output_file.write(ontology_content)
+
+    def _validate_saved_ontology(self, ontology_content: str) -> None:
+        print("Validation by RDFLib parsing:")
+        validation_result = self.validate_ontology()
+
+        if validation_result["status"] == "success":
+            print(validation_result["message"])
+            return
+
+        while validation_result["status"] != "success":
+            print(f"Ontology validation failed: {validation_result['message']}")
+            ontology_content = domain_expert_agent.repair_turtle_syntax_with_gpt(
+                ontology_content,
+                self._run_config_path,
+            )
+            self._write_ontology_output(ontology_content)
+            validation_result = self.validate_ontology()
+
+    def _persist_and_validate_ontology(self, ontology_content: str) -> None:
+        self._write_ontology_output(ontology_content)
+        print(f"Generated ontology saved to {self._ontology_output_path}")
+        self._validate_saved_ontology(ontology_content)
+
+    def _group_concepts_by_chapter(self, concept_records: List[Dict[str, str]]) -> Dict[str, List[Dict[str, str]]]:
+        chapter_concepts: Dict[str, List[Dict[str, str]]] = {}
+
+        for concept_record in concept_records:
+            chapter_title = concept_record.get("chapter", "Ungrouped")
+            chapter_concepts.setdefault(chapter_title, []).append(concept_record)
+
+        return chapter_concepts
 
 
     def memory_generation(self) -> Dict[str, object]:
         """Return a structured representation of the loaded memory content."""
+
         return {
             "declarative": {
                 "source": str(self.declarative_memory.source_path),
                 "triple_count": self.declarative_memory.triple_count(),
             },
-            "procedural":
-             { "metadata": self.procedural_memory.get_metadata(),
-              "document_content_retriever": self.procedural_memory.content_retriever(config=self._run_config_path)
-              
-            }
+            "procedural": {
+                "metadata": self.procedural_memory.get_metadata(),
+                "document_content_retriever": self.procedural_memory.ensure_document_content_available(
+                    config_path=self._run_config_path
+                ),
+            },
         }
+
     def extract_concepts(self) -> List[Dict[str, str]]:
 
-        with open(self.procedural_memory.competency_questions_path) as f:
-            competency_questions = json.load(f)
+        with open(self.procedural_memory.competency_questions_path, encoding="utf-8") as f:
+            competency_question_report = json.load(f)
         
        
-        regulation = competency_questions['regulation']
-        citation = competency_questions['citation']
-        source_url = competency_questions['source_url']
-        scraped_at = competency_questions['scraped_at']
-        competency_questions = competency_questions['competency_questions']
+        regulation = competency_question_report['regulation']
+        citation = competency_question_report['citation']
+        source_url = competency_question_report['source_url']
+        scraped_at = competency_question_report['scraped_at']
+        chapter_competency_questions = competency_question_report['competency_questions']
         all_concepts = []
 
-        for index, item in enumerate(competency_questions):
-            competency_questions_list = item['list_article_cqs']
+        for chapter_index, chapter_entry in enumerate(chapter_competency_questions):
+            chapter_title = chapter_entry['chapter']
+            article_competency_questions = chapter_entry['list_article_cqs']
 
-            for per_chapter_questions in competency_questions_list:
+            for article_question_entry in article_competency_questions:
 
-                article = per_chapter_questions['article']
-                article_url = per_chapter_questions['url']
-                cqs = per_chapter_questions['competency_questions']
+                article_title = article_question_entry['article']
+                article_url = article_question_entry['url']
+                article_questions = article_question_entry['competency_questions']
 
             
-                concepts = domain_expert_agent.run_gpt_based_concept_extraction(cqs, self._run_config_path)
+                extracted_concept_lines = domain_expert_agent.extract_concepts_with_gpt(article_questions, self._run_config_path)
 
-                concepts_str = "\n".join(concepts)
-                concepts_str = concepts_str.replace("json\n", '').replace("`", "")
-                concepts = json.loads(concepts_str)
-                item = {
-                    "article": article,
+                extracted_concepts_text = "\n".join(extracted_concept_lines)
+                extracted_concepts_text = extracted_concepts_text.replace("json\n", '').replace("`", "")
+                extracted_concepts = json.loads(extracted_concepts_text)
+                concept_record = {
+                    "chapter": chapter_title,
+                    "article": article_title,
                     "url": article_url,
-                    "concepts": concepts,
+                    "concepts": extracted_concepts,
                     "regulation": regulation,
                     "citation": citation,
                     "source_url": source_url,
@@ -74,8 +131,8 @@ class OntologyGenerator:
                     
                 }
         
-                all_concepts.append(item)
-            if index >= CHAPTER_LIMIT-1:  # Limit to first 7 articles for testing
+                all_concepts.append(concept_record)
+            if chapter_index >= self._chapter_limit - 1:
                 break
         print(f"path to save extracted concepts: {self.procedural_memory.concept_extraction_output_path}")
 
@@ -91,15 +148,25 @@ class OntologyGenerator:
     
     def borrow_concept_extraction(self) -> List[Dict[str, str]]:
         """Return the extracted concepts from the procedural memory."""
-       
-        self.generated_onto = open(self._ontology_output_path, 'r', encoding='utf-8').read()
-        self.mappings = json.load(open(self.procedural_memory.mapping_output_path, 'r', encoding='utf-8'))
+        ontology_output_path = Path(self._ontology_output_path)
+        mapping_output_path = Path(self.procedural_memory.mapping_output_path)
+
+        if not ontology_output_path.exists():
+            self.generate_ontology()
+
+        if not mapping_output_path.exists():
+            self.map_to_existing_ontologies()
+
+        with open(self._ontology_output_path, "r", encoding="utf-8") as ontology_file:
+            self.generated_onto = ontology_file.read()
+        with open(self.procedural_memory.mapping_output_path, "r", encoding="utf-8") as mapping_file:
+            self.mappings = json.load(mapping_file)
         
-        ontology_content = domain_expert_agent.get_borrows_from_mappings(self.generated_onto, self.mappings, self._run_config_path)
+        ontology_content = domain_expert_agent.apply_mapping_borrows(self.generated_onto, self.mappings, self._run_config_path)
 
         if ontology_content is None:
             raise ValueError(
-                "Ontology generation failed: run_full_ttl_ontology() returned None"
+                "Ontology generation failed: generate_full_turtle_ontology() returned None"
             )
 
         if not isinstance(ontology_content, str):
@@ -107,24 +174,7 @@ class OntologyGenerator:
                 f"Expected ontology_content to be str, got {type(ontology_content)}"
             )
 
-        with open(self._ontology_output_path, "w", encoding="utf-8") as f:
-            f.write(ontology_content)
-
-        print(f"Generated ontology saved to {self._ontology_output_path}")
-
-        print(f"Validation by RDFLib parsing:")
-        message = self.validate_ontology()
-
-        if message['status'] == 'success':
-
-            print(message['message'])
-
-        else:
-            domain_expert_agent.fix_syntax_errors_in_turtle(ontology_content, self._run_config_path)
-            while message['status'] != 'success':
-                print(f"Ontology validation failed: {message['message']}")
-                domain_expert_agent.fix_syntax_errors_in_turtle(ontology_content, self._run_config_path)
-                message = self.validate_ontology()
+        self._persist_and_validate_ontology(ontology_content)
 
         return (
             f"Generated ontology with {self.declarative_memory.triple_count()} triples "
@@ -133,14 +183,15 @@ class OntologyGenerator:
 
 
 
-    def get_concept_extraction_output(self) -> List[Dict[str, str]]:
+    def load_concept_extraction_output(self) -> Tuple[List[Dict[str, str]], List[str], List[str]]:
         """Return the extracted concepts from the procedural memory."""
-        self.all_concepts = json.load(open(self.procedural_memory.concept_extraction_output_path, 'r', encoding='utf-8'))
+        with open(self.procedural_memory.concept_extraction_output_path, "r", encoding="utf-8") as concept_file:
+            self.all_concepts = json.load(concept_file)
         self.all_concept_cleaned = []
-        entities = []
-        properties = []
-        for item in self.all_concepts:
-            concepts_dict = item['concepts']
+        extracted_entities = []
+        extracted_properties = []
+        for concept_record in self.all_concepts:
+            concepts_dict = concept_record['concepts']
             if not isinstance(concepts_dict, dict):
                 print(f"Unexpected format for concepts: {concepts_dict}")
                 continue
@@ -155,31 +206,33 @@ class OntologyGenerator:
             if not isinstance(competency_questions, list):
                 print(f"Unexpected format for competency questions: {competency_questions}")
                 continue
-            for concept in competency_questions:
-                if not isinstance(concept, dict):
-                    print(f"Skipping invalid concept format: {concept}")
+            for competency_question_entry in competency_questions:
+                if not isinstance(competency_question_entry, dict):
+                    print(f"Skipping invalid concept format: {competency_question_entry}")
                     continue
-                print(f"Processing concept: {concept}")
-                entity =  concept.get('entities') or concept.get('Entities') or concept.get('entity') or concept.get('Entity') or []
-                property = concept.get('properties') or concept.get('Properties') or concept.get('property') or concept.get('Property') or []
-                entities.extend(entity)
-                properties.extend(property)
+                print(f"Processing concept: {competency_question_entry}")
+                entity_names =  competency_question_entry.get('entities') or competency_question_entry.get('Entities') or competency_question_entry.get('entity') or competency_question_entry.get('Entity') or []
+                property_names = competency_question_entry.get('properties') or competency_question_entry.get('Properties') or competency_question_entry.get('property') or competency_question_entry.get('Property') or []
+                extracted_entities.extend(entity_names)
+                extracted_properties.extend(property_names)
                
                 self.all_concept_cleaned.append({
-                    "article": item['article'],
-                    "url": item['url'],
-                    "entities": entity,
-                    "properties": property,
-                    "regulation": item['regulation'],
-                    "citation": item['citation'],
-                    "source_url": item['source_url'],
-                    "scraped_at": item['scraped_at']
+                    "chapter": concept_record.get('chapter', 'Ungrouped'),
+                    "article": concept_record['article'],
+                    "url": concept_record['url'],
+                    "entities": entity_names,
+                    "properties": property_names,
+                    "regulation": concept_record['regulation'],
+                    "citation": concept_record['citation'],
+                    "source_url": concept_record['source_url'],
+                    "scraped_at": concept_record['scraped_at']
                 })
-        return self.all_concept_cleaned, properties, entities
+        return self.all_concept_cleaned, extracted_properties, extracted_entities
 
 
     def map_to_existing_ontologies(self) -> Dict[str, int]:
         """Return the top namespace occurrence counts in the loaded graph."""
+
         ontology_paths = self.procedural_memory.existing_ontologies
         mappings = []
         self.generated_onto = self.declarative_memory.load_from_path(self._ontology_output_path)
@@ -188,15 +241,15 @@ class OntologyGenerator:
 
         for ontology_path in ontology_paths:
            
-            onto = self.declarative_memory.load_from_path(ontology_path)
-            classes = onto.get_classes_with_labels()
-            properties = onto.get_properties_with_labels()
+            existing_ontology = self.declarative_memory.load_from_path(ontology_path)
+            existing_classes = existing_ontology.get_classes_with_labels()
+            existing_properties = existing_ontology.get_properties_with_labels()
             
-            mapping = domain_expert_agent.run_gpt_based_mapping_to_existing_ontologies(domain_classes, domain_properties, classes, properties, self._run_config_path)
+            mapping_result = domain_expert_agent.map_to_existing_ontologies_with_gpt(domain_classes, domain_properties, existing_classes, existing_properties, self._run_config_path)
         
             mappings.append({
-                "corresponding_classes": mapping['corresponding_classes'],
-                "corresponding_properties": mapping['corresponding_properties'],
+                "corresponding_classes": mapping_result['corresponding_classes'],
+                "corresponding_properties": mapping_result['corresponding_properties'],
             })
 
         with open(self.procedural_memory.mapping_output_path, 'w', encoding='utf-8') as f:
@@ -205,20 +258,21 @@ class OntologyGenerator:
         print(f"Mappings saved to {self.procedural_memory.mapping_output_path}")
 
         # clean the mappings for later use
-        mappings = json_formatted_mappings(mappings)
+        mappings = format_mapping_output_as_json(mappings)
         self.mappings = mappings
 
         return mappings
 
-
-
     def generate_ontology(self) -> str:
-        self.all_concept_cleaned , _, _ = self.get_concept_extraction_output()
-        ontology_content = domain_expert_agent.run_full_ttl_ontology(self.all_concept_cleaned[:CONCEPT_LIMIT])
+        self.all_concept_cleaned, _, _ = self.load_concept_extraction_output()
+        ontology_content = domain_expert_agent.generate_full_turtle_ontology(
+            self.all_concept_cleaned[:self._concept_limit],
+            self._run_config_path,
+        )
 
         if ontology_content is None:
             raise ValueError(
-                "Ontology generation failed: run_full_ttl_ontology() returned None"
+                "Ontology generation failed: generate_full_turtle_ontology() returned None"
             )
 
         if not isinstance(ontology_content, str):
@@ -226,60 +280,89 @@ class OntologyGenerator:
                 f"Expected ontology_content to be str, got {type(ontology_content)}"
             )
 
-        with open(self._ontology_output_path, "w", encoding="utf-8") as f:
-            f.write(ontology_content)
-
-        print(f"Generated ontology saved to {self._ontology_output_path}")
-
-        print(f"Validation by RDFLib parsing:")
-        message = self.validate_ontology()
-
-        if message['status'] == 'success':
-
-            print(message['message'])
-
-        else:
-            domain_expert_agent.fix_syntax_errors_in_turtle(ontology_content, self._run_config_path)
-            while message['status'] != 'success':
-                print(f"Ontology validation failed: {message['message']}")
-                domain_expert_agent.fix_syntax_errors_in_turtle(ontology_content, self._run_config_path)
-                message = self.validate_ontology()
+        self._persist_and_validate_ontology(ontology_content)
 
         return (
             f"Generated ontology with {self.declarative_memory.triple_count()} triples "
             f"and procedural context from {self.procedural_memory.get_metadata()}"
         )
+
+    def generate_chapter_based_ontology(self) -> str:
+        self.all_concept_cleaned, _, _ = self.load_concept_extraction_output()
+        chapter_concepts = self._group_concepts_by_chapter(self.all_concept_cleaned)
+        chapter_ontologies = []
+
+        for chapter_title, chapter_records in chapter_concepts.items():
+            chapter_ontology = domain_expert_agent.generate_local_chapter_ontology(
+                chapter_title,
+                chapter_records[:self._concept_limit],
+                self._run_config_path,
+            )
+
+            if chapter_ontology is None:
+                raise ValueError(
+                    f"Chapter ontology generation failed for {chapter_title}."
+                )
+
+            chapter_ontologies.append(
+                {
+                    "chapter": chapter_title,
+                    "ontology": chapter_ontology,
+                }
+            )
+
+        ontology_content = domain_expert_agent.generate_global_chapter_ontology(
+            chapter_ontologies,
+            self._run_config_path,
+        )
+
+        if ontology_content is None:
+            raise ValueError(
+                "Global chapter ontology generation failed."
+            )
+
+        if not isinstance(ontology_content, str):
+            raise TypeError(
+                f"Expected ontology_content to be str, got {type(ontology_content)}"
+            )
+
+        self._persist_and_validate_ontology(ontology_content)
+
+        return (
+            f"Generated chapter-based ontology across {len(chapter_ontologies)} chapters "
+            f"with procedural context from {self.procedural_memory.get_metadata()}"
+        )
     
     def generate_competency_questions_by_article(self, articles: str) -> List[str]:
-        list_article_cqs = []
+        article_competency_questions = []
         for article in articles:
-                article_title = article['article']
-                article_text = article['text']
-                print(f"Generating competency questions for article: {article_title}")
-                article_url = article['url']
-                article_cqs = domain_expert_agent.cq_generation(article_text, self._run_config_path)
-                
-                article_info = {
-                    "article": article_title,
-                    "url": article_url,
-                    "competency_questions": article_cqs
-                }
-                list_article_cqs.append(article_info)
+            article_title = article['article']
+            article_text = article['text']
+            print(f"Generating competency questions for article: {article_title}")
+            article_url = article['url']
+            generated_questions = domain_expert_agent.generate_competency_questions(article_text, self._run_config_path)
 
-        return list_article_cqs
+            article_info = {
+                "article": article_title,
+                "url": article_url,
+                "competency_questions": generated_questions,
+            }
+            article_competency_questions.append(article_info)
+
+        return article_competency_questions
     
-    def generate_competency_question_by_chapter(self, chapters) -> List[str]:
-        list_competency_questions = []
+    def generate_competency_questions_by_chapter(self, chapters) -> List[str]:
+        chapter_competency_questions = []
         for chapter in chapters:
             chapter_title = chapter['chapter']
-            articles = chapter['articles']
-            info_article = {
+            chapter_articles = chapter['articles']
+            chapter_info = {
                 "chapter": chapter_title,
-                "list_article_cqs":self.generate_competency_questions_by_article(articles)
+                "list_article_cqs": self.generate_competency_questions_by_article(chapter_articles)
             } 
-            list_competency_questions.append(info_article)
+            chapter_competency_questions.append(chapter_info)
             # break
-        return list_competency_questions
+        return chapter_competency_questions
 
   
 
@@ -287,31 +370,31 @@ class OntologyGenerator:
         """Return a list of example competency questions for the loaded document."""
         print("Generating competency questions from procedural memory...")
 
-        doc = self.procedural_memory.get_metadata()
+        document_metadata = self.procedural_memory.get_metadata()
         output_competency_questions_path = self.procedural_memory.competency_questions_path
 
 
-        content = doc['document_content']
-        chapters = content['chapters']
+        document_content = document_metadata['document_content']
+        chapters = document_content['chapters']
        
-        regulation= content['regulation']
-        citation = content['citation']
-        source_url = content['source_url']
-        scraped_at = content['scraped_at']
+        regulation = document_content['regulation']
+        citation = document_content['citation']
+        source_url = document_content['source_url']
+        scraped_at = document_content['scraped_at']
 
-        competency_questions_all = {"competency_questions": self.generate_competency_question_by_chapter(chapters)}
+        competency_question_report = {"competency_questions": self.generate_competency_questions_by_chapter(chapters)}
 
-        competency_questions_all['regulation'] = regulation
-        competency_questions_all['citation'] = citation
-        competency_questions_all['source_url'] = source_url
-        competency_questions_all['scraped_at'] = scraped_at
+        competency_question_report['regulation'] = regulation
+        competency_question_report['citation'] = citation
+        competency_question_report['source_url'] = source_url
+        competency_question_report['scraped_at'] = scraped_at
         
         if output_competency_questions_path:
             with open(output_competency_questions_path, 'w', encoding='utf-8') as f:
-                json.dump(competency_questions_all, f, ensure_ascii=False, indent=4)
+                json.dump(competency_question_report, f, ensure_ascii=False, indent=4)
             print(f"Competency questions saved to {output_competency_questions_path}")
 
-        return competency_questions_all
+        return competency_question_report
 
     def generate_domain_memory(self) -> Dict[str, List[str]]:
         """Return a structured representation of the procedural memory content."""
@@ -326,15 +409,10 @@ class OntologyGenerator:
     def validate_ontology(self) -> Dict[str, object]:
         """Run basic health checks over the loaded ontology."""
         try:
-            onto = self.declarative_memory.load_from_path(self._ontology_output_path)
+            loaded_ontology = self.declarative_memory.load_from_path(self._ontology_output_path)
             return {
                 "status": "success",
-                "message": f"Ontology loaded successfully with {onto.triple_count()} triples.",
+                "message": f"Ontology loaded successfully with {loaded_ontology.triple_count()} triples.",
             }
         except Exception as e:
-
-            
             return {"status": "error", "message": f"Failed to load ontology: {e}"}
-        
-
-        
