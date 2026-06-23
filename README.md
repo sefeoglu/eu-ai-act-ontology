@@ -9,7 +9,7 @@
 ![Artifacts](https://img.shields.io/badge/Artifacts-Included-4D7C0F)
 ![Web UI](https://img.shields.io/badge/Web_UI-Interactive-D97706)
 
-*This branch contains ongoing research extensions and improvements beyond the original task submission. The submitted version remains preserved in the release and master branch for reproducibility and evaluation purposes.*
+
 ## Project architecture
 
 ![Project architecture](figures/project_architecture.svg)
